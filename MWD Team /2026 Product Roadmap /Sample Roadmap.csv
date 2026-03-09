@@ -1,0 +1,101 @@
+Project,Problem,Solution,Opportunity,Road Map Status,Primary Revenue Lever, Core Metric & KPIs,Mechanism - Why we believe this will move ARR,Target Improvement (Estimate),Time to Impact (Ship | Impact),Reach,"T Shirt Size
+Impact",Confidence,T Shirt Size Effort,SCORE ,Priority,Quarter
+PRODUCT PRIORITIES - IGNITE ACTIVATION,,,,,,,,,,,,,,,,
+Insights Email,Many users (47%) do not return to Method after the session they synced. ,"Monthly Insights email that will support the product engagement loops and lead users to engage with the Home Dashboard.
+","-Motivate and give a reason for users to come back to Method to accomplish something.
+-Leverage their trial by reaching them outside the platform after they synced.
+-Improve external communications to bring users back to the product.",In Progress,Activation,"ARR
+1.Improve 2nd Visit
+2.Churn related too:
+- Not using their Method Account
+- Failure to adopt, train, and engage CRM users.
+3. New Metric Email Engagement (Open Rate, CTR, Unsubs)",Engagement – Re-engagement / Usage Nudges,"2nd Visit Rate: +8.7% (57% to 62%)
+Churn: save 6 /month or 78/year (2.3 to 2.24%)
+",Mid Feb | End Feb,5  > 70% Users,5 High,"3 Reasonably Confident, Indirect Data Signals",4 S,17,High,Q1
+App Intro States,"Apps are missing intro state, making it harder for a new user to understand the value quickly.","Empty state and first visit intro/value proposition into applications. Data or Not, value can still be shown better. ",Ensure the first visit to any app conveys the app's value and purpose clearly to boost discovery and activation. Can be layered on top of an empty state. ,Ready,Activation,"ARR
+1. 2nd visit rate 
+- Increase chances of finding value on first visit
+2. Trial activation rate
+3. Time to first value - Key conversion steps
+4. Conversion to subscribe",Reduce time to value - Empty first impressions are abandonment points—transforming blank screens and incomplete data into clear value propositions.,"2nd Visit Rate: +8.2% (57 to 61.7)
+Trial activation: +13.2% (44% to 50%)",Early March | End of March,3  > 30-70% Users,5 High,"5 Very Confidant, Direct Data Signals",3 M,16,High,Q1
+Industry/Job Targetting infrustructure,"On initial onboarding, lots of accounts do not declare Industry and role. ",Require Industry and job data. Or ask for it at a different time OR access industry data from elsewhere. True solution TBD. ,Opportunity to get clear visibility and reliable data on industry and user role and open the posibility of greater product and content targetting. ,Planning,Activation,"1. Data quality and reliability
+2. Data availability/timing",Relevance - Enables stronger targeting initiatives for activation. ,--,End March | -,3  > 30-70% Users,1 Low,"5 Very Confidant, Direct Data Signals",3 M,12,Medium,Q1
+Native Onboarding Checklist Feature,"Appcues onboarding checklistis generic, not dynamic and doesn't recognize completion of the steps unless initated from the onboarding checklist (It limiting)",Build the integrated checklist that can support more dynamic and targeted content. Allow completion of key tasks even when not initiated from the checklist. Use as a compass that live on the home screen for the home,Make onboarding feel built in and responsive to new users actions to support all future targeting initialived and improve first impression UX. ,Planning,Activation,"ARR
+1. 2nd visit rate 
+- Integrated experience for improved first impression
+2. Checklist completion rate
+- supports activation and driving subscriptions
+3. Key action completion rate
+- finding value with key activation moments
+(Also: Feature stability)",Guidance & Integration - Provides a clear path and feedback for the platform's value driving actions.,"2nd Visit Rate: +13.2% (57% to 65%)
+Checklist Completion: 12x increase from today - 15% (vs. 1.2% Appcues)",April | Early May,3  > 30-70% Users,3 Medium,"5 Very Confidant, Direct Data Signals",2 L,13,Medium,Q1
+,,,,,,,,,,,,,,,,
+Targeted Onboarding,Onboarding content is generic and skips specilized/industry specific tools.,Industry specifc Onboarding. Target the MWD industries first. ,The opportunity is to provide industry and role-specific onboarding tasks so that users immediately see Method's value for their specific business context. Make key value adds more obvious.,Planning,Activation,"ARR
+1. 2nd visit rate 
+- Increase chances of finding value through key value drivers
+2. Trial activation rate
+- ICP targeted for reaching key value actions for their vertical
+3. Conversion to subscribe",Relevance - Highly relevant feature discovery through a guided checklist experience. ,"2nd Visit Rate MWD: +5.5% (67% → 70-72% )
+Trial Activation (MWD): +22% (48% → 59%)",Late April | Mid May,3  > 30-70% Users,5 High,"3 Reasonably Confident, Indirect Data Signals",4 S,15,High,Q2
+New Targeted Insights,Insights are generic/ One size,More insights to appeal to our ICP/ leverage smart defaults. MWD focus. ,"Share insights that targets insistry, jobs or roles to activate users upon landing in the Method. ",Planning,Activation,"ARR
+1. Insights engagement - weekly usage.
+-Activate/adoption 
+2. Churn improvements to:
+-  Failure to adopt, train, and engage CRM users. 
+3. 2nd visit rate 
+- Increase chances of finding value through key value drivers
+4. Conversion to subscribe",Immediate value - Data driven insights that triggers value driving action for our ICP and keep users returning for updates. ,Insights Engagement MWD: +49% more clicks (CTR 17% → 25.5%),May | Late May,5  > 70% Users,5 High,"3 Reasonably Confident, Indirect Data Signals",3 M,16,High,Q2
+Recommendations section V1,Users are not supported by the product when in comes to deeper addoption. No guidance - unless they meet with PS or CSM. ,"Recommendations V1 - Recommendations for highly relivant discovery, setup and adoption tasks
+ - EDA tiggers if possible","Provide product lead help, guidance, recommendations that is relevant to the industry, actions already taken and other data we have gathered to deepen their product discovery and adoption. ",Planning,Adoption,"ARR/GRR
+1.Trial activation rate 
+- assitsted activation and adoption
+2.Churn improvements to:
+- Not using their Method Account
+- Failure to adopt, train, and engage CRM users.
+3. Reduce CSM calls
+4. Recommendation completion rate","Smart guidance - surfacing relevant next steps, setup and optimization to target activation and deeper adoption.","Trial activation: +11.5% growth in trial activation (44% → 49.1%) - activate 22 new users a month. 
+
+Churn: reduce by 1-2% (Need more data)",Mid-June | July,5  > 70% Users,5 High,"3 Reasonably Confident, Indirect Data Signals",2 L,15,High,Q2
+,,,,,,,,,,,,,,,,
+KANBAN - REV OPS | MARKETING | SALES,,,,,,,,Fast estimates based on impact,,,,,,,,
+"In product message - Add your CC ""Don't lose access""","""""",Mid-trial in product message - Ask for payment before trial ends. “Don’t lose progress“ - subscriber now,Remind users to subscribe and of what they will lose without subscribing,Planning,Conversion,"ARR
+1. Conversion",Encourge signing up before the trial is over.,3%,Early March | Late March,3  > 30-70% Users,3 Medium,"3 Reasonably Confident, Indirect Data Signals",4 S,13,Medium,Q1
+,,,,,,,,,,,,,,,,
+Upset to new app packs and workflows,Apps and packs that are not downloaded are not well exposed or optimized for upselling and gaining new users. ,-- TBD--,Opportunity to Explore the app packs more and improve their value proposition to users without the app,,Upsell,,,,,,,,,,,
+Simplify pricing structure,"""""",Simplified pricing structure + check click checkout (Stripe experience),Given users an easy to understand pricing structure that helps the user envision afordability and do simple future cost analysis.,,Conversion,"ARR
+1. Conversion",Make subscribe process easier to understand and simple/fast to prepare your costs before paying. ,8%,,5  > 70% Users,5 High,"3 Reasonably Confident, Indirect Data Signals",1 XL,14,,
+Default to monthly costs of an annual subscription,"""""",Default to the monthly cost view  Or adjust the the Annual cost to a “Per Month” breakdown to reduce sticker shock.,Avoid sticker shock - still promote annual pre-pay value,,Conversion,"ARR
+1. Conversion",Make subscribe process easier to understand - less intimidating. ,3%,,3  > 30-70% Users,3 Medium,"3 Reasonably Confident, Indirect Data Signals",4 S,13,,
+Add CC incentive messsage in product.,Payment needed before user in confident. ,Offer $ incentive to add card early,Get early commitment even withou confidence / Switch to Opt-out structure early-mid trial.,,Conversion,"ARR
+1. Conversion",Incentives for early subscription and ensure we are asking for CC before trial ends. ,3%,,3  > 30-70% Users,3 Medium,"3 Reasonably Confident, Indirect Data Signals",3 M,12,,
+More content to clarify pricing,"""""",Add more Context and clarity to how pricing works.,provide help and clarity on screen and reduce reliance on support.,,Conversion,"ARR
+1. Conversion",Make subscribe process easier to understand with better explanations,1%,,3  > 30-70% Users,1 Low,"3 Reasonably Confident, Indirect Data Signals",5 XS,12,,
+Make the subscription editing flow faster - only offer change that impacts price,"""""",Flow for quick add/remove apps and user - to make the final pricing easier to get to. Fast clarity.,Make the subscription cost preparation faster with lower friction to improve subscribe success rate without help. ,,Conversion,"ARR
+1. Conversion",Make subscribe process easier to drive more subscriptions.,5%,,3  > 30-70% Users,3 Medium,"3 Reasonably Confident, Indirect Data Signals",2 L,11,,
+Trade CC for a Trial extention (Opt out model),,"Offer trial extension if credit card is added. (Transition to opt-out structure)
+“Get another 14 day free - with CC added”",increase subscription commitment during trail but offering more trial time (Which we do provide sometimes),,Conversion,"ARR
+1. Conversion",Incentivise putting a credit card down - leading them to be in an Opt-out product state that typically dives higher subscriptions. ,3%,,3  > 30-70% Users,3 Medium,1 More of an educated guess.,3 M,10,,
+Trade tasks for more trial time (Earned extention),Product is removed at moment the decision is needed,"""Earned Extension"" The Idea: ""Need 7 more days? Invite a team member, send your first invoice and we'll extend your trial automatically.""",Incentivize key value actions at trial end and given users more time to make their decision. ,,Conversion,"ARR
+1. Conversion",Incentivize deeper product usage that may help them see value and subscribe.,2%,,3  > 30-70% Users,3 Medium,1 More of an educated guess.,2 L,9,,
+"""Add payment"" onboarding step","""""",Add the “Add your payment” as a natural next step after completing key value moments in the onboarding.,Leverage users that want guidance to encourge adding payment as a natural next step.,,Conversion,"ARR
+1. Conversion",Encourge signing up before the trial is over,1%,,3  > 30-70% Users,1 Low,1 More of an educated guess.,4 S,9,,
+Seperate CC add from subscribe,Pricing unclear / complex  leading to hesitation,"Provide a seperate ""Add payment"" flow ",Make adding the credits card less complex and specific to the subscription costs (Apps/users),,Conversion,"ARR
+1. Conversion",Make subscribe process easier to drive more subscriptions.,1%,,3  > 30-70% Users,1 Low,1 More of an educated guess.,3 M,8,,
+Lock screen is focused on all the time and effort the user saved.,,End trial with new focus of subscribe page “Trial summary - focus on all the value they received” and are giving up,Opportunity to improve perception of trial end and share key value propositions without access to the full platform.,,Conversion,"ARR
+1. Conversion",Help users find value even after being locked out of the functional platform.,1%,,1  < 30% Users,1 Low,1 More of an educated guess.,4 S,7,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+Insights Email V2,,"Highlight value adds, case studies, FOMO tactics and new product driven work flows that make them want to log back in.",,,,,,,,,,,,,,

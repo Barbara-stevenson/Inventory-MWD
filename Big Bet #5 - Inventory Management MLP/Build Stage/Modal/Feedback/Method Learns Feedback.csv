@@ -1,0 +1,25 @@
+⭐,Date,Employee,Comments,Internal,🗣️,❗,🐞
+5,2025-10-02,Safwan Hossain,Phenomenal,,TRUE,FALSE,FALSE
+5,2025-10-07,Leo Murphy,I actually did not encounter as many errors as I heard of. I thought it worked well for me. Shared results definitely help.,,TRUE,FALSE,FALSE
+5,2025-09-24,Matt Shade Silver,Great help for this new feature.  Any idea what was going on with my refresh at the end there?,,TRUE,FALSE,FALSE
+5,2025-10-06,Charvi Anand,Funnn!!,,TRUE,FALSE,FALSE
+4,2025-09-30,Gozde Bulut,"It took over 60 minutes. I found it interesting that the 'open popup' action captures the return value and continues executing the remaining actions from the same point. However, I had several issues where the active record ID on the screen was sometimes set incorrectly, and in some cases, the page refresh started from the wrong page where I initially opened as the dialog.",,FALSE,FALSE,FALSE
+4,2025-10-02,Liam Stickney,"I actually quite liked using the new modal actions! I needed a bit of help from the Help Centre at first, but once I figured out the inputs and outputs, using them wasn't an issue. Most of my time was sunk into trying to make the grid look presentable, though...",,TRUE,FALSE,FALSE
+3,2025-10-06,Joseph McDonald,"Picked a bad time to be trying modals given slowdown issues on Method, but in general I found it rather difficult to work with Modals as far as performing testing. Being unable to use Show Messages in process to see whether required Shared Results or screen values are carrying through means that all testing has to occur on the originating screen with whatever limited results we can pass back.",,TRUE,FALSE,FALSE
+3,2025-10-06,Bradley Mathi,"Not being able to show messages in the modal was a bit annoying. There were also scenarios where the modals had behaviour that I wasn't expecting, esp around the screen active record ID. For Modal statuses, I felt nervous about typing the status wrong when working with it in other capacities; It would be nice to have some preset values and be able to add more, but also be able to use it as a raw text field. Modals themselves felt good to use from a user perspective, and had a lot of nice functionality.",,TRUE,FALSE,FALSE
+3,2025-10-06,Muskan Shinh,"It was difficult to understand first how it's supposed to work, had to look at help center",Didn't get delete working.,FALSE,TRUE,FALSE
+3,2025-10-05,Brandon Saltzman,I don't love that you have to format everything into one section for modals to not look really weird. Also having show messages would be great.,,TRUE,FALSE,FALSE
+3,2025-10-06,Antonio Corbo,"good direction - but pretty buggy still. Had some issues in some of my dep accounts, but there are work arounds available",,TRUE,FALSE,FALSE
+3,2025-10-06,Manu Pothen,First time using Open Screen as a Pop-up. Need to spend more time to understand how it works.,,FALSE,FALSE,FALSE
+3,2025-09-30,Grace Lu,"Customization is difficult (less the modal, moreso everything else). D:",,FALSE,FALSE,FALSE
+2,2025-10-07,Andy Zhu,"was that a bug? i don't even know
+
+also sorry errol i forgot to upload it last night",,FALSE,FALSE,FALSE
+2,2025-10-06,Yasar Zaman,"There were a few bugs here and there, but I wasn't able to know how to extend the modal as the ""Collapse for Phone/Tablet"" was not working","Brings up good point about pop up messages you have to look out for, like duplicate emails in add contact.",TRUE,TRUE,FALSE
+2,2025-10-06,Thomas Darlington,If my team hadn't warned me about tickets related to these this would have taken much longer.,,TRUE,FALSE,FALSE
+2,2025-10-06,Aleks Radman,Great feature but too many bugs,,FALSE,FALSE,FALSE
+1,2025-10-03,Ryan Karaba,This was rough. Building new screens with modals is great but these ones not so much,,TRUE,FALSE,FALSE
+1,2025-10-06,Cole Arnett,modals buggy,,FALSE,FALSE,FALSE
+1,2025-09-30,Zachary Cutler,"- Not being able to use show messages makes debugging really hard
+- Not sure if I found some bugs with how screens are then set after you refresh the screen after using a modal",,FALSE,FALSE,FALSE
+,2025-10-06,f khan,"Almost lost my mind since RecordID and Entity - Record ID was out of sync, but other than that all good 😁. Also my UI looks fine",,TRUE,FALSE,FALSE

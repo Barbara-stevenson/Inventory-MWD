@@ -1,0 +1,101 @@
+Planning Quarter,"Narrative
+The ""Why"", behind doing this work.","Commitments
+ The ""What"" behind the desired customer outcome.",Status,"Initiatives
+The ""How"" needed to achieve the outcome, ","Reach
+(Who Benefits)","Impact
+ (Customers)","Confidence
+(Validation)","Effort
+(Complexity)",Total Score,"Priority
+(Stack Ranking of all priorities)","Project
+(Main Objective)","Success Metrics
+The expected impact/metric target. ","Target Completion
+(Date)"
+Q1,,Describe these outcomes in terms of the customer benefit. Think Marketing could read this and easily understand the benefit.,Completed,"Where possible, broken down by usable chunks of value to the customer. These can be milestones or incremental phases.",,,,,0,P0,Is this part of a larger work?,"This can be KPIs, North star metrics, Business metrics or input/output metrics.",
+2025,,,,,,,,,,,,,
+Q1,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.",Stage #1: Discovery ,Completed,,5,5,3,3,16,P0,"The initiative ensures the Inventory Management MLP solves real user needs by conducting research, analyzing data, and defining the problem scope before development, reducing risk and increasing value.","Clear understanding of the problem space with answers to these 3 questions:
+1. What problem are we solving?
+2. Why is this problem important to solve?
+3. Who are we solving for?","Feb 21, 2025"
+Q1,Fortify,"Status Tracking for Tables 
+Implement a comprehensive status tracking system across core tables within Method. This initiative aims to standardize how statuses are recorded and displayed.",Completed,PL-52416: Status Tracking for Tables ,3,3,3,5,14,P1,"This initiative aims to improve visibility for all users, ensuring that historical status transitions are immutable, and unlocks future product enhancements such as EDA and Swim Lane components.","- Increased Status Visibility: Users can easily determine the status of records without additional calculations.
+- Improved Data Integrity: All status transitions are logged and immutable.
+- Enhanced Usability: Users can filter by predefined status values and view historical changes.
+- Future Readiness: The system is better structured for EDA, Swimlanes, and app customization.","Apr 2, 2025"
+Q2,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.",Stage #2: Prototype ,Completed,,5,5,3,5,18,P0,Prototype the future inventory management experience,"Answer this Question: which prototype solution meets customer needs/fulfills their expectations?
+
+Additionally:
+- Internal alignment on MLP scope and feasibility
+- Engineering and design readiness for development","Apr 18, 2025"
+Q2,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.",Stage #3: Build,In Develop,,3,3,3,5,14,P0,Prototype the future inventory management experience,"Answer this Question: which prototype solution meets customer needs/fulfills their expectations?
+
+Additionally:
+- Internal alignment on MLP scope and feasibility
+- Engineering and design readiness for development","Apr 18, 2025"
+Q3,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.",Inventory Creation Modal ,Completed,PL-54200: Big Bet Sprint #1: Inventory Creation Modal ,1,1,1,3,6,P1,"To support critical 2025 Big Bet user stories, we must ship a reusable modal/dialog in our no-code platform. The Screen-as-Modal approach delivers the fastest path to an MVP by leveraging existing navigation and action infrastructure, while laying a foundation for future enhancements.","50 screens with “Open Screen in Pop Up” action configured within 3 months of general availability
+
+50 unique users opening a modal per day within 3 months of general availability
+
+","Aug 12, 2025"
+Q3,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.",Multi-Location Managament ,Completed,PL-56599: Multi-Location MVP - Add/Edit Locations and Quantities,1,1,1,3,6,P1,"JTBD: Allow users to track inventory across multiple locations seamlessly, ensuring that stock levels are accurate and visible regardless of where items are stored.","15% of Wholesale & Distribution accounts have 2 or more active locations on day 30 post-general availability
+
+15% of Wholesale & Distribution accounts that created core transactions involving more than one unique location within the last 30 days","Oct 7, 2025"
+Q3,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.",Multi-Location Managament (Fulfillment Loop),In Develop,PL-56600: Multi-Location MVP - Quantity On Hand Rules Across Apps/ Projects,1,1,1,3,6,P1,JTBD: Enforce quantity on hand rules on all inventory impacting transactions to maintain accurate inventory levels and track committed/expected stock.,"15% of accounts with 2 or more active warehouses configured in the last 30 days
+
+15% of accounts that created core transactions involving more than one unique warehouse within the last 30 days
+
+","Checkpoint #1: 
+Target Alpha Ship Date: Jan 21, 2026
+
+Checkpoint #2:
+Target Alpha Ship Date: Feb 3, 2026
+
+Once checkpoint #2 is completed we will follow a phased rollout approach from Beta to GA.
+Target Beta Ship Date: Feb 24, 2026
+Target GA Date: March 24, 2026"
+2026,,,,,,,,,,,,,
+Q1,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.","Accounting Fulfillment Loop - Customers experience accurate, connected fulfillment flows that prevent revenue leakage, and accelerate time-to-cash. ",In Design,PL-60803: Inventory Management Accounting Loop ,1,1,1,3,6,P1,TBD,TBD,TBD 
+Q1,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.","Stock Transfers - Customers can rebalance stock, prevent shortages, and maintain fulfillment continuity through controlled stock transfers",In Design,PL-58479: Stock Transfers ,1,1,1,3,6,P1,JTBD: Provide users with the ability to move stock freely between active locations,TBD,TBD 
+Q2,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.","Reorder Points & Low Stock Alerts - Customers receive early visibility into low inventory and clear replenishment signals, enabling timely purchasing and reducing fulfillment risk.",Not Started,"1. Ability to set minimum reorder points per item
+2. Ability to set minimum reorder quantity per item
+3. Displays low-stock items in the Inventory Center with an option to create purchase orders
+",1,1,3,3,8,P2,JTBD: Prevent stockouts and ensure timely reordering by clearly identifying low-stock items and automating reorder suggestions.,X% of low stock items results in a stock replenishment action (purchase order created) within 7 days of the alert,TBD 
+Q2,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.",Backorder Awareness - Customers maintain sales momentum and customer satisfaction by supporting controlled backorders with clear visibility into fulfillment readiness.,Not Started,"1. Allows users to override insufficient inventory by placing orders on backorder without interruption to the sales process.
+2. Provides visual cues when an item is being backordered during transaction entry.
+3. Displays backordered items in a dedicated field, enabling users to monitor pending orders and their status.
+4. Ability to manually updated sales orders when inventory is replenished to proceed with invoicing and fulfillment.
+",1,1,1,5,8,P2,"JTBD: Ensure that when inventory levels are insufficient to immediately fulfill sales orders, users can easily place items on backorder to prevent lost sales and manage pending fulfillment efficiently.","X% of sales orders with backordered items have those backorders successfully fulfilled (fully or partially) within 30 days of creation
+
+X% of users agree that “the backorder feature helps me manage stock outs effectively and maintain customer satisfaction”",TBD 
+Q2,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.",Lightweight Bin Management - Customers can structure inventory within locations to streamline fulfillment operations without introducing heavy operational complexity.,In Design,PL-56739: Lightweight Bin Management ,1,1,3,3,8,P2,"JTBD: Enable visbility into inventory placement, improving efficiency in picking, restocking, and auditing processes.",15% of Wholesale & Distribution accounts that assign bin-level locations to 10% of their inventory items within the first 90 days of feature release,TBD 
+Q3,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.","Item Audit Trail - Customers gain confidence, audit readiness, and operational transparency through a detailed history of item-level changes, quantities, locations, and user actions.",Not Started,"1. Captures a comprehensive log of changes made to inventory records specifically history, transactions, and item details, including adjustments to quantities, locations, pricing, and other key attributes at an item level.
+
+2. Displays crucial details for each change, such as the date, time, user who performed the action, and the type of action (e.g., creation, modification, deletion).
+",1,3,3,3,10,P3,"JTBD: Provide users with a detailed, accessible log of all modifications made to inventory items to enhance transparency, ensure accountability, and simplify troubleshooting.","X% of accounts view the item audit trail at least once per week
+
+X% of users agree that “the audit trail helps me understand inventory changes more clearly”",TBD 
+Q3,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.","Dynamic Item Management in Transactions - Customers can dynamically adjust and organize line items in real time, reducing friction and improving order accuracy across sales and purchasing workflows.",Not Started,"1. Support drag-and-drop editing for rearrangement of line items in all transactions
+
+
+",1,1,3,3,8,P3,"JTBD: Users need the ability to dynamically rearrange line items within all transactions without hassle, ensuring accurate and well-structured documents.",X% of users agree that “dynamic item management made it easier to keep my sales documents accurate and well-structured”,TBD 
+Q4,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.",Item Visualization - Customers can quickly identify items and reduce selection errors using attached imagery that stays current over time.,Not Started,"1. Enables users to upload and attach one or more images to each inventory item.
+2. Allows for easy updating or removal of images to keep visual data current
+",3,1,1,3,8,P3,"JTBD: Empower users to enhance inventory accuracy and product identification by attaching images to items, reducing errors and improving sales and fulfillment processes.","X% of inventory items have at least one image attached within the first 90 days of feature release
+
+X% of users agree that “item images help me identify products faster and improve order accuracy”",TBD 
+,"Big Bet #5 Ship, Inventory Management Minimum Lovable Product.","Katana x Method Integration
+",In Discovery,"1. Out-of-the-box easy integration with Katana (no customization required)
+2. Real-time 1-to-1 sync between Method and Katana 
+3. Real-time inventory count sync (Katana > Method)
+4. Sales Order Imports (Method > Katana)
+5. Manual sync button to trigger syncs
+6. Last sync date for inventory quantities in transactions
+7. Sync dashboard to present sync health, status, and history (audit trail)
+8. Ability to disconnect/remove integrations
+",3,3,3,5,14,P2,"JTBD: In need of advanced inventory management workflows or when using existing external inventory management software (e.g., Katana, SOS), users need an integration that works out-of-the-box with their CRM to avoid time-consuming, error-prone manual data entry.","X% of integrated accounts complete at least one full sales-to-fulfillment sync loop per week
+- Sync Loop: SO Created in Method → SO Syncs to Katana → Line-items Committed in Katana (inventory reserved) → SO Status Updated to “Packed” in Katana (fulfillment step) → Available Stock Updated in Katana → Stock-Level Sync to Method (confirm new on-hand)→ SO Status in Method Updated to “Packed” 
+
+X% of integrated accounts sync at least 10 sales orders per week
+
+Achieve X% success rate for real-time sync events between Method and Katana within the first 6 months of launch
+
+",TBD 

@@ -1,0 +1,272 @@
+﻿Description,GPT Category,TeamA,Estimated Difficulty,# of Accounts Req.,Category,Old Team A,Team Dependent
+Customer is looking to explore a direct API integration between Method and SOS inventory.,Integrations,Connect,Large (10 - 30 hours),17,Integrations and APIs,Integrations,
+"Customer is currently using Shopify as their primary inventory management tool.
+
+They do not have a full integration with QBooks inventory due to perceived limitations. 
+
+They are wondering what the Zapier or API avenue could look like if they want to connect Shopify and Method directly with a focus on items.
+
+In essence, when a item is added to a Work Order or invoice in Method, can we update Shopify inventory and verse versa.",Integrations,Connect,Large (10 - 30 hours),15,Integrations and APIs,Integrations,
+"Customer is a paving company and utlize the advanced inventory features of QB Enterprise. 
+
+They would like to ability to sync and manage two warehouses.
+
+They like the ability to use Work Orders or Sales Orders to reduce on hand quantity but would love it if they are able to see on hand for each warehouse and be able to pull inventory from a specific warehouse.",Inventory and Financial Management,Sales,Cannot be customized,14,Inventory and Asset Management,Integrations,Stock Apps
+The customer would like to know if  it is possible to inventory by location. Use case: 'Ideally the tracking would be part of live operations so that we're accurately able to fulfill orders from the appropriate warehouse',Inventory and Financial Management,Sales,Large (10 - 30 hours),10,Inventory and Asset Management,Stock Apps,
+"Include the ability to track items receipt in Method and sync back to QB.
+Customer handles a large amount of inventory processing from vendors. 
+
+Purchase order to bill flow is essential for their business.",Inventory and Financial Management,,Catalog Entry Available,7,,,
+"A Bill of Materials (BOM) is a comprehensive list of all the raw materials, components, and assemblies required to manufacture a product. It includes the quantities of each material needed and may also detail other aspects like the labor required, tools, and instructions for manufacturing.
+
+Components of a BOM:
+Part Number/Item Code: Unique identifier for each component.
+Description: A brief description of the component or material.
+Quantity: The amount of each component required for manufacturing.
+Unit of Measure: How the quantity is measured (e.g., pieces, kilograms).
+Cost: The cost of each component or material.
+Supplier Information: Details about where the material is sourced.
+Assembly Instructions: Steps or methods required to assemble the product.
+Lead Times: Time required to procure or manufacture each item.
+Accounting Workflow: Item Receipt + Converting to Bills and Customer Invoices
+Purchase Order (PO) Creation:
+
+You begin by creating a Purchase Order for the materials listed in the BOM. This document is sent to your supplier, detailing the items, quantities, and agreed prices.
+Receiving the Items (Item Receipt):
+
+When the materials arrive, you create an Item Receipt in your accounting or inventory management system. This document acknowledges that you have received the goods but haven’t yet paid for them.
+The inventory is updated to reflect the newly received items, increasing the stock levels.
+Converting Item Receipt to Bill:
+
+After confirming the receipt of items, the Item Receipt is converted into a Bill.
+The Bill reflects your obligation to pay the supplier. It records the amounts owed and the due date for payment.
+This step often includes matching the Bill to the original Purchase Order to ensure consistency in quantities and prices.
+Paying the Bill:
+
+The Bill is paid according to the payment terms agreed upon with the supplier. This transaction reduces your accounts payable and the cash or bank balance.
+Manufacturing the Product:
+
+Once all necessary materials are in stock (as per the BOM), the production process begins. During manufacturing, the materials are used up, and their costs are transferred from inventory to work-in-progress (WIP) or directly to the cost of goods sold (COGS), depending on your accounting system.
+Creating Customer Invoices:
+
+After the product is manufactured and ready for delivery, you generate a Customer Invoice.
+This invoice includes the final product details, quantities, and prices, reflecting what the customer owes you.
+The invoice is sent to the customer, and the amount is recorded as accounts receivable.",Product Functionality,,Medium (5-10 hours),6,,,
+"Customer is wondering what type of inventory mangaement features we can customized to extend QBO. 
+
+For this scenario, the advanced custom features does not need to sync. 
+Here are the key flows:
+
+1) Inventory Intake 
+2) Track on Work order
+3.) On Sales Order 
+4.) On Purchase Order 
+5.)Serialzing via SKU  
+6) Location tracking",Product Functionality,,X-Large (30 + hours),5,,,
+"Key Steps in the RMA Process:
+Customer Request: A customer contacts the business requesting a return.
+Issuance of RMA: The business reviews the request and issues an RMA number if the return is approved. This number tracks the return process.
+Return of Goods: The customer ships the product back to the business, usually including the RMA number with the shipment.
+Inspection: The business receives the product, inspects it to confirm the issue, and determines the appropriate action (replacement, refund, or repair).
+Resolution: The business processes the return, issues a refund, replaces the product, or repairs it as agreed.
+How it Fits with QuickBooks:
+QuickBooks, as an accounting and inventory management software, can support the RMA process in the following ways:
+
+Tracking Returns: QuickBooks allows you to create sales receipts, invoices, and credit memos. For RMA processes, you can use credit memos to record returns. The credit memo reflects the value of the returned goods and helps update your inventory and accounts receivable.
+
+Inventory Management: When goods are returned, QuickBooks can update inventory levels based on the credit memo or refund. It keeps track of which products have been returned and adjusts stock accordingly.
+
+Customer Refunds: QuickBooks can issue refunds or apply credit to the customer's account. Once the return is approved, you can create a credit memo, and QuickBooks will track the refund or adjustment.
+
+Reporting: QuickBooks can generate reports on returns and credits issued, helping businesses track and analyze return patterns, customer behavior, and product issues.
+
+Integration with Other Systems: If you use third-party RMA management software, QuickBooks can integrate with many such systems, ensuring that return transactions flow smoothly into your accounting records without manual input.
+
+Incorporating an RMA process in QuickBooks makes it easier to manage the financial aspects of returns and maintain accurate records of your business's inventory and customer interactions.",Automation,,Medium (5-10 hours),5,,,
+Customer is investigating if Method and Katana could be integrated to handle their inventory needs.,Integrations,,X-Large (30 + hours),4,,,
+"The customer is a heavy user of Advanced Inventory, and while we can't support it fully, they would like Location Site and Bin to be visible on all major transactions.
+
+Sales Orders
+Invoices",Product Functionality,,Small (3 -4 hours),4,,,
+"Data protection is often a hot topic for SMB owners, who love our QBooks integration but also feels insecure when it comes to their team having the keys to the business. 
+
+Out of the box, the ability to export and import is restricted for Method  admins only.
+
+This is, however, not the case on an app-to-app basis, so a non-admin has full access to download every customer, invoice, and inventory directly from export icon.
+
+Can we customize a way to restrict non-admins from exporting outside of hiding the export icon on every single app?",Data Management,,Small (3 -4 hours),4,,,
+"Customer is manufactering for metal roofing parts. 
+
+They purchase metal by sheets (square feet) but sell roofing items by the foot.
+
+Can we customize Method so that roofing items (ft) is invoices, we automatically convert to square feet for reduction of inventory and on-hand quantity?
+
+Keywords:
+UOM Conversion
+Different UOM Convert",,,Small (3 -4 hours),3,,,
+"This has been an issue for multiple customers. 
+
+Many customers today do not carry inventory on hand and find the restrictions cumbersome when creating a transaction from an opportunity. 
+
+This specific account has opportunities with 10 plus items with the majority of them not available until a Purchase order is made. 
+
+The ability to override the available inventory restrictions would greatly streamline the workflow between Opp > Estimate",,,X-Small (1 -2 hours),3,,,
+"Include the ability to track items receipt in Method and sync back to QB.
+Customer handles a large amount of inventory processing from vendors. 
+
+Purchase order to bill flow is essential for their business as well as receiving inventory.",,,Cannot be customized,3,,,
+"User has a unique workflow where each project has an initial customer but also additional 'customers' who are bidding on the opportunity. 
+
+Bidders are not tracked as vendors because they will technically be buying inventory from our users.
+
+Our user need a way to track multiple estimates linked to a single opportunity but each estimate is tied to a different bidder.
+
+Is it possible to add a custom field for a bidder on all estimates and only show customers with a specific customer type (i.e Contactor)",,Sales,X-Small (1 -2 hours),3,,,
+"Customer uses work orders for delivery.
+Estimates, may only include inventory items. 
+
+We prevent work orders from being created when there is no service item list.",,Service Delivery,X-Small (1 -2 hours),3,,,
+"Quickbooks Desktop
+Customer utilizes the Advanced Inventory in Quickbooks which relies on the Location Site on the InvoiceLine table to correctly map to the correct location. This same location site field is not available on Method's Sales Receipts although it is available in Quickbooks. 
+
+Reason we want this: We're using an API call to retrieve orders from an E-Commerce Site - Miva Merchant and recording down the order as a Sales Receipt instead of an Invoice (as it would take longer to implement the Payment Records). If we're able to run the routine everyday and take the orders and map them to the correct location on the SalesReceiptLine table, it would help their Inventory Management.",,,Available in Stock Functionality,1,,,
+"User would like to better utilize his purchase history data for mass emailing from the Email Campaign App. 
+
+The user is a big fan of the utilities our Purchase History catalog but feels there is a disconnect between PH and Email campaigns. 
+
+Ideally, he would like to use advanced filters to isolate customers who has purchased specific items from his inventory for email marketing.",,,Small (3 -4 hours),1,Field Operations and Logistics,,
+User would like to build an API integration between Method and Inflow Inventory management software.,,,X-Large (30 + hours),1,,,
+"The customer is looking to have the ability to create Work Orders from the Sales Orders.
+They are looking to add the inventory items to the Sales Orders and create Work Orders out of it for the field crew member to dispatch the order.",,Service Delivery,X-Small (1 -2 hours),1,,,
+"A Warehouse Management System (WMS) is a software solution designed to optimize and manage warehouse operations, from receiving goods and managing inventory to order fulfillment and shipping. While basic inventory tracking usually handles stock quantities and product locations, a WMS offers much broader functionality.
+
+Key Differences between a WMS and Basic Inventory Tracking:
+Scope of Operations:
+
+Inventory Tracking: Focuses on the simple recording of stock levels, item locations, and maybe reorder points.
+WMS: Manages the entire lifecycle of warehouse operations, including receiving, storage, picking, packing, shipping, and even labor tracking.
+Automation and Efficiency:
+
+Inventory Tracking: Manually updates stock levels and locations based on transactions.
+WMS: Automates tasks such as barcode scanning, real-time inventory updates, task prioritization, and optimization of warehouse layout and picking routes.
+Order Fulfillment and Shipping:
+
+Inventory Tracking: Records when stock is depleted through sales or shipping.
+WMS: Directly manages the order picking, packing, and shipping process, often interfacing with shipping carriers and managing complex multi-order processes.
+Complexity and Customization:
+
+Inventory Tracking: Suited for simple environments with less variation in stock movements.
+WMS: Designed for large, complex warehouses handling multiple SKUs, bulk orders, and requiring sophisticated workflows, such as batch picking, wave picking, and cross-docking.
+Integration with Hardware:
+
+Inventory Tracking: Limited interaction with hardware.
+WMS: Interfaces with warehouse hardware such as barcode scanners, RFID readers, conveyor belts, and automated picking systems.
+Integration with QuickBooks: End-to-End Workflow Perspective
+Inventory Syncing:
+
+The WMS syncs inventory levels with QuickBooks in real-time. This ensures that both systems reflect accurate stock levels, preventing over-ordering or stockouts.
+Purchase Order and Receiving:
+
+When a Purchase Order (PO) is created in QuickBooks, it’s pushed to the WMS. The WMS manages the receiving process, ensuring the correct items and quantities are received. Once received, it sends a confirmation to QuickBooks, updating the inventory and marking the PO as fulfilled.
+Sales Order Fulfillment:
+
+When a sales order is created in QuickBooks, it’s sent to the WMS. The WMS allocates inventory, generates picking lists, and manages the fulfillment process. Once an order is fulfilled, it updates QuickBooks to reflect the shipped order and adjusts inventory accordingly.
+Shipping and Invoicing:
+
+The WMS can integrate with third-party shipping solutions, automatically calculating shipping costs and printing labels. Once the item is shipped, the information is sent back to QuickBooks, which can trigger invoice creation and customer notification.
+Returns and Reverse Logistics:
+
+When products are returned, the WMS manages the process, including inspection, restocking, and inventory adjustments. The return is also reflected in QuickBooks, ensuring accurate financial and stock updates.
+Reporting and Reconciliation:
+
+Both systems share real-time data, ensuring that financial reports, inventory values, and costs of goods sold (COGS) are accurately represented. The integration allows seamless reconciliation between physical inventory and financial records.
+In summary, a WMS provides an advanced solution that goes beyond simple inventory tracking, focusing on optimizing warehouse operations. Integration with QuickBooks creates an efficient end-to-end process, streamlining inventory management, order fulfillment, and financial tracking.",,,X-Large (30 + hours),1,Customer-Facing Features,,
+"Item defaults could be leveraged for COGS Account, Tax Code, Income Account, Asset Account. Quantity (Art dealer) and probably more I haven't thought of for niche business models.
+
+I am using this to store API Defaults for Item APIs for SOS inventory . I can customize a Preferences screen but cannot update the dashboard tile to show this screen as a preference screen so it has to be accessed within the Item List Screen and creates a inconsistent user experience.",,,X-Small (1 -2 hours),1,,,
+"The customer is looking for a way/app to track inventory without it being entered in QB.
+
+Use case: we have QB Desktop Pro, and we use cash basis for inventory - so really we would like to track inventory but not for the purposes of accounting - it would be for cost averaging and using that in our estimates, and quantities too.
+
+eg. A customer will contact me for a part, I might look at 10 different sites or locations to source this part and collect the cost. Based off of this, I would like to keep this information and determine how much to estimate the cost and quantities available on the market",,Sales,Medium (5-10 hours),1,,,
+"Summary:
+Request to implement the ability to create and manage bundled items directly in Method:CRM, mirroring QuickBooks functionality. Bundled items are groups of products or services sold together as a single unit, commonly used in QuickBooks for streamlined invoicing and inventory management. Currently, Method only supports viewing bundled items synced from QuickBooks, not creating them.
+
+Objective:
+Allow users to create and manage bundled items within Method:CRM, ensuring a seamless workflow for businesses that sell grouped products or services.
+
+Proposed Features:
+
+Bundled Item Creation:
+
+Introduce an interface for creating bundled items in Method.
+Allow users to select and group multiple existing products or services into a single bundled item.
+Customization Options:
+
+Enable users to name the bundle, set a default price, and optionally define quantities for each component.
+Allow optional visibility of component items on invoices (e.g., show/hide individual components).
+Sync with QuickBooks:
+
+Ensure that bundled items created in Method sync seamlessly with QuickBooks.
+Maintain compatibility with existing bundled items synced from QuickBooks.
+Bundled Item Management:
+
+Allow editing or deleting of existing bundled items within Method.
+Provide an overview of the bundles and their components for better inventory management.
+Reporting and Insights:
+
+Include bundled items in sales, inventory, and financial reports.
+Track sales and performance of bundles alongside individual items.
+Benefits:
+
+Streamlined Workflow: Businesses can manage their entire inventory system in Method without relying on QuickBooks for creating bundled items.
+Enhanced Flexibility: Allows customization and visibility options that better align with diverse business needs.
+Seamless Integration: Maintains sync with QuickBooks to ensure consistency between platforms.
+Improved User Experience: Simplifies invoicing and inventory processes for businesses selling bundled products or services.",,,Cannot be customized,1,Customer-Facing Features,,
+"This customer mentioned that he has some additional columns in his inventory section in QBDT. So, he would like to have those additional columns in the grid of the Items App:
+- Brand
+- Preferred vendor
+- MPN: Manufacturer Part Number",,,X-Small (1 -2 hours),1,,,
+"The customer has an amazon store which they're using to track listings.
+They would like some information on both sales and inventory to flow back into QuickBooks.",,,X-Large (30 + hours),1,Internal Tools and Efficiency,,
+"Please rename “Items” to be “Products & Services”. This is equally important for QuickBooks online users since the inventory products and services there are now called “Products & Services” too. “Items” seems to be QuickBooks' old ways of collecting items - in newer QB editions they are called Products & Services.
+
+Both Xero and QuickBooks have transitioned from calling Items 'Items' and have moved to 'Products and Services' for most verbage in QBO.",,,Cannot be customized,1,,,
+"There are a number of customers who order on a recurring basis every week.
+Each order needs to be manually submitted as inventory levels and needs vary.
+
+I would love a process to automatically remind a group of customers, to submit their order on a weekly cadence.",,,Small (3 -4 hours),1,,,
+"Customer uses Title fields often to manage their donors. 
+
+They would like the ability to create a custom dropdown with a preset list of titles to choose from. 
+
+Can this custom dropdown field be 'linked' to the stock Title fields for the purpose of syncing to QBooks?
+
+Keywords:
+InventorySite
+Bin
+Location
+Title",,,X-Small (1 -2 hours),1,,,
+"In Zapier, you can create a zap which is triggered by Method. Here are the ways Method can trigger a zap:
+
+* When a *New Contact* is added.
+* When a *New Lead*, *Customer*, or *Vendor* is added.
+* When a *New Activity* is added.
+* When a N*ew Opportunity* is added.
+
+
+
+It would be great to support major transactions like:
+- When you create an Estimate
+- When you create an Invoice
+- When you create a Sales Order
+
+
+The goal the customer is trying to achieve is anytime a sales order is created to send it to another 3rd party inventory system via Zapier.
+
+As a work around we can explore customization to complete this task.",,,Cannot be customized,1,,,
+"User is in auto part sales and has a huge quantity of inventory itsems and parts numbers for the item name. 
+
+They are often face-to-face with customers for order processing and find our open line-item search difficult to use, (they get a lot of returns).
+
+They are wondering if we can restrict the search utiliity to be Item name only plus query based on the sequential order I.e 123 should only return items that start with 123.",,,Should not be customized,1,Field Operations and Logistics,,

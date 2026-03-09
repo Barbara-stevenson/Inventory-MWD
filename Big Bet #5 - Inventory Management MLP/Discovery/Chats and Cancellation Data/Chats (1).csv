@@ -1,0 +1,1054 @@
+﻿Question,PrimaryTeam (from Components) (from Specific),Specific,General Category,Summary
+"The customer contacted us to request assistance in creating an additional field for an employee to have visibility to items in Estimates, Invoices, and PO's.","Customer,Transactions","customization,icr-cs,icr-ps,invoices","miscellaneous,general support & issue resolution,other","• User wants to create an additional field for an employee to have visibility to items he assists with in Estimates, Invoices, and PO's.
+• The field should be named ''AP Admin'' and visible to all users.
+• User wants the field to copy from Estimates to Invoices and PO's.
+• Teammate can assist in creating the field on all screens, but collaboration with the consulting team is needed for copying between screens.
+• Teammate and user had a screenshare session to add the field to Estimate and Invoice screens.
+Chat Link"
+The customer contacted us to schedule a screen share session with a consultant to add items with cost and markup to QuickBooks/Method.,,free hour booked - csr,"general support & issue resolution,other","Customer is a reseller looking to add items with cost and markup to QuickBooks/Method.
+They have 1 hour of free customization with an expert consultant.
+Consultant will schedule a screen share session for Tuesday at 12:30 EST.
+Customer's phone number is 8477030038.
+Customer will receive an email confirmation for the session. Chat Link"
+The customer contacted us for help creating a report to sort the number of items sold.,,,general support & issue resolution,"• Customer needs help creating a report to sort number of items sold
+• Teammate suggests viewing invoice reports for this information
+• Customer unable to find ''Items'' and ''quantity'' in Integration and Sales Orders
+• Teammate offers to access account to further investigate the issue
+• Teammate provides instructions on how to view quantity of items sold
+Chat Link"
+The customer contacted us to resolve sync conflicts and remap items in Method CRM due to changes made by SOS inventory in QBO.,Sales,stockapps- howto- items,other,"Nate has a question about remapping items from QBO.
+SOS inventory changed all inventory items to non-inventory in QBO.
+Nate needs to remap items in Method CRM.
+There are 1456 sync conflicts and the sync has been aborted.
+Teammate resolved one sync conflict and created a case for support to look into the remaining conflicts. Chat Link"
+"The customer contacted us for assistance with moving line items, adding bold letters, and excluding amounts from total on estimates.",,"icr-cs,icr-ps","miscellaneous,general support & issue resolution","Customer needs assistance with moving line items, adding bold letters, and excluding amounts from total on estimates.
+Teammate suggests a screen-sharing session to address the issue.
+Teammate fixes issue with approval requests on copied estimates.
+Teammate creates cases for missing items and Outlook gadget installation.
+Teammate offers customization services for desired outcomes. Chat Link"
+The customer contacted us because they were unable to add the ''Shipping'' item to a sales order after two new features were implemented by Niharika Verma.,Customer,"customization,stockapps how-to","how-to,general support & issue resolution,other","Customer is unable to add an item to a sales order, specifically the ''Shipping'' item.
+The issue started after two new features were implemented by Niharika Verma.
+Teammate tried to replicate the issue and was also unable to add the ''Shipping'' item.
+Niharika is investigating the issue and will provide updates.
+Customer is away for the day but requests to be updated on the solution. Chat Link"
+The customer contacted us because they were having trouble finding an item in search with its cost price.,Sales,"stockapps- howto- items,icr-cs,icr-ps","miscellaneous,other","Teammate investigated client's issue with an item not appearing in search with cost price.
+Item was found when searching with cost price, but not the specific item mentioned in the video.
+Teammate created a case for second-level support team to further investigate.
+Case number is 56400 and a team member will be in touch with the customer.
+Teammate asked customer to let them know if they have any further questions. Chat Link"
+The customer contacted us regarding sync errors related to Item Sales Tax in Method and QuickBooks Desktop.,Connect,qbdt sync,"general support & issue resolution,other","Customer has sync errors related to Item Sales Tax in Method and QuickBooks Desktop.
+Teammate is investigating the issue and has created a case for second level support.
+Customer uploaded items using the import/other - itemnoninventory table without any errors, but the item in sync conflict was not created in Method.
+Teammate has requested for the file used for import to further investigate the issue.
+Teammate has added customer's contact information to the case notes for updates. Chat Link"
+The customer contacted us because new items they created were not showing up in the item catalog or when searching for them in a work order.,Growth,stockapps training,stockapps & product-specific,"Customer created new items (DPF-C-444 and DPF-C-3933) in the item app but they are not showing up in the item catalog or when trying to search for them in a work order.
+Teammate requested permission to access customer's account to investigate the issue.
+Customer confirmed items were added today and agreed to a screenshare.
+During the screenshare, teammate successfully added the items and searched for them in the items list.
+Teammate offered further assistance and the call ended on a positive note. Chat Link"
+The customer contacted us because they are missing items on their internal run sheet.,Customer,"customization issues,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","• Customer is missing items on their internal run sheet.
+• Possible reasons include: QuickBooks Online settings, bundle/grouped items, and display limitations.
+• Teammate requests more information and offers to access the account for further investigation.
+• Teammate suggests a screen share to resolve the issue.
+• Teammate provides a solution and checks in with the customer. Chat Link"
+The customer contacted us because an invoice was not showing up in QuickBooks due to an incorrect income account selected for an item.,Transactions,invoices,general support & issue resolution,"Invoice #24096 not showing up in QB due to incorrect Income Account selected for item 'Genever'
+Teammate accessed account and made necessary changes to item
+Invoice has now been successfully synced to QuickBooks
+Teammate checked in multiple times and provided prompt and helpful assistance
+Customer confirmed changes and thanked teammate for their help. Chat Link"
+The customer contacted us to find a way to manage multiple variations of one inventory item in Method.,"Customer,Sales","customization,stockapps- howto- items",other,"Customer is looking for a way to manage multiple variations of one inventory item in Method.
+Teammate suggests using customization tools or consulting services to achieve this functionality.
+Consulting services would be billable and have a current wait time of 15-20 business days.
+Customer is interested in being able to choose the variation of a product when creating an estimate.
+Teammate closes the chat, but offers to assist with consulting services if the customer still wants to proceed. Chat Link"
+The customer contacted us for help with deleting items from their Purchase History.,Customer,catalogues- purchase history/ items purchased by customer,other,"• Method Help Bot is unable to directly answer the question about deleting items from Purchase History.
+• The teammate asks for more details about the platform or software being used.
+• The teammate checks in to see if the customer still needs help.
+• The teammate offers to continue the conversation if needed.
+• The teammate closes the chat but remains available for further assistance.
+Chat Link"
+The customer contacted us because they were having trouble with a specific item not displaying in print view.,"Sales,Customer","stockapps- howto- opportunities,customization issues","general support & issue resolution,other","Customer is having trouble with ''show room'' item and specific areas not displaying in print view.
+Teammate asks for screenshot and permission to access account.
+Customer gives permission and provides opportunity number.
+Teammate discovers issue with proposal template and customer resolves it by changing item number.
+Customer thanks teammate and conversation ends. Chat Link"
+The customer contacted us because they were having trouble with an item not saving a specific setting.,Sales,stockapps- howto- items,other,"Customer had an issue with an item not saving the ''used on purchase transactions'' setting.
+This issue may occur for Service and Non-Inventory items in QuickBooks Online.
+To resolve the issue, the customer needs to enable the ''I purchase this service from a supplier'' checkbox and add a cost for the item.
+After making these changes, the item should be visible in vendor transactions.
+The customer was satisfied with the bot's answer. Chat Link"
+The customer contacted us to inquire about sorting an item report alphabetically by artist.,,,general support & issue resolution,"• Customer asked if an item report can be sorted alphabetically by artist
+• Teammate confirmed that it is possible and provided steps to do so
+• Teammate offered to connect with the customer if needed
+• Customer thanked and informed that they figured it out on their own
+• Teammate expressed happiness and offered further assistance if needed. Chat Link"
+The customer contacted us for assistance with adding an item to their printed invoice.,"Customer,Transactions","customization,invoices",other,"• To add an item to the printed invoice, follow these steps: open the invoice, add the item to the grid, save the invoice, and review the total.
+• If the item still does not appear, check the invoice template settings and ensure all necessary fields are included.
+• If you need help customizing your print template, refer to the provided articles.
+• The teammate checked in with the customer multiple times and offered to continue helping if needed.
+• The teammate closed the chat and encouraged the customer to reach out again if needed.
+Chat Link"
+The customer contacted us because they are experiencing API errors when trying to sync items from their WP website to Method.,Connect,api,integrations & connectivity,"Customer is experiencing API errors when trying to sync items from their WP website to Method.
+The error codes indicate missing or invalid fields, specifically Quantity on hand and Invstartdate.
+Customer does not have these fields in WP and is unsure if they are auto-generated by Method or QuickBooks.
+Teammate suggests correcting or adding data to these fields and provides resources for API support.
+Teammate also suggests reaching out to a developer for assistance with building the connection to Method. Chat Link"
+The customer contacted us to report a technical issue with item search in mobile view and to inquire about inactive inventory items in their Akron account.,Service Delivery,mobile app,integrations & connectivity,"Customer is experiencing a technical issue with item search in mobile view.
+Teammate requests permission to access account to investigate.
+Teammate suggests updating settings to include description field for search.
+Customer also asks about inactive inventory items in Akron account.
+Teammate explains that inactive items are shown in the inventory items filter view and suggests creating a custom filter to only show active items. Chat Link"
+The customer contacted us because they were having trouble making an item inactive in QuickBooks.,Sales,stockapps- howto- items,other,"• Customer tried to make an item inactive, but a dialogue box appeared.
+• Teammate asked for permission to access the account and the name of the item.
+• Teammate suggested marking the item as inactive instead of deleting it.
+• Teammate asked customer to add a start date to the item in QuickBooks and try making it inactive again.
+• Customer realized the record doesn't exist in QuickBooks and asked if it would be best to delete the Method Record. Chat Link"
+The customer contacted us because their paid invoices were still showing a balance and not generating in QuickBooks due to sync conflicts and errors with certain items.,"Connect,Transactions","sync conflicts,invoices",general support & issue resolution,"• Invoices 31166 and 31167 were paid but still show a balance and did not generate in QuickBooks.
+• Invoices are in sync conflict due to error with items ''Alpha Large Clipper Mat (ALP4MATT)'' and ''Alpha Show Lead Pink (ALP-SL-PINKJJ)''.
+• Item ''3324'' is also in conflict due to closed accounting period.
+• Temporary solution is to change accounting period in QuickBooks and recreate items.
+• Recreated items were successfully synchronized and invoices are now displayed as paid.
+Chat Link"
+The customer contacted us for help with Method and to discuss customization options for line item discounts on estimates.,,stockapps how-to,how-to,"Nathan needs help with Method and can contact the team through chat or email.
+He wants to see line item discounts on estimates rather than a discount on the entire estimate as a percentage.
+The team offers 1 hour of free customization with an in-house consultant to help with this.
+Nathan will gather more ideas before setting up a meeting for customization.
+The teammate offers further assistance and reminds Nathan to reach out with any additional questions. Chat Link"
+The customer contacted us for assistance with a service item not appearing on a drop down list in Work Orders.,Sales,stockapps- howto- items,other,"• Customer needs assistance with a service item not appearing on a drop down list in Work Orders.
+• Teammate requests more details and permission to access account.
+• Teammate discovers the item is a ''Non-inventory item'' and advises customer to create a service item.
+• Teammate checks in with customer and offers to continue the conversation if needed.
+• Teammate closes chat and reminds customer to reach out for further help if needed.
+Chat Link"
+The customer contacted us for assistance with inserting items into a completed project and specifically asked about moving an invoice item line.,"Customer,Transactions","customization,invoices",other,"• Method offers a help bot for customer inquiries and will connect customers to a team member if needed.
+• The customer is looking to insert items into a completed project and is specifically asking about moving an invoice item line.
+• This customization will require assistance from Method's consulting team and the customer is eligible for 1 hour of free customization.
+• The customer will need to book a slot with a consultant for this service, and there may be additional fees after the first hour.
+• The teammate checked in with the customer and will close the chat, but is available for further assistance if needed.
+Chat Link"
+The customer contacted us for assistance with a failed app routine related to QuickBooks items and minimum quantity checks.,Customer,"customization,icr-cs,icr-ps","miscellaneous,other","App routine ''QuickBooks Items > Minimum Quantity Check'' failed due to incorrect item name.
+Teammate unable to identify exact cause due to limited expertise in customization.
+Customer advised to discuss with customization team member Niharika for further assistance.
+Niharika's contact information provided: n.verma@method.me.
+Customer granted permission for teammate to access account for investigation. Chat Link"
+"The customer contacted us to inquire about adding a class to each line item on invoices, similar to QuickBooks.",Transactions,"stockapps how-to,invoices","how-to,general support & issue resolution","Customer wants to add a class to each line item on invoices like in QuickBooks.
+Teammate confirms it is possible with customization.
+Teammate adds class column to invoices screen.
+Customer asks if it can automatically populate next to line items.
+Teammate explains it can be achieved with further customization for a fee. Chat Link"
+The customer contacted us because they were having trouble with a sales order not updating pricing when adding new items.,,stockapps how-to,"how-to,general support & issue resolution","Customer is having trouble with a sales order (J23642) not updating pricing when adding new items.
+Teammate (Brittaney) asks for permission to access account to investigate.
+Total shows as 1224.96, customer confirms it has updated after refreshing.
+Teammate offers further assistance and customer confirms no additional issues.
+Conversation ends with teammate wishing customer a good day. Chat Link"
+The customer contacted us regarding an error with the Item Method App when trying to view item details.,Sales,stockapps- howto- items,other,"Customer is experiencing an error with the Item Method App when trying to view item details.
+The error is related to an invalid column name ''TenantID'' which does not exist in the table.
+The error occurs for multiple item groups, including inventory assembly, non-inventory, sales tax, and service.
+Teammate created a case with support (#54649) to investigate the issue further.
+Teammate will update the customer once they have more information from the support team. Chat Link"
+The customer contacted us to add 4 more items to a dropdown table for DrawerPulls.,"Admin,Customer","data import/export,tables and field","general support & issue resolution,other","Customer needs to add 4 more items to a dropdown table for DrawerPulls.
+Teammate suggests exporting the table, adding more fields, and then importing it back.
+Teammate has checked the audit trail and confirmed that the import was done.
+Teammate offers further assistance and customer confirms they have no other questions. Chat Link"
+The customer contacted us for assistance in locating and updating the Sales Tax Code field for items in Method through an import.,Admin,data import/export,"general support & issue resolution,other","Customer is having trouble locating the right field to update items with an import in Method.
+Teammate provides steps to update items with an import in Method.
+Customer is specifically looking for the Sales Tax Code field to update records for all items.
+Teammate asks for confirmation on the fields being mapped.
+Customer's dedicated agent has answered their question. Chat Link"
+The customer contacted us because PO items were not reflecting in QuickBooks when received in Method.,Customer,customization,other,"Customer has an issue with PO items not reflecting in QuickBooks when received in Method.
+Teammate suggests checking the Total Quantity Received field and syncing the changes.
+Teammate discovers that custom fields in Method do not sync to QuickBooks.
+Teammate recommends discussing customization options with consultant Joon.
+Teammate suggests creating bills in QuickBooks to update quantity or customizing a similar workflow. Chat Link"
+The customer contacted us because they encountered an error message when trying to open an item in Method New.,Sales,stockapps- howto- items,"general support & issue resolution,other","Customer encountered an error message when trying to open an item in Method New.
+The error was occurring on all items and was not present in Method Classic.
+The issue was resolved by reconnecting the sync.
+The teammate was able to replicate the issue and access the items after the sync was reconnected. Chat Link"
+The customer contacted us for assistance with service items not populating on recurring work orders.,,,general support & issue resolution,"Customer is having trouble with service items not populating on recurring work orders.
+Teammate suggests checking default service item in Work Orders App Preferences and ensuring correct recurrence schedule is set up.
+Customer gives permission for teammate to access account and investigate.
+Teammate confirms that service items need to be manually copied to recurring work orders, but can be customized for automatic copying.
+Teammate suggests scheduling a customization meeting for further assistance. Chat Link"
+The customer contacted us to request a complete report of contacts and line items from Method.,Customer,catalogues- purchase history/ items purchased by customer,other,"Customer is looking for a complete report of contacts and line items from Method.
+Teammate offers to add a purchase history app for the customer.
+Teammate confirms if customer is still looking for a report of items purchased by customers.
+Teammate closes the chat but offers to continue the conversation if needed.
+Customer's email is mnolte@sanitas-skincare.com. Chat Link"
+The customer contacted us regarding an issue with their customized packing slips not showing the ALU for multiple items.,Customer,"report designer,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Customer is experiencing an issue with their customized packing slips, specifically the ALU not showing for multiple items.
+Teammate is investigating the issue and will update the customer as soon as possible.
+Teammate is in touch with the team for further assistance.
+Teammate suggests refreshing and trying to print again.
+Teammate will close the chat but is available for further help if needed. Chat Link"
+The customer contacted us regarding issues with item 24481 not syncing with QuickBooks.,Connect,sync conflicts,general support & issue resolution,"Customer experienced issues with item 24481 not syncing with QuickBooks.
+Troubleshooting steps were provided, including checking sync settings, verifying connection, and resolving conflicts.
+Customer was able to resolve the issue on their own.
+Teammate offered further assistance if needed.
+Customer thanked teammate and conversation ended. Chat Link"
+The customer contacted us to inquire about stopping an item from showing on estimates and adding a new user at a discounted price.,"Growth,Admin,Sales","billing,user management,estimates","other,user & account management","User wants to stop an item from showing on estimates to customers in Method when using QuickBooks Desktop.
+Teammate provides steps to customize the ''New / Edit Estimate'' screen to achieve this.
+User asks about the number of users on their account and adding a new user at a discounted price.
+Teammate confirms there is only one active user and offers options for adding a new user at a discounted price.
+Teammate suggests opting for an Annual Prepay Plan for a 10% discount on the monthly total. Chat Link"
+The customer contacted us because their item was not showing up in the dropdown for donations.,,"icr-cs,icr-ps","miscellaneous,general support & issue resolution","• The customer's item is not showing up in the dropdown for donations.
+• The issue may be due to the item being marked as a Non-Donation Item in the Donation App Preferences.
+• The teammate offers to access the customer's account to further investigate the issue.
+• The customer is currently on vacation and not actively working on the issue.
+• The teammate reminds the customer to reach out if they have any additional questions.
+Chat Link"
+The customer contacted us to inquire about adding a line item to their project estimate in the correct order.,Customer,customization,"general support & issue resolution,other","The customer needs to add a line item to their project estimate in the correct order.
+The teammate informs the customer that they are unable to insert or rearrange lines, but they can add it at the end and redo the estimate.
+The customer's account has been included in a feature request for the ability to sort and move the grid.
+The teammate suggests discussing further customization with a dedicated expert.
+The teammate checks in with the customer and offers to continue the conversation if needed. Chat Link"
+The customer contacted us with questions about adding pictures to items in their inventory in Method:CRM.,Customer,customization,other,"• Customer has questions about Method:CRM and wants to add pictures to items in the inventory.
+• Teammate suggests customization and consulting services, which start at $145/hour.
+• Customer agrees to move forward and signs pay-per-use agreement.
+• Case is created and customer will be added to the queue for professional services.
+• Teammate confirms completion and offers assistance for any additional questions.
+Chat Link"
+The customer contacted us for assistance with adding a new inventory item with the same name but different identifier.,Sales,stockapps- howto- items,other,"• User is having trouble adding a new inventory item with the same name but different inventory name.
+• Method Help Bot provides steps to add a new item with the same name but different identifier.
+• If duplicates are not allowed, the ''Insert Records Into Table'' action can be used to duplicate an existing record.
+• Teammate offers to assist and checks if the user is still there.
+• Teammate closes the chat but offers to continue the conversation if needed. Chat Link"
+The customer contacted us because they deleted a purchase order and are having trouble recreating it due to missing options for ''TILE'' items.,Sales,"stockapps how-to,stockapps- howto- purchase orders,icr-cs,icr-ps","miscellaneous,how-to,general support & issue resolution,other","Customer deleted a Purchase order (In Home Stone-Tile) created from Sales order 603 and is trying to recreate it.
+When trying to create the purchase order, none of the ''TILE'' items are showing as options.
+The same issue occurred with Sales order 602.
+Teammate suggested deleting both the Sales Order and Purchase Order and recreating them to fix the issue.
+Customer will have to recreate about 30 line items in each of the two sales orders. Chat Link"
+The customer contacted us regarding four items that are not syncing between Method and QB.,Connect,"qbdt sync,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Four items not syncing between Method and QB
+Teammate requested names of items and permission to access account
+Two items currently in sync conflict, case created for second level support team to resolve
+Case number 57654 assigned, customer to be contacted by team member
+Customer thanked for patience and informed of updates to come. Chat Link"
+The customer contacted us because they were having trouble adding a description-only item with a rate to an estimate or invoice in Method.,"Sales,Transactions","stockapps- howto-estimates,icr-cs,icr-ps,invoices","miscellaneous,other","• Customer is having trouble adding a description-only item with a rate to an estimate or invoice in Method.
+• Teammate attempted to help but was unable to enter the rate.
+• Teammate created a case for support to look into the issue.
+• Case number is #56506.
+• Support will be in touch with the customer. Chat Link"
+The customer contacted us to add an item to a drop-down menu in the ''Status'' field of a work order.,Service Delivery,stockapps- howto- workorders,"general support & issue resolution,other","• Customer wants to add an item to a drop-down menu in the ''Status'' field of a work order.
+• Teammate suggests using the Import/Export Tool to add more statuses to the Work Orders.
+• Teammate guides customer to navigate to the Activities app and open an activity to access the status dropdown.
+• Customer successfully adds the new status and confirms it will also appear on the work order screen.
+• Teammate clarifies that updates must be made via the activity screen, not the work order screen.
+Chat Link"
+The customer contacted us for help with importing item descriptions.,Admin,data import/export,"general support & issue resolution,other","User is having trouble importing item descriptions.
+Teammate asks for permission to access account and confirms table selection.
+Teammate discovers that using the iteminventory table successfully updates the descriptions.
+User confirms that the issue is resolved.
+Teammate offers further assistance if needed. Chat Link"
+The customer contacted us regarding a sync issue with a sales order into QuickBooks Desktop related to tax codes and using a ''SalesTaxGroup'' item as a line item on the transaction.,"Connect,Connect","sync conflicts,qbdt sync","general support & issue resolution,other","Customer is experiencing a sync issue with a sales order into QuickBooks Desktop.
+The error is related to tax codes and involves using a ''SalesTaxGroup'' item as a line item on the transaction.
+The teammate created a case for support to investigate the issue.
+The case number is #53878 and the support team will reach out to the customer.
+Customer's direct number is 306-933-0600. Chat Link"
+The customer contacted us regarding a general sync conflict error when modifying an ItemInventory list.,Connect,sync conflicts,general support & issue resolution,"Customer reported a general sync conflict error when modifying an ItemInventory list.
+The error message stated that an inactive parent cannot have an active child.
+The team will reply to the customer's email within a few minutes.
+The teammate requested permission to access the customer's account to further investigate the issue.
+The teammate created a case for the issue and provided the customer's direct number for contact. Chat Link"
+The customer contacted us because they are having an issue with bundle items from QuickBooks not syncing correctly in Method.,,"icr-cs,icr-ps",miscellaneous,"Customer is having an issue with bundle items from QuickBooks not syncing correctly in Method.
+Teammate checked and found that the bundle items sync in the same sequence as in QuickBooks.
+Teammate suggested resaving the bundle item in QuickBooks and syncing again, but the issue persists.
+Teammate created a case for the second-level support team to investigate further.
+Teammate provided the case number and will close the chat, but is available for further assistance. Chat Link"
+The customer contacted us because the sales associate was unable to display pricing for a bundle item.,,,general support & issue resolution,"Sales associate unable to display pricing for bundle item g-s-w0930
+Teammate offers to access account and create test transaction
+Test transaction shows all bundle items and prices, but sales associate still unable to fetch information
+Teammate suggests screen share with sales rep for further assistance
+Teammate attempts to contact customer via call, but goes to voicemail. Chat closed, but customer can reopen for further assistance. Chat Link"
+"The customer contacted us for help with Method CRM and its integration with QuickBooks, specifically regarding creating a custom report for sales of items and customers.",,stockapps how-to,how-to,"Jake needs help with Method CRM and its integration with QuickBooks.
+QuickBooks Online does not support sales orders, but estimates should sync in real time.
+Jake wants to create a custom report for month over month or year over year sales of items and customers.
+The teammate recommends discussing customization options with the consulting team and books a free hour session for Monday at 8:30 AM (US/Pacific).
+Jake's email is jake@pnwecs.com and his cell number is 971-347-6241. Chat Link"
+The customer contacted us regarding syncing issues with an estimate and new items in Method not syncing with QBO.,Connect,"qbo sync,fin improvement","financial & payments,other","Customer is experiencing syncing issues with estimate 188402 and new items in Method not syncing with QBO.
+Teammate pushed a sync and ran a full sync, but the issue persists.
+Teammate will bring the issue to Smit and customer can book a time to discuss the case further.
+Case number is #53292.
+Customer thanked teammate and will reach out with any additional questions. Chat Link"
+The customer contacted us to inquire about removing the item column in the estimate format.,Customer,customization,"general support & issue resolution,other","The customer has a question about removing the item column in the estimate format.
+The teammate suggests customizing the screen and offers assistance from the consulting team.
+The customer declines the offer and finds another solution.
+The teammate confirms the customer's decision and offers further assistance if needed. Chat Link"
+The customer contacted us because they noticed missing items on Method from QuickBooks.,Sales,"stockapps- howto- items,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Customer noticed missing items on Method from QuickBooks
+Advised to check QuickBooks sync and run a sync if needed
+Items can be found in Method's Items App
+If items are still missing, contact Method's support team
+Customer's consultant fixed the issue Chat Link"
+The customer contacted us for assistance with creating bundle items in Method.,,fin answered,other,"Method cannot create bundle items, they can only be created and edited in QuickBooks Online.
+To use bundle items in Method, they must be created in QuickBooks Online and synced with Method.
+Bundle items will appear as ''Group'' item type in Method.
+Method can view but not create or edit bundle items.
+Teammate checked in to see if the information provided was helpful and offered further assistance if needed. Chat Link"
+The customer contacted us to seek assistance in deleting mistakenly created work orders and to inquire about copying items from estimate to purchase order.,,,general support & issue resolution,"Customer created hundreds of work orders by mistake and needs to delete them.
+Teammate provided steps to delete recurring work orders and asked for permission to access account.
+Customer confirmed customer and work order numbers for deletion.
+Teammate provided steps to modify time for recurring work orders.
+Customer asked about copying items from estimate to purchase order and teammate offered to do a test on the account. Chat Link"
+The customer contacted us for assistance with modifying their Item Quantity Screenlet to filter and sort by quantity.,"Customer,Growth","customization,stockapps- dashboard,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Customer needs help with modifying their Item Quantity Screenlet to filter and sort by quantity.
+Teammate suggests accessing the Screenlet's settings and using the ''Filters & Views'' option to customize sorting and criteria.
+Customer is unable to find the ''Filters & Views'' option and requests to speak with a team member.
+Teammate offers to assist with customization and mentions an open customization case with another team member.
+Teammate suggests refreshing the screen or logging out and back in to access the Sales Dashboard V2. Chat Link"
+The customer contacted us because items were not carrying through to purchase orders despite being checked off for use with purchase orders.,Sales,stockapps- howto- purchase orders,other,"Items not carrying through to purchase orders despite being checked off for use with purchase orders.
+Issue may be due to items being Service or Non-Inventory items, which are not set up to be purchased from a vendor by default.
+To resolve the issue, enable the ''I purchase this service from a supplier'' checkbox and add a cost for the item.
+Once the checkbox is checked and a cost is added, the item should appear in vendor transactions.
+Customer was able to figure out the issue on their own. Chat Link"
+The customer contacted us to request a QBO ListID reset for an item that was not showing up in QBO despite having a populated ListID.,Connect,qbo sync,"general support & issue resolution,financial & payments","Customer is requesting for QBO ListID reset for an item with RecordID 9842.
+Item is not showing up in QBO despite having a populated ListID.
+Customer has run a full sync twice and the item is not in sync conflicts.
+Teammate is checking with their team and will access the account to investigate the issue.
+Item is now showing up in QBO after teammate's overnight sync. Chat Link"
+The customer contacted us for help with adding Group Items in Method for QuickBooks Online.,Sales,stockapps- howto- items,other,"Customer needs help adding Group Items in Method for QuickBooks Online.
+Teammate confirms that Group Items are only available for QuickBooks Desktop.
+Teammate suggests creating a Bundle Item in QuickBooks as an alternative.
+Customer confirms that Bundle Items can only be edited in QuickBooks.
+Teammate offers to create a feature request for customer and reminds them to reach out with any additional questions. Chat Link"
+The customer contacted us because their app routine for Average Cost Routine and Report under Item app kept failing and they received an error email with code A005.,Customer,customization issues,"general support & issue resolution,other","• Customer's app routine under Item app keeps failing.
+• The routine is for Average Cost Routine and Report.
+• The customer received an error email with code A005.
+• The issue was resolved by changing the report to always generate.
+• Teammate offered to access the account for further investigation.
+Chat Link"
+The customer contacted us because they were unable to see the edit filter criteria option since last Wednesday for the ''BonOpusItem'' app.,,"icr-cs,icr-ps","miscellaneous,general support & issue resolution","Customer unable to see edit filter criteria option since last Wednesday
+Issue reported for ''BonOpusItem'' app
+Teammate working on resolving the issue
+Customer gives permission for teammate to access account
+Teammate confirms issue is resolved and asks customer to refresh and try again Chat Link"
+The customer contacted us because they were experiencing issues with items not appearing on their internal run sheet.,Customer,"customization issues,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","• Customer is experiencing issues with items not appearing on their internal run sheet.
+• Possible solutions include enabling certain checkboxes and saving bundle items.
+• Teammate requests more information and offers to access the account for further investigation.
+• Teammate attempts to contact customer via phone and offers screen share assistance.
+• Teammate follows up with customer and offers to continue the conversation at a later time.
+Chat Link"
+"The customer contacted us for assistance with changing an item to an assembly, applying discounts, invoice customization, synchronization issues, and a free customization session.","Connect,Transactions","qbdt sync,invoices","general support & issue resolution,other","Teammate closes chat and invites customer to contact for further assistance.
+Customer expresses gratitude and asks for a summary of the conversation.
+Teammate provides a summary of key points discussed, including changing an item to an assembly, applying discounts, invoice customization, synchronization issues, and a free customization session.
+Teammate shares a meeting invite for the customization session.
+Customer thanks teammate and ends the conversation. Chat Link"
+The customer contacted us regarding sync conflicts with the item ''Limoncello 750ml'' not syncing to QuickBooks.,Connect,sync conflicts,general support & issue resolution,"Item ''Limoncello 750ml'' not syncing to QuickBooks due to sync conflicts.
+Teammate suggests changing item name and selecting correct income account to resolve conflicts.
+Customer created item in both Method and QuickBooks, causing sync conflicts.
+Teammate creates support case #54598 for further assistance.
+Customer to reach out with any additional questions or concerns. Chat Link"
+The customer contacted us for help finding an item image in the database for an estimate report.,Customer,tables and field,"general support & issue resolution,other","Customer needed help finding the item image in the database for an estimate report.
+Customer was unable to find it in the estimate line table but found it in the item table.
+Teammate offered assistance and asked for more details.
+Customer was able to resolve the issue on their own.
+Teammate checked in to see if the customer needed further assistance. Chat Link"
+The customer contacted us for help adding the SKU field to invoices line items in Method.,"Customer,Transactions","customization,invoices",other,"Max Jordan from Bandit Fitness Equipment needs help adding the SKU field to invoices line items in Method.
+The teammate offers a free hour of customization with an expert consultant to help with this issue.
+The teammate provides a link for Max to book the free hour at a convenient time.
+The teammate follows up multiple times to check if Max still needs assistance. Chat Link"
+The customer contacted us because they were having issues with invoice line items not displaying properly in a custom template.,"Customer,Transactions","report designer,icr-cs,icr-ps,invoices","miscellaneous,general support & issue resolution,other","Customer is having issues with invoice line items not displaying properly in custom template.
+Teammate suggests reviewing template in Web Report Designer and setting it as default in Invoice App preferences.
+Teammate requests permission to access account and resolves issue by adding missing data member in Detail Report.
+Customer confirms issue is resolved.
+Teammate provides instructions on where to add data member in future. Chat Link"
+The customer contacted us due to a sync error for an estimate for Service Partners - Orlando caused by an invalid Unit of Measure for the Estimate Line Items.,Connect,sync conflicts,general support & issue resolution,"Customer is getting a sync error for an estimate for Service Partners - Orlando due to invalid Unit of Measure for the Estimate Line Items.
+Customer is not changing any UOM but keeps getting the error.
+Teammate requests permission to access the account to investigate the issue.
+Teammate creates a case for the team to resolve the UOM error and other errors on the Estimate table.
+Teammate provides case number #58337 and confirms that support will be in touch with the customer. Chat Link"
+The customer contacted us to inquire about emails not showing up in their sent items folder when sent through Method.,Customer,"stockapps- howto-send email,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","User has a question about emails sent through Method not showing up in their sent items folder.
+Teammate directs user to view sent emails in Communications section of Account Settings.
+Teammate explains that emails sent from Method won't appear in regular sent box, but can be tracked for open and click rates.
+User has a question about an email that was both opened and bounced.
+Teammate creates a case for second-level support team to investigate the issue. Chat Link"
+The customer contacted us to inquire about free customization hours and express excitement for using the CRM for the upcoming tax year.,Customer,customization,other,"Customer inquired about free customization hours and expressed excitement for using the CRM for the upcoming tax year.
+Teammate informed customer of one free customization hour and mentioned that any additional customizations would be billable.
+Customer plans to gather more questions before scheduling an appointment.
+Teammate offered to answer any additional questions and wished customer a great day. Chat Link"
+The customer contacted us to request for item descriptions to be displayed as multi-line on estimates in the customer portal.,"Customer,Transactions,Sales","customization,portals,estimates",other,"Customer requested for item description to be displayed as multi-line on estimates in customer portal
+Teammate offered to adjust column width and provide screen share tutorial
+Teammate confirmed customization is possible but is a billable service
+Teammate sent pay-per-use agreement to customer's email
+Teammate closed chat and encouraged customer to reach out for further assistance. Chat Link"
+The customer contacted us because they were having trouble editing prices and descriptions for donation items on their donor form.,,"icr-cs,icr-ps",miscellaneous,"Customer is having trouble editing prices and descriptions for donation items on their donor form.
+Teammate confirms that prices and descriptions can only be edited in the Items app, not on the donor form.
+Teammate offers to schedule a screenshare session to further assist the customer.
+Teammate also mentions that prices can be updated in QuickBooks.
+Teammate recaps the conversation and offers further assistance if needed. Chat Link"
+The customer contacted us due to a sync error in QuickBooks for accItem records with no changes.,Connect,sync conflicts,general support & issue resolution,"Customer experiencing sync error in QuickBooks for accItem records with no changes
+Error message: ''There was an error when converting the quantity ''0'' in the field ''reorder point''. QuickBooks error message: The min quantity must be less than the max quantity.''
+Teammate checking for permanent solution, suggests blanking out Reorder Point value to Null if Max value is 0
+Customer reports bulk update reverting values to 0, believes there is a root cause
+Teammate creates case for support to investigate, case number #55535, customer's email provided for contact. Chat Link"
+The customer contacted us because they were unable to see the edit filter criteria option since last Wednesday for the ''BonOpusItem'' app.,,"icr-cs,icr-ps","miscellaneous,general support & issue resolution","Customer unable to see edit filter criteria option since last Wednesday
+Issue reported for ''BonOpusItem'' app
+Teammate working on resolving the issue
+Customer gives permission for teammate to access account
+Teammate confirms issue is resolved and asks customer to refresh and try again Chat Link"
+The customer contacted us for assistance in creating reports for exporting customer data and creating an item by customer report.,Admin,"data import/export,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Teammate assisted customer in creating a report to export a list of customer data, including addresses.
+Customer also requested help in creating an item by customer report.
+Teammate offered to schedule a screen share to further assist with report creation.
+Teammate provided resources for utilizing out-of-the-box reports and customizing columns and grids on the Contact screen.
+Teammate mentioned availability of customization experts for additional assistance, with a reminder that this service is billable. Chat Link"
+The customer contacted us because invoice 206650 was not syncing to Quickbooks and they had given a line item credit.,"Connect,Connect,Transactions","sync conflicts,qbdt sync,invoices","general support & issue resolution,other","Invoice 206650 won't sync to Quickbooks.
+Customer gave a line item credit.
+Teammate is investigating the issue and creating a case for second level support.
+Case number is #54402.
+Support team will be in touch with the customer. Chat Link"
+The customer contacted us for help with exporting the total quantity of items purchased by multiple clients.,"Admin,Customer","data import/export,catalogues- purchase history/ items purchased by customer","general support & issue resolution,other","Customer needs help with exporting total quantity of items purchased by multiple clients.
+Teammate suggests using advanced search and exporting through the cloud icon.
+Teammate provides screenshot examples of how to add multiple customers, item names, and purchase date.
+Teammate confirms with customer that the solution worked.
+Teammate emails customer the screenshot examples for future reference. Chat Link"
+"The customer contacted us to remove a user and reduce the number of seats on their account, as well as to add item descriptions to an email template.",Admin,user management,"general support & issue resolution,user & account management",Customer needs to remove a user from their account and reduce the number of seats being used. Teammate offers to assist with removing the user and explains the process. Customer also needs help with adding item descriptions to an email template. Teammate informs that this would require customization and is a billable service. Customer decides to find an alternative solution for now.Chat Link
+The customer contacted us because the import function for new items in a table was not working.,Admin,data import/export,"general support & issue resolution,other","Import function for new items in a table not working.
+Column headers in spreadsheet must match fields in Method table.
+All required fields in Method table must have values in spreadsheet.
+Fields marked as unique in Method table must contain unique values in spreadsheet.
+Verify fields before proceeding with import. Chat Link"
+The customer contacted us for assistance with importing new items into the Items App.,Admin,"data import/export,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Customer is having trouble importing new items into the Items App.
+The customer received an error message when trying to submit the new item.
+Teammate provided steps to resolve submission errors when importing items.
+Teammate requested the customer to share the CSV file for further assistance.
+Customer successfully imported the items after changing the file name and adding missing required fields. Chat Link"
+The customer contacted us for assistance with importing new noninventory items into Method.,Admin,data import/export,"general support & issue resolution,other","Method only allows for updating existing records, not creating new ones when importing data.
+To import new items, the file must include a RecordID column and the ''Import records'' option must be selected.
+Method automatically generates a RecordID for new records.
+The customer's new records are noninventory items and should be imported under the ''itemNoninventory'' table.
+If the import is incorrect, it must be manually deleted as there is no undo option. Chat Link"
+"The customer contacted us for help with email and PDF templates, specifically with displaying only the date without the time for service dates in invoice line items.","Customer,Transactions","customization,icr-cs,icr-ps,invoices","miscellaneous,general support & issue resolution,other","Customer is having trouble with email and PDF templates, specifically with displaying only the date without the time for service dates in invoice line items.
+Teammate suggests formatting the date fields using Date Functions for email templates and Text Format String for PDF templates.
+Customer also has an issue with assigning email templates to specific users and departments.
+Teammate suggests duplicating and customizing print templates and updating the email on Estimate preferences to achieve desired workflow.
+Customer is interested in customizing their workflow and is willing to pay for professional services. Chat Link"
+The customer contacted us due to a sync conflict with 200 missing items from QuickBooks.,Connect,sync conflicts,general support & issue resolution,"Customer has a sync conflict with 200 conflicts.
+Teammate confirms with Dhruv and clarifies that the conflicts are actually missing items from QuickBooks.
+Teammate provides a helpful article for understanding the issue.
+Dhruv will be in touch with the customer.
+Teammate checks in and offers further assistance if needed. Chat Link"
+The customer contacted us because they were having trouble viewing item details on estimates from their phone.,Sales,stockapps- howto-estimates,other,"Customer is having trouble viewing item details on estimates from their phone.
+Teammate offers to help with customization and provides examples of how they have helped other businesses.
+Teammate asks for permission to access the account and investigates the issue.
+Teammate confirms that there is an open ticket for the issue and adds the customer's account to it.
+Customer is satisfied with the response and is notified that they will be updated once the issue is resolved. Chat Link"
+The customer contacted us because sales orders with group items are not closing in Method.,,stockapps how-to,how-to,"• Sales orders with group items are not closing in Method.
+• Sales orders are being marked as closed in QuickBooks but remain open in Method.
+• Teammate attempted to replicate the issue but was unsuccessful.
+• Teammate recommends consulting team to investigate the issue.
+• Customer to provide additional examples of sales orders not closing. Chat Link"
+The customer contacted us to inquire about adding a box showing the location of inventory items in their warehouse.,Customer,"customization,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Customer wants to add a box showing location of inventory items in warehouse
+Teammate confirms and asks for specific details
+Customization is needed for this feature
+Teammate provides article and offers billable customization service
+Customer will discuss with manager and decide on next steps. Chat Link"
+The customer contacted us regarding an issue with line items and descriptions not sending when emailing an opportunity to a customer.,,stockapps platform,stockapps & product-specific,"Customer is having an issue with line items and descriptions not sending when emailing an opportunity to a customer.
+Teammate is creating a test case to replicate the issue and has reached out to support for further assistance.
+Teammate has provided the customer with a case number for reference and will update them with any findings.
+Customer has provided a test customer for the teammate to use.
+Teammate has confirmed with the customer and is waiting for a response from support. Chat Link"
+The customer contacted us because they were experiencing issues with items showing up with a blank quantity on hand.,Sales,stockapps- howto- items,other,"Customer is experiencing issues with items showing up with a blank quantity on hand.
+Teammate offers to help and asks for permission to access the account.
+Customer confirms the issue is resolved.
+Teammate offers further assistance if needed.
+Conversation ends on a positive note. Chat Link"
+The customer contacted us to inquire about removing categories from item names in QuickBooks Online.,"Customer,Sales","feature request,customization,stockapps- howto- items","general support & issue resolution,other,product development & feature requests","Customer wants to know how to remove category from item names
+Method's functionality reflects structure set in QuickBooks Online
+Customer can manage categories in QuickBooks Online
+Customer can customize category appearance on transactions with help from expert consultants
+Teammate offers assistance and asks if there are any other questions. Chat Link"
+The customer contacted us regarding sync conflicts for items with multi-level parent names in Method.,Connect,"qbo sync,icr-cs,icr-ps","miscellaneous,financial & payments","Customer is experiencing sync conflicts for items with multi-level parent names in Method.
+The specific error is ''ParentRef Required Error'' and the solution is to ensure the parent item exists in QuickBooks and is properly linked in Method.
+If the issue persists, a manual sync and potential manual adjustments may be necessary.
+A case has been created for the second-level support team to investigate the issue.
+The case number is 58293 and a team member will be in touch with the customer. Chat Link"
+The customer contacted us regarding PO items not reflecting in QuickBooks.,Customer,customization,other,"Customer has an issue with PO items not reflecting in QuickBooks
+Teammate suggests checking Total Quantity Received field and syncing
+Custom fields created by Nelson do not sync to QuickBooks
+Teammate creates feature request for more streamlined PO workflow in Method
+Suggests discussing with consultant Joon for further customization options. Chat Link"
+The customer contacted us to address an issue with tax calculations on non-tax items for customers marked as tax.,Sales,stockapps- howto-estimates,other,"Estimates are calculating tax on non-tax items for customers marked as tax.
+The customer provided two estimate numbers where this issue occurred.
+The teammate created a test estimate and did not encounter the same issue.
+The teammate discovered that the tax is coming from an API linked to the customer's Method account.
+The teammate suggested adding Avatax on the customer's QuickBooks desktop account for automatic integration with Method. Chat Link"
+The customer contacted us to inquire about adding pictures to their inventory list and tracking warranty on items.,Customer,"customization,free hour booked - csr",other,"Customer has questions about adding pictures to inventory list and tracking warranty on items.
+Teammate confirms that warranty can be tracked using ''Warranty expires'' field.
+Teammate offers 1 free hour of customization to add pictures to inventory list.
+Customer agrees and books a time for Friday at 11:30 using email carolinacompactor@gmail.com.
+Teammate confirms booking and offers to answer any additional questions. Chat Link"
+The customer contacted us because they were experiencing issues with incorrect item printing on an estimate.,Customer,"report designer,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Customer is experiencing issues with incorrect item printing on an estimate.
+Troubleshooting steps include checking syncing with QuickBooks, verifying sync connection, and reviewing/updating estimate print template.
+Possible issue with unintentional grouping of items in report template causing repeated printing of same item.
+Teammate offers further assistance and closes chat, but remains available for help if needed. Chat Link"
+The customer contacted us for assistance with adding a new item to the drop-down menu on the Give form and ensuring it is connected to the correct class in QBO.,,,general support & issue resolution,"• Customer needs help adding a new item to the drop-down menu on the Give form and wants to ensure it is connected to the correct class in QBO.
+• Teammate suggests adding the item through the Donor Pages > Personalize option and confirms that it is connected to the correct class.
+• Customer wants to add the cause information to the donation receipt email or receipt template.
+• Teammate provides steps to add the cause field to the receipt template and suggests making a copy of the template before making changes.
+• Teammate helps customer access the Donations Preferences screen and successfully updates the form.
+Chat Link"
+The customer contacted us for help with handling delivery of items on a sales order or invoice.,Transactions,"stockapps how-to,invoices",how-to,"Customer needs help with handling delivery of items on a sales order or invoice.
+Teammate suggests using the Field Crew app to assign, schedule, and dispatch the products or services.
+Customer wants to know how to do this and mentions having trouble with sales inventory items.
+Teammate explains that currently only service items are available for work orders, but customization can be done with the help of a consultant.
+Teammate offers to book a time for customization and provides available time slots. Chat Link"
+The customer contacted us for help with using Method software to create and track inventory items.,,"icr-cs,icr-ps",miscellaneous,"Julia needs help with Method software for creating an inventory and tracking items in and out.
+She wants to be able to scan items and view inventory in an app.
+The teammate suggests customizing the solution and recommends discussing with the dedicated consultant, Muhammad.
+Muhammad's email is m.muhammad@method.me.
+The teammate will close the chat but is available for further assistance. Chat Link"
+The customer contacted us for assistance with importing items into Method.,Admin,data import/export,other,"Customer is having trouble importing items into Method.
+Teammate confirms that items can be imported and provides steps to do so.
+Customer is unable to select ''Import records'' and the option is greyed out.
+Teammate asks for permission to access the account and for the file being imported.
+Teammate suggests choosing the ItemInventory table when importing and it works for the customer. Chat Link"
+"The customer contacted us regarding an issue with a new rep's sales order, specifically with duplicated item list fields and a jump in the sales order number sequence to 6 digits.",Customer,customization issues,other,"Customer is having an issue with a new rep's sales order.
+The item list field is getting duplicated on the screen.
+The number sequence for the sales order has jumped to 6 digits.
+Teammate recommends contacting dedicated consultant for further investigation.
+For the reference number issue, teammate suggests fixing manually and contacting them if problem persists. Chat Link"
+The customer contacted us because they were experiencing an issue with the item list not showing on recent estimate pages.,Sales,stockapps- howto-estimates,other,"Customer is experiencing an issue with the item list not showing on recent estimate pages.
+Teammate confirms the issue and asks for permission to access the account.
+Teammate creates a test estimate and refreshes the column and grid, but the item list still does not show.
+Teammate creates a case for support to investigate further.
+Teammate provides the customer's direct number and case number for support to reach out. Chat Link"
+The customer contacted us to inquire about why items are not showing up on invoices when converting from Method to QuickBooks.,Transactions,invoices,general support & issue resolution,"• Customer is inquiring about why items are not showing up on invoices when converting from Method to QuickBooks.
+• Teammate asks for a screenshot and clarification on whether the issue is with the QuickBooks print template or when sending to customers.
+• Teammate suggests contacting QuickBooks support for assistance with adding items to the PDF template.
+• Teammate checks in and offers further assistance if needed.
+• Teammate closes the chat and advises customer to contact QuickBooks support for further help. Chat Link"
+The customer contacted us for assistance with auto-populating item numbers in Method for Stag Rentals.,Customer,customization,"general support & issue resolution,other","Customer is having trouble with auto-populating item numbers in Method for Stag Rentals.
+Teammate clarifies that the auto-populate setting is for transaction numbers, not item numbers.
+Teammate offers to customize the workflow for auto-calculation of item numbers.
+Customer will contact dedicated consultant for assistance.
+Teammate encourages customer to reach out with any further questions. Chat Link"
+The customer contacted us to find a way to exclude specific items from being discounted on an order.,Customer,"customization,stockapps how-to","how-to,general support & issue resolution,other","Customer wants to exclude specific items from being discounted on an order.
+Teammate suggests using price levels for QuickBooks Desktop or creating a negative service item for QuickBooks Online.
+Teammate offers to access customer's account to assist further.
+Customer wants to exclude can and keg deposits from being discounted.
+Teammate suggests using discounts on each line item instead of a total discount, but customer prefers their current workaround. Chat Link"
+The customer contacted us because they were unable to add an income account to a non-inventory item.,Sales,stockapps- howto- items,"general support & issue resolution,other","Customer needs to add an income account to a non-inventory item, but the option is greyed out and unclickable.
+Teammate requests permission to access the account and investigates the issue.
+Teammate discovers that the option was disabled when the screen was customized and provides instructions on how to enable it.
+Customer follows instructions and successfully adds the income account to the item.
+Teammate offers further assistance and customer is satisfied with the resolution. Chat Link"
+The customer contacted us to inquire about sorting and moving items in an Estimate in Method CRM.,Sales,stockapps- howto-estimates,other,"Customer is looking to sort and move items in an Estimate in Method CRM.
+This feature is not currently available and would require customization.
+Customization is a billable service and the customer is not interested in pursuing it.
+The team will pass on the feedback to the development team for future updates.
+The customer may consider switching to a different CRM due to the lack of basic features. Chat Link"
+The customer contacted us because the Field Crew app is not autofilling the payroll item when clocking in/out.,,stockapps how-to,"how-to,general support & issue resolution","Customer is experiencing an issue with the Field Crew app not autofilling the payroll item when clocking in/out.
+Payroll items are set to hourly but Method doesn't autofill this field.
+No recent updates or changes to the Field Crew app or QuickBooks setup.
+Teammate suggests checking the setup process for time tracking and setting a default payroll item in preferences.
+Teammate offers to continue assisting if needed. Chat Link"
+"The customer contacted us because they accidentally deleted advanced email settings in the Send Email screen on Feb 23, 2024 and wanted to know if Method CRM has a way to store and reinstall deleted items.",Customer,customization,other,"Customer accidentally deleted advanced email settings in Send Email screen on Feb 23, 2024.
+Customer wants to know if Method CRM has a place to store and reinstall deleted items.
+Teammate accessed customer's account and found error when clicking on Advanced Email.
+Teammate unable to find deleted screen and suggests discussing with consultant.
+Consultant has not yet been assigned to open case. Chat Link"
+The customer contacted us because they encountered an HTTP error when trying to access the Items main screen.,,"performance,icr-cs,icr-ps",miscellaneous,"Question
+
+The customer contacted us because they encountered an HTTP error when trying to access the Items main screen."
+The customer contacted us regarding duplicate items in QBO and Method with the same list ID but different RecordIDs.,Connect,"qbo sync,icr-cs,icr-ps","miscellaneous,financial & payments","Duplicate items in QBO and Method with same list ID and different RecordIDs
+Previous occurrences of this issue due to a bug in sync
+Unable to delete duplicate records in user interface
+Case #58286 created for second-level support team to investigate and provide update
+Customer to be contacted with update soon. Chat Link"
+The customer contacted us to inquire about customizing how line items with a specific prefix appear on estimates in Method without affecting QuickBooks Online.,"Customer,Sales","customization,estimates","general support & issue resolution,other","• Method's Help Bot is available to answer questions and provide helpful answers from Method's official help documentation.
+• The customer wants to adjust how line items with 'FEES:' prefix appear on estimates in Method without affecting QuickBooks Online.
+• This customization would require Method's consulting team and may be billable unless the customer has free customization hours available.
+• The teammate offers to book a free customization session with a consultant and provides a booking calendar for the customer to choose a suitable time.
+• The teammate checks in with the customer and offers to continue the conversation if needed. Chat Link"
+The customer contacted us to schedule an appointment with a software engineer for 3 items.,Customer,customization,"general support & issue resolution,other","• Customer wants to schedule an appointment with a software engineer for 3 items.
+• Teammate offers pay per use agreement for additional customization.
+• Teammate sends agreement for customer to sign.
+• Customer agrees and receives agreement.
+• Customer expresses gratitude.
+Chat Link"
+The customer contacted us regarding an issue with items not syncing in Method.,"Connect,Sales","qbdt sync,stockapps- howto- items,icr-cs,icr-ps","miscellaneous,other","Customer has an issue with items not syncing in Method.
+Teammate is investigating the issue and will update the customer.
+Teammate will create a case for support to resolve the issue.
+Case number is #56807.
+Support will contact the customer. Chat Link"
+The customer contacted us for assistance with adding a new service item and utilizing custom reports for tracking business growth and sales team performance.,Sales,"stockapps- howto- items,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Custom reports can help track business growth, sales team performance, and deal trends.
+To add a new service item, follow the instructions in the provided article.
+Teammate will close the chat but is available for further assistance.
+Teammate checked in and reminded customer to reach out for help if needed.
+Teammate provided email for future communication. Chat Link"
+The customer contacted us for assistance with adding a Sales Tax item in QuickBooks.,Connect,"icr-cs,icr-ps,qbo taxes","miscellaneous,other","• Sales Tax item is only available in QuickBooks Desktop, not in QuickBooks Online.
+• To add a Sales Tax item, go to the Items app and fill in the required fields.
+• If the Items app is not visible, contact the administrator for access permissions.
+• Teammate offers assistance and checks in with the customer.
+• Teammate closes the chat but remains available for further help. Chat Link"
+The customer contacted us to inquire about how to add quantity on hand when adding items in inventory on Method.,Sales,stockapps- howto- items,other,"The customer wants to know how to add quantity on hand when adding items in inventory on Method. The teammate explains that the quantity on hand is a read-only field in Method and recommends adding it in QuickBooks and syncing it with Method. The customer explains that they have different employees using QuickBooks and Method and wants to be able to enter the quantity on hand in Method. The teammate informs the customer that this is not currently possible on the platform, but there is a feature request for it and they can add the customer's account to the list. The teammate later informs the customer that the feature is now available and recommends booking a time with their success manager to discuss it further.Chat Link"
+The customer contacted us regarding an issue with an invoice not syncing with QuickBooks due to a conflict with an item.,Transactions,"icr-cs,icr-ps,invoices",miscellaneous,"• Invoice for Ross Valley Sanitary District dated 12/17/24 is not syncing with QuickBooks due to a conflict with the item ''Current Sourcewell (020221):HRN-GS16K2 (OBDII T-harness)''
+• Teammate has permission to access customer's account to investigate the issue.
+• Teammate has created a case with support (Case #58398) and customer will be contacted by Dhruv via email.
+• Teammate has requested a screen share or a scheduled time to discuss the issue further.
+• Customer has given permission for a screen share and has provided contact information.
+Chat Link"
+The customer contacted us for help with adding fields and a link to the actual invoice on the Invoice Items screen.,"Customer,Transactions","customization,icr-cs,icr-ps,invoices","miscellaneous,general support & issue resolution,other","• Customer needs help adding Invoice number, Customer, and a link to the actual invoice to a grid on the Invoice Items screen.
+• Teammate offers to assist and asks for permission to access the account.
+• Teammate guides customer on how to add the fields to the grid.
+• Customer asks about adding a date control and making the Invoice Number a link to open the invoice in another tab.
+• Teammate suggests consulting team for further assistance and recommends checking the Help Center for customization guidance. Chat Link"
+The customer contacted us to report two problems: items on estimates changing order when saved and bundle items not having pricing on Method.,"Sales,Sales","stockapps- howto- items,estimates","general support & issue resolution,other","Customer has two problems: items on estimates change order when saved and bundle items do not have pricing on Method.
+Teammate creates a test estimate to investigate the first problem and will update the customer shortly.
+Teammate creates a case for the second level support team to investigate the issue with bundle item pricing.
+Customer agrees to a screen share for further assistance.
+Teammate provides case number for customer's reference and assures them that a team member will provide an update. Chat Link"
+The customer contacted us to inquire about using wildcards in item search.,,"stockapps how-to,feature request,icr-cs,icr-ps","miscellaneous,how-to,product development & feature requests","Customer inquiring about using wildcards in item search
+Teammate confirms that Method does not currently have this feature
+Teammate will pass on feedback to consider adding this feature in future releases
+Customer explains how this feature would improve their workflow and make it easier to find specific parts
+Teammate acknowledges feedback and passes it on to the team. Chat Link"
+The customer contacted us regarding an issue with a specific item in their ticket that has a 3% calculation for credit card fees.,Customer,customization,"general support & issue resolution,other","• Customer is having an issue with a specific item in their ticket.
+• The item is for credit card fees and has a 3% calculation.
+• When added to a ticket with multiple items, it only calculates 3% of the item above instead of the whole ticket.
+• Teammate suggests discussing customization with dedicated consultant Niharika Verma.
+• Customer thanks teammate and agrees to discuss with consultant.
+Chat Link"
+The customer contacted us to inquire about adjusting line items on estimates in Method without affecting QuickBooks Online.,"Customer,Sales","customization,estimates","general support & issue resolution,other","• Customer is looking to adjust line items on estimates in Method without affecting QuickBooks Online.
+• This requires customization and is billable, but customer has 1 free hour of customization available.
+• Teammate provides instructions on how to customize estimate template and offers to schedule a meeting with consulting team.
+• Customer expresses interest and will schedule after 5pm.
+• Teammate attempts to contact customer but is unable to reach them, provides link for customer to schedule meeting themselves. Chat Link"
+The customer contacted us regarding a sync issue with their items in Method.,Connect,api,integrations & connectivity,"• Customer is experiencing a sync issue with their items in Method.
+• The issue is coming from Method's side.
+• The customer has been using the API for 2+ years.
+• The customer has provided examples of successfully imported items.
+• The teammate suggests posting the issue in the API/developer forum for prompt response from the development team.
+Chat Link"
+The customer contacted us for customization services to receive items from a purchase order and convert it to a vendor bill.,Customer,customization,"general support & issue resolution,other","Bundle items created in QuickBooks Online do not have a Business Name field, causing them to not appear on invoices in Method.
+Customization is needed to add the ability to receive items from a purchase order with an item receipt and convert it to a vendor bill when invoiced.
+The customer has an open case with the consulting team for customization services.
+The customer's position in the queue for customization is 5.
+The customer's original chat conversation with Jainaben Patel requested customization for receiving items from a purchase order and converting it to a vendor bill. Chat Link"
+The customer contacted us because they were having trouble filtering out non-donation items on the donations page.,,"icr-cs,icr-ps",miscellaneous,"• Customer is having trouble filtering out non-donation items on the donations page.
+• Teammate offers to assist and asks for permission to access the account.
+• Teammate confirms that the correct items are marked as donation items in the preferences.
+• Customer provides an example of non-donation items still showing on the donations page.
+• Teammate suggests a screenshare to further investigate the issue. Chat Link"
+The customer contacted us for assistance with viewing total sales for a single item.,Transactions,stockapps- howto-salesreceipts,other,"• Teammate checked in with customer about their previous question on viewing total sales for a single item.
+• Teammate offered assistance and asked if customer was able to find the reports.
+• Teammate closed the chat but reminded customer they are available for further help.
+• Customer did not respond, so teammate closed the chat. Chat Link"
+The customer contacted us because they were unable to locate the 'Items Purchased' tab under the customer page.,"Admin,Sales","permissions,stockapps- howto- opportunities,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other,user & account management","Customer is unable to locate the 'Items Purchased' tab under the customer page.
+The tab may not be visible because the reorder feature is not enabled in the account settings.
+To enable the tab, the customer needs to enable reorders in the Opportunity App Preferences.
+The Opportunities App can be located on the Method dashboard or by expanding the left menu.
+If the customer does not have access to the Opportunities App, the account admin can give them permission by following the steps in the article provided. Chat Link"
+The customer contacted us regarding an issue with their sales order where converting to an invoice changed the quantity for each item.,Transactions,"stockapps how-to,icr-cs,icr-ps,invoices","miscellaneous,how-to","Sales Order 214470 is experiencing an issue where converting to an Invoice changes the quantity to (1) for each item.
+This is due to Unit of Measure (UoM) differences and a ticket has been created for the development team to resolve the issue.
+A case number #56956 has been generated for reference.
+The support team will keep the customer updated on the progress.
+The customer is satisfied with the support received. Chat Link"
+The customer contacted us for assistance with grouping similar items in a donation report.,Customer,report designer,"general support & issue resolution,other","The customer is having issues with a donation report, specifically with grouping similar items together.
+The teammate suggests using the Web Report Designer to group items together.
+The customer agrees to a screenshare and provides an example of the report.
+The teammate discovers that the report is sorting data by Member Type and offers further customization options.
+The customer thanks the teammate for their help. Chat Link"
+The customer contacted us to inquire about the possibility of locking invoice items after payment.,Transactions,"stockapps how-to,invoices",how-to,"Customer wants to know if invoice items can be locked after payment Teammate asks for clarification on what is meant by ""lock invoice items"" Teammate checks in to see if customer is still there and if they received previous messageChat Link"
+The customer contacted us because items and services added to QuickBooks Online were not showing up in Method.,Connect,"qbdt sync,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","• Items and services added to QuickBooks Online may not show up in Method for various reasons.
+• Possible reasons include: unchecked ''I purchase this service from a supplier'' checkbox, inactive or type ''Category'' items, or outdated sync.
+• To resolve the issue, check the checkbox, ensure items are not inactive or of type ''Category'', and sync QuickBooks Online with Method.
+• If the issue persists, contact support for further assistance.
+• Teammate confirms if customer can resolve the issue and offers additional help if needed. Chat Link"
+The customer contacted us for help with importing items/products into Method and syncing them to QuickBooks.,Admin,data import/export,other,"Customer is trying to import items/products into Method and sync them to QuickBooks.
+They are having issues importing into QBO and want to try importing to Method first.
+Teammate offers help from expert consultants for importing and suggests testing with a few sample items first.
+Customer will try with a few sample items before importing their entire list.
+Teammate reminds customer to reach out for help if needed. Chat Link"
+The customer contacted us for assistance with creating an inventory assembly item in QuickBooks Online.,Sales,stockapps- howto- items,"general support & issue resolution,other","You cannot change an item once it is created.
+To add an inventory assembly item, go to the item app and select ''inventory assembly''.
+You must create inventory items before adding them to the assembly.
+Inventory tracking must be turned on in QuickBooks Online before creating an inventory item.
+You can reach out for further assistance. Chat Link"
+The customer contacted us to inquire about printing a partial pick ticket for a sales order with only a few items.,Customer,customization,"general support & issue resolution,other","• Customer is looking to print a partial pick ticket for a sales order with only a few items.
+• Teammate suggests reaching out to Aleks Radman for customization.
+• Customer has an open consulting case with Aleks Radman.
+• Aleks Radman can be reached at a.radman@method.me.
+• Teammate mentions that the team will be out of office at 6PM EST and will respond on Monday if needed.
+Chat Link"
+The customer contacted us because items were not appearing in the item details for bills in the Method app.,"Sales,Sales","stockapps- howto- bills,stockapps- howto- items","general support & issue resolution,other","Items are not appearing in the item details for bills in the Method app.
+This could be due to items not being saved or not being set up to be purchased from a vendor.
+To show items in a vendor/bill transaction, the ''I purchase this service from a supplier'' checkbox must be enabled and a cost must be added.
+The category chosen in QuickBooks is classified as an Account in Method and can be selected under ''Account Details'' when creating a bill.
+To avoid accidentally clicking on the Line Item grid, only select the Account Details and then select the Account. Chat Link"
+The customer contacted us to inquire about line-item service details in the customer portal.,,,general support & issue resolution,"• Customer is looking for line-item service details in the customer portal.
+• Teammate offers to investigate the issue and asks for permission to access the account.
+• Teammate discovers that the desired fields are located in a different table and suggests setting up linked fields or contacting the customization team for assistance.
+• Teammate offers to send a pay-per-use agreement for additional customization services.
+• Customer mentions working with a specific team member in the past and will contact them for assistance. Chat Link"
+The customer contacted us due to receiving sync errors for items.,,,,"Customer received sync errors for items
+Teammate tried to resolve the errors but was unable to
+Teammate created a case for support to investigate further
+Case number is #55045
+Support will reach out to customer shortly. Chat Link"
+The customer contacted us with questions about an item not showing in Method after a sync and inquired about sorting contacts and automating activity creation.,Connect,qbdt sync,other,"Free 1-hour customization session (a $145 value) offered to customer for next week
+Customer has questions about an item not showing in Method after a sync
+Teammate offers to access account and investigate issue
+Teammate suggests screenshare to further assist customer
+Customer inquires about sorting contacts by last activity and automating activity creation for estimates Chat Link"
+The customer contacted us regarding issues with syncing items and mailing list in QuickBooks Online.,,"icr-cs,icr-ps",miscellaneous,"Invoice 243533 is not syncing the items changed in QuickBooks Online.
+Possible reasons: connection issue, sync approval, or sync conflict.
+Teammate is investigating the issue and will update the customer.
+Customer is experiencing a delay in syncing new items added in QuickBooks Online.
+Customer is also experiencing an issue with the mailing list for some customers getting overwritten. Chat Link"
+The customer contacted us to report issues with disappearing lines and items in estimates in Method.,Sales,stockapps- howto-estimates,other,"Customer is experiencing issues with disappearing lines and items in estimates in Method.
+The issue occurs after saving the entire estimate.
+The customer is using Method without QuickBooks, but someone else in their company does use QuickBooks with Method.
+The teammate requests a screenshot and permission to access the account to investigate the issue.
+The customer provides a Sales Order number and the teammate confirms the issue and offers to assist further. Chat Link"
+The customer contacted us regarding an issue with line item cost or sales price being deleted when editing the description column in Method's Estimate app.,Sales,stockapps- howto-estimates,other,"Customer is experiencing an issue with line item cost or sales price being deleted when editing the description column in Method's Estimate app.
+Teammate requested more information and a screen recording of the issue.
+Customer confirmed the issue occurs with QuickBooks imported estimates.
+Teammate was unable to replicate the issue and created a case with support (#53578).
+Teammate requested a screenshare to further investigate the issue. Chat Link"
+The customer contacted us to inquire about creating an Item Report by Customer.,,"how-to,icr-cs,icr-ps","miscellaneous,how-to,general support & issue resolution","Customer is looking for a way to create an Item Report by Customer.
+Teammate provides step-by-step instructions on how to create the report.
+Teammate also mentions that the report can be accessed and run from the Invoice List screen.
+Customer asks to connect to an agent.
+Teammate confirms availability and asks if customer needs a print template for the report. Chat Link"
+The customer contacted us for help adding a column to the ''View Items'' tab in the customer portal.,,"icr-cs,icr-ps","miscellaneous,general support & issue resolution","• Customer needs help adding a column to the ''View Items'' tab in the customer portal.
+• Teammate offers to access the account and make the change.
+• Teammate successfully adds the column and offers to show customer how to make changes themselves in the future.
+• Customer expresses gratitude and teammate offers to assist with any further questions.
+• Teammate reminds customer to refresh the screen to see the changes. Chat Link"
+The customer contacted us to inquire about the lack of specific item deletion information in the audit trail.,Service Delivery,stockapps- howto- workorders,"general support & issue resolution,other","Audit trail cannot show when a specific item is deleted from a work order.
+Teammate checked and confirmed that the audit trail does not show specific item or work order deletions.
+Customer provided work order number and item number for the deleted item.
+Teammate is checking with the team to see if there is another way to find out when the item was deleted.
+Team will create a feature request to include more detail in the audit trail for item deletions. Chat Link"
+The customer contacted us for help deleting items from their Purchase History in Method.,Customer,catalogues- purchase history/ items purchased by customer,other,"• Customer needs help deleting items from their Purchase History in Method.
+• Teammate offers to assist and asks for permission to access the account.
+• Teammate confirms which items the customer wants to delete and successfully deletes them.
+• Customer mentions an issue with items from MethodCRM, but teammate is able to delete them from their end.
+• Teammate offers further assistance and customer is satisfied with the resolution.
+Chat Link"
+The customer contacted us to inquire about tracking received items from purchase orders in Method.,Sales,stockapps- howto- purchase orders,"general support & issue resolution,other","Method does not have a feature for tracking received items from purchase orders.
+The purchase order status can be updated manually in a separate system.
+Quantity on hand and on order in Method are updated from QuickBooks.
+Teammate suggests reaching out with any additional questions.
+Teammate wishes customer a great day. Chat Link"
+The customer contacted us to resolve issues with invoices not syncing with QuickBooks and to rectify an Income Account for a specific item.,"Connect,Transactions","sync conflicts,invoices",general support & issue resolution,"Invoices 25161 and 24165-24172 are not syncing with QuickBooks.
+Most of the invoices are in sync conflicts.
+The teammate has created a case with support (case number: 58406) to further investigate the issue.
+The customer needs to rectify the Income Account of a specific item to resolve the sync conflict.
+The customer needs to provide a direct number for support to contact them.
+Chat Link"
+"The customer contacted us for assistance with changing an item's type, applying discounts, inserting a line on an invoice, and fixing the invoice printout order in Method due to QuickBooks limitations.","Connect,Transactions","qbdt sync,invoices","general support & issue resolution,other","Customer is trying to change an existing item's type to an inventory assembly in the Items app.
+Method does not have the option to change categories due to QuickBooks limitations.
+Customer is also having trouble with discounts not being automatically applied as a negative value.
+Method does not have the ability to insert a line on an invoice.
+Customer is also experiencing issues with the invoice printout alphabetizing by item instead of following the order on the screen. Chat Link"
+The customer contacted us because they were experiencing sync corruption and unable to make items active again.,Connect,qbdt sync,"general support & issue resolution,other","• Customer is experiencing sync corruption and unable to make items active again.
+• Teammate requests for item name and screenshot of sync engine.
+• Teammate gains permission to access account and successfully makes one item active.
+• Customer notices that items in Method and QuickBooks are not matching.
+• Teammate resolves sync conflict and successfully updates information in QuickBooks. Chat Link"
+The customer contacted us for assistance in changing the default email button on a sales order without affecting other modified items on the page.,Customer,customization,other,"Customer needs help changing default email button on sales order without changing other modified items on the page
+Teammate suggests creating a copy of the screen to replicate default button, which would require manual re-adding of button and actions
+Customer has admin permissions but dropdown menu to change default email template is greyed out
+Teammate confirms issue is being worked on by development team and offers to select template for customer in the meantime
+Teammate updates email and print templates for customer and asks for confirmation and feedback. Chat Link"
+The customer contacted us to inquire about mass deletion of items in our system.,Customer,customization,"general support & issue resolution,other","Method does not have a feature to mass delete items, but it can be done through customization.
+Mass deletion is a risky process and should be done with caution.
+The Import/Export tool or customized screens can be used for mass updates or deletions.
+When using the 'Delete Records from Table' action, conditions must be set to specify which records to delete.
+Deleting records is permanent and cannot be undone. Chat Link"
+The customer needs help with adding a category to filter out items in a customization.,Customer,customization,other,"Customer needs help with adding a category to filter out items in a customization.
+Teammate asks for more details and workflow.
+Customer explains that in Method Classic, they could search items by item or description, but in the new version, they can only search by item.
+Customer has over 1100 products and needs a way to consolidate when generating estimates.
+Teammate asks for a screenshot from Classic to compare with the new version. Chat Link"
+"The customer contacted us regarding missing instructions and notes in the time tracking app, inability to add work receipts in the field crew app, and issues with payroll items not being automatically added.",,stockapps how-to,how-to,"Instructions and notes missing from time tracking app for some employees
+Unable to add work receipts in field crew app
+Notes not showing up in time entries for completed jobs
+Instructions used to be added to time tracking app when clocking in and out of a job
+Payroll item not automatically added to time tracking, causing issues with Hourly Wage Direct Chat Link"
+The customer is experiencing an error message when trying to push a line item to a sales receipt and is having trouble sending multiple line items to Method through Zapier.,,"stockapps how-to,icr-cs,icr-ps","miscellaneous,how-to,general support & issue resolution","The customer is experiencing an error message when trying to push a line item to a sales receipt.
+The error message is due to a typo in the field name ''SalesReceiptRecordID''.
+The customer is also having trouble sending multiple line items to Method through Zapier.
+The teammate suggests discussing this with the customization team and using the 1 hour of free customization with a consultant.
+The customer will try a solution suggested by Zapier's AI and will reach out to the customization team if it doesn't work. Chat Link"
+The customer contacted us because they were having trouble saving an estimate with items at quantity 0.,"Customer,Sales","customization,stockapps- howto-estimates",other,"Customer is having trouble saving an estimate with items at quantity 0.
+Teammate suggests adding items through the Line Items grid and saving the entire estimate.
+Customer is still receiving an error message.
+Teammate offers to customize the account for a fee to allow for this feature.
+Customer will discuss with their boss and may explore other options. Chat Link"
+The customer contacted us to request assistance with adding the Purchase History app to their account and to inquire about a report of purchase history for a specific item.,Customer,catalogues- purchase history/ items purchased by customer,"general support & issue resolution,other","Purchase History app can be added to the account by Success Manager Shane.
+Book a time with Shane to get assistance with adding the app.
+Teammate is checking in to see if the customer has received their previous message.
+Teammate is offering to help the customer with any further questions or concerns.
+Customer is looking for a report of purchase history for a specific item. Chat Link"
+The customer contacted us because they are experiencing issues with the Method connector not updating all items and receiving an ''Insufficient permission level to perform this action'' error.,Connect,qbdt sync,other,"The customer is experiencing issues with the Method connector not updating all items.
+The customer is receiving an ''Insufficient permission level to perform this action'' error.
+The teammate suggests checking the QuickBooks sync and changing permissions for the MethodIntegration folder.
+The customer asks about the permissions applying every time the connector runs.
+The teammate provides information about the Method Integration Engine and suggests checking the knowledge base for more information. Chat Link"
+The customer contacted us with a question about being unable to select certain items on the Invoices tab.,"Customer,Admin,Transactions","customization,permissions,icr-cs,icr-ps,invoices","miscellaneous,general support & issue resolution,other,user & account management","User has a question about ''runsheets'' on the Invoices tab and is unable to select certain items.
+Teammate assists with troubleshooting and discovers that the issue is related to user permissions.
+Teammate schedules a call to further discuss the issue and schedules a free customization hour for the customer.
+Teammate provides instructions for granting access to the Invoices app for specific users.
+Teammate follows up to ensure the issue has been resolved and schedules a follow-up call for the next day. Chat Link"
+The customer contacted us to inquire about selectively syncing items in QuickBooks.,Customer,"customization,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","• Method does not have an option to selectively sync items, but there are ways to control how data syncs between QuickBooks and Method.
+• The consulting team can help with customizations to hide certain items for specific users.
+• There is 1 hour of free customization available with a consultant, who can work with the customer over a screen share.
+• The customer can book a time slot from the consultant's calendar.
+• There are no available time slots for today, so the customer will need to select a time and date from the available options. Chat Link"
+The customer contacted us due to experiencing sync errors in QuickBooks related to incorrect item order.,Connect,qbdt sync,other,"Customer is experiencing sync errors in QuickBooks with an error message related to incorrect item order.
+Teammate requests permission to access customer's account and is investigating the issue.
+Teammate requests a screenshot of the invoice with the line item from QuickBooks.
+Teammate creates a case with support to further investigate the issue and provides customer with case number and support contact information.
+Teammate checks in with customer and closes the chat, but offers to continue helping if needed. Chat Link"
+The customer contacted us with questions about customizing and rearranging line items in an estimate.,Customer,customization,other,"Customer has a question about rearranging line items in an estimate.
+Teammate suggests consulting with Aleks Radman for customization.
+Teammate confirms that out of the box, there is no way to rearrange line items.
+Customer has additional questions about adding blank rows and assigning numbers to estimates.
+Teammate confirms that blank rows with no dollar value are not possible, but adds customer's account to a feature request for this. Chat Link"
+The customer contacted us to resolve an issue with items automatically unticking 'Used on Purchase Transactions'.,Sales,stockapps- howto- items,other,"Customer experiencing issue with items automatically unticking 'Used on Purchase Transactions'
+Teammate suggests enabling ''I purchase this service from a supplier'' checkbox and adding a cost to fix the issue
+Customer provides example of item and gives permission for teammate to access account
+Teammate confirms solution and provides screenshot for reference
+Customer confirms solution worked and thanks teammate for assistance. Chat Link"
+The customer contacted us to report conflicts in their Method account after creating new inventory items on Method instead of QuickBooks.,Connect,qbdt sync,other,"Customer experiencing conflicts in Method account after starting to create new inventory items on Method instead of QBs
+Teammate creating a case for support to investigate the issue
+Case number #53581 created for support to contact customer
+Customer provided cell phone number for callback
+Teammate checking in and offering further assistance if needed Chat Link"
+The customer contacted us because they are having an issue with line items being added to the top of the list instead of the bottom in Method's Estimates feature.,Sales,"icr-cs,icr-ps,estimates","miscellaneous,general support & issue resolution","User has an issue with Estimates in Method.
+Teammate suggests steps to resolve the issue.
+User requests to connect with an agent.
+Teammate offers assistance and asks for permission to access the account.
+User is experiencing an issue with line items being added to the top of the list instead of the bottom. Chat Link"
+The customer contacted us because they were having an issue with an item on ICON IMSCO12.SG.,Connect,qbdt sync,other,"• Customer is having an issue with an item on ICON IMSCO12.SG.
+• Teammate requests permission to access customer's account and asks for a screenshot of the sync engine.
+• Teammate attempts to save the item and runs a sync, resulting in success.
+• Customer confirms the issue is resolved.
+• Teammate closes the chat but offers to continue helping if needed. Chat Link"
+The customer contacted us for assistance with filling out cost in the Items app for price list development.,Sales,stockapps- howto- items,"general support & issue resolution,other","Customer has a question about filling out cost in the Items app for price list development.
+Teammate requests a screenshot and offers to assist further.
+Teammate suggests filling out cost if the item is used on Purchase Orders.
+Teammate offers to access the account and recommends removing cost if it is not accurate.
+Teammate confirms that the Cost field syncs between QuickBooks and Method. Chat Link"
+The customer contacted us for assistance with adjusting their screen to see all columns when creating a sales order from the purchase history or items purchased screen.,,fin answered,other,"The customer is having trouble adjusting their screen to see all columns when creating a sales order from the purchase history or items purchased screen.
+The teammate suggests using the gear icon or customizing the grid to adjust the column visibility.
+The customer is unable to access the 'Manage' option and may need to contact their account administrator for the appropriate permissions.
+The teammate asks for the name of the screen and permission to access the account.
+The teammate checks in and offers to continue the conversation if needed. Chat Link"
+The customer contacted us for assistance in connecting their Xero subscription to Method and importing items.,Connect,xero,other,"• User is struggling to connect their Xero subscription to Method and cannot find the settings in Method.
+• Teammate suggests following steps to connect Xero with Method and mentions the need to be an administrator on Xero account.
+• User already has a customized Method account and wants to connect it to Xero.
+• Teammate confirms that it is not possible to connect the existing account and suggests creating a new one, offering a complimentary hour of customization.
+• User is having trouble importing items and teammate suggests trying to import one or two records first and seeking help from consulting team. Chat Link"
+The customer contacted us to find a solution for keeping field crew notes off of item descriptions in work orders and sales orders.,Customer,customization issues,other,"• Customer wants to keep field crew notes off of item descriptions in work orders and sales orders.
+• Teammate asks for permission to access account and create a test work order to investigate the issue.
+• Customer explains that field crew notes automatically appear in the item description after being added in the field crew app.
+• Teammate is unable to find a solution and suggests using 1 hour of free customization with an in-house consultant.
+• Customer thanks teammate and agrees to schedule a customization session. Chat Link"
+The customer contacted us for assistance with invoice line item placement and unresolved customization issues with Method.,Transactions,invoices,general support & issue resolution,"Customer is having difficulty with invoice line items not saving in desired order.
+Teammate suggests entering shipping charges in designated field below line items grid and saving entire invoice to ensure proper placement.
+Customer requests to connect with an agent for further assistance.
+Teammate offers to assist and schedules a customization session for customer.
+Customer also mentions unresolved issues with Method and difficulty finding certain customization options. Chat Link"
+The customer contacted us because sales items with a price in Quickbooks were not showing on the donation page.,Transactions,"stockapps- howto- donor pages,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Sales items with a price in Quickbooks are not showing on the donation page.
+The error was caused by a required field for the donation amount.
+Adding values to the field resolved the issue.
+A case has been created for further investigation.
+The case number is 57201. Chat Link"
+The customer contacted us with a question about filtering items by preferred vendor in sales reports.,,stockapps how-to,how-to,"Customer has a question about filtering items by preferred vendor in sales reports
+Teammate offers to access customer's account and confirms customization is possible but will be a billable service
+Teammate checks in and offers to continue conversation if needed
+Teammate closes chat and offers to pick up conversation at any time
+Customer gives permission for teammate to access account. Chat Link"
+The customer contacted us for assistance with invoice line items not saving in the desired order.,Transactions,invoices,general support & issue resolution,"Customer is having difficulty with invoice line items not saving in desired order.
+Teammate suggests entering shipping charges in designated field below line items grid and saving entire invoice to ensure correct placement.
+Teammate offers to assist with customization and suggests booking a free hour with in-house consultant.
+Customer also has issue with dates appearing in grid and teammate provides steps to remove them.
+Teammate creates case with support for customer's issue with invoice numbers not syncing with QuickBooks. Chat Link"
+The customer contacted us to inquire about rearranging items on an estimate.,Customer,customization,other,"• The customer is asking if they can rearrange items on an estimate.
+• The teammate informs them that this may require additional customization and is a billable service.
+• The customer expresses frustration that this is not a stock feature.
+• The teammate offers to pass on the feedback to the development team.
+• The teammate also offers the option of hiring a consultant to implement the feature immediately.
+Chat Link"
+The customer contacted us regarding an issue with the audit trail not showing when a specific item is deleted from a work order.,Service Delivery,stockapps- howto- workorders,"general support & issue resolution,other","Audit trail cannot show when a specific item is deleted from a work order.
+Teammate is looking into the issue and will share findings soon.
+Audit trail only shows general deletes, not for specific items or work orders.
+Customer's contact information: Scott Underwood, scottu@iaequip.com, 463.202.8513, 765.686.1041.
+Customer is satisfied with the response. Chat Link"
+The customer contacted us because they were unable to export the 'item' table from integrations.,Admin,data import/export,"general support & issue resolution,other","Customer unable to export 'item' table from integrations
+Teammate offers to investigate and requests permission to access account
+Customer grants permission
+Teammate successfully downloads sheet with all items
+Customer experiences issue with fields not showing, but resolves after multiple attempts Chat Link"
+The customer contacted us to resolve an issue with the Custom Item Pricing field on their contact page.,Customer,"customization,stockapps how-to","how-to,general support & issue resolution,other","Custom Item Pricing field on contact page not showing all items as intended
+Teammate accessed account with permission and identified incorrect criteria setup
+Steps provided to change criteria and test on draft version before publishing
+Issue resolved and customer satisfied with solution
+Chat closed, customer encouraged to contact for further questions or concerns. Chat Link"
+The customer contacted us for assistance with pulling the correct U/M set from QuickBooks for items with temporary U/M sets.,Sales,"stockapps- howto- items,icr-cs,icr-ps","miscellaneous,other","• Customer needs help pulling correct UM Set from QB for items with temporary U/M set
+• Method does not recommend changing UOM sets due to syncing issues
+• Suggested solution is to create new items with correct UOM
+• Teammate created a case for support to investigate the issue (#57611)
+• Support will reach out to customer via email (preferred contact method)
+Chat Link"
+The customer contacted us because they were missing the Items app on their dashboard.,Admin,permissions,user & account management,"Customer is missing the Items app on their dashboard.
+Teammate asks for permission to access the account and resolves the issue by refreshing the dashboard and selecting the correct filter.
+Customer is unable to add items to purchase orders, teammate suggests checking the box and adding a purchase cost to the items in the Items app.
+Customer follows instructions and is able to add items to purchase orders.
+Teammate offers further assistance and customer expresses gratitude. Chat Link"
+The customer contacted us due to experiencing an error caused by deleted items in their transactions.,Connect,"sync conflicts,icr-cs,icr-ps","miscellaneous,general support & issue resolution","Customer experiencing error due to deleted items in transactions
+Teammate created case #57650 with support to investigate further
+Support will be in touch with customer
+Teammate available for further assistance
+Customer advised to restore deleted items to resolve issue. Chat Link"
+The customer contacted us because their items were not showing descriptions on estimates in QuickBooks Online.,Sales,stockapps- howto-estimates,"general support & issue resolution,other","Customer's items were not showing descriptions on estimates in QuickBooks Online.
+Teammate suggested adding descriptions in the Line Items grid and saving the estimate.
+Customer was able to see descriptions when printing the estimate.
+Teammate mentioned that customers can also access transaction details on their portal.
+Teammate offered further assistance and wished the customer a good day. Chat Link"
+The customer contacted us because they were unable to find items in their Purchase Orders and had questions about missing options on the Purchase Order screen.,Connect,qbo sync,financial & payments,"The customer was unable to find items in their Purchase Orders.
+The teammate suggested enabling a checkbox and adding a cost to make the items available.
+The customer tried the recommendation and it worked, but had to add a $1 rate.
+The customer had another question about missing options on the Purchase Order screen.
+The teammate checked and found that the ''wait for sync approval'' option is visible when creating a new Purchase Order, but is looking into the missing email and close buttons. Chat Link"
+The customer contacted us to inquire about exporting a CSV of all active items with all fields.,,fin answered,other,"Customer is looking to export a CSV of all active items with all fields.
+Method's Export Tool can be used to do this.
+Steps to export: go to Integrations, click Export, select table, choose ''Select all fields'', add filter for active items, click Export.
+Number of fields may affect maximum number of records that can be exported.
+Teammate checked in with customer and closed the chat, customer can re-open if needed. Chat Link"
+The customer contacted us to request the removal of the purchase cost tab when adding items and to discuss invoice customization options.,"Customer,Sales,Transactions","customization,stockapps- howto- items,free hour booked - csr,invoices",other,"Customer has a request to remove the purchase cost tab when adding items.
+Teammate confirms the request and offers to help.
+Customer also has other requests regarding invoice customization.
+Teammate offers to book a customization session for the customer.
+Customer confirms a time and provides their phone number for confirmation. Chat Link"
+The customer contacted us to book a free hour of customization for Method's Web Report Designer to view product revenue data per item for each customer.,,,general support & issue resolution,"Method's Web Report Designer can be used to generate reports based on product revenue.
+Customization may be needed to view product revenue data per item for each customer.
+1 hour of free customization is available with a Method consultant.
+The customer has booked a free hour for Friday at 11:30 am, Aug 16th.
+The customer has received a confirmation email for the booking. Chat Link"
+The customer contacted us for assistance with finding an API endpoint to update/create/delete items in Method.,Connect,"api,icr-cs,icr-ps","miscellaneous,general support & issue resolution,integrations & connectivity","Customer is a developer for a company with a Method account
+Customer is looking for an API endpoint to update/create/delete items in Method
+Teammate suggests consulting the Method API article and posting on the API/developer forum for further assistance
+Teammate also suggests reaching out to a developer or a Method partner for help with building the connection
+Teammate asks for specific feedback on the API documentation to improve it in the future. Chat Link"
+The customer contacted us to address a glitch with an Item Receipt from May 13th causing issues with Method sync and to temporarily stop syncing inventory while getting the QB's file fixed.,Connect,"qbdt sync,icr-cs,icr-ps","miscellaneous,other","QB's file has a glitch with an Item Receipt from May 13th, causing issues with Method sync.
+User wants to stop syncing inventory temporarily while getting QB's file fixed.
+Teammate will look into the issue and provide further information.
+Teammate and user will join an online session to watch the update.
+Teammate has fixed the connection failure error and created a case for the issue with deleted Item Receipts. Chat Link"
+The customer contacted us with a question about items syncing from Quickbooks to Method.,Connect,"qbo sync,icr-cs,icr-ps","miscellaneous,general support & issue resolution,financial & payments","• Customer has a question about items syncing from Quickbooks to Method.
+• Teammate confirms that all items generated in Quickbooks should be synchronized with Method.
+• Teammate asks for clarification on the customer's inquiry.
+• Teammate provides a link to an article for more information on the items app in Method.
+• Teammate checks in with the customer and offers to continue the conversation if needed. Chat Link"
+The customer contacted us to schedule a free customization hour with our in-house consultants for assistance with fixing items.,Customer,customization issues,other,"• Customer is interested in engaging with professional service team for assistance with fixing items.
+• Method offers 1 hour of free customization with in-house consultants.
+• Consultant can complete customization projects over a screen share.
+• Customer can choose a slot from consultant's booking calendar.
+• Customer has scheduled free customization hour for April 16th at 11:30 AM. Chat Link"
+"The customer contacted us for assistance with bulk uploading items into Method, which will replicate into QB.",Sales,stockapps- howto- items,"general support & issue resolution,other","Customer is looking to bulk upload items into Method, which will replicate into QB.
+Teammate recommends checking an article for information on item categories and suggests booking a slot with a consultant for help with bulk importing.
+Customer found a link and is currently testing it.
+Teammate suggests booking a time with success manager for further assistance.
+Teammate will close chat but is available for further help. Chat Link"
+The customer contacted us regarding an issue with grouped items pricing not displaying correctly in QuickBooks and Method.,Sales,stockapps- howto- items,other,"• Grouped items pricing in QuickBooks is not displaying correctly in Method.
+• QuickBooks does not allow the Rate and Amount fields for grouped items to display any value other than zero.
+• This is a limitation within QuickBooks and cannot be adjusted in Method.
+• Printable transaction PDFs will show the correct Rate and Amount for grouped items.
+• The values do not appear on the New/Edit screens or in the Customer Portal, but they are still reflected in the PDFs.
+Chat Link"
+The customer contacted us for assistance with importing a CSV file into the Item table.,Admin,data import/export,"general support & issue resolution,other","Customer is having trouble importing a CSV file into the Item table.
+The Name field is not displaying and only the update option is available.
+Customer has set up correct permissions for using the API and Import and Export tool.
+Teammate suggests selecting the ''ItemNonInventory'' table and removing RecordIDs to successfully import a Non-Inventory item.
+Customer confirms that the solution worked and thanks the teammate for their help. Chat Link"
+The customer contacted us to inquire about the organization of items in the rental fleet.,,,,"Customer is inquiring about the organization of items in the rental fleet, specifically why some are organized by date and others are not.
+Teammate asks for clarification on the specific feature or report the customer is referring to and if they want to change the organization.
+Teammate offers to assist but needs more information from the customer.
+Teammate checks in to see if the customer is still there and if they have received the previous message.
+Teammate informs customer that they will close the chat but are available to continue the conversation at any time. Chat Link"
+The customer contacted us for assistance with incorrect $ amounts in the Items section and incorrect attachment of Sales Estimate in emails.,,"icr-cs,icr-ps","miscellaneous,general support & issue resolution","Customer needs help with two things: incorrect $ amounts in Items section and incorrect attachment of Sales Estimate instead of Invoice in emails.
+Teammate accessed customer's account with permission and recommended steps to correct rounding of fields in Items section.
+Teammate also suggested changing caption and publishing the screen.
+Teammate is investigating the issue with incorrect attachment of Sales Estimate and will provide updates.
+Customer also has a question about accepting estimates via mobile phone, which teammate is also investigating. Chat Link"
+The customer contacted us because their invoice was not syncing with QuickBooks due to a conflict with an item that had not been sent to QuickBooks.,"Connect,Connect,Transactions","sync conflicts,qbo sync,invoices","general support & issue resolution,financial & payments","• Invoice 24021 not syncing with QuickBooks due to a conflict with the item ''Vodka 750ml (1/2 Case (6))'' which has not been sent to QuickBooks.
+• Select the correct ''income account'' for the item and retry sync.
+• Cannot associate a product or service with certain account types (e.g. Accounts Receivable and Accounts Payable).
+• Once the issue is resolved, the invoice should sync properly.
+• Teammate accessed the account to investigate the issue and provided a solution.
+Chat Link"
+The customer contacted us for assistance with transferring customization from an estimate to an invoice and creating multiple line items for labor rates.,"Customer,Transactions","customization,invoices",other,"Customer has questions about transferring customization from estimate to invoice
+Teammate offers to help and confirms permission to access account
+Customer also has question about creating multiple line items for labor rates
+Teammate suggests booking time with consulting team for customization and offers 1 hour of free customization
+Customer has figured out labor rates but customization is needed for ''scope of work'' to transfer to invoice. Chat Link"
+The customer contacted us to learn how to add a new item to the 'CaseType' dropdown field in their 'Cases' app.,Admin,data import/export,other,"• The customer is looking to add a new item to the 'CaseType' dropdown field in their 'Cases' app.
+• To do so, they will need to create a screen to manage the dropdown values.
+• The customer can do this by going to the 'Cases' app, selecting the vertical ellipsis, and clicking 'Manage'.
+• They can then create a screen, name it, and choose the 'CaseType' table as the base table.
+• The customer must be familiar with customization to perform these steps, and some dropdown tables from QuickBooks cannot be edited. Chat Link"
+The customer contacted us to inquire about hiding the ''Items'' column when printing or sending estimates in Method.,"Customer,Sales","report designer,icr-cs,icr-ps,estimates","miscellaneous,general support & issue resolution,other","Customer wants to hide the ''Items'' column when printing or sending estimates in Method.
+Teammate suggests using templates to control the appearance of estimates.
+Teammate asks for clarification on whether the entire item grid or just specific columns should be hidden.
+Customer confirms they only want to hide the ''Items'' column for the client's copy.
+Teammate makes the necessary changes to the print templates and will continue assisting via email. Chat Link"
+"The customer contacted us regarding issues with tax calculation, sales tax on line items, deposit calculation on estimates, and importing deleted tax codes.",,,general support & issue resolution,"• Tax column NON or TAX makes no difference in tax calculation
+• Issue with sales tax on line items resolved by changing IsTaxable flag
+• Deposit issue on estimates - discount calculated on balance instead of total
+• Importing deleted tax code created additional lines in work orders
+• No way to reverse import, requires customization to delete multiple lines Chat Link"
+The customer contacted us for assistance with a specific item not appearing in advanced search on the Royalty sales screen.,Customer,customization issues,other,"• Customer is unable to pull up a specific item in advanced search on the Royalty sales screen.
+• Teammate requests for more information and permission to access the account.
+• Customer provides details and mentions issues with skus CATL1319PM and CATL70120TC.
+• Teammate suggests contacting consulting team for customization issues, which is a billable service.
+• Teammate provides contact information for support team. Chat Link"
+The customer contacted us for help with an issue regarding an hourly rate changing to 150 after adding an item to the estimate.,Customer,customization,other,"Customer needs help with an issue regarding hourly rate changing to 150 after adding an item to the estimate.
+Teammate offers to help and schedules a screen share.
+During the screen share, the issue is resolved by changing the amount under the item column in the GridBuilder.
+The customer is satisfied with the solution and the teammate recaps the call and offers further assistance if needed.
+Teammate thanks the customer for their patience and the customer is reminded to reach out with any additional questions. Chat Link"
+The customer contacted us to search for all sales orders for a specific item.,,stockapps how-to,"how-to,general support & issue resolution","Customer needs to search all sales orders for a specific item
+Teammate offers to access customer's account and customize the search
+Teammate suggests discussing with Aleksandar Radman for dedicated account
+Teammate checks in and offers to continue conversation if needed
+Teammate closes chat and encourages customer to reach out for further help. Chat Link"
+The customer contacted us for assistance with sending estimates to an additional email address and inquiring about re-sending estimates with updated scope and moving list items.,"Transactions,Sales","email settings,icr-cs,icr-ps,estimates","miscellaneous,general support & issue resolution,support & communication","Customer needs help sending estimates to an additional email address.
+Teammate offers two options: adding CC to the email or adding CC to the email template.
+Customer chooses to add CC to the email template and teammate provides steps to do so.
+Teammate offers to do a screen share to assist with the process.
+Customer also asks about re-sending estimates with updated scope and moving list items in an estimate. Teammate provides solutions and adds customer's account to a feature request for moving list items. Chat Link"
+"The customer contacted us to request itemized copies of invoices and credit card receipts for the past 2 months, as well as access to invoices for another account and the option to add multiple billing contacts.","Growth,Transactions","billing,invoices",other,"The customer needs an itemized copy of invoices and credit card receipts for the past 2 months.
+The teammate suggests using Method's Sales Receipts App to print or email the receipts.
+The teammate offers to access the customer's account and send the receipts via email.
+The customer also needs copies of invoices for another account, and the teammate provides a link to access them.
+The customer can have multiple billing contacts on the account. Chat Link"
+The customer contacted us for help with importing inventory items and contacts from spreadsheets.,Admin,data import/export,other,"Customer needs help with importing inventory items and contacts from spreadsheets
+Teammate offers assistance with personalizing Method for the customer's business needs
+Examples of previous customization work include importing leads and contacts, designing workflows, creating custom reports, and capturing advanced customer/sales details
+Teammate asks for more details on what the customer needs help with
+Teammate provides steps for importing inventory items through Method's integrations feature Chat Link"
+The customer contacted us because there was an issue with the syncing of their sales order and invoice for West Family Farm and Bennett Nolan due to an extra line with no item attached.,"Connect,Transactions","qbdt sync,invoices","general support & issue resolution,other","West Family Farm has an invoice and sales order that are not syncing with QB.
+The sales order and invoice are in conflict due to an extra line with no item attached.
+The extra line has been removed and the sync has been completed.
+The issue is also present with Bennett Nolan's sales order.
+The extra line has been removed and the sync has been completed for Bennett Nolan as well. Chat Link"
+The customer contacted us for assistance with streamlining their processes and importing items with markups and margins.,"Admin,Customer","data import/export,customization","general support & issue resolution,other","Teammate offers free 1-hour customization session to help streamline customer's processes.
+Teammate provides live demo option for customer to learn more about account.
+Customer is looking for an item template to import parts and set markups and margins.
+Teammate recommends working with customization expert for accurate and seamless import of items.
+Teammate shares article with customer for import templates and advises on identifying and mapping data for database migration to Method. Chat Link"
+The customer contacted us for assistance with service items not populating on recurring work orders.,,,general support & issue resolution,"Customer is having trouble with service items not populating on recurring work orders.
+Recurrence schedule may not be correctly configured.
+Teammate suggests customization to automatically copy service items to recurring work orders.
+Customer gives permission for teammate to access account and mentions having many work orders to enter.
+Teammate provides booking calendar for customization and encourages customer to explore Help Center for customization resources. Chat Link"
+The customer contacted us because they were experiencing sync errors on their invoice and estimates were not syncing due to amounts not associated with items.,"Connect,Transactions,Sales","sync conflicts,invoices,estimates",general support & issue resolution,"Customer has a sync error on an invoice and has not received any emails.
+Teammate asks for permission to access the account and resolves the issue.
+Customer has a similar problem with estimates not syncing due to amounts not associated with items.
+Teammate creates a case for support to resolve the issue and provides case number.
+Teammate resolves some estimate sync conflicts but others return and are noted for the support agent to resolve. Chat Link"
+The customer contacted us because they are experiencing an issue with items changing after saving and invoicing.,Connect,qbdt sync,other,"Customer is experiencing an issue with items changing after saving and invoicing.
+Teammate is investigating the issue and has requested permission to access the account.
+The issue seems to be with the invoice, specifically the item ''additional'' changing to ''notes'' and the price becoming zero.
+Teammate is checking if this is happening on other sales orders and has requested a screenshare.
+After checking the audit trail, teammate discovered that the line item was made inactive after the invoice was created and updates were made in QuickBooks. Chat Link"

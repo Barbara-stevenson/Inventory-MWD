@@ -1,0 +1,608 @@
+﻿Description,GPT Category,TeamA,Estimated Difficulty,# of Accounts Req.,Category,Old Team A,Team Dependent
+This customer is planning to migrate from QBDT to QBO and want to implement this functionality where they have to manually create purchase orders for each supplier and system should allow them to select the desired line items from Estimate to pick and create PO for their respective suppliers with ease.,Inventory and Financial Management,Sales,Catalog Entry Available,53,Internal Tools and Efficiency,Stock Apps,
+"The customer is just looking to convert an existing Estimate, Invoice, Sales Order or Work Order into an itemized list without any pricing.
+
+This document would be used to attach with shipping to ensure the list of items is included.
+
+
+Keywords:
+Delivery Notes
+Shipping Information
+Delivery Info",Templates,Service Delivery,Catalog Entry Available,48,Customer-Facing Features,Stock Apps,
+We have received requests to add a picture per (specified) items so the visual is available when the SalesRep selects the item on Invoice/Estimates.,Templates,Sales,Small (3 -4 hours),32,Customer-Facing Features,Stock Apps,
+"Ability to change sort order of items on Sales Orders
+
+- He is aware this will be Method:CRM only sort order, and these changes will not reflect the sort order of items in QuickBooks. 
+
+- Sometimes, when creating Sales Orders, a customer requests an item at the end of the order, but the item needs to be ordered/displayed higher up in the items list. 
+
+- Currently, they need to remove all items up to that part, and then add the new item and re-enter the items they removed. 
+
+- They would like to add an item to the middle of a sales order, and have this order reflected internally on the Sales Order screen, print out, as well as in the portal. 
+
+Keywords:
+Move Lines
+adjust line item
+rearrange items",Product Functionality,Sales,Small (3 -4 hours),26,Internal Tools and Efficiency,Poeisis,Stock Apps
+"The customer sells products in both German and English.
+
+They need the ability to take their English Items and have them reflect their German name equivalent. 
+
+In addition they need to have their templates updated to reflect the different language conditionally based on the customer that's been selected. ",Localization,,Large (10 - 30 hours),22,Customer-Facing Features,,
+"The customer sells using SKUs rather than item names. 
+Since items could have many variations.",Inventory and Financial Management,Sales,Catalog Entry Available,22,Inventory and Asset Management,Stock Apps,
+"User would like the ability to insert a line item on an existing estimate / invoice.
+
+Its important for their line items to flow in a certain order but they often forget to add certain line items during the estimate process.",Product Functionality,Sales,Small (3 -4 hours),14,Internal Tools and Efficiency,Transactions,Stock Apps
+"I have attached a sample screen shot of the report a client wants to build. Can you provide me a rough estimate please. 
+
+This report has a profit by item 
+- Items also may also be linked to discount items which should be factored into the profit calculation. ",Reporting and Analytics,Sales,Medium (5-10 hours),13,Reporting and Insights,Stock Apps,
+"is it possible to create a template estimate inside method Example when creating a new estimate several different items will appear. We almost use the same estimate items for all the customers.
+
+eg. Paint 1 Bedroom, will always have the same 14 items on the estimate.
+eg. Sliding Door Installation will always include removal of existing doors, new rails, new doors
+
+Keywords:
+Prebuilt Template
+Prebuild Template
+Pre Build
+Pre Built
+Estimate Categories
+Pre-populate
+Pre populate",Product Functionality,Sales,X-Small (1 -2 hours),12,Internal Tools and Efficiency,Stock Apps,
+This customer wants to implement this functionality where they have to manually create purchase orders for each supplier and system should allow them to select the desired line items from Sales Order to pick and create PO for their respective suppliers with ease.,Inventory and Financial Management,Sales,X-Small (1 -2 hours),11,Inventory and Asset Management,Stock Apps,
+"Include the ability to track items receipt in Method and sync back to QB.
+Customer handles a large amount of inventory processing from vendors. 
+
+Purchase order to bill flow is essential for their business.",Inventory and Financial Management,,Catalog Entry Available,7,,,
+"Customer has a number of items they do not want their users to select or access. 
+Ideally, they would like the ability to pick and choose what items their team could use. ",User Management,,X-Small (1 -2 hours),7,,,
+"Hi guys,
+
+How long will it take to convert a pledge (Opportunity) to a Donation (Sales receipt)?
+
+Key fields we'd need 
+- Line Items on the Opportunity screen
+- Entity
+- Billing Address",Product Functionality,,Medium (5-10 hours),7,,,
+"Customer would like to create a custom app to track Billboard rentals with some statistics like start date, end date etc
+
+They would ideally like the rental app to auto populate when certain items are sold on an invoice.
+
+Including when items have been checked in and checked out.",Product Functionality,,Medium (5-10 hours),7,,,
+"A Bill of Materials (BOM) is a comprehensive list of all the raw materials, components, and assemblies required to manufacture a product. It includes the quantities of each material needed and may also detail other aspects like the labor required, tools, and instructions for manufacturing.
+
+Components of a BOM:
+Part Number/Item Code: Unique identifier for each component.
+Description: A brief description of the component or material.
+Quantity: The amount of each component required for manufacturing.
+Unit of Measure: How the quantity is measured (e.g., pieces, kilograms).
+Cost: The cost of each component or material.
+Supplier Information: Details about where the material is sourced.
+Assembly Instructions: Steps or methods required to assemble the product.
+Lead Times: Time required to procure or manufacture each item.
+Accounting Workflow: Item Receipt + Converting to Bills and Customer Invoices
+Purchase Order (PO) Creation:
+
+You begin by creating a Purchase Order for the materials listed in the BOM. This document is sent to your supplier, detailing the items, quantities, and agreed prices.
+Receiving the Items (Item Receipt):
+
+When the materials arrive, you create an Item Receipt in your accounting or inventory management system. This document acknowledges that you have received the goods but haven’t yet paid for them.
+The inventory is updated to reflect the newly received items, increasing the stock levels.
+Converting Item Receipt to Bill:
+
+After confirming the receipt of items, the Item Receipt is converted into a Bill.
+The Bill reflects your obligation to pay the supplier. It records the amounts owed and the due date for payment.
+This step often includes matching the Bill to the original Purchase Order to ensure consistency in quantities and prices.
+Paying the Bill:
+
+The Bill is paid according to the payment terms agreed upon with the supplier. This transaction reduces your accounts payable and the cash or bank balance.
+Manufacturing the Product:
+
+Once all necessary materials are in stock (as per the BOM), the production process begins. During manufacturing, the materials are used up, and their costs are transferred from inventory to work-in-progress (WIP) or directly to the cost of goods sold (COGS), depending on your accounting system.
+Creating Customer Invoices:
+
+After the product is manufactured and ready for delivery, you generate a Customer Invoice.
+This invoice includes the final product details, quantities, and prices, reflecting what the customer owes you.
+The invoice is sent to the customer, and the amount is recorded as accounts receivable.",Product Functionality,,Medium (5-10 hours),6,,,
+Question: The customer contacted us because they were getting an error message when trying to create an estimate from an opportunity. Summary: Customer is getting an error message when trying to create an estimate from an opportunity. Teammate asks for more details and access to the account to investigate. Customer confirms the error occurs when trying to create an estimate and that some items may not be available. Teammate explains that the warning is due to deleted or unavailable items.,Data Management,,X-Small (1 -2 hours),6,,,
+"Customer is looking to have a feature where they can add items to all sub-workorders instead of having to click the button ' Copy Job Items From Recurrence Schedule' .
+
+
+Keywords:
+Recurring
+Recurring Work Order
+Recurring WorkOrder
+Recurrence
+Sub-items
+Children
+Child Work Orders
+Repeat Work
+Copy from Series
+Series Items",Product Functionality,Service Delivery,X-Small (1 -2 hours),6,,,
+This client would like to have the option to see a comparison between the initial amount that is defined when an opportunity is created vs the final amount in which the items are sold when an invoice related to the opportunity is created since sometimes this amount is below than what was initially defined.,Templates,,X-Small (1 -2 hours),5,,,
+"What is the customer looking for and what they want? - 
+
+- They customer is in aerospace industry
+- The customer creates a Quote/Job Costing before they convert it into Estimates ( > Send to customers > Approve > Invoicing > Receiving Payments)
+- The Quote/Job Costing includes line items of their travel costs in local currencies, other expenses and so on
+- That local currency on each line item has to be converted into the customer's currency ( which is selected in Method on the customer level)
+- The conversion of currency on the line item level can have a fixed conversion rate based on a custom table we create in Method (which they can update manually every day), OR
+- We can create an API integration in Method with websites like 'https://www.xe.com/currencyconverter/', which will update the conversion values every day
+
+
+How are they solving this today? - They are using Excel files to calculate the daily conversion of value of each line item and then billing the customer based on their region
+
+** I have attached a screenshot of the way how they calculate this in their excel file to understand this better",Product Functionality,,Small (3 -4 hours),5,,,
+"On Sales Order screen, as part of the LineItems grid, enable 'Quantity on Hand' QOH and 'Quantity on Sales Order' QoSO, and a third column where QOH minus QoSO (math field)?
+",Inventory and Financial Management,,X-Small (1 -2 hours),5,,,
+"Our customer currently functions basically as a construction wholesaler.
+As a result thei clientele will often call ahead and submit an order, and a maintenence person will come pick up the order at the warehouse on occassion. 
+
+The customer, wants the person picking up the order to sign-off on the items they picked up.
+Then wants to print that on a packing slip that includes but is not limited to:
+
+1.) The signature of the person picking up
+2.) The date
+3.) Their name printed
+4.) Itemized list of items and quantities picked up",Templates,,X-Small (1 -2 hours),5,,,
+"A Bill of Lading (BOL) is a legal document issued by a carrier to a shipper that serves as a receipt for the goods being shipped, a contract of carriage, and a title for the goods. It includes details like the type, quantity, and destination of the goods, and it must accompany the goods being transported. The BOL is crucial in the shipping process as it is used to ensure that the carrier delivers the goods to the correct location and to the correct party. It can also be used in disputes over shipping, as it serves as proof that the carrier received the goods as described.
+
+A Packing Slip, on the other hand, is a document that details the contents of a shipment. It lists the items included in the shipment, but it doesn't serve as a legal contract or title for the goods. A packing slip is primarily used by the recipient to check that all items listed have been received and to verify the quantity and description of the products.
+
+Key Differences:
+Purpose:
+
+Bill of Lading: Acts as a legal contract, a receipt, and a title for the goods.
+Packing Slip: Lists the contents of the shipment for verification purposes.
+Legal Status:
+
+Bill of Lading: Legally binding document that outlines the terms of the transportation contract.
+Packing Slip: Not legally binding; purely informational.
+Use Case:
+
+Bill of Lading: Used by the shipper, carrier, and consignee to manage the shipping process.
+Packing Slip: Used by the consignee to ensure all items have been received.
+Contents:
+
+Bill of Lading: Includes detailed shipping information like the shipper, carrier, consignee, description of goods, and delivery instructions.
+Packing Slip: Includes a list of items, quantities, and sometimes item prices or codes, but not detailed shipping or contract information.
+In summary, while both documents are important in the shipping process, the Bill of Lading has a broader legal and logistical role, whereas the Packing Slip is focused on item verification.",Data Management,,Medium (5-10 hours),5,,,
+"Would be useful to be able to search transactions by searching items  within the transactions.
+
+Example 1: On the invoices grid and you search for an item and all invoices that have that item return on the grid
+
+Example 2: An item in an invoice has a description line that uses code numbers - would be able to search an Invoice that has these code numbers by entering it in the search bar",Product Functionality,Transactions,Catalog Entry Available,5,,Transactions,
+"The customer has a few standard services that includes 5 - 7 items. Adding these items constantly is inefficient for the customer. They would like to have pre-built templates based on Work Order type, that the technicians or dispatchers could use to pre-fill the work order faster.",Automation,Service Delivery,X-Small (1 -2 hours),4,,,
+"Customer sells tickets and other things.
+They need the ability to separate donations from items sold at auction or other events.",Inventory and Financial Management,,Catalog Entry Available,4,,,
+"Method does not currently support the advanced priced rules feature of QBDT.
+
+Advanced Price Rules is a premium add-on that allows the user to create price rules with conditions based on customer, item, sales rep, and class. 
+You can also create override rules to exclude items from a price rule.
+Automatically change the prices of items on sales based on the price rules you create.
+Create Qty Discounts on specific items.
+
+Can these functionalities by customized in Method?",Product Functionality,Transactions,Large (10 - 30 hours),4,,,
+"Customer is looking for a Rewards app that's supported by the QuickBooks Sync.
+Ideally everytime a customer spends a $1 with their company.
+
+They want the customer to earn a points. 
+The customers can then use these points to redeem items and services. 
+
+The customer wants to do the following:
+1.) Tier off customers based on their lifetime value (Platinum, Gold, Silver)
+2.) Allow their team to add and remove points
+3.) Automatically calculate points based on paid invoices
+4.) Have all sub-customers report to the parent for points
+5.) Build a redemption system that would flow into QuickBooks as a credit memo. 
+
+Furthermore, they would like to be able to modify point balances for other tasks like:
+1.) Following Instagram or Twitter
+2.) Updating their saved payment information
+3.) Updating their contacts and phone numbers in the CRM",Product Functionality,,Small (3 -4 hours),4,,,
+"One of this users most common items is business cards. 
+
+They would like  the ability to edit the total amount vs the rate since commonly, it's simply an agreement to print 500 quantities for 500$. 
+
+At the moment, the user would need to pull out a calculator to get a rate to update the agreed-upon amount.
+
+The ability to edit the amount and have the rate auto-populate would greatly streamline their experience.",Product Functionality,,X-Small (1 -2 hours),4,,,
+"Customer is a field services business looking to find a more comprehensive way to record and report job costs. 
+
+The biggest element missing are bills and time tracking. 
+
+They are wondering if Method can 1) have real-time profitability on workorders based on Items cost + Time + Bills.
+
+They are wondering if this information can be graphically designed and printable via PDF.",Inventory and Financial Management,,Medium (5-10 hours),4,,,
+"Customer is looking to add price levels in Method. 
+They are aware that it will not sync to QuickBooks but the invoices will reflect the amount based on the price level we will add. 
+
+Attached is the excel sheet he shared as an example.
+Price Levels can have many renditions:
+
+1.) Flat % based price level by customer type
+2.) Quanity based discount based on item
+3.) A combination of both where a Dealer purchases 100 items where we need to evaluate the better price of the two
+
+Quantity Based Pricing Tiers",Product Functionality,,Medium (5-10 hours),3,,Transactions,
+"Customer is wondering why group items/bundled sub items do not populate on workorders. 
+
+They would prefer the same workflow for group items on estimates where sub items are visible on the work order line-items grid.",Product Functionality,Service Delivery,Small (3 -4 hours),3,,,
+Customer wants to  calculate tax on the subtotal of the service items before accepting the proposal and show it under Invoice Dates --> When Accepted grid (see screenshot attached).,Product Functionality,,X-Small (1 -2 hours),3,,,
+"Customer is looking to remove a category from appearing on transactions alongside items.
+
+They do not want the product categories to show before the item. They categorize the items but  do not want or need that information to display to the customer on quotes, sales orders, invoices etc..",,,X-Small (1 -2 hours),3,,,
+"Customer has need for a widget on their portal in order to show paperwork for invoices (packing and shipping lists) 
+
+Currently you can disable the widget to allow customers to view current documents without adding or deleting them. 
+
+Customer mentioned that it would be useful to allow them to add items only without giving them the option of deleting any files",Portals,,X-Small (1 -2 hours),3,,Transactions,
+"Customer is manufactering for metal roofing parts. 
+
+They purchase metal by sheets (square feet) but sell roofing items by the foot.
+
+Can we customize Method so that roofing items (ft) is invoices, we automatically convert to square feet for reduction of inventory and on-hand quantity?
+
+Keywords:
+UOM Conversion
+Different UOM Convert",,,Small (3 -4 hours),3,,,
+"This has been an issue for multiple customers. 
+
+Many customers today do not carry inventory on hand and find the restrictions cumbersome when creating a transaction from an opportunity. 
+
+This specific account has opportunities with 10 plus items with the majority of them not available until a Purchase order is made. 
+
+The ability to override the available inventory restrictions would greatly streamline the workflow between Opp > Estimate",,,X-Small (1 -2 hours),3,,,
+Edit out 'Job Name' so the screen does not require the user to select a service item. They want it to be a free text-field that gives them the ability to type in the job name. Once they scroll to the bottom they can add in items from there.,,Service Delivery,X-Small (1 -2 hours),3,,,
+"1.) In some scenarios we like to show customers the full breakdown of a bundle.
+2.) In some scenario we like to hide all the sub-items associated with a bundle. 
+3.) The same goes for pricing associated with these bundles. 
+
+
+",Product Functionality,Sales,Medium (5-10 hours),3,,Transactions,
+"Include the ability to track items receipt in Method and sync back to QB.
+Customer handles a large amount of inventory processing from vendors. 
+
+Purchase order to bill flow is essential for their business as well as receiving inventory.",,,Cannot be customized,3,,,
+"Customer was wondering if it was possible to customize an alert when clicking a save button, specifically our Sent email app and Items app. 
+
+Unlike in account settings, save buttons in most apps do not trigger any feedback. 
+
+Can we customize an alert on the screen? ideally with the same experience as changing account settings",,,X-Small (1 -2 hours),2,,,
+"User would like to know if its possible to lock in the top section of the invoice screen so the invoice fields always appear at the top. 
+
+They have invoices with long items list and the ability to reference the invoice fields at any time is a benefit.
+
+Similar to the functionality in excel, where we freeze rows at the top as we scroll down.",,,Cannot be customized,2,,,
+"User sells microchips to manufacturers and is looking for a way to manage incoming Purchase Orders as Sales Orders. 
+
+These Sales Order will often contain a large quantity of items, that will be partially invoiced as part of their production cycle. 
+
+They would like the ability to edit the quantity of items when creating an invoice from a sales order. 
+
+Additioanlly, they would like to track the quantity invoiced and to be invoiced at the sales order level.
+
+Lastly, they would like the sales order to be automatically closed when all items have been invoiced.",,,Small (3 -4 hours),2,,,
+"Customer wants the default evaluation on the criteria to be contains instead of Equal to when adding a new criteria condition within the advanced search. 
+
+This allows them to search for items faster without having to ensure that information is exact. 
+
+Allows for partial information input (E.g. Alex instead of Alexander or New York instead of New York City)",,,Cannot be customized,2,,,
+"Currently, when a user creates a recurring work order, there is the ability to copy items from the Schedule of Recurring Events work order (Parent Work Order) to a ocurrence work order (Child Work Order). However, it will only copy it into the occurence work order that you are currently on. That means that if you have a recurring work order that occurs many times, you will have to go into each occurence work order and copy it over one by one. 
+
+This is not very efficient and having the ability to copy items from the Schedule of Recurring Events WO into all the occurence work orders all at once would save the user time.",,Service Delivery,X-Small (1 -2 hours),2,,,
+"User sells custom pallets and would like the ability for their sales reps to create items directly from the estimate app. 
+
+This would streamline the estimating workflow from a sales perspective and also protect some of the sensitive data housed in the items app.",,,X-Small (1 -2 hours),2,,,
+"The customer is looking for an HTML version of the Estimate and Invoices. 
+Ideally, they want the customer to open the email and see exactly everything they need.
+
+No Portal requirement
+No attachment. 
+
+Just a straight summary on the email of the invoice or estimate. 
+
+Keywords:
+Show Items on Emails
+Item Email
+Estimate with Items
+Invoice with Items
+Transaction Emails",,,Medium (5-10 hours),2,,,
+"Purpose and Focus
+Inspection App: Primarily designed for verification and compliance, focusing on systematically assessing conditions, equipment, and standards. For example, a fire safety inspection app would allow inspectors to check fire alarms, sprinklers, extinguishers, and evacuation routes, ensuring they comply with regulations and function as intended.
+
+Workflow and Usage
+Inspection App: Inspections follow a structured, checklist-based format where items are assessed, marked as “pass/fail,” and documented for compliance. Users typically log details such as dates, location, condition, and photos, ensuring that every element meets safety codes.
+
+
+Data Tracking and Reporting
+Inspection App: Emphasizes data collection, trend analysis, and compliance reporting. Reports summarize the status of inspections, identify recurring issues, and highlight areas needing improvement.
+
+Inspection vs. Work order
+Use an Inspection App if your primary need is ensuring compliance, assessing risks, or adhering to regulatory requirements. This app is ideal for scheduled assessments of equipment or environments, ensuring everything is up to code.
+Use a Work Order App if your goal is to manage and track repair and maintenance tasks efficiently. This app is best for prioritizing, assigning, and tracking corrective actions arising from inspection reports or other triggers.",,,Large (10 - 30 hours),2,,,
+"The customer is wondering if we can customize an Items purchased history app, summarizing the invoice  history alongside how many times an item has been estimated and added to an opportunity.
+
+This app should focus on the Item vs customer",,,Small (3 -4 hours),2,,,
+"On our transaction reporting screen, we currently show a list of items purchased within a period of time. 
+
+The items are sorted alphabetically. 
+This is not ideal since we would like to see the most popular item at the top and the least popular at the bottom.",,,X-Small (1 -2 hours),2,,,
+"Customer has a list of 1000s of items.
+They need the ability to filter beyond just 'IsActive'
+
+They could have items that are 'Active' but they're items, they don't want their team to 'Sell' or use on Customer Transactions.
+
+Therefore they would like to curate a list of items people 'can' use when creating transactions.",,,X-Small (1 -2 hours),2,,,
+Customer would like ability to add items directly from the Estimate/Invoice App without have to jump over to the Items app.,,,X-Small (1 -2 hours),2,,,
+"Customer is requesting a custom report that expends on our stock invoice reports. 
+
+They would like a way to summarize subtotals by items categories in both a graphical and table reports.",,,X-Small (1 -2 hours),1,Internal Tools and Efficiency,,
+"The user would like to add items to existing transactions. 
+Today this is currently two clicks are they're required to click 'Add Items' 
+
+Then they can click into the line and add an item. 
+
+Ideally this would be a preference, as some users prefer to have a blank ghost line at the bottom of the grid, and others prefer the explicit step of adding lines.",,,Cannot be customized,1,Internal Tools and Efficiency,,
+"Customer uses proposal exclusively for their premium moving operation. 
+
+They want to use bundled items to simplify the quoting process.
+
+At the moment, Sub-items do not populate on the proposal app. 
+
+Since their sub-items serve 2 purposes, 1) for creating the subtotal and 2) acts as a scope of work,  can this be customized?
+
+Keywords:
+Bundle
+Grouping Items
+Group Items",,,Small (3 -4 hours),1,,,
+"User would like to better utilize his purchase history data for mass emailing from the Email Campaign App. 
+
+The user is a big fan of the utilities our Purchase History catalog but feels there is a disconnect between PH and Email campaigns. 
+
+Ideally, he would like to use advanced filters to isolate customers who has purchased specific items from his inventory for email marketing.",,,Small (3 -4 hours),1,Field Operations and Logistics,,
+"User is in the custom pallet industry and have to create unique items during the estimate process. 
+
+They would like sales reps to have access to only items created by them, similar to our Restrict Share tables set up. 
+
+They would like administrators to have access to all items in the system.",,,X-Small (1 -2 hours),1,,,
+"Request: We want to be able to call the app routine from a separate app. 
+
+Use Case: In this case, I have an API call all on the Work Order Apps and as our expectations have changed, we now need this on the Items App as well. At the moment, we either have to use our internal tools to copy over the screen so that app routine is copied into the specified app or recreate from scratch.
+
+Benefit: This save time on customizing. For example, if we were to call from different apps, we only have 1 place to change the logic. At the moment, any change made to 1 of the app routines would then need to be replicated into all the other apps.",,,Cannot be customized,1,Customer-Facing Features,,
+Can Items that has an unchecked 'I sell this service to my customers' be excluded from line items of all sales transactions?,,,X-Small (1 -2 hours),1,,,
+Customer would like to update line items for past invoices for all active customers. Does not want to manually going reselect items to reflect new pricing.,,,X-Small (1 -2 hours),1,,,
+"User is in custom drapery designs business and organizes their estimate by bedrooms. 
+
+Currently, they are using empty line-items to create an digestible interface for their customers. 
+
+They would like to ability to better group and create sub-sections for each bedroom and perhaps make them expendable/minimized upon clicking.",,,Small (3 -4 hours),1,,,
+"The customer is looking to have the ability to create Work Orders from the Sales Orders.
+They are looking to add the inventory items to the Sales Orders and create Work Orders out of it for the field crew member to dispatch the order.",,Service Delivery,X-Small (1 -2 hours),1,,,
+"I like that my users have access to the Items App to see what we have in stock and the quantities currently on hand or on order. 
+
+However, I do not need my team to know how much these items are being purchased for. It creates unnecessary confusion and I don't need them to know much much we're marking up every item.
+
+They should just be focused on the sales or items.",,Sales,X-Small (1 -2 hours),1,,,
+"A Warehouse Management System (WMS) is a software solution designed to optimize and manage warehouse operations, from receiving goods and managing inventory to order fulfillment and shipping. While basic inventory tracking usually handles stock quantities and product locations, a WMS offers much broader functionality.
+
+Key Differences between a WMS and Basic Inventory Tracking:
+Scope of Operations:
+
+Inventory Tracking: Focuses on the simple recording of stock levels, item locations, and maybe reorder points.
+WMS: Manages the entire lifecycle of warehouse operations, including receiving, storage, picking, packing, shipping, and even labor tracking.
+Automation and Efficiency:
+
+Inventory Tracking: Manually updates stock levels and locations based on transactions.
+WMS: Automates tasks such as barcode scanning, real-time inventory updates, task prioritization, and optimization of warehouse layout and picking routes.
+Order Fulfillment and Shipping:
+
+Inventory Tracking: Records when stock is depleted through sales or shipping.
+WMS: Directly manages the order picking, packing, and shipping process, often interfacing with shipping carriers and managing complex multi-order processes.
+Complexity and Customization:
+
+Inventory Tracking: Suited for simple environments with less variation in stock movements.
+WMS: Designed for large, complex warehouses handling multiple SKUs, bulk orders, and requiring sophisticated workflows, such as batch picking, wave picking, and cross-docking.
+Integration with Hardware:
+
+Inventory Tracking: Limited interaction with hardware.
+WMS: Interfaces with warehouse hardware such as barcode scanners, RFID readers, conveyor belts, and automated picking systems.
+Integration with QuickBooks: End-to-End Workflow Perspective
+Inventory Syncing:
+
+The WMS syncs inventory levels with QuickBooks in real-time. This ensures that both systems reflect accurate stock levels, preventing over-ordering or stockouts.
+Purchase Order and Receiving:
+
+When a Purchase Order (PO) is created in QuickBooks, it’s pushed to the WMS. The WMS manages the receiving process, ensuring the correct items and quantities are received. Once received, it sends a confirmation to QuickBooks, updating the inventory and marking the PO as fulfilled.
+Sales Order Fulfillment:
+
+When a sales order is created in QuickBooks, it’s sent to the WMS. The WMS allocates inventory, generates picking lists, and manages the fulfillment process. Once an order is fulfilled, it updates QuickBooks to reflect the shipped order and adjusts inventory accordingly.
+Shipping and Invoicing:
+
+The WMS can integrate with third-party shipping solutions, automatically calculating shipping costs and printing labels. Once the item is shipped, the information is sent back to QuickBooks, which can trigger invoice creation and customer notification.
+Returns and Reverse Logistics:
+
+When products are returned, the WMS manages the process, including inspection, restocking, and inventory adjustments. The return is also reflected in QuickBooks, ensuring accurate financial and stock updates.
+Reporting and Reconciliation:
+
+Both systems share real-time data, ensuring that financial reports, inventory values, and costs of goods sold (COGS) are accurately represented. The integration allows seamless reconciliation between physical inventory and financial records.
+In summary, a WMS provides an advanced solution that goes beyond simple inventory tracking, focusing on optimizing warehouse operations. Integration with QuickBooks creates an efficient end-to-end process, streamlining inventory management, order fulfillment, and financial tracking.",,,X-Large (30 + hours),1,Customer-Facing Features,,
+"There is a list of reserved words in our backend which cannot be used in custom field names. Most recently we came across an issue on account OceanMarine after adding a custom field named 'OMCurrency' to the Items table which caused table corruption and made the new field unusable.
+
+This is a difficult concept to understand for customizers that are unfamiliar with our technology stack and related rules. We can do a better job handling reserved words when adding/using custom fields. For example, we can prevent users from adding fields that contain reserved words.
+
+Additionally, we can provide easy to understand messaging to help educate the user such as: 'The word .... is reserved and cannot be used. Please enter a different field name.'",,,Cannot be customized,1,,,
+"User is a photographer for real estate agencies. 
+
+The billing is sent to the office but additional contacts are the real estate agents booking jobs. 
+
+Once all the jobs(work orders) are completed, user will batch invoice multiple WOs  linked to multiple contacts in a single invoice. 
+
+They are wondering if we are able to add a contact name and job address to the line item of the invoice to help the agencies understand who the line items were made for?",,Service Delivery,X-Small (1 -2 hours),1,Internal Tools and Efficiency,,
+They would like an Invoice to be automatically created with the corresponding line items based on selections made on the Web to Lead form.,,,Small (3 -4 hours),1,,,
+"Customer has 2 services and are taking deposit on both. 
+
+However, each deposit item is linked to a separate income account. 
+
+They are curious if we can customize a way to changed the deposit item based on service items on an estimate.",,,Small (3 -4 hours),1,,,
+"Customer is in the design industry, and offer fix pricing on most services. 
+
+They would like an Estimate to be automatically created with the corresponding line items based on selections made on the Web to Lead form.",,,Small (3 -4 hours),1,,,
+"Customer would like the ability to change/edit the 'amount' in the line items grid.
+They are a consulting firm and flexibility in pricing is key.
+
+They would like the Amount field to be editable, like the rate and quantity field.
+Which would then update the rate / cost accordingly. 
+
+For example rather than $100 * 30 = $3000.
+The customer would like the option to just type $3000 and have the qty & rate updated as needed. 
+",,,Small (3 -4 hours),1,,,
+Ability to show the Top N records on grids as well as the chart widget. A simple example of this would be to show the Top 10 Professional Service Cases by Age. A more generic example would be to show the Top 10 items sold in the last year.,,,Small (3 -4 hours),1,,,
+"User would like to customize the portal interface for Group items. 
+
+They would like all subitems to have no dollar value (hide the value) and have the total amount populate for the group item.",,,X-Small (1 -2 hours),1,,,
+"The customer is looking to resize the  Columns in items app.
+
+At present, when multiple columns are added, they overlap. Furthermore, there is no option to horizontally scroll and view all columns.
+(Video attached)
+
+Is it possible via customization to enable horizontal scrolling and resizing of the column width within the grid?",,,X-Small (1 -2 hours),1,,,
+"User uses empty line items to space out their interface and utilize description box of these empty lines for adding scope of work. 
+
+Currently,  making a copy or converting the estimate removes all lineitems with no item name/quanity/amount, can this be customized?",,Sales,Cannot be customized,1,,,
+"Summary:
+Request to implement the ability to create and manage bundled items directly in Method:CRM, mirroring QuickBooks functionality. Bundled items are groups of products or services sold together as a single unit, commonly used in QuickBooks for streamlined invoicing and inventory management. Currently, Method only supports viewing bundled items synced from QuickBooks, not creating them.
+
+Objective:
+Allow users to create and manage bundled items within Method:CRM, ensuring a seamless workflow for businesses that sell grouped products or services.
+
+Proposed Features:
+
+Bundled Item Creation:
+
+Introduce an interface for creating bundled items in Method.
+Allow users to select and group multiple existing products or services into a single bundled item.
+Customization Options:
+
+Enable users to name the bundle, set a default price, and optionally define quantities for each component.
+Allow optional visibility of component items on invoices (e.g., show/hide individual components).
+Sync with QuickBooks:
+
+Ensure that bundled items created in Method sync seamlessly with QuickBooks.
+Maintain compatibility with existing bundled items synced from QuickBooks.
+Bundled Item Management:
+
+Allow editing or deleting of existing bundled items within Method.
+Provide an overview of the bundles and their components for better inventory management.
+Reporting and Insights:
+
+Include bundled items in sales, inventory, and financial reports.
+Track sales and performance of bundles alongside individual items.
+Benefits:
+
+Streamlined Workflow: Businesses can manage their entire inventory system in Method without relying on QuickBooks for creating bundled items.
+Enhanced Flexibility: Allows customization and visibility options that better align with diverse business needs.
+Seamless Integration: Maintains sync with QuickBooks to ensure consistency between platforms.
+Improved User Experience: Simplifies invoicing and inventory processes for businesses selling bundled products or services.",,,Cannot be customized,1,Customer-Facing Features,,
+"Customer will be using Method Work Orders for delivery, replacing the current Sales order workflow used in QBDesktop. 
+
+Can we customize a way to track on Work Order in the items app?
+
+Can we customize a warning based on On WO vs On Hand?",,Service Delivery,Small (3 -4 hours),1,Internal Tools and Efficiency,,
+"This customer mentioned that he has some additional columns in his inventory section in QBDT. So, he would like to have those additional columns in the grid of the Items App:
+- Brand
+- Preferred vendor
+- MPN: Manufacturer Part Number",,,X-Small (1 -2 hours),1,,,
+"User sales + buys a high quantity of items for a high volume of orders. 
+
+They are really intrigued by the ability to turn Sales Orders into Multiple Purchase orders based on the preferred vendor field. 
+
+They are wondering if we can select multiple SOs, combine the items, and batch this action onto the same Purchase order based on the preferred vendor. 
+
+This would allow them to significantly cut down labor as they currently count the item quantities manually.",,Sales,Small (3 -4 hours),1,,,
+"User will often add new items to an estimate for the purpose of quoting. 
+
+They would like this specific items to remain Method only until the estimate is accepted or invoice paid. 
+
+Can we create a wait for sync approval workflow for item creation?",,,Medium (5-10 hours),1,Field Operations and Logistics,,
+"This user utilizes Estimates for an alternative purpose but is looking for a way to send customers pricing quotes/pricing lists. 
+
+They like the idea of adding items to the Opportunities app but is wondering if we can customize the Opportunity Email for the purpose of sending a pricing list?",,,Small (3 -4 hours),1,Customer-Facing Features,,
+"Please rename “Items” to be “Products & Services”. This is equally important for QuickBooks online users since the inventory products and services there are now called “Products & Services” too. “Items” seems to be QuickBooks' old ways of collecting items - in newer QB editions they are called Products & Services.
+
+Both Xero and QuickBooks have transitioned from calling Items 'Items' and have moved to 'Products and Services' for most verbage in QBO.",,,Cannot be customized,1,,,
+"Request: Having a Data Point click like on the Chart Widget would be beneficial to show data that relate to the location we're looking at. 
+
+Reason: Mobility City is looking to utilize the mapping widget and would like the ability to click on a location and see details about the location that is clicked
+
+Use Case: By having Data Point Clicks, we can display information for the location that is clicked. Eg. For Work Orders, if we clicked on a Work Order, we might be able to the Items related to the Work Order so the techs have an idea of what to expect without having to go back and forth between each different work order.",,,Cannot be customized,1,,,
+"Customer does not want their individual pricing for items parts to show on invoices and items. They have protected pricing with our vendors and would like to make sure that it isn't shared with other parties. They just want to show the item, quantity and total they ordered and not individual pricing for parts they purchase.",,,X-Small (1 -2 hours),1,,,
+This customer would like to have a space to add attachments to his Items so that he can add information about the technical data sheet of his products.,,,X-Small (1 -2 hours),1,,,
+"User has many items with lengthy item descriptions which often go over the 255-character limit on the Lineitem Grid. 
+
+Can the 255-character limit by increased?",,,Cannot be customized,1,,,
+User would like to track Location on all transactions at the lineitems level,,,X-Small (1 -2 hours),1,,,
+"Customer would like to change logic controlling estimate screens update. 
+
+Out of the box, the line-items and subtotals are updated on save/email/print. 
+Customer would like the subtotal to be more dynamic and update on any change.
+
+The Dynamic nature of being able to update is important so we can keep track of totals as items are added. Rather than adding items then pressing save to know the total.",,,Should not be customized,1,,,
+User is in the trophy business and would like an invoice report based on items category.,,,X-Small (1 -2 hours),1,,,
+The customer would like to know if there is another alternative to adding group items in Method. They know they can add bundle items in QBO but want to be able to do it in Method.,,,Small (3 -4 hours),1,,,
+"User is in the beverage and coffee business and has fields crews that deliver consumables on a regular basis. 
+
+The Work order generally starts with a list of items that the customer likes to buy, all with a quantity of 0. 
+
+Instead of going into each item to make the change on quantity, the customer is wondering if we can use an editable grid to make changes on one screen, saving their drivers valuable time on each delivery.",,Service Delivery,X-Small (1 -2 hours),1,,,
+"User is in auto part sales and has a huge quantity of inventory itsems and parts numbers for the item name. 
+
+They are often face-to-face with customers for order processing and find our open line-item search difficult to use, (they get a lot of returns).
+
+They are wondering if we can restrict the search utiliity to be Item name only plus query based on the sequential order I.e 123 should only return items that start with 123.",,,Should not be customized,1,Field Operations and Logistics,,
+"User is wondering if its possible to Batch-update all Taxes on the Lineitems to Tax or Non-Tax. 
+
+Ive made recommendations that the customer tax code is a better option to accomplish this but curious if such a customization exist.",,,X-Small (1 -2 hours),1,Customer-Facing Features,,
+"The “Group ID”, field is currently a text field, want to make this a dropdown field where you choose an option from a provided list instead of this being a manual entry field. (See attachment)
+
+This will keep the group # consistent across all items and prevent the same group #’s from being entered in numerous different ways (for example Group 11A / Group 11-A / 11A / group 11a etc.) 
+
+It should have a screen to create groups for this field as necessary.  ",,,Small (3 -4 hours),0,,,
+"1. Making line items grid available on New/Edit Opportunity screen. This way, sales reps can enter list of items that they are selling to the customer. 
+
+2. Opportunity Amount will be auto-populated and reflect the total amount of every line items selected. 
+
+",,,Medium (5-10 hours),0,,,
+"Duplicating a table is really helpful for a couple of reasons:
+
+1.) It enables me to create a table that matches the schema of another table for importing.
+- For example, importing into the activity table - Ideally I would just like to copy the activity table
+- Convert all the fields to “plain text” so I can import into this “Staging Table”
+
+Then use actions to import the data.
+
+2.) In general this does help us create apps / tables that share similar structures but keep the data separate. 
+- For example, an Inspection List vs. an Installation List. 
+
+The same information is captured; however, for a number of reasons, it’s easier to manage this information in two separate places vs. reporting on it all in the same place. 
+
+3.) Keeping records of historical changes
+- For example, a packing slip on a Sales Order
+- As things are shipped out, we may want to keep track of items that are shipping.
+
+QB enables us to keep track of how many are shipping up until today.
+However, we might want to keep a log of shipping records, this is especially helpful for partial shipments. 
+
+Saves customizers hours of creating tables and schemas.",,,Cannot be customized,0,,,
+"Based of the customer's last invoice, ability to quickly see what the last product they purchased on the Contacts Grid.
+
+This client for example provides classes, so their items are the courses. They want to be able to see on the contacts grid what the last course a particular customer had purchased. ",,,Small (3 -4 hours),0,,,
+"Customer workflow involves making and selling new items frequently and would like the ability for their team to create a new item from the estimate app if the item does not already exist.
+
+QuickBooks is able to do this inline when creating a new transaction. ",,Sales,X-Small (1 -2 hours),0,,,
+"I found that if I were to make a Sales Receipt for a Customer, it will appear as a Sales Receipt and a Donation in the Contact’s App Ribbon. 
+
+I made sure to use Items that are not set as a Donation Item in the Donation’s Preferences and the Sales Receipts still appeared as a Donation.",,,Cannot be customized,0,,,

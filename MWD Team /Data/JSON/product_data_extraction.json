@@ -1,0 +1,966 @@
+{
+  "Industrial Equipment & Machinery": [
+    {
+      "company_name": "PowerHandling, Inc",
+      "industry_description": "Material Handling Equipment Manufacturing & Distribution",
+      "product_types": "Pneumatic & battery roll movers (up to 50 tons), roll pushers, pallet movers, cart movers, hand pallet trucks, semi-electric jacks, electric pallet jacks (up to 4,400lbs), safety chocks, roll turners, cable reel turners.",
+      "complexity": "High - Specialized heavy-duty equipment with multiple power options. Complex product line spanning roll movers to electric pallet jacks. Customer support, maintenance, and training programs.",
+      "website": "",
+      "ltv": 85080.0,
+      "workflow_type": "Manufacturing & Distribution - Worldwide Network"
+    },
+    {
+      "company_name": "Brown Safe Manufacturing, Inc",
+      "industry_description": "Security Equipment Manufacturing - High-Security Safes & Vaults",
+      "product_types": "Luxury custom safes, military-grade products (TL-15, TL-30), jewelry safes, fire safes, gun safes (Tactical Series), floor safes, wall safes, vaults, cannabis security safes.",
+      "complexity": "Very High - Custom-built high-security solutions with exotic materials, military-grade specifications, specialized applications (cannabis, tactical). Government and embassy clients.",
+      "website": "",
+      "ltv": 84731.25,
+      "workflow_type": "Custom Manufacturing - High-Security Products"
+    },
+    {
+      "company_name": "Aquamatic Cover Systems",
+      "industry_description": "Pool Safety Equipment Manufacturing",
+      "product_types": "Hydramatic (flagship hydraulic automatic cover, 20-year warranty), HydraLux (European slat-style with rigid PVC slats, 20-year warranty), EZ-Cover (manual system). All systems reduce operating costs and improve pool safety.",
+      "complexity": "High - Patented dual-motor hydraulic designs, complex engineering. Lifetime pool cover systems with 20-year mechanism warranties. Can be customized to any converging pool shape.",
+      "website": "",
+      "ltv": 68189.5,
+      "workflow_type": "Manufacturing - Patented Hydraulic Systems"
+    },
+    {
+      "company_name": "Flow-Turn Inc",
+      "industry_description": "Powered Belt Curves & Spiral Conveyors Manufacturing",
+      "product_types": "Belt curve conveyors: Square-Turn belt power turns, Flow-Merge strip belt merges, Zone-Turn belted curves (low voltage conveyor systems). Flow-Lifts continuously running vertical conveyors (high throughput, low maintenance, parcel handling, e-commerce, factory automation). Flow-Gapper conveyors (consistent spacing for sorter inductions, merge lines, scan tunnels, labeling, weight scale systems). Flow-Merge FMFW (baggage handling, heavy-duty applications). Simple, efficient, reliable conveyor solutions.",
+      "complexity": "Very High - 40+ years global conveyor manufacturing, powered belt curve technology, vertical conveyor engineering (high throughput/low maintenance), low voltage system integration, consistent spacing technology (Flow-Gapper), baggage handling heavy-duty systems, diverse applications (e-commerce/parcel/airports/factory automation), international customer base.",
+      "website": "flow-turn.com",
+      "ltv": 60829.7,
+      "workflow_type": "Global Manufacturing - Since 1980"
+    },
+    {
+      "company_name": "NEPEAN Transport Equipment",
+      "industry_description": "Heavy Vehicle Safety & Testing Equipment Manufacturing",
+      "product_types": "VIS-Check (heavy vehicle roller brake/steering/suspension testing equipment), VIS-Polish (robotic wheel polishing system for mirror finish), Kessler OEM Mining axle and transmission parts (authorized distributor). Regulatory compliance equipment.",
+      "complexity": "Very High - Advanced vehicle inspection technology meeting regulatory authority standards. On-site training and technician certification. Technical services include calibration, repairs, refurbishment, and maintenance support.",
+      "website": "",
+      "ltv": 54695.0,
+      "workflow_type": "Manufacturing & Distribution - Specialized Testing Equipment"
+    },
+    {
+      "company_name": "Elecraft, Inc.",
+      "industry_description": "Amateur Radio Equipment Manufacturing",
+      "product_types": "K-Line (K4 flagship transceiver, KPA1500 1500W amplifier, KPA500 amp/KAT500 antenna tuner), KX-Line (KX2 world's smallest full-featured transceiver with 10W output, KX3, PX3 panadapter, KXPA100 100W amplifier), Classic K2 (only full-featured desktop radio in 100% kit form).",
+      "complexity": "Very High - High-performance amateur radio equipment with complex RF engineering. Available as kits requiring assembly expertise. Full-featured transceivers with built-in battery, antenna tuner, panadapters. Demanding technical specifications.",
+      "website": "",
+      "ltv": 50690.0,
+      "workflow_type": "Manufacturing - High-Performance Radio Equipment"
+    },
+    {
+      "company_name": "Accurate Forklift",
+      "industry_description": "Forklift Sales, Service & Rentals",
+      "product_types": "New and used forklift sales, forklift rentals (electric, liquid propane, diesel, all-terrain models, 3,000-40,000 lb capacity), parts for all makes and models, repair and maintenance services.",
+      "complexity": "High - Multi-brand parts inventory management, diverse rental fleet (multiple fuel types and capacities), service technician expertise required for all makes/models, responsive service demands.",
+      "website": "accurateforklift.net",
+      "ltv": 48134.0,
+      "workflow_type": "Sales, Service, Rentals & Parts Distribution"
+    },
+    {
+      "company_name": "**OLD** HORN MACHINE TOOLS, INC.",
+      "industry_description": "CNC Tube & Pipe Bending Equipment Manufacturing",
+      "product_types": "CNC & semi-automatic tube/pipe benders, all-electric CNC tube benders, pipe bender tooling, CNC tube lasers, robotic tube cells, tube fabrication machinery. Distributes CSM Taiwan products under Horn Metric brand. 2015 introduced all-electric CNC for fast setup.",
+      "complexity": "Very High - Advanced CNC machinery requiring engineering expertise, custom tooling design, software and CMM solutions, specialized applications for aerospace/shipyard/automobile/heavy-duty industries. Technical support and training programs.",
+      "website": "",
+      "ltv": 42680.0,
+      "workflow_type": "Manufacturing - Specialized Machinery"
+    },
+    {
+      "company_name": "Western Square Industries, Inc.",
+      "industry_description": "Agricultural & Industrial Metal Products Manufacturing",
+      "product_types": "Barrel racks and pallets (winery/brewery/distillery), livestock handling equipment, bottled water distribution equipment, pet enclosures, vineyard bins and trailers, campground equipment, gates and corrals, farm/ranch/vineyard equipment. Shaping and powder coating steel services.",
+      "complexity": "High - World leader in specialized barrel rack manufacturing, powder coating operations, diverse product lines across agriculture/beverage industries, custom metal fabrication, multiple industry divisions requiring different expertise.",
+      "website": "",
+      "ltv": 41984.0,
+      "workflow_type": "Manufacturing - Powder Coating & Metal Fabrication"
+    },
+    {
+      "company_name": "HiLumz Acquisition LLC",
+      "industry_description": "LED Lighting Manufacturing - Commercial/Industrial Retrofits",
+      "product_types": "HiLumz Diamonz Retrofit Kits (LED solutions for Metal Halide, HPS, HID fixtures), troffer retrofits, parking lot lighting, wall pack systems. Retrofit kits for 100W-1,000W fixtures. Over 130,000-hour LED lifetimes.",
+      "complexity": "High - Advanced LED retrofit engineering, 60-70% electricity savings designs, UL certification requirements, various warranty options, technical specifications for commercial/industrial applications, customers keep existing fixtures (retrofit approach).",
+      "website": "",
+      "ltv": 41936.0,
+      "workflow_type": "Manufacturing - High-Power LED Solutions"
+    },
+    {
+      "company_name": "Express Assembly Products LLC",
+      "industry_description": "Industrial Assembly Tools & Equipment Distribution",
+      "product_types": "Electric torque screwdrivers, air torque screwdrivers, pulse tools, manual torque screwdrivers, fastening accessories, screwfeeders, tool support stands, torque meters, torque reaction stands, spring balancers, air filters/regulators/hoses.",
+      "complexity": "High - Wide range of precision torque tools requiring technical knowledge, electronics/medical/automotive/contract manufacturing applications, on-site inventory management, evaluation period support, international distribution.",
+      "website": "",
+      "ltv": 41881.0,
+      "workflow_type": "Direct-to-End-User Sales & Distribution"
+    },
+    {
+      "company_name": "RLH Industries, Inc.",
+      "industry_description": "Industrial Fiber Optic Equipment Manufacturing",
+      "product_types": "Fiber optic converters (compact/rugged for harsh environments), industrial Ethernet switches (Gigabit, Unmanaged, Managed, PoE/PoE+), AC/DC power supplies, DC/DC converters, solar/battery backup, fiber patch cords, bulk fiber cable, isolation systems (high voltage).",
+      "complexity": "Very High - Industrial communication equipment for harsh environments, multiple product lines (converters/switches/power/cable), telecommunications and utility industry standards, engineering and manufacturing integration, worldwide distribution.",
+      "website": "fiberopticlink.com",
+      "ltv": 40214.39,
+      "workflow_type": "Design, Manufacturing & Installation"
+    },
+    {
+      "company_name": "Mid Florida Material Handling, Inc",
+      "industry_description": "Material Handling Equipment Distribution",
+      "product_types": "New/used forklifts (Komatsu, CLARK, Toyota, Nissan, Yale, Noblelift, Bendi, Drexel, ePicker, 2,000-35,000 lbs capacity), pallet rack, mezzanines, material handling equipment. Sales/service/rentals/parts throughout Florida. Mobile forklift service fleet.",
+      "complexity": "High - Multi-brand forklift dealership, full-service provider (sales/rentals/parts/service), warehouse design capabilities, mobile service fleet logistics, thousands of projects, large inventory management.",
+      "website": "mfmh.net",
+      "ltv": 38906.0,
+      "workflow_type": "Sales, Service, Rentals & Parts - Full-Suite Provider"
+    },
+    {
+      "company_name": "Safari Belting Systems, Inc.",
+      "industry_description": "Plastic Modular Conveyor Belting Manufacturing",
+      "product_types": "Plastic modular belts (Acetal, Polyethylene, Polypropylene), ULTRA-TUFF™ (revolutionary high-performance resin), ULTRA-TUFF XMD™ (metal/x-ray detectable, 1.5mm ferrous equivalent), roller-top solutions, accessories. Direct food application approved materials.",
+      "complexity": "Very High - Proprietary material development (ULTRA-TUFF), metal/x-ray detectable formulations, FDA food contact compliance, 400+ belting solutions catalog, meat/poultry/baked goods/snack food/fruits/vegetables applications, chemical/abrasion resistance engineering.",
+      "website": "safaribelting.com",
+      "ltv": 37181.0,
+      "workflow_type": "Specialized Manufacturing - Food Processing Focus"
+    },
+    {
+      "company_name": "Continental Field Systems",
+      "industry_description": "Field Machining & Welding Services",
+      "product_types": "Field machining, shop machining (CNC centers, lathes, manual centers), manual/automatic welding, valve repair, turbine repair, laser tracking/alignment, quality assurance, project management. Portable lathe (220-ton capacity). Nuclear power, oil and gas, marine applications.",
+      "complexity": "Very High - Proprietary field equipment development, on-site machining capabilities (portable 220-ton lathe), CNC manufacturing, 24/7 emergency response, laser tracking precision work, nuclear/power industry certifications, large facility operations.",
+      "website": "",
+      "ltv": 35952.0,
+      "workflow_type": "On-Site & Shop Manufacturing Services"
+    },
+    {
+      "company_name": "VPNZ Ltd",
+      "industry_description": "Industrial Vacuum Pumps, Compressors & Blowers",
+      "product_types": "Vacuum pumps (Piston, Screw, Scroll, Carbon Vane, Oil Sealed, truck pumps, Roots, Claw, Rotary Vane, Linear Diaphragm, Side Channel), compressors (oil-free, various types), low-pressure blowers, air treatment (dryers, filtration), hire/loan equipment. Repair/service all brands.",
+      "complexity": "High - Wide range of pump/compressor/blower technologies, multi-brand service expertise, exclusive agency relationships, hire/loan fleet management, professional service engineers, serves diverse industries (food, manufacturing, wastewater, pharmaceutical, printing, wood, automotive, construction).",
+      "website": "",
+      "ltv": 32608.0,
+      "workflow_type": "Sales, Service, Rental & Parts"
+    },
+    {
+      "company_name": "Conveyor Technology",
+      "industry_description": "MULTIPLE COMPANIES - Requires Clarification",
+      "product_types": "PENDING - Varies from rotary trommels, specialty conveyors, automation series, stainless steel frames, industrial conveyors, timing belt systems",
+      "complexity": "PENDING - Requires entity identification",
+      "website": "",
+      "ltv": 31612.0,
+      "workflow_type": "PENDING - Likely Conveyor Systems Design/Manufacturing"
+    },
+    {
+      "company_name": "Novamen Inc.",
+      "industry_description": "Industrial Chemical Distribution & Manufacturing",
+      "product_types": "Dust control products (unpaved roads, construction), deicing agents, cleaners/degreasers (NovaSol HD for oils/greases), industrial process chemicals (Tri-Ethylene Glycol, Propylene Glycol), H₂S scavenging, hydro testing chemicals, wastewater treatment solutions, DEF products (NovaBlue DEF for diesel vehicles), various glycols. Custom formulations for oil/gas/mining/forestry.",
+      "complexity": "High - Multi-facility bulk chemical storage (5M+ liters), diverse industrial applications, custom chemical formulation, specialized products (H₂S scavenging, DEF), environmental compliance (dust control, wastewater treatment), Indigenous business operations across Western Canada.",
+      "website": "",
+      "ltv": 30891.0,
+      "workflow_type": "Distribution & Custom Solutions - Indigenous-Owned"
+    },
+    {
+      "company_name": "MTA-USA, LLC",
+      "industry_description": "Industrial Process Cooling & Compressed Air Treatment Manufacturing",
+      "product_types": "Compressed air treatment products, process cooling equipment, industrial chillers. High-performance chillers for automotive, food and beverage, pharmaceuticals. Reliable, efficient equipment for demanding industrial applications. Designed to perform in tough manufacturing environments.",
+      "complexity": "High - 35+ years industrial cooling expertise, integration with Trane technologies, high-performance chiller engineering for automotive/food/pharma, compressed air treatment systems, tough environment applications, enhanced service network operations.",
+      "website": "",
+      "ltv": 29025.0,
+      "workflow_type": "Manufacturing - Now Part of Trane"
+    },
+    {
+      "company_name": "Lore Technology",
+      "industry_description": "Industrial Imaging Solutions & Vision Systems",
+      "product_types": "Industrial-grade cameras, lenses, complete vision system solutions, CCTV/security solutions, custom camera services, accessories. Applications: machine vision, autonomous vision, robotic/industrial vision, medical/microscopy, security CCTV, broadcast, military/government. Exceptional imaging technology, customized components. High-quality imaging solutions tailored to client needs.",
+      "complexity": "High - 35+ years vision/electronics expertise, service-disabled veteran-owned operations, custom imaging component design, multi-industry applications (healthcare/manufacturing/security/nuclear/military), complete vision system integration, subsidiary Wilco Imaging since 2003, specialized government/military solutions.",
+      "website": "loretech.io",
+      "ltv": 26977.0,
+      "workflow_type": "Design & Distribution - Veteran-Owned"
+    },
+    {
+      "company_name": "Atlantic Graphic Systems, Inc",
+      "industry_description": "Printing Machinery Distribution - New & Pre-Owned",
+      "product_types": "New/certified pre-owned printing equipment: Epson printing equipment, Vanguard Digital Printing Systems VR6D-HS Flatbed LED UV printer, Xante Corporation (envelope printers, small format UV flatbeds), Komori presses/finishing pieces. Bindery/finishing equipment, material handling, paper cutting, press peripherals. Consumables, technical support.",
+      "complexity": "High - 45+ years printing machinery expertise, new/certified pre-owned equipment requiring inspection/certification, multi-brand distribution (Epson/Vanguard/Xante/Komori), factory trained service staff, mechanical/electronic repair capabilities, mid-Atlantic regional operations, diverse equipment categories (printing/bindery/finishing/cutting).",
+      "website": "",
+      "ltv": 24755.0,
+      "workflow_type": "Sales & Service - Factory Trained Support"
+    },
+    {
+      "company_name": "HOUSTON HYDRAULIC",
+      "industry_description": "Hydraulic Components & Systems - Fluid Power Solutions",
+      "product_types": "Hydraulic components from leading manufacturers: pumps, motors, cylinders, valves. Hydraulic power units (60+ years manufacturing). Design/build custom hydraulic systems. Repair/service: cylinders, pumps, motors, valves, components, complete systems. Technical design, manufacturing, testing, implementation services. Wide variety high-quality hydraulic components.",
+      "complexity": "Very High - 60+ years hydraulic power unit design/manufacturing, comprehensive fluid power solutions, custom hydraulic system design/build, multi-component repair/service (cylinders/pumps/motors/valves), leading manufacturer distribution, technical design/testing/implementation capabilities, wide-ranging applications expertise.",
+      "website": "",
+      "ltv": 24599.0,
+      "workflow_type": "Distribution, Design & Service - Since 1945"
+    },
+    {
+      "company_name": "Custom Equipment Company, Inc.",
+      "industry_description": "Material Handling & Custom Packaging Solutions",
+      "product_types": "Pallets, containers, industrial shelving, ergonomic solutions. Collapsible reusable containers/pallets (semi-bulk liquid/dry products marketplace). Custom fabrication, container modifications, pallet rack repairs. Authorized distributor: Davco Metal Bulk Containers, Eagle Group Manufacturing, Jesco Self-Dumping Hoppers, LEWISBins Plastic Products, Little Giant Industrial Products, Metro Storage solutions. Material handling solutions tailored for industries.",
+      "complexity": "High - 40+ years custom packaging innovation, pioneering collapsible/reusable container technology, semi-bulk liquid/dry products expertise, custom fabrication capabilities, multi-brand authorized distribution, diverse industry serving (manufacturing/distribution/agriculture/aerospace), thousands of implemented solutions, container modification/pallet rack repair services.",
+      "website": "",
+      "ltv": 24360.0,
+      "workflow_type": "Manufacturing & Distribution - Since 1978"
+    },
+    {
+      "company_name": "Flow-Turn Inc",
+      "industry_description": "Powered Belt Curves & Spiral Conveyors Manufacturing",
+      "product_types": "Belt curve conveyors: Square-Turn belt power turns, Flow-Merge strip belt merges, Zone-Turn belted curves (low voltage conveyor systems). Flow-Lifts continuously running vertical conveyors (high throughput, low maintenance, parcel handling, e-commerce, factory automation). Flow-Gapper conveyors (consistent spacing for sorter inductions, merge lines, scan tunnels, labeling, weight scale systems). Flow-Merge FMFW (baggage handling, heavy-duty applications). Simple, efficient, reliable conveyor solutions.",
+      "complexity": "Very High - 40+ years global conveyor manufacturing, powered belt curve technology, vertical conveyor engineering (high throughput/low maintenance), low voltage system integration, consistent spacing technology (Flow-Gapper), baggage handling heavy-duty systems, diverse applications (e-commerce/parcel/airports/factory automation), international customer base.",
+      "website": "",
+      "ltv": 23936.0,
+      "workflow_type": "Global Manufacturing - Since 1980"
+    },
+    {
+      "company_name": "Sumake North America LLC",
+      "industry_description": "Industrial Assembly Tools & Pneumatic Equipment",
+      "product_types": "Industrial torque tools, industrial air tools, accessories. Comprehensive selection: air/electric/cordless torque screwdrivers, torque meters, torque arms, stands, screwfeeders, industrial air impact wrenches, sanders/buffers, grinders, ratchet wrenches, nippers, tapping tools. CE certified: Impact Wrenches, Ratchet Wrenches, Drills, Grinders, Hammers, Sanders, Screwdrivers, Spray Guns, Riveters, Nail Guns, Bradders. Professional high quality suited to wide range assembly applications.",
+      "complexity": "High - North America exclusive distribution (USA/Mexico/Canada), factory authorized service/calibration capabilities, industrial torque tool expertise, comprehensive CE certified product line, diverse tool categories (pneumatic/electric/cordless), assembly application specialization, repair/parts/calibration services, professional industrial quality standards.",
+      "website": "",
+      "ltv": 22843.0,
+      "workflow_type": "Exclusive Distribution & Service - North America"
+    },
+    {
+      "company_name": "Magnum Automotive Equipment",
+      "industry_description": "Automotive Lift Equipment Manufacturing",
+      "product_types": "Two-Post Lifts (9,000 lb, 11,000 lb capacities, heavy-duty leaf chain, steel pulleys, high-strength cable equalization), Four-Post Lifts ('Deluxe Series' 7,000-9,000 lb capacity, aircraft quality cables rated 14,500 lbs, storage/service), Specialty Lifts (Mid-rise for cars/vans/light-duty trucks, tire/wheel/brake repairs, collision repair, new car prep), Single Post Lifts (4,500 lb, 6,000 lb models, custom configurations). Quality construction with warranty.",
+      "complexity": "High - Multi-category lift engineering (two-post/four-post/specialty/single-post), capacity range 4,500-11,000+ lbs, heavy-duty component specifications (leaf chain/steel pulleys/aircraft cables), safety feature integration, residential/commercial applications, collision repair/service versatility, custom configuration capabilities, parts/labor warranty program.",
+      "website": "",
+      "ltv": 22536.0,
+      "workflow_type": "Manufacturing - Multi-Category Lifts"
+    },
+    {
+      "company_name": "D. COOPER WORKS, LLC",
+      "industry_description": "Metal Fabrication & Press Brake Repair",
+      "product_types": "Press brake repair services (dedicated solutions for each individual machine), plate metal fabrication, ironwork, welding, industrial prototypes. Table top cheese cutters (cut 5 lb loaves into equal portions), vertical pneumatic cheese cutters. Custom replacement parts for older/orphaned equipment. Poultry processing machinery specialization.",
+      "complexity": "High - Press brake repair expertise, custom fabrication/prototyping, orphaned equipment restoration (replacement parts sourcing), commercial/industrial problem solving, poultry processing machinery knowledge, cheese cutting equipment manufacturing, pneumatic systems, family-owned operations since 2003.",
+      "website": "dcooperworks.com",
+      "ltv": 22300.8,
+      "workflow_type": "Custom Fabrication & Equipment Repair - Family-Owned"
+    },
+    {
+      "company_name": "Simple Solutions and Innovations, Inc.",
+      "industry_description": "Printing Trades Machinery Repair & Wholesale",
+      "product_types": "Printing trades machinery/equipment repair services, printhead products/services for printing equipment industry, printing machinery supplies wholesale distribution. Electronic/precision equipment repair and maintenance. Printhead specialization.",
+      "complexity": "High - 30+ years printing machinery expertise, printhead repair/maintenance specialization, electronic/precision equipment capabilities, printing trades technical knowledge, wholesale distribution operations, merchant wholesaler business model, VA operations.",
+      "website": "",
+      "ltv": 21600.0,
+      "workflow_type": "Repair, Maintenance & Distribution - Printhead Specialist"
+    },
+    {
+      "company_name": "The Equipment Guys, Inc.",
+      "industry_description": "Strength Training Equipment Manufacturing",
+      "product_types": "Stray Dog Strength brand strength training equipment: dumbbells, weightlifting equipment, weight room equipment. Premium quality manufactured in Ohio. Installation services, weight room marketplace solutions. Sporting and athletic goods.",
+      "complexity": "Medium-High - 25+ years manufacturing expertise, exclusive Stray Dog Strength brand production, 15+ years premium strength equipment, Ohio manufacturing operations, weight room installation services, dumbbell/weightlifting equipment engineering, sporting goods industry specialization, marketplace solutions.",
+      "website": "",
+      "ltv": 21355.0,
+      "workflow_type": "Manufacturing - Exclusive Brand Producer"
+    },
+    {
+      "company_name": "Nationwide Architectural Metals, Inc.",
+      "industry_description": "Pre-Polished Architectural Metals & Specialty Fabrication",
+      "product_types": "Pre-polished metals: stainless steel, brass, bronze, aluminum, nickel (sheet/plate various sizes/thicknesses, stock shapes). Custom/satin/mirror finishes. Patented OmniSills elevator door sills (complex specifications for elevator thresholds). Polishing, precision metal cutting services. Applications: exterior walls, large statues, interior lighting fixtures, kitchen prep tables. Specialty fabrication services.",
+      "complexity": "Very High - 40+ years architectural metals expertise, pre-polished metal specialization (stainless/brass/bronze/aluminum/nickel), patented OmniSills elevator sill technology, custom/satin/mirror finish capabilities, precision metal cutting, worldwide distribution, one-stop supplier operations, complex elevator threshold fabrication, diverse architectural applications, specialty fabrication services.",
+      "website": "namusa.com",
+      "ltv": 21241.0,
+      "workflow_type": "Supply & Custom Fabrication - One-Stop Metal Supplier"
+    },
+    {
+      "company_name": "Diamond Technologies, Inc.",
+      "industry_description": "Industrial Automation & Data Collection Solutions",
+      "product_types": "Embedded barcode reading, RFID, machine vision, industrial communications modules. Embedded/wireless industrial networking, M2M gateways, industrial network gateways/controllers, distributed I/O, wiring systems, embedded web servers, remote machine control/monitoring, Bluetooth to serial adapters, data collection software. OEM solutions for medical devices, lab instrumentation, kiosks, vending machines, packaging machines, AGVs, robotic systems.",
+      "complexity": "Very High - OEM embedded systems design/manufacturing, custom hardware/firmware development, barcode/RFID/machine vision integration, industrial networking expertise, software application development, value-added manufacturing, medical device/lab instrumentation specialization, AGV/robotic systems integration, 25+ years engineering expertise.",
+      "website": "diamondt.com",
+      "ltv": 21208.0,
+      "workflow_type": "Manufacturing & Distribution - OEM Embedded Systems"
+    },
+    {
+      "company_name": "PSI Pressure Systems, LLC",
+      "industry_description": "High-Pressure Water-Blasting Equipment Manufacturing",
+      "product_types": "NX-Series high-pressure pumps (patented fluid end conversion system, only pump in world capable of 8,000-40,000 PSI operation with single discharge manifold). Applications: tank cleaning, surface preparations, tube bundle cleaning, pipe cleaning/cutting, hydrodemolition. Water jetting equipment for various industrial applications.",
+      "complexity": "Very High - Patented NX-Series fluid end conversion technology (only pump worldwide 8,000-40,000 PSI single manifold operation), hydrodemolition equipment engineering, tank/tube bundle cleaning systems, pipe cutting capabilities, founder expertise from Union Pump Textron/NLB Corp, full service manufacturing operations.",
+      "website": "",
+      "ltv": 19400.0,
+      "workflow_type": "Manufacturing - Patented Fluid End Technology"
+    },
+    {
+      "company_name": "Hundegger USA, L.C.",
+      "industry_description": "CNC Timber Processing Machinery Manufacturing",
+      "product_types": "CNC timber processing machines: K2-Industry joinery machines (20x50mm to 300x450mm cross sections), ROBOT-Max with Cambium software (mass-timber production), Speed Cut (quick/precise cutting/drilling/milling/slotting/marking/ink-jet printing), PBA-Industry panel processing (wall/floor/roof elements, solid wood/glulam/cross laminated timber/sandwich elements). Universal flexible machines for all timber construction areas.",
+      "complexity": "Very High - 90%+ global market share, CNC timber processing technology, mass-timber production software (Cambium), cross sections 20x50mm to 300x450mm capability, panel processing for CLT/glulam, ink-jet printing integration, playground equipment manufacturing expertise, Stiles Machinery strategic partnership, worldwide timber construction applications.",
+      "website": "",
+      "ltv": 19072.0,
+      "workflow_type": "Manufacturing - Global Market Leader (90%+ Share)"
+    },
+    {
+      "company_name": "Agpro, Inc.",
+      "industry_description": "Agricultural Equipment Manufacturing - Conservation Drills",
+      "product_types": "Conservation drills (custom design, banding/uniform spreading single/multiple products), 3-Point Sprayers (65/110/150/200/300 gallon sizes), ATV Sprayers (15/25 gallon molded poly tanks), Skid Sprayers (60/100/200/300 gallon), Hydraulic Tilt Trailers (Lewiston, Idaho built), Commodity Carts (custom designs), Multi-Bin Fertilizer Applicators (orchards/vineyards/row crops), Sprayer Drones (XAG P150, max liquid payload 154 lbs).",
+      "complexity": "Very High - No-Till Conservation Drill specialization (Palouse hills engineering), custom design capabilities, multi-bin fertilizer applicator technology (orchard/vineyard/row crop specific), hydraulic tilt trailer manufacturing, drone integration (XAG P150, 154 lb payload), multi-product banding/spreading systems, 15-300 gallon sprayer range, American craftsmanship commitment, Pacific North-West regional expertise.",
+      "website": "",
+      "ltv": 18709.0,
+      "workflow_type": "Custom Design & Manufacturing - Pacific Northwest"
+    },
+    {
+      "company_name": "MULTI SEAL",
+      "industry_description": "Industrial Tire Sealant Manufacturing",
+      "product_types": "High-performance tire sealants: MULTI SEAL and FlatOut brands. Industrial applications/recreational lifestyles. Advanced formula featuring synthetic TangleTek™ fibers and DamRight™ fillers for puncture protection. Industrial equipment focus.",
+      "complexity": "Medium-High - USA tire sealant manufacturing, proprietary TangleTek™ synthetic fiber technology, DamRight™ filler innovation, industrial-grade formulation, industrial equipment specialization, puncture protection engineering, recreational lifestyle applications, MULTI SEAL/FlatOut dual brands, $5.2M revenue operations.",
+      "website": "multiseal.us",
+      "ltv": 15572.0,
+      "workflow_type": "Manufacturing - USA Made High-Performance Sealants"
+    },
+    {
+      "company_name": "Pipefusion Services Inc.",
+      "industry_description": "HDPE Pipe Fusion Services & Custom Fabrication",
+      "product_types": "HDPE pipe fusion services (on-site pipe fusion), custom HDPE fabrication. High-density polyethylene pipe supply/fusion. All heat fusion techniques. Standard/custom components/fittings/joining systems. Creates homogenous system matching HDPE pipe technical/environmental specifications. Industrial/mechanical applications. Leak risk minimization.",
+      "complexity": "Very High - 35+ years HDPE pipe fusion expertise, all heat fusion technique mastery, extreme environment capabilities (arctic to Texas), heat extrusion welding for custom fabrication, North America subject matter expert status, on-site field fusion services, custom component/fitting/joining system integration, homogenous system creation, industrial/mechanical application specialization, leak prevention engineering.",
+      "website": "",
+      "ltv": 14986.5,
+      "workflow_type": "Field Services & Manufacturing - Polyethylene Specialist"
+    },
+    {
+      "company_name": "Hotsy Equipment Company",
+      "industry_description": "Industrial Pressure Washer Sales & Service",
+      "product_types": "Commercial/industrial pressure washers: hot/cold water pressure washers (Hotsy brand), parts, detergents, accessories. Waste oil heaters, HVLS fans, radiant heat lamps. 7-year warranty (high-pressure pump), 5-year warranty (heating coil). Durable high-quality equipment for all-season business operations.",
+      "complexity": "Very High - Hotsy franchise operations (North America #1 brand), hot/cold water pressure washer technology, 7-year pump warranty/5-year heating coil warranty, waste oil heater integration, HVLS fan systems, radiant heat lamp distribution, multi-state regional coverage (Michigan/Ohio/Kentucky/WV/NC/Texas), Callan Industrial corporate structure, industrial cleaning equipment specialization, seasonal equipment support.",
+      "website": "callanindustrial.com",
+      "ltv": 13899.0,
+      "workflow_type": "Distribution & Service - Callan Industrial (Hotsy Franchise)"
+    }
+  ],
+  "Construction & Building Materials": [
+    {
+      "company_name": "Conequip Parts & Equipment LLC",
+      "industry_description": "Construction Equipment & Heavy Machinery Parts Distribution",
+      "product_types": "Construction equipment parts (excavators, wheel loaders, backhoe loaders, crawler loaders, bulldozers, off-road trucks, mining equipment). Diesel engine parts for all makes and models.",
+      "complexity": "High - Multi-brand parts catalog with new, aftermarket, used, and rebuilt options. Complex SKU management across multiple equipment types and manufacturers.",
+      "website": "",
+      "ltv": 208604.0,
+      "workflow_type": "Parts Distribution - Multi-Brand"
+    },
+    {
+      "company_name": "Yoderbilt, LLC",
+      "industry_description": "Outdoor Living Products Manufacturing",
+      "product_types": "Greenhouses (2 models in 10 different sizes), chicken coops, AnyPet™ Enclosures. All products arrive fully assembled.",
+      "complexity": "Medium - Limited product lines but custom sizes. Handcrafted production with careful attention to detail. Full assembly and delivery service adds complexity.",
+      "website": "yoderbilt.com",
+      "ltv": 93911.0,
+      "workflow_type": "Manufacturing - Handcrafted Products"
+    },
+    {
+      "company_name": "Niagara Machine,1803 Associates Lane Charlotte NC 28217",
+      "industry_description": "Construction Equipment & Concrete Surface Preparation Distribution",
+      "product_types": "Lavina® concrete grinders, BlastPro® shot blasters, Terrco grinders, DiamaPro vacuums & air scrubbers, diamond tooling (wing backs, pin style, trap style), concrete repair products, Prosoco & Ameripolish chemicals, Rapid Set products.",
+      "complexity": "High - Extensive equipment line (grinders, blasters, vacuums), comprehensive tooling catalog (multiple attachment styles), chemicals and repair products. Multi-brand distribution across 6 locations.",
+      "website": "",
+      "ltv": 74420.0,
+      "workflow_type": "National Distribution - Multi-Location"
+    },
+    {
+      "company_name": "Lapp Structures",
+      "industry_description": "Custom Outdoor Structures Manufacturing",
+      "product_types": "Custom sheds, garages, pool houses, greenhouses, workshops. Each product tailored to specifications and manufactured in Lancaster County, PA facility.",
+      "complexity": "Medium - Custom-built outdoor structures requiring design consultation and handcrafted manufacturing. 'Build a good product, and treat people right' philosophy.",
+      "website": "mycbsadvisor.com",
+      "ltv": 72051.0,
+      "workflow_type": "Custom Manufacturing - Handcrafted Products"
+    },
+    {
+      "company_name": "Lenworth Building Services Limited",
+      "industry_description": "Commercial Building Equipment & Services",
+      "product_types": "Commercial overhead doors, high-speed doors, loading dock levelers, dock seals/shelters, truck restraints, dock accessories, electrical services, HVLS fans, gate systems.",
+      "complexity": "High - Complex commercial building systems with preventative maintenance programs. Solution-based approach reviewing customer history, application, issues to reduce downtime and operating costs.",
+      "website": "",
+      "ltv": 61936.0,
+      "workflow_type": "Sales, Installation & Service - Solution-Based"
+    },
+    {
+      "company_name": "ASC Equipment",
+      "industry_description": "Construction Equipment Sales & Rental",
+      "product_types": "Volvo construction equipment, earthmoving equipment, recycling equipment, material handling equipment. Large rental inventory. Parts & service with factory-trained technicians.",
+      "complexity": "High - Heavy construction equipment requiring trained technicians, parts inventory management, rental fleet management. Major capital equipment with service contracts and maintenance programs.",
+      "website": "",
+      "ltv": 55574.69,
+      "workflow_type": "Equipment Dealer - Sales, Rental, Service"
+    },
+    {
+      "company_name": "APEX STONE, LLC",
+      "industry_description": "Natural Stone Supply & Fabrication",
+      "product_types": "NOT primarily countertops. Hundreds of products: stone veneer, natural stone flooring (interior/exterior), treads & coping (pool decks, entryways), stone accents (mosaics, carved medallions, borders), custom fabrications, pavers, landscaping materials.",
+      "complexity": "High - Custom stone fabrication from simple cuts to complex one-of-a-kind projects. Advanced fabrication equipment. Extensive inventory requiring expertise in stone selection and application.",
+      "website": "",
+      "ltv": 55271.0,
+      "workflow_type": "Supply & Custom Fabrication"
+    },
+    {
+      "company_name": "HBL (ASIA) LIMITED",
+      "industry_description": "Textiles, Labels & Printing Products Distribution",
+      "product_types": "Paper labels, printed labels, woven labels, heat transfer products, special woven fabrics, tufted textile fabrics, lace, tapestries, trimmings, embroidery, printed materials, base metal products.",
+      "complexity": "Medium - International import/export distribution requiring customs compliance, multi-product catalog management, global logistics coordination.",
+      "website": "",
+      "ltv": 54880.0,
+      "workflow_type": "International Trade & Distribution"
+    },
+    {
+      "company_name": "Window Makeover",
+      "industry_description": "Window Treatments & Coverings",
+      "product_types": "PENDING RESEARCH",
+      "complexity": "PENDING RESEARCH",
+      "website": "",
+      "ltv": 52720.0,
+      "workflow_type": "PENDING - Specific company not identified"
+    },
+    {
+      "company_name": "SurfaceCo, The Surface Company",
+      "industry_description": "Rubber Flooring & Surface Solutions Manufacturing",
+      "product_types": "Guardian (interlocking rubber tiles for gyms/offices/commercial), Humane (equine and K-9 surfaces, trusted 100+ years, American-made), SC Supply (heavy-duty industrial custom design, 40+ years experience). Gym flooring, stall mats, rec surfaces.",
+      "complexity": "High - Multi-brand product lines serving distinct markets (athletic, equine, industrial). Manufacturing with recycled rubber, custom design capabilities, 100+ year history requiring consistent quality standards. Warranty programs across product lines.",
+      "website": "humanemfg.com",
+      "ltv": 48347.0,
+      "workflow_type": "Manufacturing - Multi-Brand Surface Products"
+    },
+    {
+      "company_name": "CPF Floors LLC",
+      "industry_description": "Flooring Distribution",
+      "product_types": "Rigid Core SPC vinyl flooring (durable, waterproof, easy install), waterproof laminate flooring, carpet tile, transition profiles, baseboards, underlayment, steps. Collections: Deco54, Project, Project 2.0, Spirit XL, DecoTile.",
+      "complexity": "Medium-High - Multi-product flooring distribution, 400-dealer network management, warehouse logistics, technical resources (specs/installation guides), competitive pricing strategy, fast delivery requirements.",
+      "website": "cpffloors.com",
+      "ltv": 39758.32,
+      "workflow_type": "Wholesale Distribution - Multi-Location Warehousing"
+    },
+    {
+      "company_name": "Bodega Tile",
+      "industry_description": "Tile & Building Materials Retail",
+      "product_types": "Tiles (porcelain, marble, granite stone, floor tiles), lighting, cabinets, countertops (concrete, granite, marble, quartz, natural stone), vanities, flooring, wallpaper, pulls and knobs. Custom countertop services.",
+      "complexity": "High - Large showroom with diverse product lines, evolved from tile specialist to full design haven, custom countertop fabrication, residential/commercial applications, design consultation services.",
+      "website": "bodegatile.com",
+      "ltv": 39296.45,
+      "workflow_type": "Retail Showroom & Design Services"
+    },
+    {
+      "company_name": "Nu Kitchens, LLC",
+      "industry_description": "Custom Kitchen & Bath Design",
+      "product_types": "Custom all-wood cabinetry (Plain & Fancy dealer), custom kitchen cabinets, custom bathroom vanities, custom pantries, granite, limestone, tiles, hardware, sinks, faucets, kitchen lighting, bathroom design. Finest materials, kitchen remodeling services.",
+      "complexity": "High - Full-service renovation requiring design expertise, custom cabinetry specifications, material selection (wood/granite/stone/tile), plumbing fixtures, lighting design, project management from concept to completion, showroom operations.",
+      "website": "nukitchens.com",
+      "ltv": 36763.0,
+      "workflow_type": "Complete Renovation - Design to Installation"
+    },
+    {
+      "company_name": "Keast Enterprises Inc",
+      "industry_description": "Agricultural, Construction & Forestry Equipment Distribution",
+      "product_types": "Grain vacuums, manure spreaders, augers, conveyors, fuel trailers, forestry mulchers, forage trailers, mills, compact tractors, bale processors, sprayers, bale trailers, ejection scrapers, windrower shredders, seed tenders, grain carts, smoothwall bins, rakes, feed wagons, drills, seeders, Outback guidance systems, hundreds of attachments. Brands: Art's Way, Batco, BEFCO, Cloverdale, Farm King, Haybuster, IronCraft, J&M, Kelly Ryan, Loftness, Maschio Gaspardo, REM, Renn, Rowse Rakes, Thunder Creek, Travis Seed Cart, Universal Implements, Walinga.",
+      "complexity": "Very High - 80+ brand dealer requiring extensive product knowledge, nationwide distribution logistics, comprehensive parts inventory (thousands on hand), experienced technician team, diverse equipment categories (ag/construction/forestry), worldwide delivery capabilities.",
+      "website": "",
+      "ltv": 33532.0,
+      "workflow_type": "Sales, Parts & Service - Multi-Brand Dealer"
+    },
+    {
+      "company_name": "Hundegger USA LLC",
+      "industry_description": "CNC Timber Construction Machinery Manufacturing",
+      "product_types": "CNC-controlled joinery machines, automatic cutting machines, planers, gantry-style machine centres, automatic panel processing machines, solid wood wall production lines (WALL-Master), robotic systems (ROBOT-Max, ROBOT-Compact), SPM-2 Speed Panel Machine, Turbo Drive II linear saw, profiled wood element production lines, handling systems. All timber construction sectors: carpentry, contract joinery, timber frame, log house, prefabricated house, glulam joinery, playground equipment.",
+      "complexity": "Very High - World-leading CNC timber construction technology, 90%+ market share, automated robotic systems, complex CAD/CAM integration, mass timber production equipment, highly specialized engineering requiring expert installation and support.",
+      "website": "",
+      "ltv": 32376.0,
+      "workflow_type": "Sales & Service - Advanced Joinery Equipment"
+    },
+    {
+      "company_name": "Division 9 Associates,Inc.",
+      "industry_description": "Commercial Flooring Distribution - Multi-Line Sales Agency",
+      "product_types": "Full range of commercial flooring: carpet, wood, cork, tile, rubber, resilient flooring. Represents multiple manufacturers, simplifying finish specification for architects, designers, and facility managers. Washington and Baltimore metro markets.",
+      "complexity": "Medium-High - Multi-manufacturer representation requiring product expertise across diverse flooring types, specification support for design professionals, metropolitan market sales agency operations, commercial project coordination.",
+      "website": "",
+      "ltv": 30800.0,
+      "workflow_type": "Sales Agency - Multi-Manufacturer Representation"
+    },
+    {
+      "company_name": "The Shed Yard",
+      "industry_description": "Custom Outdoor Structures Manufacturing & Retail",
+      "product_types": "Storage sheds (multiple styles, customizable), garden sheds, studio sheds, barn sheds (farm equipment, livestock protection), custom-built garages (vehicles, equipment), loafing sheds (livestock shelter), chicken coops, animal shelters. Built to withstand weather, durable construction. Custom design options.",
+      "complexity": "Medium - Custom outdoor structure design/manufacturing, regional delivery operations (CO/NM), multiple building types requiring construction expertise, online customizer tool, free delivery logistics, family-owned business operations, weather-resistant engineering.",
+      "website": "",
+      "ltv": 29216.81,
+      "workflow_type": "Custom Building & Delivery - Family-Owned"
+    },
+    {
+      "company_name": "Delmarva Design Center",
+      "industry_description": "Kitchen & Bath Design Center - Residential Remodeling",
+      "product_types": "Kitchen cabinetry brands: Showplace, Koch and Company, Aristokraft, Bertch. Appliances: Wolf, Sub-Zero, Cove, GE Cafe series. Countertops: various materials/designs for kitchens/bathrooms. Flooring: Luxury Vinyl, Laminate, Engineered Wood, Hardwood, Tile, Carpet. Tile: ceramic, porcelain, glass, cement, natural stone. Wide variety sizes/shapes/materials. Design services with 3D rendering.",
+      "complexity": "Medium-High - Multi-category product expertise (cabinetry/appliances/countertops/flooring/tile), premium brand distribution (Wolf/Sub-Zero/Cove/Showplace/Koch), 9,600 sq ft showroom operations with 24 kitchen displays, 3D rendering design capabilities, one-stop-shop coordination for complete kitchen/bath remodels.",
+      "website": "gmail.com",
+      "ltv": 25471.0,
+      "workflow_type": "Design & Sales - One-Stop Shop"
+    },
+    {
+      "company_name": "SMITH Manufacturing (SSPS, Inc)",
+      "industry_description": "Surface Preparation Equipment Manufacturing - Pavement/Flooring",
+      "product_types": "Surface preparation equipment: scarifiers, planers, grinders, line removers, routers, groovers, shavers, scabblers, prep tools. Models: SPS8 compact scarifier (concrete/asphalt), LNX8 Rotary Eraser (marking removal, no grooves), SPS10/FS200 (powerful asphalt/concrete removal), FS150, FS351 (electric/propane/gasoline versions), crack routers. Consumable wear components. For striping, pavement, flooring contractors.",
+      "complexity": "High - Surface preparation equipment design/manufacturing, largest inventory of machines/consumables, diverse equipment types (scarifiers/planers/grinders/routers/groovers/shavers/scabblers), multi-power options (electric/propane/gasoline), all 10 surface profile achievement, contractor-focused cost-effective solutions, asphalt/concrete specialization.",
+      "website": "",
+      "ltv": 24240.0,
+      "workflow_type": "Manufacturing - Contractor Equipment Specialist"
+    },
+    {
+      "company_name": "Centanni Tile Inc.",
+      "industry_description": "European Tile & Stone Importing - Premium Ceramics",
+      "product_types": "European-imported tile & stone: Italian ceramics, Spanish porcelains, premium tiles from worldwide sources. Laticrete Installation materials (complete line), Miracle Sealants Products. Tile/stone/hard surface specifications, design consultation, technical consultation, project sales, hospitality sales, continuing education. Seasonal collections, 'Last Call' promotions (heavy discounts on premium products).",
+      "complexity": "High - European import operations (Italy/Spain/worldwide), Western Canada distribution network, Laticrete/Miracle Sealants authorized distributor, high-end market specialization (homes/restaurants/hotels/spas), design/technical consultation services, project/hospitality sales expertise, seasonal collections curation, premium ceramics/porcelains sourcing.",
+      "website": "",
+      "ltv": 20240.0,
+      "workflow_type": "Import & Distribution - Western Canada"
+    },
+    {
+      "company_name": "Classic Rock Face Block",
+      "industry_description": "Historic Concrete Rock Face Block Manufacturing",
+      "product_types": "Historic rock face concrete blocks: exact replica full size blocks, veneers for historically accurate restoration/period-style new construction. Meets ASTM standards. Early 20th century home restoration specialization. Sears Kit Homes blocks. Created using cast-iron face plates or plaster molds from cut stone blocks. Portland cement/sand/gravel construction.",
+      "complexity": "Very High - Historical accuracy expertise (original block castings/design plates), National Park Service approval, ASTM standards compliance, historic neighborhood association/city commission approvals, early 20th century construction replication, Sears Kit Homes specialization, cast-iron face plate/plaster mold technology, nationwide shipping (no minimums), restoration/period-style new construction dual applications.",
+      "website": "",
+      "ltv": 18186.0,
+      "workflow_type": "Manufacturing - Historical Replication Specialist"
+    },
+    {
+      "company_name": "O.K. Foundry Co., Inc.",
+      "industry_description": "Gray & Ductile Iron Castings - Historic Restoration Specialist",
+      "product_types": "Gray/ductile iron castings: sculpture, columns/capitals, fencing, bollards, stanchions, mantels, fireplaces, chimneys/accessories. Historic restoration, municipal fixture, architectural castings. NYC subway lamp poles/railings (Richmond Iron brand). No-bake molding (25-250 lbs, 50-250 piece runs). 700kw induction melting, two 2,000 lb tilt pour furnaces. 3D sand printing.",
+      "complexity": "Very High - 110+ years foundry heritage, gray/ductile iron casting expertise, 700kw induction melting (since 1976), No Bake resin bonded sand molding (1979), ExOne S-Max 3D sand printer technology (2010), historic restoration specialization, NYC subway lamp pole/railing manufacturing (Richmond Iron brand), O'Neil family operations, architectural casting mastery, municipal fixture production.",
+      "website": "",
+      "ltv": 14880.0,
+      "workflow_type": "Foundry Manufacturing - Family-Owned Since 1912"
+    },
+    {
+      "company_name": "MyTCoat Commercial Outdoor Furniture",
+      "industry_description": "Commercial Outdoor Furniture Manufacturing - Proprietary Coating",
+      "product_types": "Commercial outdoor furniture: picnic tables, park benches, trash receptacles, grills, outdoor furnishings. Advantage Coating (proprietary, won't chip/crack/peel, no drips/runs). Powder coated frames (rust resistant). Non-porous surface (immune to stains/fungus/mold/dirt/acids/salts/seawater). UV/fade resistant, won't crack/peel/warp.",
+      "complexity": "Very High - Proprietary Advantage Coating technology (no PVC/phthalates, 7-year warranty), 60 years combined founder expertise, non-porous surface engineering (stain/fungus/mold/dirt/acid/salt/seawater immune), UV/fade resistance, powder coating systems, rust prevention, American manufacturing (Whitney, TX), commercial outdoor furniture specialization, 13-color coating options.",
+      "website": "mytcoat.com",
+      "ltv": 14789.0,
+      "workflow_type": "Manufacturing - Whitney, TX Operations"
+    },
+    {
+      "company_name": "Stanwood Redi-Mix, Inc.",
+      "industry_description": "Ready-Mixed Concrete Production & Delivery",
+      "product_types": "Ready-mixed concrete (regular/custom colors), sand, gravel, crushed rock, ecology blocks. Insulated concrete forms (ICF) specialization. Pickup/delivery services. Residential/commercial concrete products. Quality materials, customer service focus.",
+      "complexity": "High - 55+ years concrete production expertise, third generation family ownership, ready-mixed concrete manufacturing (regular/custom colors), insulated concrete forms (ICF) specialization, sand/gravel/crushed rock supply, ecology block production, pickup/delivery logistics, Stanwood WA operations, residential/commercial serving, long-term business relationship building.",
+      "website": "",
+      "ltv": 14705.0,
+      "workflow_type": "Manufacturing & Distribution - Family-Owned Since 1966"
+    },
+    {
+      "company_name": "Urban Front Ltd",
+      "industry_description": "Designer Hardwood Door Manufacturing - Bespoke Front Doors",
+      "product_types": "Bespoke hardwood front doors: contemporary/modern/wooden front doors, internal doors, garage doors. Solid wood, designer doors. Double steel reinforcement, unique ventilation system (prevents movement/warping). High-performance specification. Personalized advice/flexibility for perfect door creation. Made to measure. Raw/Form collections.",
+      "complexity": "Very High - 20 years modern door design innovation, bespoke handcrafted manufacturing, in-house design team, double steel reinforcement engineering, unique ventilation system (warping prevention), LPS1175 Grade 2 security certification, Secured by Design accreditation, UK workshop (Chesham, Buckinghamshire), worldwide shipping, family business operations, solid hardwood specialization, high-performance specification, made-to-measure customization.",
+      "website": "",
+      "ltv": 14700.0,
+      "workflow_type": "Handcrafted Manufacturing - UK Made"
+    }
+  ],
+  "Medical & Healthcare": [
+    {
+      "company_name": "J2 Medical Supply Inc",
+      "industry_description": "Medical Equipment & Supplies Wholesale Distribution",
+      "product_types": "PPE (nitrile gloves, isolation gowns, masks, face shields), medical supplies (walkers, crutches, vinyl gloves), hand sanitizer, thermometers, surgical instruments, catheters, IV supplies.",
+      "complexity": "Very High - 300,000+ SKUs from 5,000+ manufacturers. Complex inventory with FDA compliance requirements, bulk distribution, and private-label manufacturing.",
+      "website": "",
+      "ltv": 188291.0,
+      "workflow_type": "Medical Supply Distribution - Wholesale & Direct"
+    },
+    {
+      "company_name": "BioPhotas, Inc.",
+      "industry_description": "Medical Device Manufacturing - LED Light Therapy",
+      "product_types": "Celluma LED light therapy devices (flexible panels using blue, red, near-infrared wavelengths) for skin conditions, muscle & joint pain, acne, wrinkles, hair loss.",
+      "complexity": "High - FDA-regulated medical devices with multiple treatment indications. Proprietary photo-modulation technology. Flexible device design differentiates from rigid panel competitors.",
+      "website": "",
+      "ltv": 83440.0,
+      "workflow_type": "Manufacturing - FDA Regulated Medical Devices"
+    },
+    {
+      "company_name": "Central Infusion Alliance, Inc.",
+      "industry_description": "Medical Supplies Wholesale Distribution",
+      "product_types": "800,000+ medical SKUs from 5,000+ manufacturers (3M, B Braun, Bard, Baxter, Cardinal, Covidien, Ethicon, ICU Medical, Medline). IV supplies, surgical instruments, catheters, gloves, masks, bulk medical supplies.",
+      "complexity": "Very High - 800,000 SKU catalog, 5,000+ manufacturers. Complex wholesale distribution to licensed medical facilities. Bulk purchasing and fulfillment operations.",
+      "website": "",
+      "ltv": 81480.0,
+      "workflow_type": "Wholesale Distribution - Multi-Facility Healthcare"
+    },
+    {
+      "company_name": "Precision Surgical, Inc.",
+      "industry_description": "Medical Equipment Distribution",
+      "product_types": "Medical equipment: stretcher chairs, hospital beds, OR/ER/ICU equipment, innovative medical solutions for various healthcare settings. Skytron comprehensive range. Service solutions, clinical needs satisfaction.",
+      "complexity": "High - Medical equipment distribution requiring clinical knowledge, 30+ year manufacturer representation, trained professional network, healthcare facilities relationships, installation and service capabilities.",
+      "website": "",
+      "ltv": 39362.24,
+      "workflow_type": "Distribution & Service Solutions"
+    },
+    {
+      "company_name": "Sunshine USA LLC",
+      "industry_description": "MULTIPLE COMPANIES - Requires Clarification",
+      "product_types": "PENDING - Varies by entity: medical equipment, Brazilian imports, energy/water products, or defense parts",
+      "complexity": "PENDING - Requires entity identification",
+      "website": "",
+      "ltv": 39249.0,
+      "workflow_type": "PENDING - Multiple entities with this name"
+    },
+    {
+      "company_name": "Affordable Medical LLC",
+      "industry_description": "MULTIPLE COMPANIES - Requires Clarification",
+      "product_types": "PENDING - Varies from respiratory equipment (CPAP/BiPAP/ventilation/oxygen) to general medical supplies, durable equipment rentals (knee walkers, beds, wheelchairs), in-home medical equipment",
+      "complexity": "PENDING - Requires entity identification",
+      "website": "",
+      "ltv": 28348.0,
+      "workflow_type": "PENDING - Medical Equipment/Supplies Distribution"
+    },
+    {
+      "company_name": "Caribbean Diagnostics Inc",
+      "industry_description": "Medical Laboratory Equipment & Service Provider",
+      "product_types": "Medical laboratory equipment and service for Caribbean region laboratories. Equipment supplier and service provider helping laboratories deal with regional challenges. Professional support for Caribbean medical testing facilities.",
+      "complexity": "Medium-High - Caribbean regional distribution requiring logistics expertise, medical laboratory equipment knowledge, regional challenge management (hurricanes, customs, reagent supply), laboratory technologist/physician ownership, service provider operations across island nations.",
+      "website": "caribbeandiagnostics.com",
+      "ltv": 27636.5,
+      "workflow_type": "Distribution & Service - Caribbean Regional Specialist"
+    },
+    {
+      "company_name": "Access2mobility",
+      "industry_description": "Mobility Equipment & Accessibility Solutions",
+      "product_types": "Home equipment: Harmar/Bruno stair lifts (straight staircases), residential platform lifts, vertical platform lifts (Highlander II for scooters/wheelchairs/powerchairs), overhead/ceiling patient lifts (bed/bath transfers). Vehicle equipment: Bruno/Harmar wheelchair/scooter lifts (cars/trucks/SUVs), MPS hand controls (40+ years), BraunAbility lowered floor minivans, GoShichi pickup truck conversions, transfer seats. Personal mobility: scooters, powerchairs, lift chairs, rolling walkers/rollators (Upwalker/Nova Products), wheelchairs.",
+      "complexity": "High - Multi-category mobility solutions (home/vehicle/personal), multi-brand distribution (Bruno/Harmar/BraunAbility/MPS/Upwalker/Nova), vehicle modification expertise (lowered floors, lift installations, hand controls), patient lift installation, repair/maintenance services, regulatory compliance (ADA/safety standards).",
+      "website": "access2mobility.com",
+      "ltv": 25766.0,
+      "workflow_type": "Sales & Service - Complete Mobility Solutions"
+    },
+    {
+      "company_name": "MYOS CORP",
+      "industry_description": "Advanced Nutrition - Muscle Health Products",
+      "product_types": "Fortetropin® (proprietary ingredient from fertilized chicken egg yolks, retains biological integrity/bioactivity, clinically shown to enhance muscle size/lean body mass/strength in resistance training). MYOS PET (pets' muscle health), MYOS VET (veterinarian collaboration, specialized pet muscle solutions), MYOS MD (HCP-exclusive nutraceutical for muscle loss from aging/disuse/surgery/GLP-1 medications). Yolked®, Physician Muscle Health Formula®, MYOS Canine Muscle Formula®, Qurr®.",
+      "complexity": "Very High - Proprietary Fortetropin® technology from fertilized egg yolks, 8 clinical studies validation, 7 patents portfolio, human/animal divisions, HCP-exclusive products, GLP-1 medication muscle loss addressing, research-based development requiring bioactivity preservation, regulatory compliance (nutraceuticals/pet products).",
+      "website": "accountingsynergies.com",
+      "ltv": 25687.0,
+      "workflow_type": "Research, Development & Commercialization"
+    },
+    {
+      "company_name": "Animal Hospital Supply Inc.",
+      "industry_description": "Veterinary Surgical & Critical Care Supplies Manufacturing",
+      "product_types": "Sterile surgical gowns/drapes, surgical procedure packs tailored for pet patients, procedure-specific surgical drape lines (developed with leading veterinary surgeons), sterile procedure packs (single drapes to full custom packs), warm air equipment (blowers/blankets preventing pet hypothermia during procedures), surgical gowns/accessories. Enhance surgical outcomes, reduce infection rates.",
+      "complexity": "High - Pet-specific surgical product design requiring veterinary surgeon collaboration, sterile manufacturing processes, custom procedure pack assembly, warm air equipment integration, infection control technology, hypothermia prevention expertise, MWI Animal Health distribution partnership.",
+      "website": "animalhospitalsupply.com",
+      "ltv": 25685.07,
+      "workflow_type": "Manufacturing - Pet-Specific Medical Products"
+    },
+    {
+      "company_name": "Pick on Us, LLC",
+      "industry_description": "Eco-Friendly Disposables - Restaurant & Hospitality Products",
+      "product_types": "Eco-friendly disposables: customizable burger picks/skewers, drink stirrers, paper straws, bamboo tableware, earth friendly to-go containers, toothpicks, popsicle sticks, napkins, coffee cups. Custom branding services (online design tool or art team assistance - logos/text). Bamboo custom skewers/toothpicks, fancy toothpicks. www.pickonus.com ordering.",
+      "complexity": "Medium-High - Eco-friendly product sourcing, custom branding online design tool, art team assistance, bamboo tableware manufacturing, large venue supply logistics (stadiums/airlines/cruise lines), wholesale pricing operations, iconic brand clientele (Ketel One/MGM/Ruth's Chris), earth-friendly to-go container development.",
+      "website": "",
+      "ltv": 23941.0,
+      "workflow_type": "Manufacturing & Wholesale - Custom Branding"
+    },
+    {
+      "company_name": "CathX Medical, Inc.",
+      "industry_description": "Medical Device Contract Manufacturing - Catheters",
+      "product_types": "Advanced catheter manufacturing solutions (design to full-scale production): balloon catheters, smart catheters, mapping/diagnostic catheters, energy-delivery catheters. Neurovascular, structural heart, cardiovascular catheter projects. Catheter components, sub-assemblies, products for interventional/surgical procedures. Laser cutting, ablation, welding capabilities (added through acquisition).",
+      "complexity": "Very High - Advanced catheter design/engineering, rapid prototyping to full-scale production, balloon catheter technology, smart catheter innovation, energy-delivery systems, neurovascular/structural heart/cardiovascular specialization, laser cutting/ablation/welding capabilities, Zeus acquisition integration, 75,600 sq ft Minnesota facility, single-source contract manufacturing, interventional/surgical procedure support.",
+      "website": "zeusinc.com",
+      "ltv": 21389.0,
+      "workflow_type": "Design, Prototyping & Manufacturing - Zeus Company"
+    },
+    {
+      "company_name": "Antares Health Products",
+      "industry_description": "Pharmaceutical Grade Vitamin E TPGS Manufacturing",
+      "product_types": "Vitamin E TPGS (tocopheryl polyethylene glycol succinate): Pharmaceutical Grade (NF), Food Grade (FG). Antares Sunflower TPGS™ (only commercially available non-GMO TPGS). Applications: emulsifier, absorption enhancer for fat-soluble nutrients in liquid/solid dietary supplements, pharmaceuticals, food/beverage, personal care, animal nutrition.",
+      "complexity": "Very High - Only US manufacturer of vitamin E TPGS, cGMP facility (EU GMP Part II/ICH Q7 compliant), multi-ISO certified (9001/14001/45001), US-FDA/Italian AIFA/Japanese PMDA inspections, Pharmaceutical Grade (NF) and Food Grade production, proprietary non-GMO Sunflower TPGS™, international pharmaceutical company supply, absorption enhancer technology.",
+      "website": "tpgs.com",
+      "ltv": 20738.0,
+      "workflow_type": "Manufacturing - cGMP Certified Facility"
+    },
+    {
+      "company_name": "MOBILITY PLUS VA LLC",
+      "industry_description": "Mobility Equipment Sales, Rental & Service - VA-Approved",
+      "product_types": "Comprehensive mobility equipment: power wheelchairs, manual wheelchairs, mobility scooters, lift chairs/recliners, stair lifts, platform lifts, hospital beds, walkers/rollators, patient lifts, scooter lifts for vehicles, ramps/accessibility equipment, bathroom safety products. Purchase and rental options. Top manufacturer partnerships.",
+      "complexity": "High - VA-approved provider status (15+ years), Department of Veterans Affairs partnership, comprehensive mobility equipment portfolio, sales/service/rental tri-service model, top US manufacturer relationships, multi-location operations, aging Americans/disabled veterans specialization, government employee serving, accessibility equipment expertise.",
+      "website": "",
+      "ltv": 20440.0,
+      "workflow_type": "Distribution & Service - Veterans & Disabled Focus"
+    },
+    {
+      "company_name": "APDM Wearable Technologies, Inc.",
+      "industry_description": "Wearable Motion Sensors & Digital Health Technology",
+      "product_types": "Opal V2R System (research use only), Opal V2C System (clinical trials in-clinic/at-home digital endpoints), Moveo Explorer (portable motion capture lab, joint angles/gait/balance metrics/raw data reports), Mobility Lab (clinical software for gait/balance analysis). Motion data: joint angles, stride patterns, balance, muscle activation. Applications: Parkinson's disease, Multiple Sclerosis, Ataxia, stroke, neurological disorders.",
+      "complexity": "Very High - Medical-grade wearable IMU sensor technology, digital biomarker development, clinical trial endpoint measurement, Parkinson's disease/MS/Ataxia/stroke applications, portable motion capture lab engineering, gait/balance analysis software, real-time joint angle/stride/muscle activation data, 1,000+ researcher network, 700+ peer-reviewed publications, ERT/Clario acquisition integration.",
+      "website": "",
+      "ltv": 20385.0,
+      "workflow_type": "Manufacturing - Clinical Research & Healthcare"
+    },
+    {
+      "company_name": "MPD Medical Systems, Inc.",
+      "industry_description": "Medical Carts & Hospital Cabinets Manufacturing",
+      "product_types": "Premium quality medical carts/accessories: Anesthesia, Emergency, Treatment, Isolation, Medication, general use carts. Maximum security storage/narcotic cabinets. Steel and E-Z Push aluminum construction. Quiet ball bearing slides, full drawer extensions. Workstations for healthcare.",
+      "complexity": "Very High - 30+ years medical cart innovation, Anesthesia/Emergency/Treatment/Isolation/Medication specialization, maximum security narcotic cabinet engineering, USA manufacturing (central Illinois), 100% latex-free construction, E-Z Push aluminum technology, quiet ball bearing slide systems, full drawer extension mechanisms, healthcare fast-paced environment design, premium quality standards.",
+      "website": "tdmetal.com",
+      "ltv": 17538.0,
+      "workflow_type": "Manufacturing - USA Made Medical Equipment"
+    },
+    {
+      "company_name": "Imperial Privacy Systems LLC",
+      "industry_description": "Healthcare Privacy Curtains & ICRA Barriers Manufacturing",
+      "product_types": "Hospital privacy curtains, ICRA barriers, cubicle curtains, cubicle tracks, IV track systems, specialty curtains, snap-on curtains, shower curtains, security shower curtains, blackout curtains. For patient rooms, clinics, behavioral health, education, senior care, healthcare facilities. Fabric-based privacy solutions (not bathroom partitions).",
+      "complexity": "Very High - 50+ years healthcare privacy expertise, American-made manufacturing (Pompano Beach FL), ICRA barrier engineering, cubicle track/IV track systems, snap-on curtain technology, security shower curtain innovation, behavioral health/senior care specialization, family-owned operations, healthcare institutional focus, fabric-based privacy solutions.",
+      "website": "imperialprivacy.com",
+      "ltv": 15388.0,
+      "workflow_type": "Manufacturing - Family-Owned USA Made"
+    }
+  ],
+  "Electronics & Technology": [
+    {
+      "company_name": "DEWESoft LLC.",
+      "industry_description": "Data Acquisition Systems & Test Measurement Solutions",
+      "product_types": "Data acquisition systems: SIRIUS (world's most versatile USB/EtherCAT DAQ with signal conditioning for strain/pressure/vibration/displacement/temperature sensors), IOLITE (dual EtherCAT buses for industrial testing, real-time control/feedback monitoring), KRYPTON (super rugged, waterproof, wide temperature, all-weather modules). DewesoftX software (award-winning data recording/analysis/visualization/reporting suite). Applications: automotive testing, power/energy testing, dynamic signal analysis, E-mobility, NVH, telemetry, ADAS, flight test, aerospace, durability testing.",
+      "complexity": "Very High - Complete DAQ system range (flexible modular/portable instruments/high-channel-count rack-mounted), SIRIUS USB/EtherCAT technology (universal sensor signal conditioning), IOLITE dual EtherCAT bus real-time control, KRYPTON all-weather/waterproof engineering, DewesoftX award-winning software (best software innovation), in-house European design/development/manufacturing/calibration, 100% employee ownership model, 7-year industry-leading warranty, automotive/aerospace/E-mobility/NVH/ADAS specialization, power quality/structural monitoring/flight test applications.",
+      "website": "",
+      "ltv": 181976.0,
+      "workflow_type": "Manufacturing & Software - European DAQ Systems Specialist"
+    },
+    {
+      "company_name": "USA Fleet Solutions",
+      "industry_description": "Fleet Management Technology & Telematics",
+      "product_types": "GO Devices (vehicle tracking), cameras (fleet safety), GO Anywhere (asset tracking for trailers/containers), telematics, dispatch & navigation, ELD compliance, maintenance & diagnostics, 24/7 customer service, customized reporting.",
+      "complexity": "High - Complex telematics systems with CSA/ELD compliance requirements. Customized reporting and data analysis. Hardware installation and ongoing software support across 14+ states.",
+      "website": "",
+      "ltv": 58546.0,
+      "workflow_type": "GPS Tracking & Fleet Management Services"
+    },
+    {
+      "company_name": "Ezlo Innovation LLC",
+      "industry_description": "Smart Home Automation & IoT Platform",
+      "product_types": "Smart hubs (Ezlo Plus, Ezlo Secure all-in-one security, PlugHub smart plug with hub), video security (VistaCam/InstaVue doorbell 1080p, OutdoorVue camera IP-66, IndoorVue), EzloPi open-source IoT firmware. Z-Wave, Zigbee, WiFi support for 27,000+ devices.",
+      "complexity": "Very High - Complex IoT platform with cloud-to-ground architecture, white-label B2B solutions, open-source firmware development, multi-protocol support (Z-Wave, Zigbee, WiFi), integration with Alexa/Google Assistant. Local-first philosophy.",
+      "website": "",
+      "ltv": 49366.0,
+      "workflow_type": "B2B IoT Platform Development - Cloud-to-Ground Solutions"
+    },
+    {
+      "company_name": "A Beep, LLC",
+      "industry_description": "Push-to-Talk Telecommunications",
+      "product_types": "Two-way Push-To-Talk radios (Diga-Talk+, Diga-Talk2, Diga-Trax), Kenwood radios and accessories, Nationwide PoC Push Over Cellular, mobile/digital communication solutions, extensive analog LTR trunked network.",
+      "complexity": "High - Proprietary PoC technology development, nationwide cellular network operations, analog LTR trunked network maintenance, dynamic mobile radio solutions for industry/schools/fleets/municipalities.",
+      "website": "",
+      "ltv": 38868.0,
+      "workflow_type": "PoC Provider & Two-Way Radio Services"
+    },
+    {
+      "company_name": "Data Memory Sales, Inc.",
+      "industry_description": "Computer Memory & Storage Distribution",
+      "product_types": "Memory upgrades (DDR, DDR2, DDR3, Dual Channel, SDRAM, EDO - Samsung/Micron/Hynix), desktop/laptop/Mac/server memory, hard drives (SATA, PATA, IDE, notebook, desktop, server, RAID, NAS, SSD), flash memory (compact flash, SD, SDHC, microSDHC cards from Transcend/Wintec/Sandisk).",
+      "complexity": "High - Wide range of memory types and storage solutions, compatibility across all major computer brands, fully tested and qualified in memory test lab, lifetime warranty program, long-standing industry presence (60+ years).",
+      "website": "",
+      "ltv": 38514.0,
+      "workflow_type": "Distribution - Memory Upgrades & Components"
+    },
+    {
+      "company_name": "Centricity Vision, Inc",
+      "industry_description": "Ophthalmic Technology & Cataract Surgery Devices",
+      "product_types": "ZEPTO® IOL Positioning System (first/only instantaneous capsulotomy device, proprietary precision pulse technology, four-millisecond energy pulse, calibrated suction, 360-degree IOL overlap), ZEPTOLink™ IOL Positioning System (integrates with any phaco system, streamlines cataract surgery, 60% faster treatment). Ideal for premium IOLs, complex cases requiring precision. Cost/time savings, easy workflow integration.",
+      "complexity": "Very High - Proprietary precision pulse capsulotomy technology, FDA 510(k) cleared medical devices, four-millisecond energy control algorithm, cataract surgery innovation, integration with phaco systems, premium IOL applications, continuous platform enhancements (60% time reduction).",
+      "website": "centricityvision.com",
+      "ltv": 28860.0,
+      "workflow_type": "Medical Device Design & Manufacturing - FDA Cleared"
+    },
+    {
+      "company_name": "Supply Shield Inc",
+      "industry_description": "Electronic Components Distribution - Aerospace/Defense",
+      "product_types": "Electronic components for manufacturers, engineers, electronics industry businesses. Factory authorized parts at competitive pricing. Obsolete and hard to find components assistance. Procurement, stocking, distribution services. Aerospace/defense grade electronics, hardware, IT equipment.",
+      "complexity": "High - AS 9120 & ISO 9001:2015 certifications, aerospace/defense industry compliance, obsolete/hard-to-find component sourcing, factory authorized parts procurement, OEM/contract manufacturer relationships, semiconductor distribution expertise, specialized aerospace/defense requirements.",
+      "website": "",
+      "ltv": 25646.0,
+      "workflow_type": "Procurement, Stocking & Distribution"
+    },
+    {
+      "company_name": "Audio Video Supply",
+      "industry_description": "MULTIPLE COMPANIES - Requires Clarification",
+      "product_types": "PENDING - Varies from video components/cameras/lenses, commercial A/V products (switchers/amplifiers/splitters/extenders/converters/scalers/cables/digital signage), to complete AV system installations",
+      "complexity": "PENDING - Requires entity identification",
+      "website": "",
+      "ltv": 25284.0,
+      "workflow_type": "PENDING - Likely Audio Visual Equipment Distribution"
+    },
+    {
+      "company_name": "U.S. Testing Equipment, Ltd.",
+      "industry_description": "Security Screening Technology & Detection Equipment",
+      "product_types": "Checkpoint security technology: Walk Through Metal Detectors, Hand Held Metal Detectors, Security X-ray, Explosive Trace Detection (ETD) devices, Automatic Under Vehicle Inspection Systems (AUVIS), Personnel Screening, Bio-Detection systems. Partners: Morpho Detection, Rapiscan Systems, CEIA, L3 Communications, Gatekeeper Security, Alvarado, Armstrong Monitoring. Serves air cargo, military, TSA, events/stadiums, corrections, critical infrastructure.",
+      "complexity": "Very High - 25+ years security screening expertise, TSA/DHS/Military partnerships, cutting edge detection technology distribution, explosive trace detection systems, AUVIS engineering, bio-detection capabilities, multi-manufacturer relationships (Morpho/Rapiscan/CEIA/L3), installation/training/maintenance services, critical infrastructure protection, diverse industry serving (air cargo/military/events/corrections).",
+      "website": "",
+      "ltv": 23432.0,
+      "workflow_type": "Distribution & Service - Checkpoint Security"
+    },
+    {
+      "company_name": "Artemis Bio-Solutions LLC",
+      "industry_description": "Bio-Technology Decontamination & Remediation Solutions",
+      "product_types": "Bio-Oxygen® Chem Decon (flagship product exclusively licensed from Sandia National Laboratories, EPA-registered on List N and List Q). Solutions for: mold remediation, cleaning/disinfecting, fire smoke damage, illicit drug cleanup, trauma biohazard decontamination. Restoration, remediation, decontamination products/services.",
+      "complexity": "Very High - Sandia National Labs exclusive license, patented DF-200 formulation, EPA-registered (List N and List Q), bio-technology decontamination innovation, trauma biohazard expertise, illicit drug cleanup specialization, mold remediation technology, fire smoke damage restoration, insurance/restoration industry focus.",
+      "website": "uniongas.net",
+      "ltv": 20034.0,
+      "workflow_type": "Manufacturing - Sandia National Labs Licensed Technology"
+    },
+    {
+      "company_name": "ENZ USA  INC",
+      "industry_description": "Sewer & Pipe Cleaning Equipment - Water Jetting Technology",
+      "product_types": "Swiss-made water jetting nozzles & water blasting tools: standard nozzles, rotating nozzles, wire rope/chain scrapers, milling cutters, camera nozzles, hydro excavation nozzles. CrossJet Technology UC Line (heat exchangers, clogged pipes in industrial settings). Applications: sewer cleaning, pipe cleaning, plumbing, industrial plants/municipalities, chemical/oil/petrochemical industries, nuclear power plants. Sizes 1/8\" to 1/2\", up to 36,000 PSI.",
+      "complexity": "Very High - Swiss-made precision engineering (95% Switzerland manufacturing), worldwide leader status, 36,000 PSI high-pressure systems, CrossJet Technology innovation, multi-application expertise (sewer/industrial/nuclear), camera nozzle integration, hydro excavation technology, global distribution (50+ countries), hardened steel/ceramic insert engineering.",
+      "website": "enz.com",
+      "ltv": 19905.0,
+      "workflow_type": "Distribution & Manufacturing - Swiss Engineering"
+    },
+    {
+      "company_name": "Erazor bits",
+      "industry_description": "Patriotic & Military Apparel E-Commerce",
+      "product_types": "Patriotic & military apparel: t-shirts, sweatshirts, hoodies, long sleeves, glassware, decals, aluminum art signs, throw blankets, towels, mugs, coasters, Christmas ornaments, face masks. Armed Forces designs for all US branches (Air Force, Army, Coast Guard, Marine Corps, Navy). USA printed clothing. Multi-category merchandise for patriots.",
+      "complexity": "Medium-High - 30+ years patriotic apparel expertise, USA printing operations, all US military branches design licensing/representation, multi-category product portfolio (apparel/glassware/signage/home goods), e-commerce/Amazon dual-channel distribution, first responder market specialization, diverse occupational targeting (fishermen/electricians/miners/mechanics/hunters/welders/truckers), South Florida manufacturing.",
+      "website": "",
+      "ltv": 18840.0,
+      "workflow_type": "Design & Print - USA Manufacturing"
+    },
+    {
+      "company_name": "Reuning-McKim, Inc.",
+      "industry_description": "Steelmaking Technology & Telescopic Lances Manufacturing",
+      "product_types": "Telescopic lances (oxygen lances for meltshop furnaces/ladles/casters), Thermal lances (cutting/cleaning/scrapping, Trefimet partnership), Insulating powders (Rice Hull Ash powder), Telescopic T-lances, Shrouded ladles. Steel manufacturing solutions.",
+      "complexity": "Very High - 50 years steelmaking technology expertise, telescopic lance design/manufacturing, oxygen lance engineering (furnaces/ladles/casters), thermal lance technology (Trefimet partnership), Rice Hull Ash insulating powder specialization, shrouded ladle systems, 11-country/4-continent global distribution, meltshop furnace specialization.",
+      "website": "sbsassociates.com",
+      "ltv": 16018.2,
+      "workflow_type": "Design, Manufacturing & Distribution - Global Steel Industry"
+    },
+    {
+      "company_name": "Pro AV (Professional Audio Visual Ltd.)",
+      "industry_description": "Audio Visual Equipment Sales & Service - Canada",
+      "product_types": "Audio visual equipment: repair, installation, sales. AV equipment service for events/corporate. Audio visual solutions for various applications.",
+      "complexity": "High - 40+ years AV industry expertise (since 1983), audio visual equipment repair/installation/sales, Regina Saskatchewan operations, service business heritage, corporate/event AV solutions, Canadian AV market specialization, equipment installation expertise.",
+      "website": "",
+      "ltv": 13820.0,
+      "workflow_type": "Sales & Service - AV Industry Since 1983"
+    }
+  ],
+  "Consumer Goods & Retail": [
+    {
+      "company_name": "FUJI Mats, LLC",
+      "industry_description": "Sporting Goods Manufacturing - Martial Arts Equipment",
+      "product_types": "Training mats (Tatami & Smooth MMA mats in various thicknesses 0.5\"-2.0\"), crash pads, wall padding, pole padding, rubber flooring, turf flooring, plyo boxes, cage panels, bag racks.",
+      "complexity": "Medium - Multiple mat sizes and thickness options, facility outfitting products. Manufacturing in USA with international distribution network.",
+      "website": "",
+      "ltv": 105391.71,
+      "workflow_type": "Manufacturing & Distribution - Direct & Dealer Network"
+    },
+    {
+      "company_name": "BIG GAME SPORTS INC",
+      "industry_description": "Sporting Goods Manufacturing - Footballs",
+      "product_types": "Custom footballs for all levels (youth, high school, college). Handcrafted footballs matching college team specifications. Made in USA.",
+      "complexity": "Medium - Handcrafted football manufacturing with customization capabilities. Custom orders matching college team specifications require quality control and consistency.",
+      "website": "biggameusa.com",
+      "ltv": 60645.75,
+      "workflow_type": "Manufacturing - Handcrafted Products"
+    },
+    {
+      "company_name": "Cunningham Piano Co",
+      "industry_description": "Piano Sales & Service",
+      "product_types": "New pianos (Yamaha, Bösendorfer, Cunningham grands), used uprights, digital Clavinovas. Services: tuning (recommended 1-2x/year), repairs, complete restoration, PianoDisc installation, rentals, lessons.",
+      "complexity": "High - Piano retail requiring expertise in instrument quality, restoration services needing specialized skills, professional tuning and repair technicians, rental fleet management, instruction programs.",
+      "website": "",
+      "ltv": 49946.0,
+      "workflow_type": "Retail Sales & Professional Services"
+    },
+    {
+      "company_name": "Jeffs atWork Office Furniture",
+      "industry_description": "Office Furniture Retail & Distribution",
+      "product_types": "Ergonomic chairs and desks, new and pre-owned office furniture, workspace solutions. Prompt delivery and assembly services. Canadian furniture brands, Ontario suppliers.",
+      "complexity": "Medium - Large inventory management (new/pre-owned), ergonomic furniture expertise, delivery/assembly logistics, knowledge of Canadian furniture manufacturers, workspace design consultation.",
+      "website": "",
+      "ltv": 34273.0,
+      "workflow_type": "Sales & Service - New & Pre-Owned"
+    },
+    {
+      "company_name": "Working Fire Furniture & Mattress Co, Inc.",
+      "industry_description": "Fire Station Furniture & Mattresses Manufacturing",
+      "product_types": "Fire station recliners (Ultimate Firefighter Recliner™), heavy-duty mattresses (made in USA, 10-year warranty), fire station furniture, beds. Designed specifically for firefighters and emergency services. Free shipping on mattresses/protectors.",
+      "complexity": "High - Specialized products for 24/7 emergency service use, firefighter-owned design expertise, heavy-duty engineering and testing, nationwide B2B distribution (no residential), industry-specific requirements, warranty programs.",
+      "website": "firestationfurniture.com",
+      "ltv": 34259.57,
+      "workflow_type": "Specialized Manufacturing - Firefighter-Owned"
+    },
+    {
+      "company_name": "SunShine USA, LLC 2023",
+      "industry_description": "Hot Tub & Swim Spa Manufacturing/Retail",
+      "product_types": "Hot tub brands: Catalina Luxury Spas, Dr. Wellness Therapy Spas, Tuff Spas, Plug and Power Spas, Hudson Bay Spas. Swim spas. Luxury golf carts, golf cart accessories, tanning beds (sister companies). Cutting-edge technology for therapeutic/leisure experiences.",
+      "complexity": "Very High - Multi-brand hot tub/swim spa manufacturing, 70+ retail locations nationwide, 450,000 sq ft production facilities, e-commerce operations, sister company product lines (golf carts, tanning beds), employee-owned structure, therapeutic technology integration.",
+      "website": "lpiinc.com",
+      "ltv": 32599.0,
+      "workflow_type": "Manufacturing & Retail - Multi-Brand Operations"
+    },
+    {
+      "company_name": "Back2 International Ltd",
+      "industry_description": "Ergonomic Office Furniture Distribution - UK Market",
+      "product_types": "Ergonomic office chairs, standing desks (Lavoro to Nowy Styl range), furniture accessories, ergonomic keyboards/mice, office accessories, recliner chairs, sofas, children's furniture. Premium international brands promoting ergonomics and wellbeing. DSE assessments, DSE training, furniture audit, furniture consultancy, installations, loan chairs.",
+      "complexity": "High - 30+ years ergonomic expertise, multi-brand authorized dealer (Herman Miller, HAG, Humanscale, etc.), DSE assessment/training services, furniture consultancy, UK market operations, 1,713+ customer relationships, comprehensive ergonomic solutions (chairs/desks/accessories/training).",
+      "website": "",
+      "ltv": 27924.0,
+      "workflow_type": "Sales & Services - DSE Assessments & Ergonomic Solutions"
+    },
+    {
+      "company_name": "Grothouse, Inc",
+      "industry_description": "Luxury Wood Countertops & Butcher Blocks Manufacturing",
+      "product_types": "Custom wood countertops, butcher block countertops, wood bar tops, solid wood tables, floating shelves, stair treads, custom furniture (tables, vanities). 60+ wood species: exotic hardwoods (Wenge, Teak, Zebrawood), American favorites (Walnut, Maple), Live Edge millwork, reclaimed woods (Chestnut, Oak, Heart Pine from Pennsylvania barns). Proprietary Durata® waterproof/scratch-resistant finish. Anvil™ metal gilded wood surfaces (8 metal coatings, imitates metal countertops). Food safe butcher block oil, custom cutting boards.",
+      "complexity": "Very High - 25+ years master craftsman expertise, 60+ wood species offering, proprietary Durata® waterproof finish technology, Anvil™ metal gilding innovation (8 coatings), reclaimed historic barn wood sourcing, Live Edge millwork artistry, custom furniture design/manufacturing, sustainable eco-friendly USA production, HGTV/This Old House featured.",
+      "website": "",
+      "ltv": 23770.0,
+      "workflow_type": "Custom Manufacturing - Made in USA"
+    },
+    {
+      "company_name": "OFFICE FIRST SOLUTIONS",
+      "industry_description": "Office Furniture Sales & Liquidation - New & Used",
+      "product_types": "New & used office furniture: cubicles, chairs, desks, filing cabinets. Home office furniture. Interior design services, space planning, delivery & installation. Office furniture liquidations. Buy, sell and liquidate office furniture.",
+      "complexity": "Medium - New/used office furniture buying/selling/liquidation expertise, interior design services, space planning capabilities, delivery/installation operations, Ohio's largest used furniture inventory, cubicle/chair specialization, home office market, multi-service offering (design/planning/delivery).",
+      "website": "myofficefirst.com",
+      "ltv": 21240.0,
+      "workflow_type": "Wholesale & Retail - Full Service Solutions"
+    },
+    {
+      "company_name": "PTE Golf, LLC",
+      "industry_description": "Golf Tournament Enhancement Products",
+      "product_types": "Tournament enhancement products: embroidered table covers, tournament cases, pop-up tents, professional presentation items for driving range/on course. Custom products for golf clubs. Retail shop items, awards. Not traditional golf equipment (clubs/balls) but tournament/professional presentation items.",
+      "complexity": "Medium-High - 20+ years golf professional market expertise, custom tournament enhancement design, embroidered table cover manufacturing, pop-up tent production, driving range/on-course presentation specialization, global distribution, retail/awards product portfolio, Golf Professional client focus.",
+      "website": "ptegolf.com",
+      "ltv": 18140.0,
+      "workflow_type": "Manufacturing & E-Commerce - Professional Golf Market"
+    },
+    {
+      "company_name": "Office Furniture Centre Ltd",
+      "industry_description": "Office Furniture Distribution - PENDING RESEARCH",
+      "product_types": "PENDING RESEARCH - Likely office furniture, desks, chairs, workstations. Requires verification.",
+      "complexity": "PENDING - Requires additional research to determine specific capabilities and market position.",
+      "website": "",
+      "ltv": 17186.0,
+      "workflow_type": "PENDING - Likely Canadian Distribution"
+    },
+    {
+      "company_name": "Good Chemistry of Massachusetts, Inc",
+      "industry_description": "Vertically Integrated Cannabis Cultivation & Dispensary",
+      "product_types": "Cannabis flower (60+ strains, 100% in-house cultivation, GC Uniques proprietary/small batch strains), solventless concentrates (rosin, bubble hash, dry sift, live rosin, water hash), vape products (disposable vaporizers, vape cartridges, premium live resin options). Vertically integrated production (cultivation to retail).",
+      "complexity": "Very High - Vertically integrated cannabis operations (cultivation/manufacturing/retail), 60+ strain breeding/cultivation, proprietary GC Uniques strain development, solventless concentrate manufacturing (rosin/bubble hash/dry sift technology), live resin vape production, Massachusetts/Colorado dual-state operations, dispensary network serving (Cape Cod to NY border), 10+ years cannabis expertise, premium small batch focus.",
+      "website": "",
+      "ltv": 16700.0,
+      "workflow_type": "Cultivation & Retail - Premium Small Batch Cannabis"
+    },
+    {
+      "company_name": "JOUFFRE INC",
+      "industry_description": "Luxury Upholstery & Interior Decoration - French Craftsmanship",
+      "product_types": "High-end upholstery: curtains, cushions, bedspreads, reproduction armchairs, contemporary sofas. Gainage technique (covering furniture/moldings - wardrobes, beds, chairs, cornices, casings, picture rails, clear paneling). Materials: linen, alcantara, silk velvet, leather. French luxury craftsmanship.",
+      "complexity": "Very High - 35+ years French luxury upholstery expertise, Living Heritage Company (EPV) label (French government), patented Gainage technique for furniture covering, silk velvet/alcantara/linen/leather specialization, Lyon textile tradition heritage, dual workshop operations (Lyon/New York), Paris/Manhattan showrooms, worldwide designer/hotel/public agency serving, traditional/contemporary upholstery mastery, furniture reproduction artisan craftsmanship.",
+      "website": "jouffre.com",
+      "ltv": 16549.0,
+      "workflow_type": "Atelier Manufacturing - Living Heritage Company"
+    }
+  ]
+}

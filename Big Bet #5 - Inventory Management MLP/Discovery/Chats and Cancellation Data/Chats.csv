@@ -1,0 +1,219 @@
+﻿Question,PrimaryTeam (from Components) (from Specific),Specific,General Category,Summary
+The customer contacted us to resolve sync conflicts and remap items in Method CRM due to changes made by SOS inventory in QBO.,Sales,stockapps- howto- items,other,"Nate has a question about remapping items from QBO.
+SOS inventory changed all inventory items to non-inventory in QBO.
+Nate needs to remap items in Method CRM.
+There are 1456 sync conflicts and the sync has been aborted.
+Teammate resolved one sync conflict and created a case for support to look into the remaining conflicts. Chat Link"
+The customer contacted us to find a way to manage multiple variations of one inventory item in Method.,"Customer,Sales","customization,stockapps- howto- items",other,"Customer is looking for a way to manage multiple variations of one inventory item in Method.
+Teammate suggests using customization tools or consulting services to achieve this functionality.
+Consulting services would be billable and have a current wait time of 15-20 business days.
+Customer is interested in being able to choose the variation of a product when creating an estimate.
+Teammate closes the chat, but offers to assist with consulting services if the customer still wants to proceed. Chat Link"
+The customer contacted us regarding sales orders showing 0 quantity despite correct updates on POs and inventory.,,"stockapps how-to,icr-cs,icr-ps","miscellaneous,how-to,general support & issue resolution","• Sales orders showing 0 quantity, while POs and inventory are updating correctly
+• Syncing sales orders with QuickBooks is necessary to update quantity on sales orders
+• Upgrading QuickBooks from Pro to Premier or Enterprise allows for syncing of sales orders
+• Customization options are available for updating sales order quantity without syncing with QuickBooks, but may have limitations and are billable services
+• Scoping out for customization is also a billable service
+Chat Link"
+The customer contacted us to report a technical issue with item search in mobile view and to inquire about inactive inventory items in their Akron account.,Service Delivery,mobile app,integrations & connectivity,"Customer is experiencing a technical issue with item search in mobile view.
+Teammate requests permission to access account to investigate.
+Teammate suggests updating settings to include description field for search.
+Customer also asks about inactive inventory items in Akron account.
+Teammate explains that inactive items are shown in the inventory items filter view and suggests creating a custom filter to only show active items. Chat Link"
+The customer contacted us for help with using the CRM and tracking inventory using multiple units of measurement.,Sales,stockapps- howto- items,other,"Briand is a new customer who needs help with using the CRM and tracking inventory using multiple units of measurement.
+The teammate offers a 30-minute onboarding call to answer questions and show how to use the CRM.
+The teammate asks for an example of how Briand wants to track inventory and suggests using inventory items on invoices and syncing with QuickBooks.
+The teammate offers a personalized demo with a Success Manager for a better understanding of the CRM.
+The teammate checks in multiple times and offers to continue the conversation if needed. Chat Link"
+The customer contacted us for assistance with inventory syncing issues.,Connect,"qbo sync,icr-cs,icr-ps","miscellaneous,general support & issue resolution,financial & payments","Method's Help Bot is available to answer questions and refer customers to a team member if needed.
+Changing Quantity on Hand in Method will sync with QuickBooks, but the field is typically read-only and calculated from invoices and sales receipts.
+Method and QuickBooks sync inventory data to ensure consistency between the two systems.
+Customers can reach out to Method's support team for assistance with any inventory syncing issues.
+A teammate checked in with the customer and offered to continue the conversation if needed. Chat Link"
+The customer contacted us for help with exporting data from reports and a bigger issue with inventory tracking and reporting.,Admin,data import/export,"general support & issue resolution,other","Customer is experiencing issues with exporting data from reports, specifically with items only showing headers.
+Teammate suggests checking for correct fields and filters, and offers to access the account for further investigation.
+Customer also mentions a bigger problem with inventory tracking and reporting, and teammate recommends contacting the customization team for a solution.
+Teammate shares a pay-per-use agreement for customization services.
+Teammate follows up and offers to continue the conversation if needed. Chat Link"
+The customer contacted us with questions about adding pictures to items in their inventory in Method:CRM.,Customer,customization,other,"• Customer has questions about Method:CRM and wants to add pictures to items in the inventory.
+• Teammate suggests customization and consulting services, which start at $145/hour.
+• Customer agrees to move forward and signs pay-per-use agreement.
+• Case is created and customer will be added to the queue for professional services.
+• Teammate confirms completion and offers assistance for any additional questions.
+Chat Link"
+The customer contacted us for assistance with adding a new inventory item with the same name but different identifier.,Sales,stockapps- howto- items,other,"• User is having trouble adding a new inventory item with the same name but different inventory name.
+• Method Help Bot provides steps to add a new item with the same name but different identifier.
+• If duplicates are not allowed, the ''Insert Records Into Table'' action can be used to duplicate an existing record.
+• Teammate offers to assist and checks if the user is still there.
+• Teammate closes the chat but offers to continue the conversation if needed. Chat Link"
+The customer contacted us regarding a general sync conflict error when modifying an ItemInventory list.,Connect,sync conflicts,general support & issue resolution,"Customer reported a general sync conflict error when modifying an ItemInventory list.
+The error message stated that an inactive parent cannot have an active child.
+The team will reply to the customer's email within a few minutes.
+The teammate requested permission to access the customer's account to further investigate the issue.
+The teammate created a case for the issue and provided the customer's direct number for contact. Chat Link"
+The customer contacted us to confirm the connection between Method and QuickBooks and to inquire about updating inventory stock during temporary downtime.,Connect,qbo sync,"general support & issue resolution,financial & payments","Customer is a new Method customer and wants to confirm if something is linked between Method and QuickBooks.
+Teammate provides steps to see the connection between QuickBooks and Method.
+Customer is planning for temporary downtime for company and wants to know if they can update inventory stock through Method during this time.
+Teammate confirms that customer can create items in Method and once the sync is reconnected, all information will be updated.
+Customer thanks teammate and ends conversation Chat Link"
+The customer contacted us to discuss potentially closing their Method account due to difficulties with integrating inventory management and ERP functions with Quickbooks.,Customer,customer management,general support & issue resolution,"Greg is considering closing his Method account due to trouble integrating inventory management and ERP functions with Quickbooks.
+The teammate suggests adding and removing packs to simplify processes and increase efficiency.
+The teammate offers to schedule a call with the customer's success manager to discuss cancellation.
+The customer confirms a time for the call and receives a confirmation email.
+The customer accepts the invite and thanks the teammate. Chat Link"
+The customer contacted us for assistance with inventory not showing up in Method from their main warehouse with bin locations.,Sales,stockapps- howto- items,"general support & issue resolution,other","Customer needs help with inventory being pulled from unspecified location on invoice 696241.
+Teammate requests more details and permission to access account.
+Customer explains inventory is stored in main warehouse with bin locations, but not showing up in Method.
+Teammate suggests customization and recommends contacting John Sandy for assistance.
+Customer confirms they will discuss next steps and no further assistance is needed at this time. Chat Link"
+The customer contacted us for assistance with importing new noninventory items into Method.,Admin,data import/export,"general support & issue resolution,other","Method only allows for updating existing records, not creating new ones when importing data.
+To import new items, the file must include a RecordID column and the ''Import records'' option must be selected.
+Method automatically generates a RecordID for new records.
+The customer's new records are noninventory items and should be imported under the ''itemNoninventory'' table.
+If the import is incorrect, it must be manually deleted as there is no undo option. Chat Link"
+The customer contacted us to inquire about inventory tracking options in Method CRM.,,fin answered,other,"Method CRM does not have a standalone inventory tracking feature without syncing to QuickBooks.
+The Items app in Method allows for basic inventory tracking for QuickBooks Online users.
+QuickBooks Desktop users with Advanced Inventory can sync additional features like site tracking, lot numbers, and serial numbers.
+Advanced inventory options may require customization.
+Teammate offers to explore customization options if customer shares specific requirements. Chat Link"
+The customer contacted us to inquire about adding a box showing the location of inventory items in their warehouse.,Customer,"customization,icr-cs,icr-ps","miscellaneous,general support & issue resolution,other","Customer wants to add a box showing location of inventory items in warehouse
+Teammate confirms and asks for specific details
+Customization is needed for this feature
+Teammate provides article and offers billable customization service
+Customer will discuss with manager and decide on next steps. Chat Link"
+The customer contacted us to report an issue with the ''each'' option disappearing in their QuickBooks inventory.,Sales,stockapps- howto- items,other,"• Customer reported an issue with the ''each'' option disappearing in their QuickBooks inventory.
+• Teammate requested permission to access the customer's account to investigate the issue.
+• Customer granted permission and confirmed that the ''each'' option is available in their QuickBooks.
+• Teammate requested a screenshot of the sync engine to further troubleshoot the issue.
+• Customer later reported that the ''each'' option had reappeared and the issue was resolved.
+Chat Link"
+The customer contacted us for help with receiving inventory from purchase orders in Method.,Customer,customization,other,"• Customer is looking for help with the process of receiving inventory from purchase orders in Method.
+• Teammate suggests contacting Joanna Cerejo for assistance with converting purchase orders to bills.
+• Teammate also mentions a personalized add-on that can be integrated into the customer's account to align with their needs.
+• Teammate will inform customer when the add-on has been successfully added to their account.
+• Customer provides email and contact number for notification. Chat Link"
+The customer contacted us to inquire about adding pictures to their inventory list and tracking warranty on items.,Customer,"customization,free hour booked - csr",other,"Customer has questions about adding pictures to inventory list and tracking warranty on items.
+Teammate confirms that warranty can be tracked using ''Warranty expires'' field.
+Teammate offers 1 free hour of customization to add pictures to inventory list.
+Customer agrees and books a time for Friday at 11:30 using email carolinacompactor@gmail.com.
+Teammate confirms booking and offers to answer any additional questions. Chat Link"
+The customer contacted us for help with using Method software to create and track inventory items.,,"icr-cs,icr-ps",miscellaneous,"Julia needs help with Method software for creating an inventory and tracking items in and out.
+She wants to be able to scan items and view inventory in an app.
+The teammate suggests customizing the solution and recommends discussing with the dedicated consultant, Muhammad.
+Muhammad's email is m.muhammad@method.me.
+The teammate will close the chat but is available for further assistance. Chat Link"
+The customer contacted us because they were unable to add an income account to a non-inventory item.,Sales,stockapps- howto- items,"general support & issue resolution,other","Customer needs to add an income account to a non-inventory item, but the option is greyed out and unclickable.
+Teammate requests permission to access the account and investigates the issue.
+Teammate discovers that the option was disabled when the screen was customized and provides instructions on how to enable it.
+Customer follows instructions and successfully adds the income account to the item.
+Teammate offers further assistance and customer is satisfied with the resolution. Chat Link"
+The customer contacted us to inquire about how to add quantity on hand when adding items in inventory on Method.,Sales,stockapps- howto- items,other,"The customer wants to know how to add quantity on hand when adding items in inventory on Method. The teammate explains that the quantity on hand is a read-only field in Method and recommends adding it in QuickBooks and syncing it with Method. The customer explains that they have different employees using QuickBooks and Method and wants to be able to enter the quantity on hand in Method. The teammate informs the customer that this is not currently possible on the platform, but there is a feature request for it and they can add the customer's account to the list. The teammate later informs the customer that the feature is now available and recommends booking a time with their success manager to discuss it further.Chat Link"
+The customer contacted us for assistance with creating an inventory assembly item in QuickBooks Online.,Sales,stockapps- howto- items,"general support & issue resolution,other","You cannot change an item once it is created.
+To add an inventory assembly item, go to the item app and select ''inventory assembly''.
+You must create inventory items before adding them to the assembly.
+Inventory tracking must be turned on in QuickBooks Online before creating an inventory item.
+You can reach out for further assistance. Chat Link"
+The customer contacted us to inquire about integrating Method with their switch to QuickBooks Online and to confirm compatibility with an inventory plug-in.,Sales,remapping qbdt to qbo,other,"User has switched to QB Online and needs to integrate with Method.
+Teammate creates a case for support to migrate accounts from QBDT to QBO.
+User has a question about using an inventory plug-in with QB Online and wants to confirm compatibility with Method.
+Teammate confirms that Advanced Inventory is only available for QuickBooks Desktop and suggests alternative ways to connect third-party apps.
+Teammate schedules a call with support for the user and provides resources for finding a Method partner with experience in the desired plug-in. Chat Link"
+The customer contacted us to find a way to track inventory levels and receive notifications when they are low.,"Sales,Sales","stockapps- howto- purchase orders,stockapps- howto- items",other,"• The customer is looking for a way to track inventory levels and receive notifications when they are low.
+• The Method Help Bot suggests using the ''Reorder point'' feature and tracking ''Quantity on hand,'' ''Quantity on sales order,'' and ''Quantity on order'' to monitor inventory levels.
+• The customer does not currently enter purchase orders into the system, but the teammate explains that this is necessary for accurate tracking of quantities on order from vendors.
+• The teammate offers to help the customer add the Purchase Orders App to their Method account and set up notifications for low inventory levels, but this is a billable service.
+• The teammate also mentions the option to subscribe to the purchase transaction pack for $12 per user per month, which will synchronize with QuickBooks.
+Chat Link"
+"The customer contacted us for help with viewing inventory, opening a ticket, integrating an external ticketing system, customizing the Method portal, and rescheduling a help session with Ashish.",Sales,stockapps- howto- items,other,"• Customer needs help with viewing inventory and opening a ticket.
+• Customer wants to integrate an external ticketing system with Method platform.
+• Customer needs assistance with customizing Method portal.
+• Customer needs to reschedule a help session with Ashish.
+• Teammate provides link for customer to book time with Ashish for further assistance.
+Chat Link"
+The customer contacted us to inquire about tracking inventory using barcodes.,Sales,stockapps- howto- items,other,"• Customer is looking for a way to track inventory using barcodes.
+• Teammate asks for more details about the business workflow and current inventory tracking methods.
+• Teammate offers to inquire with their team about creating a custom workflow.
+• Teammate checks in multiple times to see if the customer still needs assistance.
+• Teammate closes the chat, but offers to continue the conversation if needed.
+Chat Link"
+The customer contacted us for help with checking their inventory in Method.,Sales,"stockapps- howto- items,icr-cs,icr-ps","miscellaneous,other","The customer is looking for help with checking their inventory in Method.
+The teammate suggests using the Items app to view inventory items and their sales data.
+The teammate also mentions the option to create a custom chart in Method's Report Designer for more advanced inventory information.
+The teammate offers further assistance and mentions the reports feature on the Invoices List screen.
+The teammate closes the chat but remains available for further help. Chat Link"
+The customer contacted us to enable inventory tracking and customize the display of inventory by location in Method for their sales reps.,Sales,stockapps- howto- items,"general support & issue resolution,other","• Customer needs to display inventory for sales reps in Method.
+• Inventory tracking needs to be enabled in QuickBooks Online.
+• Customization is required to show inventory by location.
+• Customer has booked a consultation with Method's team of experts for Monday at 9:30 am.
+• Customer's email is jbrenner@redeagleinternational.com. Chat Link"
+The customer contacted us for help with inventory not syncing with QuickBooks.,Connect,qbo sync,financial & payments,"Customer needs help with inventory not syncing with QuickBooks
+Teammate asks for more details and permission to access account
+Customer provides specific pieces with incorrect quantities in QuickBooks
+Teammate suggests checking QuickBooks settings and provides steps to turn on inventory tracking
+Teammate checks in and offers further assistance if needed Chat Link"
+The customer contacted us to report conflicts in their Method account after creating new inventory items on Method instead of QuickBooks.,Connect,qbdt sync,other,"Customer experiencing conflicts in Method account after starting to create new inventory items on Method instead of QBs
+Teammate creating a case for support to investigate the issue
+Case number #53581 created for support to contact customer
+Customer provided cell phone number for callback
+Teammate checking in and offering further assistance if needed Chat Link"
+The customer contacted us to inquire about the possibility of integrating Fishbowl Inventory features into Method CRM.,,feature request,product development & feature requests,"Method CRM does not currently have a direct integration with Fishbowl Inventory.
+A third-party solution like Zapier could potentially be used for integration.
+Method CRM does offer integration with QuickBooks, which could potentially be used as a connection to Fishbowl Inventory.
+A feature request has been created for potential integration with Fishbowl Inventory.
+The customer is looking for features from Fishbowl Inventory to be integrated into Method CRM. Chat Link"
+The customer contacted us to inquire about Method's ability to track inventory using QR codes and if API/SDK support is available.,"Customer,Sales","customization,stockapps- howto- items",other,"Method offers the ability to track inventory using the Inventory Part Item Type and Inventory Assembly Item Type.
+For tracking inventory using QR codes, API/SDK support is required and a third-party application can be integrated through Method's Open API.
+The customer is a porta potty company with 300 units that need codes.
+The teammate will confirm if Method can support scanning inventory items and provide a list of open APIs.
+The teammate will follow up with the customer if they have further questions. Chat Link"
+The customer contacted us due to experiencing sync issues with inventory and invoices.,"Connect,Transactions","sync conflicts,invoices",general support & issue resolution,"Customer is experiencing sync issues with inventory and invoices.
+Teammate suggests checking for sync conflicts and providing error messages or screenshots for further assistance.
+Teammate gains permission to access customer's account and helps resolve the issue by fixing an incorrect account and advising against using dates earlier than when tracking quantity on hand.
+Customer successfully resolves the issue and asks for clarification on the cause.
+Teammate explains the issue and advises against using earlier dates for changes. Chat Link"
+The customer contacted us to inquire about adding inventory to their Method account.,,,general support & issue resolution,"• Customer is looking to add inventory to their method account.
+• Teammate suggests activating certain settings in QuickBooks to make the option visible.
+• Customer asks if the setting can be switched on in Method or if they need to do it in QuickBooks.
+• Teammate clarifies that the modifications need to be made in QuickBooks.
+• Teammate checks in with customer multiple times and offers to continue the conversation if needed. Chat Link"
+The customer contacted us to address a glitch with an Item Receipt from May 13th causing issues with Method sync and to temporarily stop syncing inventory while getting the QB's file fixed.,Connect,"qbdt sync,icr-cs,icr-ps","miscellaneous,other","QB's file has a glitch with an Item Receipt from May 13th, causing issues with Method sync.
+User wants to stop syncing inventory temporarily while getting QB's file fixed.
+Teammate will look into the issue and provide further information.
+Teammate and user will join an online session to watch the update.
+Teammate has fixed the connection failure error and created a case for the issue with deleted Item Receipts. Chat Link"
+The customer contacted us regarding issues with invoices not showing as paid and inventory not being deducted when invoiced.,"Connect,Customer,Transactions","qbo sync,customer management,icr-cs,icr-ps,invoices","miscellaneous,general support & issue resolution,financial & payments","Invoices not showing as paid and inventory not being deducted when invoiced
+Sync conflict and disconnection between Method and QuickBooks
+Support case created for second-level team to investigate and resolve issue
+Support team will reach out via email
+Teammate will confirm with Pooja and provide update to customer Chat Link"
+The customer contacted us to schedule a free customization session for their account to address issues with setting up their inventory.,,free hour booked - csr,"general support & issue resolution,other","Customer has an unused free customization session for their account.
+The session will last for 1 hour and will be conducted by a Business Solutions Specialist.
+The customer is having issues setting up their inventory and wants to customize their account.
+The customer has requested for the session to be scheduled on Tuesday, March 12th at 1:30 PM in the US/Central time zone.
+The teammate has confirmed the booking and the customer has received a confirmation email. Chat Link"
+The customer contacted us due to experiencing syncing issues with invoices and inventory in Method.,"Connect,Customer,Transactions","qbo sync,customer management,icr-cs,icr-ps,invoices","miscellaneous,general support & issue resolution,financial & payments","Customer experiencing syncing issues with invoices and inventory in Method.
+Teammate identified sync conflict and created a case for second-level support team.
+Case number 58495 assigned for resolution.
+Support team member will reach out to customer via email.
+Teammate notified customer and provided update on case status. Chat Link"
+The customer contacted us regarding issues with invoices and inventory not being updated.,"Connect,Customer,Transactions","qbo sync,customer management,icr-cs,icr-ps,invoices","miscellaneous,general support & issue resolution,financial & payments","Customer is experiencing issues with invoices not showing as paid and inventory not being deducted when invoiced.
+Teammate identified sync conflict and created a case for second-level support team to investigate and resolve the issue.
+Case number is 58495 and support team will reach out to customer via email.
+Customer prefers to be contacted via email.
+Support team will update customer on the case and provide further assistance if needed. Chat Link"
+The customer contacted us for help with importing inventory items and contacts from spreadsheets.,Admin,data import/export,other,"Customer needs help with importing inventory items and contacts from spreadsheets
+Teammate offers assistance with personalizing Method for the customer's business needs
+Examples of previous customization work include importing leads and contacts, designing workflows, creating custom reports, and capturing advanced customer/sales details
+Teammate asks for more details on what the customer needs help with
+Teammate provides steps for importing inventory items through Method's integrations feature Chat Link"
+The customer contacted us for assistance in changing their inventory start date from Jan 1 2024 to April 1st.,Sales,stockapps- howto- items,"general support & issue resolution,other","• Customer needs assistance changing inventory start date from Jan 1 2024 to April 1st.
+• Teammate requests permission to access customer's account and will get back to them.
+• Customer confirms permission and mentions conflict with QuickBooks.
+• Teammate asks for item name causing conflict and provides steps to resolve it.
+• Customer provides correct item name and confirms issue has been fixed. Chat Link"
+The customer contacted us for information about the status of their inventory purchase order.,Sales,stockapps- howto- purchase orders,"general support & issue resolution,other","• Method Help Bot is available to answer questions and provide helpful answers from Method's official help documentation.
+• The customer is looking for information about the status of their inventory purchase order.
+• To check the status, the customer can log in to their customer portal and navigate to the Pending Order Requests section or check the Purchase Orders App in the Opportunities App.
+• A purchase order is a formal request for goods or services from a buyer to a seller, while a sales order is generated by a seller to confirm the sale after receiving a purchase order.
+• If the customer needs further assistance, they can contact Method's support team.
+Chat Link"

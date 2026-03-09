@@ -1,0 +1,567 @@
+{
+  "Industrial Equipment & Machinery": {
+    "total_companies": 37,
+    "product_categories": {
+      "Sporting Goods & Athletic Equipment": {
+        "count": 14,
+        "companies": [
+          "PowerHandling, Inc",
+          "Aquamatic Cover Systems",
+          "Flow-Turn Inc",
+          "**OLD** HORN MACHINE TOOLS, INC.",
+          "Mid Florida Material Handling, Inc"
+        ]
+      },
+      "Hydraulic & Pneumatic Systems": {
+        "count": 9,
+        "companies": [
+          "PowerHandling, Inc",
+          "Aquamatic Cover Systems",
+          "Continental Field Systems",
+          "VPNZ Ltd",
+          "HOUSTON HYDRAULIC"
+        ]
+      },
+      "Material Handling Equipment": {
+        "count": 8,
+        "companies": [
+          "PowerHandling, Inc",
+          "Flow-Turn Inc",
+          "Accurate Forklift",
+          "Mid Florida Material Handling, Inc",
+          "Conveyor Technology"
+        ]
+      },
+      "Other/Specialized Products": {
+        "count": 7,
+        "companies": [
+          "NEPEAN Transport Equipment",
+          "Express Assembly Products LLC",
+          "RLH Industries, Inc.",
+          "Novamen Inc.",
+          "MTA-USA, LLC"
+        ]
+      },
+      "Manufacturing Machinery & Tools": {
+        "count": 7,
+        "companies": [
+          "**OLD** HORN MACHINE TOOLS, INC.",
+          "Continental Field Systems",
+          "Custom Equipment Company, Inc.",
+          "D. COOPER WORKS, LLC",
+          "Nationwide Architectural Metals, Inc."
+        ]
+      },
+      "Lighting Equipment": {
+        "count": 6,
+        "companies": [
+          "Western Square Industries, Inc.",
+          "HiLumz Acquisition LLC",
+          "VPNZ Ltd",
+          "Atlantic Graphic Systems, Inc",
+          "Nationwide Architectural Metals, Inc."
+        ]
+      },
+      "Furniture & Office Equipment": {
+        "count": 5,
+        "companies": [
+          "Elecraft, Inc.",
+          "Safari Belting Systems, Inc.",
+          "Continental Field Systems",
+          "D. COOPER WORKS, LLC",
+          "Nationwide Architectural Metals, Inc."
+        ]
+      },
+      "Security & Access Control Equipment": {
+        "count": 4,
+        "companies": [
+          "PowerHandling, Inc",
+          "Brown Safe Manufacturing, Inc",
+          "Aquamatic Cover Systems",
+          "Lore Technology"
+        ]
+      },
+      "Medical Supplies & PPE": {
+        "count": 4,
+        "companies": [
+          "Flow-Turn Inc",
+          "Custom Equipment Company, Inc.",
+          "Flow-Turn Inc",
+          "Sumake North America LLC"
+        ]
+      },
+      "Electronics & Components": {
+        "count": 4,
+        "companies": [
+          "Lore Technology",
+          "HOUSTON HYDRAULIC",
+          "Simple Solutions and Innovations, Inc.",
+          "Pipefusion Services Inc."
+        ]
+      },
+      "Pool & Spa Equipment": {
+        "count": 3,
+        "companies": [
+          "Aquamatic Cover Systems",
+          "Flow-Turn Inc",
+          "Flow-Turn Inc"
+        ]
+      },
+      "IoT & Software Systems": {
+        "count": 3,
+        "companies": [
+          "Continental Field Systems",
+          "Diamond Technologies, Inc.",
+          "Hundegger USA, L.C."
+        ]
+      },
+      "Greenhouses & Outdoor Structures": {
+        "count": 2,
+        "companies": [
+          "Western Square Industries, Inc.",
+          "Nationwide Architectural Metals, Inc."
+        ]
+      },
+      "Building Materials & Finishes": {
+        "count": 1,
+        "companies": [
+          "Nationwide Architectural Metals, Inc."
+        ]
+      },
+      "Medical Devices & Clinical Equipment": {
+        "count": 1,
+        "companies": [
+          "Diamond Technologies, Inc."
+        ]
+      },
+      "Data Acquisition & Test Equipment": {
+        "count": 1,
+        "companies": [
+          "Diamond Technologies, Inc."
+        ]
+      }
+    },
+    "complexity_distribution": {
+      "High": 17,
+      "Very High": 17,
+      "Unknown": 1,
+      "Medium-High": 2
+    },
+    "complexity_drivers": {
+      "Technical Complexity": 24,
+      "Custom/Made-to-Order": 18,
+      "Supply Chain Complexity": 12,
+      "Regulatory Compliance": 7,
+      "SKU Proliferation": 7,
+      "Standard Operations": 1
+    }
+  },
+  "Construction & Building Materials": {
+    "total_companies": 25,
+    "product_categories": {
+      "Building Materials & Finishes": {
+        "count": 17,
+        "companies": [
+          "Niagara Machine,1803 Associates Lane Charlotte NC 28217",
+          "Lenworth Building Services Limited",
+          "APEX STONE, LLC",
+          "HBL (ASIA) LIMITED",
+          "SurfaceCo, The Surface Company"
+        ]
+      },
+      "Sporting Goods & Athletic Equipment": {
+        "count": 9,
+        "companies": [
+          "ASC Equipment",
+          "APEX STONE, LLC",
+          "HBL (ASIA) LIMITED",
+          "SurfaceCo, The Surface Company",
+          "Nu Kitchens, LLC"
+        ]
+      },
+      "Lighting Equipment": {
+        "count": 5,
+        "companies": [
+          "Yoderbilt, LLC",
+          "Bodega Tile",
+          "Nu Kitchens, LLC",
+          "Hundegger USA LLC",
+          "O.K. Foundry Co., Inc."
+        ]
+      },
+      "Greenhouses & Outdoor Structures": {
+        "count": 4,
+        "companies": [
+          "Yoderbilt, LLC",
+          "Lapp Structures",
+          "The Shed Yard",
+          "Stanwood Redi-Mix, Inc."
+        ]
+      },
+      "Pool & Spa Equipment": {
+        "count": 4,
+        "companies": [
+          "Lapp Structures",
+          "APEX STONE, LLC",
+          "Keast Enterprises Inc",
+          "Centanni Tile Inc."
+        ]
+      },
+      "Furniture & Office Equipment": {
+        "count": 4,
+        "companies": [
+          "Bodega Tile",
+          "Nu Kitchens, LLC",
+          "Delmarva Design Center",
+          "MyTCoat Commercial Outdoor Furniture"
+        ]
+      },
+      "Manufacturing Machinery & Tools": {
+        "count": 3,
+        "companies": [
+          "APEX STONE, LLC",
+          "Keast Enterprises Inc",
+          "Hundegger USA LLC"
+        ]
+      },
+      "Security & Access Control Equipment": {
+        "count": 3,
+        "companies": [
+          "SurfaceCo, The Surface Company",
+          "Classic Rock Face Block",
+          "Stanwood Redi-Mix, Inc."
+        ]
+      },
+      "Construction Equipment & Heavy Machinery": {
+        "count": 2,
+        "companies": [
+          "Conequip Parts & Equipment LLC",
+          "ASC Equipment"
+        ]
+      },
+      "Material Handling Equipment": {
+        "count": 2,
+        "companies": [
+          "ASC Equipment",
+          "Keast Enterprises Inc"
+        ]
+      },
+      "Other/Specialized Products": {
+        "count": 1,
+        "companies": [
+          "Window Makeover"
+        ]
+      },
+      "Electronics & Components": {
+        "count": 1,
+        "companies": [
+          "SMITH Manufacturing (SSPS, Inc)"
+        ]
+      }
+    },
+    "complexity_distribution": {
+      "High": 11,
+      "Medium": 4,
+      "Unknown": 1,
+      "Medium-High": 3,
+      "Very High": 6
+    },
+    "complexity_drivers": {
+      "Custom/Made-to-Order": 11,
+      "Technical Complexity": 7,
+      "Supply Chain Complexity": 6,
+      "SKU Proliferation": 4,
+      "Regulatory Compliance": 4,
+      "Standard Operations": 4
+    }
+  },
+  "Medical & Healthcare": {
+    "total_companies": 17,
+    "product_categories": {
+      "Medical Devices & Clinical Equipment": {
+        "count": 8,
+        "companies": [
+          "J2 Medical Supply Inc",
+          "BioPhotas, Inc.",
+          "Central Infusion Alliance, Inc.",
+          "Precision Surgical, Inc.",
+          "MYOS CORP"
+        ]
+      },
+      "Furniture & Office Equipment": {
+        "count": 7,
+        "companies": [
+          "Precision Surgical, Inc.",
+          "Affordable Medical LLC",
+          "Access2mobility",
+          "Pick on Us, LLC",
+          "MOBILITY PLUS VA LLC"
+        ]
+      },
+      "Medical Supplies & PPE": {
+        "count": 4,
+        "companies": [
+          "J2 Medical Supply Inc",
+          "Central Infusion Alliance, Inc.",
+          "Animal Hospital Supply Inc.",
+          "CathX Medical, Inc."
+        ]
+      },
+      "Other/Specialized Products": {
+        "count": 3,
+        "companies": [
+          "Sunshine USA LLC",
+          "Caribbean Diagnostics Inc",
+          "Antares Health Products"
+        ]
+      },
+      "Building Materials & Finishes": {
+        "count": 3,
+        "companies": [
+          "Access2mobility",
+          "MOBILITY PLUS VA LLC",
+          "Imperial Privacy Systems LLC"
+        ]
+      },
+      "IoT & Software Systems": {
+        "count": 3,
+        "companies": [
+          "Access2mobility",
+          "MOBILITY PLUS VA LLC",
+          "APDM Wearable Technologies, Inc."
+        ]
+      },
+      "Security & Access Control Equipment": {
+        "count": 3,
+        "companies": [
+          "MOBILITY PLUS VA LLC",
+          "MPD Medical Systems, Inc.",
+          "Imperial Privacy Systems LLC"
+        ]
+      },
+      "Lighting Equipment": {
+        "count": 1,
+        "companies": [
+          "BioPhotas, Inc."
+        ]
+      },
+      "Sporting Goods & Athletic Equipment": {
+        "count": 1,
+        "companies": [
+          "MYOS CORP"
+        ]
+      },
+      "Manufacturing Machinery & Tools": {
+        "count": 1,
+        "companies": [
+          "CathX Medical, Inc."
+        ]
+      },
+      "Electronics & Components": {
+        "count": 1,
+        "companies": [
+          "CathX Medical, Inc."
+        ]
+      }
+    },
+    "complexity_distribution": {
+      "Very High": 8,
+      "High": 5,
+      "Unknown": 2,
+      "Medium-High": 2
+    },
+    "complexity_drivers": {
+      "Supply Chain Complexity": 9,
+      "Technical Complexity": 8,
+      "Regulatory Compliance": 5,
+      "SKU Proliferation": 4,
+      "Custom/Made-to-Order": 3,
+      "Standard Operations": 2
+    }
+  },
+  "Electronics & Technology": {
+    "total_companies": 14,
+    "product_categories": {
+      "IoT & Software Systems": {
+        "count": 4,
+        "companies": [
+          "DEWESoft LLC.",
+          "USA Fleet Solutions",
+          "Ezlo Innovation LLC",
+          "Erazor bits"
+        ]
+      },
+      "Other/Specialized Products": {
+        "count": 4,
+        "companies": [
+          "A Beep, LLC",
+          "Artemis Bio-Solutions LLC",
+          "Reuning-McKim, Inc.",
+          "Pro AV (Professional Audio Visual Ltd.)"
+        ]
+      },
+      "Pool & Spa Equipment": {
+        "count": 3,
+        "companies": [
+          "DEWESoft LLC.",
+          "USA Fleet Solutions",
+          "Supply Shield Inc"
+        ]
+      },
+      "Security & Access Control Equipment": {
+        "count": 3,
+        "companies": [
+          "USA Fleet Solutions",
+          "Ezlo Innovation LLC",
+          "U.S. Testing Equipment, Ltd."
+        ]
+      },
+      "Electronics & Components": {
+        "count": 3,
+        "companies": [
+          "Data Memory Sales, Inc.",
+          "Supply Shield Inc",
+          "Audio Video Supply"
+        ]
+      },
+      "Building Materials & Finishes": {
+        "count": 2,
+        "companies": [
+          "DEWESoft LLC.",
+          "Ezlo Innovation LLC"
+        ]
+      },
+      "Sporting Goods & Athletic Equipment": {
+        "count": 2,
+        "companies": [
+          "USA Fleet Solutions",
+          "U.S. Testing Equipment, Ltd."
+        ]
+      },
+      "Manufacturing Machinery & Tools": {
+        "count": 2,
+        "companies": [
+          "Centricity Vision, Inc",
+          "ENZ USA  INC"
+        ]
+      },
+      "Data Acquisition & Test Equipment": {
+        "count": 1,
+        "companies": [
+          "DEWESoft LLC."
+        ]
+      },
+      "Medical Devices & Clinical Equipment": {
+        "count": 1,
+        "companies": [
+          "USA Fleet Solutions"
+        ]
+      },
+      "Furniture & Office Equipment": {
+        "count": 1,
+        "companies": [
+          "Data Memory Sales, Inc."
+        ]
+      },
+      "Medical Supplies & PPE": {
+        "count": 1,
+        "companies": [
+          "Erazor bits"
+        ]
+      }
+    },
+    "complexity_distribution": {
+      "Very High": 7,
+      "High": 5,
+      "Unknown": 1,
+      "Medium-High": 1
+    },
+    "complexity_drivers": {
+      "Technical Complexity": 8,
+      "Supply Chain Complexity": 5,
+      "Standard Operations": 4,
+      "Regulatory Compliance": 3,
+      "Custom/Made-to-Order": 1
+    }
+  },
+  "Consumer Goods & Retail": {
+    "total_companies": 13,
+    "product_categories": {
+      "Furniture & Office Equipment": {
+        "count": 8,
+        "companies": [
+          "Jeffs atWork Office Furniture",
+          "Working Fire Furniture & Mattress Co, Inc.",
+          "Back2 International Ltd",
+          "Grothouse, Inc",
+          "OFFICE FIRST SOLUTIONS"
+        ]
+      },
+      "Sporting Goods & Athletic Equipment": {
+        "count": 5,
+        "companies": [
+          "FUJI Mats, LLC",
+          "BIG GAME SPORTS INC",
+          "Working Fire Furniture & Mattress Co, Inc.",
+          "Back2 International Ltd",
+          "JOUFFRE INC"
+        ]
+      },
+      "Pool & Spa Equipment": {
+        "count": 5,
+        "companies": [
+          "Jeffs atWork Office Furniture",
+          "SunShine USA, LLC 2023",
+          "OFFICE FIRST SOLUTIONS",
+          "PTE Golf, LLC",
+          "JOUFFRE INC"
+        ]
+      },
+      "Other/Specialized Products": {
+        "count": 2,
+        "companies": [
+          "Cunningham Piano Co",
+          "Good Chemistry of Massachusetts, Inc"
+        ]
+      },
+      "Building Materials & Finishes": {
+        "count": 1,
+        "companies": [
+          "FUJI Mats, LLC"
+        ]
+      },
+      "Medical Devices & Clinical Equipment": {
+        "count": 1,
+        "companies": [
+          "SunShine USA, LLC 2023"
+        ]
+      },
+      "Manufacturing Machinery & Tools": {
+        "count": 1,
+        "companies": [
+          "Grothouse, Inc"
+        ]
+      },
+      "Security & Access Control Equipment": {
+        "count": 1,
+        "companies": [
+          "Grothouse, Inc"
+        ]
+      }
+    },
+    "complexity_distribution": {
+      "Medium": 4,
+      "High": 3,
+      "Very High": 4,
+      "Medium-High": 1,
+      "Unknown": 1
+    },
+    "complexity_drivers": {
+      "Standard Operations": 5,
+      "Supply Chain Complexity": 4,
+      "Custom/Made-to-Order": 4,
+      "Technical Complexity": 4,
+      "SKU Proliferation": 2
+    }
+  }
+}

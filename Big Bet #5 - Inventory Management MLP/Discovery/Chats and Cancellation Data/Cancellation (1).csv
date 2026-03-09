@@ -1,0 +1,57 @@
+﻿Cancellation Reason Explanation,Team,GPT Category,Sync Type,Vertical,Sync Region,Cancellation Date
+"The primary reasons that I am going to stay with the starter version of Salesforce.com with a possible move to a bigger version if more of our company decides to use it are:
+
+1. Method bases everything off the contact.  We need everything based off the company with the ability to add multiple contacts to that company and opportunities related to that company. 
+- I added many fields to the company profile, but the only way to see them was by going to the edit function.  There is a way to add them to the contact field, but that was clunky to me. 
+2. The reporting in SFDC is much easier to customize. 
+3. SFDC is multi-lingual.
+4. The company, contact and opportunity screens are much easier to customize and adding fields is easier in SFDC. 
+- It was difficult to change the items in a picklist in Method. 
+5. The starter version of SFDC is $25/month paid annually.  That isn’t a major factor, but the starter version works for us right now. 
+6. I didn’t need a lot of custom support, but I had pretty much tapped out my knowledge of Method with the customizations I did.  Anything more would need to be paid services.  I am able to customize SFDC and create reports without any paid support. 
+
+Honestly, I am probably biased from the start because I have been using SFDC since 2005 with 3 different companies. Prior to that I was the Sales Automation Manager at a large company where I led the implementation of a CRM solution to 300+ sales reps.  After that, I spent several years selling CRM solutions and consulting services.  So, I was able to be involved in the customization and user adoption of the SFDC applications at the companies I worked for that used it.  I am obviously more familiar with SFDC and I understand it very well.  But I believe I did give Method an honest review and trial.  The issues above where the primary reasons I don’t believe it would work for us.",Sales,Integration Needs,QBD,"Automotive parts, repair and maintenance",US,3/27/2024
+Does not have the build or assembly items we are looking for. Everything we would need requires another paid app,,Product Fit,QBO-V3,Repair and maintenance,US,2/1/2024
+"Hello-I ordered about $1k of customization, primarily to mimic some stuff we could do in QB Desktop that we couldn't do in QB Online (Client migrated to QBO last year); the team was responsive and did what we asked, but once we were using Method in practice, it was too buggy / cumbersome and kept requiring more and more customization.
+
+If we were willing to spend more money it may have gotten to a usable state, but we were limited in what we were going to pay (see below) and felt like we were trying to force it.  We ended up switching to a purpose-built contractor solution instead.
+
+Biggest dissatisfier was the fact that estimate line items were stuck in place once created; we routinely get asked to add items to estimates, that would include inserting rows between other rows/rearranging line items; it happened frequently enough that it couldn't be ignored.  This is feature is available in QBO, but not Method.  When i asked, it was offered as another customization.
+
+I was paying the customization myself on behalf of client thinking this would save him money in long run, but it was so frustrating for him i ended up eating cost personally-not something I can absorb too frequently.
+
+Team was friendly and tried to be helpful; i appreciate them ....but I should have done more due diligence up front on the tool than hoping that a limited amount of customizations would get us where we needed to be.
+
+Thanks.",Sales,Customization and Flexibility,QBO-V3,Construction,US,3/13/2024
+The system is hard to navigate and not being able to edit items in the system without paying for assistance from a method employee does not work for me.,Customer,Customization and Flexibility,QBO-V3,Construction,US,1/16/2024
+Can’t have both retail and wholesale per item in point of sale,,Product Fit,QBO-V3,Wholesale and distribution services (MWD),AU,9/9/2024
+estimate dont works item based discount.,,Product Fit,QBO-V3,IT and computer related,GB,10/19/2024
+"Customer Reason:
+I don t like that everything is additional cost. As a standard package Method isn t much use so you have to bespoke everything. Then when your tech team bespokes the software and it doesn t work we have to pay you to fix it.
+
+This would be like me building you a house, the plumbing not working and charging you to re pipe the house.
+
+Overall the experience has been pretty poor and we wait a long time to get things resolved.
+
+-==============================================-
+
+Internal Reason:
+Kris came from multiple other systems including Buildertrend, that basically collapsed for the same reason, he had basically just boot strapped a bunch of things until it just didn t work.
+
+To change his direction, we had asked him to document and go through things. The sad reality is they re likely just using excel to do estimating, because - they were unable to change their workflows. 
+
+Their biggest issue is that every week they would change their minds, after countless attempts to get them to work through a successful workflow.  They just opt d to complain vs. putting in the wrench time, without clear communication.
+
+His needs with quite simple; however, he just didn t want to invest time to make sure his items and data was setup correctly and prefered to  freeform  all estimates.",No Code,Customization and Flexibility,QBO-V3,Construction,GB,1/2/2024
+"I loved the integration bi-direction with quickbooks.  There would have been a good amount of cutom work for us.  Major things that we noticed while creating an invoice is there is no Add Line in between other line items, No Informational Line (text with no quantity or price entered), and Adding a Job under a customer would have been custom programming.  Adding a job also wasn't carrying the customer information.  Specialty field wasn't carrying over (Auto Vin)
+
+We loved the marketing directly related to quickbooks but our marketing company is currently using mail chimp.  I did run a couple ads from there.  I wish there was a email-box for all the responses to go to.  Not sure if other marketing software does this or not.
+
+The work order area didn't work to our advantage.  We 
+We did find out that our quickbooks subscription was a 2-user that we were unaware of, so we decided to go straight to Quickbooks for processing.  We do like the product so we will see if we can use it in the future.  Somehow our pricing went way up the last month, not sure why.
+
+Naomi is awesome and always got back to us as soon as possible.  Very prompt customer support.
+
+Regards,
+Rob Browne",Service Delivery,Product Fit,QBD,"Automotive parts, repair and maintenance",US,6/11/2024
+Not a fit. Hes looking for a program that would automatically take in items as a receipt via a scanner.,,Product Fit,QuickBooks,Construction,,11/1/2024
