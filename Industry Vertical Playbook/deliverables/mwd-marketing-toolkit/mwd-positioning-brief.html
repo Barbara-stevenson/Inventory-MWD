@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Method CRM - MWD Positioning Brief</title>
+<style>
+:root {
+  --accent: #1a56db;
+  --accent-dark: #0f3a8a;
+  --accent-light: #eef2ff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+  --bg: #f8fafc;
+  --tier1: #1e3a5f;
+  --tier2: #4a6a8a;
+  --tier3: #7a9ab5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 32px;
+  line-height: 1.5;
+}
+.brief {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* Top banner */
+.banner {
+  background: #0f2b5b;
+  border-radius: 16px;
+  padding: 32px 36px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.banner-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.banner-position {
+  font-size: 18px;
+  line-height: 1.55;
+  font-weight: 400;
+  max-width: 900px;
+}
+.banner-position strong { font-weight: 700; }
+.banner-meta {
+  margin-top: 16px;
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+/* Two-column layout */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+@media (max-width: 768px) {
+  .columns { grid-template-columns: 1fr; }
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.card-header {
+  padding: 16px 22px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--accent-light);
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.card-body {
+  padding: 18px 22px 22px;
+}
+.card-body p {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.card-body p:last-child { margin-bottom: 0; }
+
+/* Pillars */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+@media (max-width: 768px) {
+  .pillars { grid-template-columns: repeat(2, 1fr); }
+}
+.pillar {
+  background: var(--accent-light);
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+}
+.pillar-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 4px;
+}
+.pillar-desc {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* Competitor tiers */
+.tier {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.tier:last-child { margin-bottom: 0; }
+.tier-badge {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+.tier-badge.status-quo { background: var(--tier1); }
+.tier-badge.mid { background: var(--tier2); }
+.tier-badge.enterprise { background: var(--tier3); }
+.tier-content { flex: 1; }
+.tier-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.tier-detail {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.tier-pct {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Guardrails */
+.guardrails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.guardrail-col {
+  padding: 18px 22px 22px;
+}
+.guardrail-col:first-child {
+  border-right: 1px solid var(--border);
+}
+.guardrail-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.guardrail-label.say { color: #0f2b5b; }
+.guardrail-label.dont { color: #64748b; }
+.guardrail-item {
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.55;
+  margin-bottom: 8px;
+  padding-left: 16px;
+  position: relative;
+}
+.guardrail-item:last-child { margin-bottom: 0; }
+.guardrail-item::before {
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+.guardrail-col:first-child .guardrail-item::before {
+  content: "+";
+  color: #0f2b5b;
+}
+.guardrail-col:last-child .guardrail-item::before {
+  content: "\2013";
+  color: #94a3b8;
+}
+
+/* Proof strip */
+.proof-strip {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 768px) {
+  .proof-strip { grid-template-columns: repeat(2, 1fr); }
+}
+.proof-item {
+  text-align: center;
+}
+.proof-stat {
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #0f3a8a, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.proof-who {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+<div class="brief">
+
+<!-- POSITIONING STATEMENT -->
+<div class="banner">
+  <div class="banner-label">MWD Positioning Brief - Method CRM</div>
+  <div class="banner-position">
+    <strong>Method is the Customizable CRM for manufacturers and distributors who run on QuickBooks.</strong>
+    They've outgrown spreadsheets but aren't ready for enterprise ERP. Method gives them operational control - quoting, order management, inventory visibility, mobile field access - without ripping out the accounting system they depend on.
+  </div>
+  <div class="banner-meta">March 2026 &nbsp;|&nbsp; Based on 465 prospect calls, 6 customer interviews, 200 top accounts, 1,019 MWD accounts</div>
+</div>
+
+<div class="columns">
+
+<!-- LEFT: THE CUSTOMER + COMPETITIVE LANDSCAPE -->
+<div style="display:flex;flex-direction:column;gap:16px;">
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">The Customer</div></div>
+    <div class="card-body">
+      <p>They run a $1-25M manufacturing or distribution company with 11-50 employees. QuickBooks is their accounting system and they have no intention of replacing it. Everything else - quoting, orders, customer management, inventory tracking - lives in spreadsheets, someone's inbox, or someone's head.</p>
+      <p>They know the spreadsheets aren't working anymore. Orders get entered twice. The field team calls the office for every price check. Month-end is a nightmare. But they've seen what enterprise software costs and what the implementation looks like, and they're not doing that.</p>
+      <p>They're not browsing G2 for CRMs. They're Googling "QuickBooks CRM" or "how to manage quotes in QuickBooks" because they want to fix a specific operational pain without blowing up what's already working. 82% cite order management chaos as their #1 pain. 93% run QuickBooks.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">Competitive Landscape</div></div>
+    <div class="card-body">
+      <div class="tier">
+        <div class="tier-badge status-quo">1</div>
+        <div class="tier-content">
+          <div class="tier-name">Status Quo: QB + Spreadsheets <span class="tier-pct">(86% of prospects)</span></div>
+          <div class="tier-detail">The real competitor. They're not comparing CRMs - they're deciding whether to change at all. Method wins by validating the pain first, then showing what's possible without leaving QuickBooks.</div>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-badge mid">2</div>
+        <div class="tier-content">
+          <div class="tier-name">Mid-Market: Zoho, Thryv, Monday, Odoo, HubSpot</div>
+          <div class="tier-detail">None have native QB Desktop sync. Zoho and Monday need third-party connectors. Thryv discontinued QBDT support. HubSpot stops at the sale. Odoo wants you off QuickBooks entirely. Method wins on QB sync + operational depth.</div>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-badge enterprise">3</div>
+        <div class="tier-content">
+          <div class="tier-name">Enterprise: NetSuite, Salesforce, Dynamics 365 <span class="tier-pct">(&lt;7% of prospects)</span></div>
+          <div class="tier-detail">Right tools for $25M+ companies ready to leave QB. Method wins everyone else on cost (5-10x cheaper), QB sync, speed to value, and no 6-month implementation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- RIGHT: PILLARS + GUARDRAILS -->
+<div style="display:flex;flex-direction:column;gap:16px;">
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">The Four Pillars</div></div>
+    <div class="card-body">
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-name">Real-World Business</div>
+          <div class="pillar-desc">Customization that adapts to how you actually work</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-name">Quote-to-Cash</div>
+          <div class="pillar-desc">One flow from first contact to collected payment</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-name">QuickBooks</div>
+          <div class="pillar-desc">Native two-way sync, built in, not bolted on</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-name">Expert Support</div>
+          <div class="pillar-desc">A dedicated expert who knows your setup for $325/mo</div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin-top:4px;">Campaign line: <strong style="color:var(--text);">"Yes, There's a Method for That."</strong> &nbsp; Category: <strong style="color:var(--text);">Customizable CRM</strong> (not "custom" or "customized"). &nbsp; Starting at <strong style="color:var(--text);">$27/user/month</strong>.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">Always Get Right / Never Say</div></div>
+    <div class="guardrails">
+      <div class="guardrail-col">
+        <div class="guardrail-label say">Always Get Right</div>
+        <div class="guardrail-item"><strong>"Customizable CRM"</strong> is the category. Not custom. Not customized.</div>
+        <div class="guardrail-item">QB sync is <strong>native and two-way</strong>. Every competitor needs a connector or can't sync at all.</div>
+        <div class="guardrail-item">Inventory is handled through <strong>customization</strong>, not a native module. Lead with the customization story.</div>
+        <div class="guardrail-item">The real competitor is <strong>inertia</strong>. 86% of prospects run QB + spreadsheets. Not other CRMs.</div>
+        <div class="guardrail-item">Never suggest replacing QuickBooks. Frame Method as <strong>extending</strong> it.</div>
+      </div>
+      <div class="guardrail-col">
+        <div class="guardrail-label dont">Never Say</div>
+        <div class="guardrail-item">"Method has inventory management." It doesn't natively. It's a customization + integration story.</div>
+        <div class="guardrail-item">"We're cheaper than NetSuite." Say <strong>right-sized</strong>, not cheaper.</div>
+        <div class="guardrail-item">"Replace your spreadsheets." Say <strong>you've outgrown them</strong>.</div>
+        <div class="guardrail-item">"Full ERP." Method is not an ERP. It's an operational CRM with ERP-adjacent capabilities.</div>
+        <div class="guardrail-item">Don't trash competitors. Acknowledge what they do well. We win on fit, not on FUD.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-item">
+    <div class="proof-stat">50%</div>
+    <div class="proof-who">faster order processing<br>Sky Products (Roofing)</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-stat">95%</div>
+    <div class="proof-who">close rate<br>GTM Landscaping</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-stat">2x</div>
+    <div class="proof-who">profits in 3 years<br>Container One (Shipping)</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-stat">243 hrs</div>
+    <div class="proof-who">monthly work automated<br>Reliable Trading (Distribution)</div>
+  </div>
+</div>
+
+<div class="footer">
+  For deep research, copy-ready lines, competitor details, and full proof library: <a href="index.html">Open the MWD Marketing Toolkit</a>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 1: Market & Customer Foundation Review</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #f3f0ea;
+            --bg-secondary: #faf9f6;
+            --text-primary: #4a4843;
+            --accent: #97764e;
+            --border: #d6d3c8;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            padding: 20px;
+            z-index: 100;
+        }
+
+        .sidebar h3 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 20px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar h3:first-child {
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 8px 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: var(--border);
+            color: var(--accent);
+        }
+
+        .sidebar a.active {
+            background-color: var(--accent);
+            color: white;
+            font-weight: 600;
+        }
+
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+        }
+
+        .header {
+            background-color: white;
+            border-bottom: 2px solid var(--border);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            opacity: 0.9;
+            transform: translateX(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .hub-section {
+            background-color: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .card-section {
+            background-color: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: var(--bg-secondary);
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .card-header:hover {
+            background-color: #f5f3eb;
+        }
+
+        .card-header-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .card-header-subtitle {
+            font-size: 13px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .card-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: transparent;
+            border: none;
+            color: var(--accent);
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .card-toggle.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        .card-content {
+            padding: 24px;
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .card-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .card-content h1, .hub-section h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 24px 0 12px;
+        }
+
+        .card-content h1:first-child, .hub-section h1:first-child {
+            margin-top: 0;
+        }
+
+        .card-content h2, .hub-section h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 20px 0 12px;
+        }
+
+        .card-content h3, .hub-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 16px 0 8px;
+        }
+
+        .card-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 12px 0 6px;
+        }
+
+        .card-content p, .hub-section p {
+            margin: 12px 0;
+            line-height: 1.8;
+        }
+
+        .card-content ul, .card-content ol,
+        .hub-section ul, .hub-section ol {
+            margin: 12px 0 12px 24px;
+        }
+
+        .card-content li, .hub-section li {
+            margin: 6px 0;
+            line-height: 1.7;
+        }
+
+        .card-content blockquote, .hub-section blockquote {
+            border-left: 4px solid var(--accent);
+            margin: 16px 0;
+            padding: 12px 16px;
+            background-color: var(--bg-secondary);
+            font-style: italic;
+            color: #666;
+            border-radius: 2px;
+        }
+
+        .card-content code {
+            background-color: var(--bg-secondary);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Monaco", "Courier New", monospace;
+            font-size: 13px;
+            color: #d73a49;
+        }
+
+        .card-content pre {
+            background-color: var(--bg-secondary);
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        .card-content pre code {
+            background-color: transparent;
+            padding: 0;
+            color: inherit;
+            font-size: 12px;
+        }
+
+        .card-content table, .hub-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            border: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        .card-content table th, .hub-section table th {
+            background-color: var(--bg-secondary);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            color: var(--accent);
+        }
+
+        .card-content table td, .hub-section table td {
+            padding: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .card-content table tr:nth-child(even), .hub-section table tr:nth-child(even) {
+            background-color: var(--bg-secondary);
+        }
+
+        .card-content a, .hub-section a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .card-content a:hover, .hub-section a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        .card-content hr, .hub-section hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 24px 0;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { width: 240px; }
+            .main-content { margin-left: 240px; }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { width: 200px; }
+            .main-content { margin-left: 200px; }
+            .content { padding: 24px; }
+            .header { padding: 16px 24px; flex-direction: column; gap: 12px; align-items: flex-start; }
+            .back-button { align-self: flex-end; }
+        }
+
+        @media (max-width: 640px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; }
+            .content { padding: 16px; }
+            .hub-section { padding: 16px; }
+            .card-section { margin-bottom: 12px; }
+            .header { padding: 12px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Overview</h3>
+            <ul>
+                <li><a href="#hub" class="nav-link" data-target="hub">Hub Page</a></li>
+            </ul>
+
+            <h3>Market Landscape</h3>
+            <ul>
+                <li><a href="#01a" class="nav-link" data-target="01a">Market Overview</a></li>
+                <li><a href="#01b" class="nav-link" data-target="01b">Demand Drivers</a></li>
+                <li><a href="#01c" class="nav-link" data-target="01c">Pain Map</a></li>
+                <li><a href="#01d" class="nav-link" data-target="01d">Competitive Positioning</a></li>
+                <li><a href="#01e" class="nav-link" data-target="01e">Pricing Comparison</a></li>
+                <li><a href="#01f" class="nav-link" data-target="01f">Strategy Brief</a></li>
+            </ul>
+
+            <h3>Customer & Jobs</h3>
+            <ul>
+                <li><a href="#02" class="nav-link" data-target="02">Customer Interview Insights</a></li>
+                <li><a href="#03" class="nav-link" data-target="03">JTBD Analysis</a></li>
+            </ul>
+
+            <h3>ICP & Personas</h3>
+            <ul>
+                <li><a href="#04a" class="nav-link" data-target="04a">ICP Profile</a></li>
+                <li><a href="#04b" class="nav-link" data-target="04b">Ops Manager</a></li>
+                <li><a href="#04c" class="nav-link" data-target="04c">Owner / GM</a></li>
+                <li><a href="#04d" class="nav-link" data-target="04d">Office Admin</a></li>
+            </ul>
+
+        </aside>
+
+        <main class="main-content">
+            <div class="header">
+                <div>
+                    <div class="header-title">Section 1: Market & Customer Foundation</div>
+                    <div class="header-subtitle">MWD Vertical Playbook</div>
+                </div>
+                <a href="knowledge-graph.html" class="back-button">← Back to Knowledge Graph</a>
+            </div>
+
+            <div class="content">
+                <div id="hub" class="hub-section">
+                    <div id="hub-content"></div>
+                </div>
+
+                <div id="01a" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">01a: Market Overview</div>
+                            <div class="card-header-subtitle">Background context on why Method targets MWD</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="01a-content"></div></div>
+                </div>
+
+                <div id="01b" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">01b: Demand Drivers</div>
+                            <div class="card-header-subtitle">Six market forces creating urgency</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="01b-content"></div></div>
+                </div>
+
+                <div id="01c" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">01c: Pain Map</div>
+                            <div class="card-header-subtitle">Pre-call prep and pain ranking</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="01c-content"></div></div>
+                </div>
+
+                <div id="01d" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">01d: Competitive Positioning</div>
+                            <div class="card-header-subtitle">Where Method wins vs. competitors</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="01d-content"></div></div>
+                </div>
+
+                <div id="01e" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">01e: Pricing Comparison</div>
+                            <div class="card-header-subtitle">Method pricing vs. alternatives</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="01e-content"></div></div>
+                </div>
+
+                <div id="01f" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">01f: Strategy Brief</div>
+                            <div class="card-header-subtitle">Nine strategic implications for MWD GTM</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="01f-content"></div></div>
+                </div>
+
+                <div id="02" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">02: Customer Interview Insights</div>
+                            <div class="card-header-subtitle">Seven themes from six customer interviews</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="02-content"></div></div>
+                </div>
+
+                <div id="03" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">03: Jobs-to-Be-Done Analysis</div>
+                            <div class="card-header-subtitle">Five core jobs and switching forces</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="03-content"></div></div>
+                </div>
+
+                <div id="04a" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">04a: ICP Profile</div>
+                            <div class="card-header-subtitle">Firmographic, behavioral, and psychographic criteria</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="04a-content"></div></div>
+                </div>
+
+                <div id="04b" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">04b: Persona - Operations Manager</div>
+                            <div class="card-header-subtitle">Discovery and demo approach</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="04b-content"></div></div>
+                </div>
+
+                <div id="04c" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">04c: Persona - Owner / GM</div>
+                            <div class="card-header-subtitle">Executive-level selling approach</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="04c-content"></div></div>
+                </div>
+
+                <div id="04d" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">04d: Persona - Office Manager</div>
+                            <div class="card-header-subtitle">Secondary contact engagement and retention</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="04d-content"></div></div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const markdownContent = {
+            hub: `# Section 1: Market & Customer Foundation
+### MWD Vertical Playbook — Hub Page
+
+**Purpose:** This section establishes the foundation for everything downstream — messaging, competitive positioning, sales enablement, and launch planning all build on what's here. If the research is wrong, everything else will be too.
+
+**Last updated:** March 2026
+
+---
+
+## What This Section Covers
+
+Section 1 answers four questions that every other playbook section depends on:
+
+1. **What is the MWD market and why does Method target it?** The market landscape, demand drivers, competitive positioning, pricing analysis, and strategic implications.
+2. **What do real MWD customers say?** Structured insights from six customer interviews — themes, quotes, and friction points pulled from actual conversations.
+3. **Why do MWD buyers switch (or not)?** Jobs-to-be-done analysis mapping functional and emotional jobs, switching forces, and buying triggers.
+4. **Who exactly are we selling to?** Ideal customer profile with firmographic and behavioral criteria, plus three detailed persona cards for the people in the buying process.
+
+---
+
+## Card Index
+
+### Market Landscape (Cards 01a–01f)
+Primary agent: **Maya** (Insight Distiller) | Supporting: Riya, Jordan
+
+These cards break down the MWD market, competitive positioning, and strategic direction.
+
+| Card | Title | Use It For |
+|---|---|---|
+| [01a](cards/01a-market-overview.md) | Market Overview | Background context — who are MWD buyers and why Method targets them |
+| [01b](cards/01b-demand-drivers.md) | Demand Drivers | Six market forces creating urgency for MWD buyers right now |
+| [01c](cards/01c-pain-map.md) | Pain Map | Pre-call prep — ranked pain themes with buying signals |
+| [01d](cards/01d-competitive-positioning.md) | Competitive Positioning | When a prospect mentions a competitor — where Method wins and loses |
+| [01e](cards/01e-pricing-comparison.md) | Pricing Comparison | Pricing conversations — Method vs. CRM platforms vs. inventory tools |
+| [01f](cards/01f-strategy-brief.md) | Strategy Brief | Leadership alignment — nine strategic implications for MWD GTM |
+
+### Customer Interview Insights (Card 02)
+Primary agent: **Maya** (Insight Distiller)
+
+| Card | Title | Use It For |
+|---|---|---|
+| [02](cards/02-customer-interview-insights.md) | Customer Interview Insights | Real customer evidence — seven themes with quotes, organized by sales use case |
+
+### JTBD Analysis (Card 03)
+Primary agent: **Jordan** (JTBD Analyst) | Supporting: Maya
+
+| Card | Title | Use It For |
+|---|---|---|
+| [03](cards/03-jtbd-analysis.md) | Jobs-to-Be-Done Analysis | Understanding why buyers switch — job stories, switching forces, buying triggers |
+
+### ICP & Persona Profiles (Cards 04a–04d)
+Primary agent: **Riya** (ICP Mapper) | Supporting: Maya, Jordan
+
+| Card | Title | Use It For |
+|---|---|---|
+| [04a](cards/04a-icp-profile.md) | ICP Profile | Lead qualification — firmographic criteria, behavioral signals, quick checklist |
+| [04b](cards/04b-persona-ops-manager.md) | Persona: Operations Manager | Discovery prep when the main contact manages workflows and teams |
+| [04c](cards/04c-persona-owner-gm.md) | Persona: Owner / GM | Executive conversations — how to sell to the person who signs checks |
+| [04d](cards/04d-persona-office-admin.md) | Persona: Office Manager | Secondary contact — the daily power user who determines adoption |
+
+---
+
+## Key Principles Across Section 1
+
+**Built from Method's customer base, verified against industry:** Every insight in this section starts with what real Method MWD customers actually experience — structured interviews, analysis of 1,019 classified MWD accounts, and detailed examination of Method's top 200 MWD customers. Industry data and competitive intelligence validate and contextualize those findings. Customer insights first. Industry verification second.
+
+**MWD focus:** This playbook targets Manufacturing and Wholesale/Distribution businesses. Method's top 200 MWD accounts break down as 101 manufacturing and 71 wholesale/distribution. Many operate hybrid models that blend both. Companies with incidental service components (like Duraline's repair/refurbishment) are included, but pure field service businesses are out of scope.
+
+**Inventory positioning:** Method's inventory story is QB sync plus customization — not native inventory management. Two proven paths for customers who need more: third-party API integration (e.g., SOS Inventory) or in-house custom builds inside Method. Be upfront about this. See [01d Competitive Positioning](cards/01d-competitive-positioning.md) for the honest gaps section.
+
+**The real competitor is inertia:** Most MWD businesses aren't evaluating CRMs. They're evaluating whether to change at all. "QB + spreadsheets" is the status quo to beat. See [03 JTBD Analysis](cards/03-jtbd-analysis.md) for the habits of the present.
+
+**Customization is the moat:** Retention doesn't come from features — it comes from customization investment. Accounts with 50+ custom screens don't switch. See [02 Customer Interview Insights](cards/02-customer-interview-insights.md), Theme 1.
+
+**Three personas, one buying process:** The Owner decides, the Ops Manager validates, and the Office Manager determines long-term adoption. Engage all three. See [04b](cards/04b-persona-ops-manager.md), [04c](cards/04c-persona-owner-gm.md), [04d](cards/04d-persona-office-admin.md).
+
+---
+
+## How This Feeds Downstream
+
+| Section 1 Card | Feeds Into |
+|---|---|
+| ICP & Personas (04a-04d) | Section 2: Per-Persona Messaging, Section 4: Discovery Guide |
+| JTBD Analysis (03) | Section 2: Positioning Narrative, Section 4: Objection Handling |
+| Competitive Positioning (01d) | Section 3: Battlecards, Section 3: Honest Gaps Brief |
+| Customer Insights (02) | Section 2: Customer Success Stories, Section 4: Talk Tracks |
+| Strategy Brief (01f) | Section 5: Launch Tier Matrix, Section 5: Per-Launch Plans |
+| Pain Map (01c) | Section 4: Discovery Guide, Section 4: Email Sequences |
+
+---
+
+**Full deliverable:** [01 MWD Market Landscape](01-mwd-market-landscape.md) (comprehensive version with all market landscape content)
+
+**Next section:** Section 2 — Positioning & Messaging (Marcus, Leah, Kai, Vera)
+`,
+            "01a": `# MWD Market Overview
+### Card 01a | Section 1: Market & Customer Foundation
+
+**Audience:** Sales leadership, marketing, new reps onboarding
+**When to use:** Background context — who are MWD buyers and why does Method target them
+
+---
+
+## Why MWD, Why Now
+
+Manufacturing, warehousing, and distribution is Method's highest-priority vertical. These businesses share a profile: they run on QuickBooks, they've outgrown spreadsheets, and they need operational control QB alone can't provide — but they're not ready to rip out QB for a full ERP.
+
+## Two Core Segments, One Common Thread
+
+Method's top 200 MWD accounts break down as 101 manufacturing and 71 wholesale/distribution companies, with 28 retail accounts that often overlap with distribution. Many operate hybrid models — a manufacturer that also distributes, a distributor with a retail storefront.
+
+**Manufacturing (with Distribution)**
+Design, produce, and ship goods. Top sub-industries by LTV: Food & Beverage ($953K), Construction & Building ($900K), Healthcare & Medical ($772K), Industrial ($757K).
+Examples: Brown Safe (luxury safes, 12-week production cycle, 177 custom screens), Duraline Systems (medical equipment — manufactures, distributes, and services), Vintage Makers (custom wine cellars + wholesale cigar distribution across 6 states).
+
+**Wholesale & Distribution**
+Receive inventory, manage allocation, sell through channels, ship. Includes food distribution, industrial supply, franchise distribution models.
+Examples: Europena (food distribution, $25M revenue, two mirrored companies), Mobility City (54 franchise locations scaling to 150-200), Vintage Makers (3,400 cigar SKUs across 6 states), Conequip (construction equipment parts distribution).
+
+**The common thread:** Both segments use QuickBooks for accounting and need an operational layer QB doesn't provide. Many companies span both — manufacturing their own products while also distributing third-party goods. The lines blur in practice, and Method serves the overlap.
+
+## Addressable Market
+
+QuickBooks dominates US small business accounting (62-84% market share, ~29M US businesses). Within that:
+
+- ~235,000-255,000 small manufacturers (US Census, 2023)
+- Add warehousing and distribution firms with the same QB dependency → significantly larger
+- **Method's sweet spot:** QB-using MWD businesses with 10-50 employees and $1M-$250M revenue that need operational workflows QB can't provide but aren't ready for enterprise ERP. 83% of Method's MWD accounts are B2B.
+
+---
+
+**Related cards:** [01b Demand Drivers](01b-demand-drivers.md) · [01c Pain Map](01c-pain-map.md) · [04a ICP Profile](04a-icp-profile.md)
+`,
+            "01b": `# MWD Demand Drivers
+### Card 01b | Section 1: Market & Customer Foundation
+
+**Audience:** Sales reps, marketing, leadership
+**When to use:** Understanding why MWD businesses are buying now — context for outreach and positioning
+
+---
+
+## Six Forces Pushing MWD Businesses Toward Method
+
+### 1. QB Desktop Sunset Is Coming
+Intuit hasn't announced a date, but QB Desktop discontinuation is widely expected. MWD businesses — especially manufacturers — are heavy Desktop users and resist migration because QBO has fewer features. Method acts as a transition bridge: the operational layer makes QBO less painful.
+> Brown Safe: "If it's working, don't fix it." Duraline: "QuickBooks Desktop was one of the best features… QuickBooks Online is horrible." Three of six interviewed MWD customers are Desktop-attached.
+
+### 2. Multi-Location Complexity Is Growing
+Manufacturing and distribution are inherently multi-site. QB handles accounting but not operational coordination. Enterprise tools (NetSuite, Cin7) solve this but cost $5K-$20K/month and take 6-12 months.
+> Mobility City manages 54 franchise locations. Vintage Makers operates across 6 states. Europena runs two mirrored companies. Multi-location is the norm, not the exception.
+
+### 3. Customization Demand Is Rising
+Every MWD business has unique terminology and workflows. Pre-built solutions are too rigid. Method's pay-per-use customization and DEP ($325/month) hit this directly.
+> Brown Safe: 177 custom screens. Mobility City: 159 custom screens. Europena: "The greatest thing is… we are able to customize." Customization is the #1 reason for choosing — and staying with — Method.
+
+### 4. Mobile and Field Access Are Table Stakes
+MWD businesses operate beyond the office — sales reps visiting accounts, warehouse teams checking stock, delivery crews confirming orders. Real-time mobile access to customer data, inventory, and order status is expected, not optional.
+> Vintage Makers: "Driving down the road and all the information was on Method." Europena built store-level audit workflows on iPads with photos and notes. Mobile access shows up in every MWD use case.
+
+### 5. System Fragmentation Is the #1 Pain
+MWD businesses typically run 6-10 point solutions. Manual data entry between systems creates errors, delays, and zero visibility. 70% of SMBs cite lack of funds as the barrier to fixing this.
+> Vintage Makers pre-Method: "We were using spreadsheets and VLOOKUPs." Mobility City: "Each location was doing their own thing." The pattern is universal.
+
+### 6. Integration Ecosystem Keeps Expanding
+More tools (Avalara, Authorize.net, Zapier, Fishbowl) means more need for a hub connecting everything back to QB. Method's native QB sync plus Zapier/API integration positions it as that hub.
+> Brown Safe: QB + Avalara + Zapier. Europena: QB + Fishbowl (switching to Markov) + Method. Vintage Makers: QB Desktop Enterprise + Method + state tax compliance tools.
+
+---
+
+**Related cards:** [01a Market Overview](01a-market-overview.md) · [01c Pain Map](01c-pain-map.md) · [01f Strategy Brief](01f-strategy-brief.md)
+`,
+            "01c": `# MWD Pain Map
+### Card 01c | Section 1: Market & Customer Foundation
+
+**Audience:** Sales reps (grab this before a discovery call)
+**When to use:** Prep for discovery, qualifying MWD prospects, mapping buyer pain to Method capabilities
+
+---
+
+## Pain Themes by Intensity
+
+| Pain | Intensity | What they say | Method's answer |
+|---|---|---|---|
+| Fragmented systems / manual data entry | **Critical** | "Every order gets entered three times." | One connected system — QB sync eliminates double entry |
+| Inventory visibility across locations | **Critical** | "I have to call the warehouse to check stock." | QB inventory data surfaced in Method + custom builds for complex needs |
+| QB limitations for manufacturing | **Critical** | "QB can't coordinate our production." | Operational layer on top of QB — production, work orders, custom workflows |
+| Order management / fulfillment gaps | **High** | "Sales order created, warehouse doesn't see it." | Quote → order → invoice → work order in one flow |
+| Quoting and pricing complexity | **High** | "Excise taxes vary across 6 states." | Custom quoting logic with tiered pricing, volume discounts, tax rules |
+| Reporting and forecasting blind spots | **High** | "I make decisions on gut feel." | Custom dashboards with real-time data across locations |
+| Field teams disconnected | **Moderate** | "Techs show up without customer history." | Mobile views per role — sales, field, warehouse |
+| Permission controls / role separation | **Moderate** | "Reps shouldn't see each other's numbers." | Role-based access + QB stays locked to accounting |
+
+---
+
+## Buying Signals — When They Say This, They're Ready
+
+- "We're growing and need better visibility across locations"
+- "QB isn't giving us the workflows we need" (but they won't leave QB)
+- "NetSuite/Salesforce costs too much for our size"
+- "We're using spreadsheets and QB to manage everything"
+- "We need fewer steps — PO to invoice to inventory is too many handoffs"
+
+---
+
+**Related cards:** [01b Demand Drivers](01b-demand-drivers.md) · [01d Competitive Positioning](01d-competitive-positioning.md) · [03 JTBD Analysis](03-jtbd-analysis.md)
+
+---
+
+## Appendix: Detailed Pain Evidence
+
+### Fragmented Systems and Manual Data Entry
+The single biggest pain. "Islands of information" — sales in one place, inventory in another, accounting in QB, field notes on paper. Every handoff is manual. Every step introduces errors. Vintage Makers: drowning in spreadsheets and VLOOKUPs. Mobility City: franchises on paper, QB, and ad-hoc processes. Duraline: uses Method across every department because fragmentation was the problem.
+
+### Inventory Visibility
+20-40% excess inventory is typical for SMBs without real-time multi-location tracking. Only 6% achieve full supply chain transparency. Method leverages QB's built-in inventory features (Inventory Parts for QBO + Desktop, Assembly Items and Advanced Inventory for Desktop only) and surfaces that data inside CRM and operational workflows. For complex needs beyond QB's native capabilities: third-party API integrations (e.g., SOS Inventory) or custom builds within Method for warehouse tracking, serial numbers, bin locations.
+
+### QuickBooks Limitations for Manufacturing
+QBO doesn't support manufacturing natively — no raw materials → finished goods conversion, no COGM tracking, negative inventory issues. But these businesses won't leave QB. Brown Safe came to Method because QB couldn't coordinate installation projects. Europena invested too heavily in QB to switch.
+
+### Order Management and Fulfillment
+The quote-to-cash-to-service chain breaks across multiple systems. Duraline runs Estimates → Sales Orders → Invoices → Work Orders → Field Crew all through Method. Brown Safe: Installation Projects is their most valuable app.
+
+### Quoting and Pricing Complexity
+Tiered pricing, volume discounts, custom configurations, tax variations across states. Vintage Makers: varying excise taxes across 6 states (Massachusetts: 40% excise tax plus tax-on-tax). Brown Safe: custom safes with 12-week production cycles.
+
+### Reporting Blind Spots
+Mobility City: "If we don't have the information, we can't behave like a national company managing 150 stores."
+`,
+            "01d": `# MWD Competitive Positioning
+### Card 01d | Section 1: Market & Customer Foundation
+
+**Audience:** Sales reps, presales, leadership
+**When to use:** When a prospect mentions a competitor, or when framing Method's position in the market
+
+---
+
+## Where Method Fits
+
+Method occupies a unique position: **the only CRM with deep two-way QuickBooks sync that also handles operational workflows for MWD businesses at SMB pricing.**
+
+---
+
+## Competition Comes from Four Directions
+
+| Category | Examples | Their strength | Their weakness vs. Method | When we lose |
+|---|---|---|---|---|
+| **Enterprise ERP** | NetSuite, Dynamics, SAP | Full ERP + CRM + manufacturing | $5K-$20K+/mo, 6-12 month implementations, no practical QB sync | Almost never at our ICP size — they self-disqualify on cost |
+| **Traditional CRM** | Salesforce, HubSpot | Strong sales/marketing CRM | No inventory, no production, no work orders, no QB sync | Buyer is sales-heavy with minimal operational needs |
+| **Open-Source ERP** | Odoo, Creatio | Flexible with MRP modules | QB integration needs third-party connectors, high implementation complexity | Buyer has technical resources and is willing to leave QB |
+| **Specialized Tools** | Fishbowl, Katana, inFlow | Deep inventory / MRP | Not CRM tools — they complement Method, not compete with it | See "Partner Ecosystem" below |
+
+---
+
+## Quick Comparison
+
+| Dimension | Method | Enterprise ERP | Traditional CRM | Open-Source ERP |
+|---|---|---|---|---|
+| QB two-way sync | Native | Third-party (costly) | None | Third-party |
+| CRM + operations | Yes | Yes | CRM only | Yes |
+| Inventory | QB sync + customization | Enterprise-grade | None | Strong (Odoo MRP) |
+| Implementation | 1-2 months | 6-12 months | 1-3 months | 2-4 months |
+| Customization | Pay-per-use + DEP | Developer-heavy | Admin-heavy | Open-source (dev) |
+| Keeps QB? | **Yes** | No | No | No |
+
+→ **For head-to-head battlecards, see [Section 3: Competitive Intelligence](../section-3/section-3-hub.md)**
+
+---
+
+## Partner Ecosystem: Specialized Tools Work *With* Method
+
+Specialized inventory and manufacturing tools (Fishbowl, SOS Inventory, Katana, inFlow) aren't competitors — they're **complements.** Several Method customers run both:
+
+- **Europena** uses Fishbowl for deep inventory management alongside Method for CRM, custom audits, and field workflows
+- **SLE Technologies** syncs Method → SOS Inventory → QBO in a circular workflow with API app routines and warehouse-level views
+- **Cypress Engine** uses Method for CRM pipeline + SOS Inventory for all sales orders and inventory, with scheduled sync between systems
+- **Custom builds inside Method** — customers like Euroboor have built full warehouse tracking with serial numbers, bin locations, multi-warehouse support, and back-order management entirely within Method
+
+**The sales conversation:** "Do you need deep MRP with BOM, kitting, and lot tracking? If so, a tool like Fishbowl or SOS Inventory handles that — and Method integrates with it for your CRM and operational workflows. If you need inventory visibility and warehouse tracking? We can build that inside Method."
+
+---
+
+**Related cards:** [01e Pricing Comparison](01e-pricing-comparison.md) · [01c Pain Map](01c-pain-map.md) · [01f Strategy Brief](01f-strategy-brief.md)
+
+---
+
+## Appendix: Honest Gaps
+
+Be upfront about these. Honesty builds trust with risk-averse MWD buyers.
+
+- **Inventory is QB sync, not native.** No standalone inventory management system. Complex needs require third-party tools (via API) or custom builds inside Method.
+- **No native BOM, kitting, lot tracking, or shop floor control.** Heavy manufacturers need a dedicated tool alongside Method.
+- **QBO users lose significant functionality** vs. QB Desktop (no assemblies, sales orders, advanced inventory, price levels).
+- **No native e-commerce integration.**
+- **EDI / large-scale order automation is limited.**
+- **Email marketing throttles** beyond ~3K contacts — layer in SendGrid or Mailchimp via Zapier.
+- **Reporting requires customization** for MWD-specific dashboards.
+- **Mobile isn't warehouse-optimized** out of the box — warehouse workflows (pick/pack/ship, bin scanning) need customization.
+- **Performance at scale** — heavily customized accounts may experience slowdowns.
+`,
+            "01e": `# MWD Pricing Comparison
+### Card 01e | Section 1: Market & Customer Foundation
+
+**Audience:** Sales reps (use in pricing conversations and proposals)
+**When to use:** Prospect asks "how does your pricing compare?" or is evaluating alternatives
+
+---
+
+## Method's Pricing
+
+| Plan | Per User/Month | What's Included |
+|---|---|---|
+| Contact Management | $27 | CRM basics, QB sync, contact & lead management |
+| CRM Pro | $45 | Full CRM with sales pipeline, estimates, invoices, opportunities |
+| CRM Enterprise | $73 | Advanced automation, custom apps, API access |
+
+**Add-ons:** Transaction packs (required for inventory), DEP at $325/month (3 hours ongoing customization), Method Pay for payment processing.
+
+**Typical MWD deployment** (10-15 users, CRM Pro or Enterprise): **$600-$1,200/month** before DEP.
+
+## vs. Full CRM Platforms: Can They Do MWD Operations?
+
+| Platform | CRM Price | Has Inventory? | Has Field Service? | Has QB Sync? | MWD Cost (10 users) |
+|---|---|---|---|---|---|
+| **Method** | $27-$73/user | QB sync + customization | Yes (native) | Native two-way | $600-$1,200 |
+| **Salesforce** | $275-$475/user | No (AppExchange) | Add-on (Service Cloud) | Third-party only | $4,750-$7,000+ |
+| **HubSpot** | Free-$150+/user | No | No | Third-party only | $1,500-$3,000+ (no ops) |
+| **Zoho CRM** | $14-$52/user | Separate product | Separate product | Third-party only | $520-$1,570 (no QB sync) |
+| **Odoo** | $24.90-$37.40/user | Yes (strong MRP) | Custom modules | Third-party only | $249-$374 + connector |
+
+**Bottom line:** For MWD + QB, Method is the only option with native two-way QB sync that doesn't require enterprise pricing or leaving QuickBooks.
+
+## vs. Specialized Inventory Tools: Can They Match Method's Breadth?
+
+| Tool | Inventory Price | Has CRM? | Has Field Service? | Has QB Sync? | What You Still Need |
+|---|---|---|---|---|---|
+| **Fishbowl** | ~$329-$449/mo | No | No | Yes (limited) | + CRM + field service + quoting |
+| **Katana** | GMV-based | No | No | No native | + CRM + QB + field service |
+| **MRPeasy** | ~$50-$150/mo | Basic pipeline | No | Basic | + full CRM + field service |
+| **inFlow** | ~$110-$349/mo | No | No | Yes (basic) | + CRM + field service |
+| **Cin7** | ~$349-$999/mo | No | No | Yes (one-way) | + CRM + field service |
+
+Specialized tools go deeper on inventory/manufacturing but aren't CRM tools. Total cost of inventory + separate CRM + field service often exceeds Method's all-in-one cost.
+
+## The Pricing Gap Method Fills
+
+| Approach | Monthly Cost (10 users) | Systems | QB Integration |
+|---|---|---|---|
+| **Method (all-in-one)** | **$600-$1,200** | **1 (+ QB)** | **Native two-way** |
+| Salesforce + Fishbowl | $5,000-$7,500 | 3+ | Third-party + limited |
+| HubSpot + Cin7 + Jobber | $2,000-$4,000 | 4+ | Third-party + one-way |
+| Zoho + Zoho Inventory | $520-$1,570 | 2 (same ecosystem) | Third-party connector |
+| Odoo (all-in-one) | $249-$374 + connector | 1 | Third-party (or leave QB) |
+| NetSuite | $5,000-$20,000 + connector | 1 | Third-party iPaaS ($25K-$150K setup) |
+
+Odoo is cheaper on paper, but keeping QB requires a third-party connector. NetSuite's connector costs ($25K-$150K) make it impractical for SMBs. Everything else is either more expensive, more fragmented, or both.
+
+---
+
+**Related cards:** [01d Competitive Positioning](01d-competitive-positioning.md) · [01f Strategy Brief](01f-strategy-brief.md)
+`,
+            "01f": `# MWD Strategy Brief
+### Card 01f | Section 1: Market & Customer Foundation
+
+**Audience:** Leadership, sales management, marketing strategy
+**When to use:** Planning MWD GTM approach, prioritizing resources, aligning teams
+
+---
+
+## Nine Strategic Implications — One Line Each
+
+| # | Implication | The takeaway |
+|---|---|---|
+| 1 | **Lead with integration, not features** | The biggest pain is fragmented systems. Start with "one connected system." |
+| 2 | **Position against the status quo** | The real competitor is "QB + spreadsheets + manual processes" — not other CRMs. |
+| 3 | **Customization is the differentiator** | 159-177 custom screens at top accounts. Enterprise ERPs charge heavily for this. This is the moat. |
+| 4 | **Be honest about inventory** | Method = QB sync + customization, not native inventory. Third-party integrations or custom builds — both proven. |
+| 5 | **DEP is the wedge** | $325/month for expert customization answers "can you handle our workflows?" and creates sticky revenue. |
+| 6 | **Mobile + operational workflows differentiate** | Work orders, custom quoting, multi-location dashboards, mobile audits — traditional CRMs can't do this. |
+| 7 | **QB attachment is permanent** | Never position Method as a QB replacement. Always: "QB's operational layer." |
+| 8 | **Price is a weapon** | $600-$1,200/month vs. $4,750+ Salesforce, $5K-$20K NetSuite. Front and center in sales conversations. |
+| 9 | **Multi-location/franchise = growth vector** | Mobility City model: 54 locations → 150-200, with 159 custom screens. Each franchise = a seat. |
+
+---
+
+## MWD Sales Cycle
+
+| Stage | Duration | What Happens |
+|---|---|---|
+| Discovery | 1-2 weeks | Buyer maps pain, evaluates if Method fits their QB setup |
+| Trial | 14 days | Free trial — build custom apps, test QB sync, see their data. Deals are won or lost here. |
+| Decision | 2-4 weeks | Multiple stakeholders — operations, finance, IT, leadership |
+| Implementation | 4-12 weeks | Depends on customization depth; DEP accelerates this |
+| **Total** | **2-4 months** | Longer than typical SaaS; complexity drives timeline |
+
+---
+
+**Related cards:** [01a Market Overview](01a-market-overview.md) · [01d Competitive Positioning](01d-competitive-positioning.md) · [01e Pricing Comparison](01e-pricing-comparison.md)
+
+---
+
+## Appendix: Strategic Detail & Channel Intelligence
+
+### Where MWD Buyers Are
+- **Intuit App Marketplace** — ~50% of MWD customers find Method here
+- **Software review sites** — Capterra, G2, SoftwareAdvice (filtered for "QB integration")
+- **Google search** — "CRM for manufacturing," "CRM for distribution," "QuickBooks CRM," "CRM for wholesale"
+- **Industry associations** — APICS/ASCM, National Association of Wholesaler-Distributors, regional manufacturing groups
+- **Trade shows** — where Web to Lead on iPad/phone is a direct pipeline workflow
+
+### Key Retention Insight
+Strongest retention signal isn't feature satisfaction — it's customization investment. Brown Safe (177 screens), Mobility City (159 screens), Europena all cite customization depth as why switching would be painful.
+
+### Strategy Deep Dives
+
+**1. Lead with integration:** Every customer interview confirms fragmentation is the core pain. Duraline uses Method across every department. Mobility City centralized 54 franchises. Vintage Makers replaced spreadsheets and VLOOKUPs.
+
+**2. Status quo is the real competitor:** Most MWD businesses aren't evaluating CRMs — they're evaluating whether to change at all. Mobility City: "Technology alone doesn't fix bad processes."
+
+**3. Customization as moat:** Method's pay-per-use customization separates it from every competitor category. Enterprise ERPs charge heavily for customization. Traditional CRMs are too rigid. Specialized tools can't adapt to hybrid business models.
+
+**4. Inventory honesty:** Method's inventory story is QB sync plus customization — not native inventory management. For distribution and light manufacturing, QB sync gives visibility alongside CRM workflows. Customization extends this significantly (real customers have built warehouse tracking, serial numbers, bin locations). For heavy manufacturing, dedicated tools go deeper. Two proven paths: third-party API integration (e.g., SOS Inventory), or custom builds inside Method.
+
+**5. DEP as wedge:** MWD buyers want someone to build it for them. $325/month for 3 hours of expert customization. Duraline: "Alex is constantly customizing." The DEP relationship mirrors how these businesses work — incremental improvement, not big-bang implementations.
+
+**6. Operational differentiation:** Most CRM competitors don't extend into operational territory — work orders, custom quoting engines, multi-location dashboards, mobile audit tools. Method does.
+
+**7-9.** QB permanence, pricing advantage, and multi-location growth are detailed in their respective cards.
+`,
+            "02": `# MWD Customer Interview Insights
+### Card 02 | Section 1: Market & Customer Foundation
+
+**Audience:** Sales reps, marketing, leadership
+**When to use:** Need customer proof points fast — before a call, in a proposal, or validating messaging
+
+---
+
+## Seven Themes in One Line Each
+
+| # | Theme | One-line takeaway |
+|---|---|---|
+| 1 | **Customization is the value driver** | Customers stay because they've built something that fits (Brown Safe: 177 screens, Mobility City: 159 screens) |
+| 2 | **QB attachment is permanent** | Every customer uses QuickBooks for accounting. None plan to leave it. |
+| 3 | **These are hybrid businesses** | They manufacture AND distribute AND service. Don't pigeonhole. |
+| 4 | **Mobile access is critical** | Field reps, delivery crews, warehouse staff — CRM that only works at a desk loses. |
+| 5 | **Cross-department adoption drives retention** | Stickiest accounts have every department in Method (Duraline: 15 users across all functions). |
+| 6 | **DEP creates sticky revenue** | $325/month ongoing customization answers "can you handle our workflows?" |
+| 7 | **Known friction points exist** | Email throttles at ~3K, performance at scale, reporting needs customization. Be honest. |
+
+## Usable Quotes
+
+| Theme | Customer | Quote |
+|---|---|---|
+| Customization | Vintage Makers | "I have yet to find anything that I can't get customized." |
+| Customization | Europena | "The greatest thing is… we are able to customize." |
+| QB attachment | Vintage Makers | "NetSuite was great but the cost was ridiculous." |
+| Field ops | Vintage Makers | "Driving down the road and all the information was on Method." |
+| DEP value | Duraline | "Alex is constantly customizing to our needs." |
+| Overall | Vintage Makers | "It's a game changer. I tell everybody it's awesome." |
+
+---
+
+**Related cards:** [01a Market Overview](01a-market-overview.md) · [01c Pain Map](01c-pain-map.md) · [03 JTBD Analysis](03-jtbd-analysis.md) · [04a ICP Profile](04a-icp-profile.md)
+
+---
+
+## Appendix: Detailed Customer Evidence
+
+### Theme 1: Customization Is the Primary Value Driver
+
+- **Brown Safe:** 177 custom screens. 12-week manufacturing cycle tracked in a custom Production app.
+- **Europena:** CRM + reporting + audits + opportunities + custom rolling data app. Considered switching — customization investment kept them.
+- **Duraline:** Custom apps for Equipment, Commission, Purchase History, Email Status. Method is their system of record.
+- **Mobility City:** 159 custom screens. Compliance tracking, standardized POS, rental management.
+- **Vintage Makers:** Works with Yaser to build apps, buttons, and simplified flows.
+
+**Sales implication:** Once 50+ custom screens, switching costs are real. Lead with "what would you build?"
+
+### Theme 2: QuickBooks Attachment Is Permanent
+
+- **Duraline:** Leadership prefers QB. AP managed there. Reports run from QB.
+- **Brown Safe:** Heavy QBDT user. Resistant to QBO — "limited features."
+- **Vintage Makers:** Inventory lives in QB Desktop Enterprise. NetSuite "too heavy and expensive."
+- **Mobility City:** All franchise locations on QBO Plus.
+- **Europena:** QBDT user. QB was one of the main reasons for choosing Method.
+
+### Theme 3: Hybrid Businesses
+
+- **Duraline:** Distributor + in-house product line + repair + refurbishment.
+- **Vintage Makers:** Wine cellars + wholesale cigar distribution (3,400 SKUs, 6 states) + field installation.
+- **Mobility City:** Equipment sales + repairs + rentals + franchise standardization (54 locations).
+- **Europena:** Food distribution transitioning into food manufacturing. Two mirrored companies.
+
+### Theme 4: Mobile Access
+
+- **Vintage Makers:** Field reps on tablets — customer history, pricing, invoices on the spot.
+- **Europena:** iPads for store-level audits with photos and notes. Web to Lead at trade shows.
+- **Duraline:** Field crew with full work order context across locations.
+
+### Theme 5: Cross-Department Adoption
+
+- **Duraline:** Sales, shipping, customer care, AP, AR — 15 active users.
+- **Mobility City:** 16 users Boca Raton, 10 Springfield, 7 Milpitas.
+
+### Theme 6: DEP Revenue
+
+- **Duraline:** Active DEP since Nov 2024. Custom rate ~$688/month (standard: $325/month).
+- **Mobility City:** Dedicated consulting since August 2022.
+- **Europena:** Heavy customization investment — CRM, reporting, audits, rolling data app.
+
+### Theme 7: Known Friction Points
+
+- Email limits: Duraline suspended at ~3K contacts, batches at 800.
+- Performance: Heavy customization causes slowdowns.
+- Reporting: Most reports run in QB — Method reporting less intuitive.
+- Franchise compliance: Mobility City at 66%.
+- QB sync: Occasional manual re-runs needed.
+- Third-party inventory: Europena's Fishbowl data issues — switching to Markov.
+- Too many steps: Europena PO → sales order → invoice → inventory is too many handoffs.
+`,
+            "03": `# MWD Jobs-to-Be-Done Analysis
+### Card 03 | Section 1: Market & Customer Foundation
+
+**Audience:** Product marketing, sales enablement, messaging team
+**When to use:** Building messaging, validating positioning, understanding why buyers switch (or don't)
+
+**Agent:** Jordan — JTBD Analyst | Research Squad
+
+---
+
+## Five Jobs MWD Buyers Hire Method to Do
+
+| # | Job | Trigger moment | Method's answer |
+|---|-----|---------------|-----------------|
+| 1 | **See what's happening across locations** | Added a site, can't track inventory/orders without calling someone | QB sync + custom dashboards per location |
+| 2 | **Quote-to-cash without manual handoffs** | Lost money on a quote because margin math was wrong | Connected workflow: estimate → invoice → payment → work order |
+| 3 | **Build workflows that match my business** | Off-the-shelf software forced process changes | No-code customization + DEP for complex builds |
+| 4 | **Keep QuickBooks but get more control** | QB handles accounting fine but can't do operational workflows | Two-way QB sync — Method handles ops, QB handles accounting |
+| 5 | **Give mobile teams real-time access** | Field crew showed up without customer history or order status | Mobile views + work orders + custom field apps per role |
+
+---
+
+## Seven Buying Triggers
+
+These are the moments when "well enough" stops being enough:
+
+1. **Adding a location** — visibility pain becomes acute overnight
+2. **Losing a quote on bad margin math** — accuracy becomes urgent
+3. **Key person leaves** — tribal knowledge disappears
+4. **QB Desktop sunset conversation** — forces stack evaluation
+5. **Failed ERP evaluation** — realizes enterprise tools are overkill
+6. **Franchise/multi-site growth** — standardization becomes necessary
+7. **Compliance or audit pressure** — paper processes become liability
+
+---
+
+**Related cards:** [02 Customer Interview Insights](02-customer-interview-insights.md) · [01c Pain Map](01c-pain-map.md) · [04a ICP Profile](04a-icp-profile.md) · [01f Strategy Brief](01f-strategy-brief.md)
+
+---
+
+## Appendix: Detailed Job Stories & Switching Forces
+
+### Job 1: Operational Visibility Across Locations
+
+**When** I'm running operations across multiple warehouses/locations and can't see inventory, orders, or job status without calling someone or checking spreadsheets, **I want to** see real-time data across all my locations in one place, **so I can** make decisions without waiting, reduce errors, and stop relying on phone calls.
+
+- **Evidence:** Mobility City (54 franchises, needed centralized visibility). Vintage Makers (6 states, field reps need live data). Duraline (multi-location equipment tracking).
+
+### Job 2: Quote-to-Cash Without Manual Handoffs
+
+**When** a customer wants a quote and the process involves spreadsheets, phone calls, and manually entering the same data into QB, **I want to** go from estimate to invoice to payment to work order in one connected flow, **so I can** reduce errors, speed up fulfillment, and stop losing revenue to slow processes.
+
+- **Evidence:** Brown Safe (12-week production cycle, everything paper-based). Europena (too many handoffs from PO to invoice). Duraline (estimates → sales orders → invoices flow).
+
+### Job 3: Build Workflows That Match My Business
+
+**When** off-the-shelf software forces me to change how I work instead of adapting to my process, **I want to** customize my system to match my actual terminology, steps, and rules, **so I can** keep my competitive advantage.
+
+- **Evidence:** Europena considered switching but customization investment kept them. Vintage Makers: "I have yet to find anything that I can't get customized." Brown Safe: custom Production app for 12-week manufacturing cycle.
+
+### Job 4: Keep QuickBooks but Get More Control
+
+**When** QuickBooks handles my accounting fine but doesn't give me the operational workflows I need, **I want to** add operational capabilities on top of QB without replacing it, **so I can** avoid the risk, cost, and disruption of switching to a full ERP.
+
+- **Evidence:** Every customer. Vintage Makers rejected NetSuite. Brown Safe is a heavy QBDT user. Duraline insists on keeping QB for AP.
+
+### Job 5: Give Mobile Teams Real-Time Access
+
+**When** my field teams are on-site without knowing customer history, order status, or inventory availability, **I want to** give them mobile access to everything they need, **so I can** close sales faster, reduce errors, and look professional.
+
+- **Evidence:** Vintage Makers (field reps on tablets). Europena (store-level audits on iPads, Web to Lead at trade shows). Duraline (field crew with work order context).
+
+### Switching Forces Map
+
+**Push forces (away from status quo):**
+
+| Force | Strength | Evidence |
+|---|---|---|
+| Spreadsheet/manual process overload | **Strong** | Brown Safe: everything paper-based. Vintage Makers: heavy VLOOKUP logic. |
+| Can't see across locations | **Strong** | Mobility City: fragmented franchise data. Vintage Makers: 6-state operation. |
+| Quoting/fulfillment too slow | **Strong** | Europena: too many steps. Brown Safe: 12-week cycles. |
+| Current tools too rigid | **Moderate** | Europena: Fishbowl forced rigid structure. Vintage Makers: competitors couldn't adapt. |
+| Enterprise tools too expensive | **Moderate** | Vintage Makers: NetSuite rejected on cost. Brown Safe: Salesforce too expensive. |
+
+**Pull forces (toward Method):**
+
+| Force | Strength | Evidence |
+|---|---|---|
+| QB integration (keep what works) | **Very Strong** | Universal — every customer chose Method partly for QB sync. |
+| Customization depth | **Very Strong** | 159-177 custom screens across top accounts. |
+| Price vs. enterprise | **Strong** | $600-$1,200/month vs. $5K-$20K for NetSuite. |
+| Mobile + operational workflows | **Strong** | Vintage Makers, Duraline, Europena all use mobile + custom ops apps. |
+| DEP partnership model | **Moderate** | Duraline and Mobility City rely on ongoing DEP. |
+
+**Switching anxieties (why buyers hesitate):**
+
+| Anxiety | How to Address |
+|---|---|
+| "Will it work with our QB setup?" | Free 14-day trial. Show QB sync in first demo. |
+| "How hard is implementation?" | Reference 1-2 month timelines vs. 6-12 month ERP. DEP reduces risk. |
+| "Can it handle our workflows?" | Show customer examples with similar complexity. Offer DEP trial scope. |
+| "What if customization doesn't work?" | Point to customers with 100+ screens still on Method years later. |
+| "Our team won't adopt it" | Mobility City's compliance journey (66% → growing). Multi-champion strategy. |
+
+**Inertia (the hardest competitor):**
+
+| Habit | Strength |
+|---|---|
+| "QB + spreadsheets works well enough" | **Very Strong** — most MWD businesses aren't evaluating CRMs at all. |
+| "We've always done it this way" | **Strong** — some Mobility City franchisees revert to paper. |
+| "Last software change was painful" | **Moderate** — risk-averse ICP, cautious about new tech. |
+`,
+            "04a": `# MWD Ideal Customer Profile
+### Card 04a | Section 1: Market & Customer Foundation
+
+**Audience:** Sales reps (qualification), marketing (targeting), leadership (resource allocation)
+**When to use:** Qualifying a prospect, building a target list, deciding if a lead is worth pursuing
+
+**Agent:** Riya — ICP Mapper | Research Squad
+
+---
+
+## The ICP in One Sentence
+
+A QuickBooks-using manufacturer or distributor with 10-50 employees and $1M-$250M revenue that has outgrown spreadsheets but isn't ready for enterprise ERP.
+
+---
+
+## Firmographic Criteria
+
+| Dimension | Ideal | Acceptable | Disqualifying |
+|---|---|---|---|
+| **Accounting system** | QuickBooks Desktop or Online | Xero | No QB or Xero |
+| **Employee count** | 10-50 | 5-10 or 50-100 | Under 5 or 100+ |
+| **Revenue** | $2M-$50M | $1M-$2M or $50M-$250M | Under $1M |
+| **Geography** | US, Canada | Australia, UK | Non-English markets |
+| **Industry** | Manufacturing, Wholesale & Distribution | Hybrid models | Pure retail, SaaS, professional services, field service |
+| **Locations** | 2-10 sites | 1 site with growth plans, or 10-50 (franchise) | Single location, no growth |
+| **Current tools** | QB + spreadsheets + 1-2 point solutions | QB + basic CRM | Already on Salesforce, NetSuite, or full ERP |
+
+---
+
+## Quick Qualification Checklist
+
+Use this in the first 2 minutes of a discovery call.
+
+- [ ] Do they use QuickBooks? (If no → likely disqualified)
+- [ ] Do they have 10+ employees? (If under 5 → probably too small)
+- [ ] Do they manufacture, distribute, or warehouse? (If pure retail, field service, or SaaS → wrong vertical)
+- [ ] Are they using spreadsheets alongside QB for operational tracking? (If yes → strong signal)
+- [ ] Have they evaluated or rejected enterprise tools? (If yes → very strong signal)
+
+Three "yes" answers = strong ICP fit. Move to full discovery.
+
+---
+
+**Related cards:** [04b Persona: Operations Manager](04b-persona-ops-manager.md) · [04c Persona: Owner/GM](04c-persona-owner-gm.md) · [04d Persona: Office Manager](04d-persona-office-admin.md) · [01a Market Overview](01a-market-overview.md)
+
+---
+
+## Appendix: Behavioral Signals & Psychographic Profile
+
+### Buying Readiness Signals
+
+**Strong signals (prioritize these leads):**
+- Searching for "QuickBooks CRM" or "CRM for manufacturing" on Google or Intuit App Marketplace
+- Currently using QB + spreadsheets for inventory tracking, quoting, or job scheduling
+- Recently added a location or franchise and struggling with visibility
+- Evaluated enterprise ERP (NetSuite, SAP, Dynamics) and rejected it on cost or complexity
+- Actively hiring operations or office management roles (indicates process growing pains)
+
+**Moderate signals (worth pursuing):**
+- Using QB Desktop and concerned about sunset timeline
+- Using a basic CRM (HubSpot free, Zoho) but needs operational workflows
+- Has field teams without mobile tools
+- Manually tracks work orders, production, or service jobs
+
+**Weak signals (nurture, don't prioritize):**
+- Just started the business (under 2 years old, under $1M)
+- Happy with current spreadsheet setup and not experiencing pain
+- Evaluating pure CRM without operational needs
+
+### Psychographic Profile
+
+MWD buyers share a mindset distinct from typical SaaS buyers.
+
+**They are:** Old-school entrepreneurs who built their businesses from nothing. Hands-on operators who know every workflow personally. Risk-averse, cautious about new tech, skeptical of sales pitches. Heavy Excel users who've made spreadsheets do things spreadsheets shouldn't do. Loyal to QuickBooks. Practical — they want to see it work before they believe it.
+
+**They are NOT:** Early adopters excited about new software. Delegators who hand tech decisions to IT teams. Feature-checklist buyers. Impulse buyers — expect 2-4 month sales cycles.
+
+**The winning approach:** Show, don't tell. Let them build during the trial. Reference customers like them. Be honest about gaps. Earn trust through transparency.
+
+### Two MWD Sub-Segments
+
+Method's top 200 MWD accounts: 101 manufacturing, 71 wholesale/distribution.
+
+**Manufacturing (with Distribution):** Design, produce, and ship goods. Top sub-industries by LTV: Food & Beverage, Construction & Building, Healthcare & Medical, Industrial. Examples: Brown Safe, Duraline, Vintage Makers. Entry point: Custom production tracking, quote-to-invoice workflow, inventory visibility. Method hook: Custom Production app + QB sync + DEP partnership.
+
+**Wholesale & Distribution:** Receive, store, allocate, sell through channels, ship. Includes food distribution, industrial supply, franchise models. Examples: Europena, Mobility City, Conequip. Entry point: Multi-location visibility, franchise standardization, order management. Method hook: Centralized dashboards + compliance tracking + multi-site QB sync + mobile access.
+`,
+            "04b": `# Persona: Operations Manager / VP of Operations
+### Card 04b | Section 1: Market & Customer Foundation
+
+**Audience:** Sales reps (discovery prep, demo tailoring), marketing (content targeting)
+**When to use:** Prospect's main contact is operations-focused — managing workflows, locations, teams
+
+**Agent:** Riya — ICP Mapper | Research Squad
+
+---
+
+## Who They Are
+
+**Title variations:** Operations Manager, VP of Operations, Director of Operations, Production Manager, Warehouse Manager, Logistics Manager
+
+**Daily reality:** They know how every order moves from intake to delivery. They manage teams across locations, juggle schedules, track inventory, and fix problems. They live in QuickBooks and spreadsheets — switching between tabs all day. Age 35-55, often promoted from within.
+
+---
+
+## What Keeps Them Up at Night
+
+| Pain | Intensity | What they say |
+|---|---|---|
+| Can't see across locations | **Critical** | "I have to call the warehouse to find out what we have in stock." |
+| Manual handoffs between quoting and fulfillment | **Critical** | "Every order gets entered at least three times." |
+| No single system connects sales → production → delivery | **High** | "I'm the system. Everything runs through me." |
+| Spreadsheet dependency | **High** | "My spreadsheets are getting too complex for anyone else to use." |
+
+---
+
+## What Closes Them / What Loses Them
+
+**Closes:** Seeing their actual workflow mapped in Method during trial. Customer reference from similar business. DEP pitch: "We'll build it with you." Honest acknowledgment of gaps.
+
+**Loses:** Feature-dump demos that don't map to their process. Overpromising on inventory. Ignoring the QB relationship. Long implementation timelines without clear milestones.
+
+---
+
+**Related cards:** [04a ICP Profile](04a-icp-profile.md) · [04c Persona: Owner/GM](04c-persona-owner-gm.md) · [02 Customer Insights](02-customer-interview-insights.md) · [03 JTBD Analysis](03-jtbd-analysis.md)
+
+---
+
+## Appendix: Discovery & Demo Playbook
+
+### Discovery Questions
+- "Walk me through what happens after a customer says yes to a quote."
+- "How many people touch an order before it ships?"
+- "How do you track what's happening across your locations right now?"
+- "What's the one report you wish you had that you can't build today?"
+
+### Demo Focus
+1. Show the quote-to-work-order flow with QB sync
+2. Show a multi-location dashboard with real-time data
+3. Show the Field Crew app — what a technician sees on their phone
+4. Show a custom screen being built (prove customization is real)
+
+### What They Want (But May Not Articulate)
+- One place to see orders, inventory status, and team activity across locations
+- Automated handoffs between steps — estimate approved → work order created → field crew assigned
+- QB integration that doesn't create double entry or accounting chaos
+- Custom dashboards showing their specific KPIs without asking IT
+- Mobile access for field teams that actually works
+
+### How They Evaluate Software
+- Hands-on trial — they need to build something and see their actual data flowing
+- Multiple stakeholders — they'll bring in owner, finance, and field leads
+- Risk-averse — they've been burned before, need proof it works for businesses like theirs
+- Timeline sensitivity — want to implement during a slow season
+
+### Real Customer Examples
+- **Craig at Mobility City:** Standardized 54 franchise locations. Built 159 custom screens. Drove compliance from zero to 66%.
+- **Duraline Operations team:** Uses Method across sales, shipping, customer care, AP, AR.
+- **Europena operations team:** Built store-level audit workflows on iPads, manages two mirrored companies, runs rolling data apps for sales tracking.
+`,
+            "04c": `# Persona: Owner / General Manager
+### Card 04c | Section 1: Market & Customer Foundation
+
+**Audience:** Sales reps (discovery prep, executive conversations), marketing (thought leadership targeting)
+**When to use:** Prospect's decision-maker is the business owner or GM — the person who signs checks and owns strategy
+
+**Agent:** Riya — ICP Mapper | Research Squad
+
+---
+
+## Who They Are
+
+**Title variations:** Owner, CEO, President, General Manager, Founder, Managing Partner
+
+**Daily reality:** They built this business. They know every customer, every vendor, every bottleneck. They're involved in everything — from negotiating supplier terms to reviewing invoices. Technology decisions are personal because bad software costs real money. Age 40-65. Not tech-averse — tech-cautious. They've been burned before.
+
+---
+
+## What Keeps Them Up at Night
+
+| Pain | Intensity | What they say |
+|---|---|---|
+| No visibility into overall business performance | **Critical** | "I don't know if we're profitable on this job until it's over." |
+| Growing too fast for current processes | **Critical** | "We're adding locations but I can't see what's happening at each one." |
+| Key-person dependency | **High** | "If Sarah leaves, nobody knows how the spreadsheets work." |
+| Cost of enterprise solutions vs. actual need | **High** | "NetSuite wanted $20K/month. We're a $5M company." |
+| Cash flow visibility | **High** | "I need to know what's outstanding and what's coming in." |
+
+---
+
+## What Closes Them / What Loses Them
+
+**Closes:** Customer reference from a business their size, in their industry. Price comparison vs. NetSuite/Salesforce. DEP framed as "your dedicated expert, $325/month." Free trial with their own data.
+
+**Loses:** Overselling — they can smell BS. Ignoring their QB loyalty. Long, technical demos (they want business outcomes). Hidden costs or unclear timelines.
+
+---
+
+**Related cards:** [04a ICP Profile](04a-icp-profile.md) · [04b Persona: Operations Manager](04b-persona-ops-manager.md) · [04d Persona: Office Manager](04d-persona-office-admin.md) · [01f Strategy Brief](01f-strategy-brief.md)
+
+---
+
+## Appendix: Discovery & Demo Playbook
+
+### Discovery Questions
+- "What's the biggest bottleneck slowing your growth right now?"
+- "How do you currently track the health of your business — what do you look at every morning?"
+- "Have you looked at enterprise systems before? What happened?"
+- "How many systems does your team use on a typical day?"
+
+### Demo Focus
+1. Start with the business case: "Here's how a $5M distributor uses Method" (customer story)
+2. Show the executive dashboard — the view they'd see every morning
+3. Show QB sync live — data flows both ways, no double entry
+4. Show pricing: "$600-$1,200/month for your team size vs. what enterprise charges"
+
+### What They Want (But May Not Articulate)
+- Control without complexity — see everything, customize anything, but not manage an IT department
+- Protection of their QB investment — they've spent years building their QB setup
+- A partner, not a vendor — someone who understands their business and helps them build
+- Proof before commitment — need to see similar businesses using Method successfully
+- Predictable costs — no surprise bills, no scope creep
+
+### How They Evaluate Software
+- Gut feeling matters — they judge the sales rep as much as the software
+- They ask "who else like me uses this?" — customer references are the most powerful tool
+- They calculate ROI in their head — $600-$1,200/month vs. cost of one admin doing manual data entry
+- They involve their operations person — owner decides, ops manager validates
+- They take their time — 2-4 month sales cycle, don't rush them
+
+### Real Customer Examples
+- **Vintage Makers owner:** Founded 1994. Wine cellars + cigar distribution across 6 states. Rejected NetSuite on cost.
+- **Brown Safe owner:** 40-year-old company. 12-week production cycles. Heavy QBDT user. Chose Method for customization at affordable pricing.
+- **Europena leadership:** $25M food distribution running two entities. QB + customization kept them on Method.
+`,
+            "04d": `# Persona: Office Manager / Administrative Lead
+### Card 04d | Section 1: Market & Customer Foundation
+
+**Audience:** Sales reps (secondary contact engagement), marketing (content targeting), onboarding team
+**When to use:** Prospect has an office manager or admin who handles day-to-day QB and data entry — often the power user post-sale
+
+**Agent:** Riya — ICP Mapper | Research Squad
+
+---
+
+## Who They Are
+
+**Title variations:** Office Manager, Administrative Manager, Bookkeeper, Office Administrator, Operations Coordinator, AR/AP Manager
+
+**Daily reality:** They're the glue. They enter data into QuickBooks, chase invoices, update spreadsheets, coordinate between departments, and fix things when processes break. They know actual workflows better than the owner because they execute them every day. They'll use Method the most — and resist it hardest if it adds to their workload. Age 30-55, long-tenured, protective of their spreadsheet systems.
+
+---
+
+## What Keeps Them Up at Night
+
+| Pain | Intensity | What they say |
+|---|---|---|
+| Double data entry between QB and other systems | **Critical** | "I enter every invoice twice." |
+| Spreadsheets only they understand | **High** | "Nobody else can use my tracking sheets." |
+| Chasing people for information | **High** | "I spend half my day asking salespeople what happened with an order." |
+| Errors from manual processes | **High** | "When we miss something, I'm the one who has to fix it." |
+
+---
+
+## What Closes Them / What Loses Them
+
+**Closes:** Seeing QB sync happen in real time. Hearing "you won't enter data twice anymore." Meeting the DEP consultant who'll help them set up. References from other Office Managers who survived the transition.
+
+**Loses:** Being left out of the buying process. Unreliable sync — one glitch during trial and they revert to spreadsheets. Feeling like the system adds work instead of removing it.
+
+---
+
+## Why This Persona Matters for Retention
+
+The Office Manager determines whether a Method account sticks or churns. High adoption = sticky account. Low adoption = parallel spreadsheets = churn risk. Get them comfortable in the first 30 days.
+
+---
+
+**Related cards:** [04a ICP Profile](04a-icp-profile.md) · [04b Persona: Operations Manager](04b-persona-ops-manager.md) · [04c Persona: Owner/GM](04c-persona-owner-gm.md) · [02 Customer Insights](02-customer-interview-insights.md)
+
+---
+
+## Appendix: Discovery & Demo Playbook
+
+### Discovery Questions
+- "What does your typical day look like — walk me through the data you touch?"
+- "How much time do you spend on double entry between QB and other tools?"
+- "What's the thing you track in a spreadsheet that you wish was automatic?"
+- "What happened the last time you implemented new software?"
+
+### Demo Focus
+1. Show QB sync first — two-way, automatic, no double entry
+2. Show a workflow they'd recognize: invoice created in Method → appears in QB
+3. Show the reports they'd need: AR aging, outstanding invoices, customer activity
+4. Emphasize: "Your QB data stays in QB. Method just adds the operational layer."
+
+### What They Want (But May Not Articulate)
+- Less data entry — if Method syncs with QB automatically, they get hours back every week
+- One place for everything — stop tabbing between five windows
+- Reliability — the sync has to work every time, or they'll keep manual backups
+- Not to look bad — new software feels like a threat to their competence
+- To be included in the decision — they're often left out but will be the primary daily user
+
+### How They Evaluate Software
+- Skeptical by default — they've survived bad implementations
+- Detail-oriented — they'll test edge cases during trial (unusual invoices, tax exceptions, multi-line orders)
+- The first question is always "does it sync with QuickBooks?" The second is "how reliably?"
+- They influence the decision — if the Office Manager says "this will make my life harder," the deal is at risk
+
+### Customer Evidence
+- **Duraline:** Cross-department adoption (sales, shipping, customer care, AP, AR) — the Office Manager role is central to that high-retention pattern.
+`
+        };
+
+        // Render markdown content
+        function renderMarkdown() {
+            Object.entries(markdownContent).forEach(([key, content]) => {
+                const element = document.getElementById(key + '-content');
+                if (element) {
+                    element.innerHTML = marked.parse(content);
+                }
+            });
+        }
+
+        // Toggle card content
+        function toggleCard(header) {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.card-toggle');
+            
+            content.classList.toggle('collapsed');
+            toggle.classList.toggle('collapsed');
+        }
+
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                const target = link.getAttribute('href').substring(1);
+                const element = document.getElementById(target);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Initialize
+        renderMarkdown();
+        document.querySelector('.nav-link').classList.add('active');
+    </script>
+</body>
+</html>

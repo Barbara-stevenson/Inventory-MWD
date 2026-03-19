@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Method MWD — Agent Map</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  :root {
+    --bg: #f7f8fc;
+    --card: #ffffff;
+    --text: #1a1d23;
+    --text-secondary: #5f6b7a;
+    --research: #0f766e;
+    --messaging: #7c3aed;
+    --execution: #1a56db;
+    --mia: #1a56db;
+    --research-bg: #e0f2f1;
+    --messaging-bg: #ede9fe;
+    --execution-bg: #e8eefb;
+    --mia-bg: #e8eefb;
+    --border: #e2e6ef;
+    --shadow: 0 2px 12px rgba(10,22,40,0.06);
+    --radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 24px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease-out;
+  }
+
+  header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  header p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* Mia - PMM Lead */
+  .mia-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    border-left: 4px solid var(--mia);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    animation: fadeUp 0.6s ease-out 0.1s both;
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.3s ease;
+  }
+
+  .mia-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+
+  .mia-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--mia);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .mia-info h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .mia-info .role {
+    font-size: 14px;
+    color: var(--mia);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .mia-info .desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .mia-badges {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .mia-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--mia-bg);
+    color: var(--mia);
+    white-space: nowrap;
+  }
+
+  /* Flow arrow */
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 36px;
+    animation: fadeUp 0.6s ease-out 0.15s both;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .flow-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .flow-arrow {
+    color: var(--text-secondary);
+    font-size: 18px;
+  }
+
+  /* Squad sections */
+  .squad {
+    margin-bottom: 36px;
+  }
+
+  .squad-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-left: 4px;
+  }
+
+  .squad-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .squad-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+
+  .squad-header span {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+
+  /* Agent cards */
+  .agent-card {
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    padding: 20px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .agent-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+
+  .agent-card .accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .agent-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .agent-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .agent-name {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .agent-title {
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .agent-lead {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.3);
+    margin-left: auto;
+  }
+
+  .agent-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+
+  .agent-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--text-secondary);
+  }
+
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #e8eefb;
+    color: #5f6b7a;
+    margin-bottom: 8px;
+    letter-spacing: 0.2px;
+  }
+
+  .skill-tag::before {
+    content: "⚙";
+    font-size: 9px;
+  }
+
+  /* Step map table */
+  .step-map {
+    margin-top: 48px;
+    animation: fadeUp 0.6s ease-out 0.4s both;
+  }
+
+  .step-map h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .step-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    font-size: 13px;
+  }
+
+  .step-table thead {
+    background: #f0f4ff;
+  }
+
+  .step-table th {
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #e2e6ef;
+    vertical-align: middle;
+  }
+
+  .step-table tr:last-child td { border-bottom: none; }
+
+  .step-table .section-num {
+    font-weight: 600;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  .step-table .agent-pill {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin: 1px 2px;
+  }
+
+  .step-table .supporting {
+    opacity: 0.6;
+  }
+
+  /* Section colors for table */
+  .s1 { background: var(--research-bg); color: var(--research); }
+  .s2 { background: var(--messaging-bg); color: var(--messaging); }
+  .s3 { background: #e8eefb; color: #0f3a8a; }
+  .s4 { background: var(--execution-bg); color: var(--execution); }
+  .s5 { background: #dcfce7; color: #166534; }
+
+  .pill-research { background: var(--research-bg); color: var(--research); }
+  .pill-messaging { background: var(--messaging-bg); color: var(--messaging); }
+  .pill-execution { background: var(--execution-bg); color: var(--execution); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .squad:nth-child(1) .agent-card { animation: fadeUp 0.5s ease-out 0.2s both; }
+  .squad:nth-child(1) .agent-card:nth-child(2) { animation-delay: 0.25s; }
+  .squad:nth-child(1) .agent-card:nth-child(3) { animation-delay: 0.3s; }
+  .squad:nth-child(2) .agent-card { animation: fadeUp 0.5s ease-out 0.35s both; }
+  .squad:nth-child(2) .agent-card:nth-child(2) { animation-delay: 0.4s; }
+  .squad:nth-child(2) .agent-card:nth-child(3) { animation-delay: 0.45s; }
+  .squad:nth-child(2) .agent-card:nth-child(4) { animation-delay: 0.5s; }
+  .squad:nth-child(3) .agent-card { animation: fadeUp 0.5s ease-out 0.55s both; }
+  .squad:nth-child(3) .agent-card:nth-child(2) { animation-delay: 0.6s; }
+  .squad:nth-child(3) .agent-card:nth-child(3) { animation-delay: 0.65s; }
+
+  .squad-header { animation: fadeUp 0.5s ease-out 0.18s both; }
+  .squad:nth-child(2) .squad-header { animation-delay: 0.33s; }
+  .squad:nth-child(3) .squad-header { animation-delay: 0.53s; }
+
+  @media (max-width: 680px) {
+    .agents-grid { grid-template-columns: 1fr; }
+    .mia-card { flex-direction: column; text-align: center; }
+    .mia-badges { margin-left: 0; }
+    .flow { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="knowledge-graph.html" style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:10px;background:#1a56db14;border:1px solid #1a56db40;color:#1a56db;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;margin-bottom:16px;" onmouseover="this.style.background='#1a56db28'" onmouseout="this.style.background='#1a56db14'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Knowledge Graph
+  </a>
+  <h1>Agent Map</h1>
+  <p>Method MWD Vertical Playbook — 11 agents across 3 squads, led by Mia</p>
+</header>
+
+<!-- Mia -->
+<div class="mia-card">
+  <div class="mia-avatar">M</div>
+  <div class="mia-info">
+    <h2>Mia</h2>
+    <div class="role">Head of Product Marketing</div>
+    <div class="desc">Owns playbook strategy. Reviews every deliverable for GTM fit — catches when work is good content but bad product marketing.</div>
+  </div>
+  <div class="mia-badges">
+    <span class="mia-badge">PMM Strategy</span>
+    <span class="mia-badge">Quality Assurance</span>
+  </div>
+</div>
+
+<!-- Build Flow -->
+<div class="flow">
+  <div class="flow-step"><div class="flow-dot" style="background:var(--research)"></div> Research</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step"><div class="flow-dot" style="background:var(--messaging)"></div> Messaging</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step"><div class="flow-dot" style="background:var(--execution)"></div> Execution</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step"><div class="flow-dot" style="background:var(--mia)"></div> Mia Review</div>
+</div>
+
+<!-- Research Squad -->
+<div class="squad">
+  <div class="squad-header">
+    <div class="squad-dot" style="background:var(--research)"></div>
+    <h3>Research Squad</h3>
+    <span>— Foundation. Who buys, why, what jobs.</span>
+  </div>
+  <div class="agents-grid">
+    <div class="agent-card">
+      <div class="accent" style="background:var(--research)"></div>
+      <div class="agent-top">
+        <div class="agent-avatar" style="background:var(--research)">Ma</div>
+        <div>
+          <div class="agent-name">Maya</div>
+          <div class="agent-title" style="color:var(--research)">Insight Distiller</div>
+        </div>
+        <div class="agent-lead" style="color:var(--research); background:var(--research-bg)">Lead</div>
+      </div>
+      <div class="agent-desc">Turns raw interviews and research into structured findings — pain points, triggers, quotes, success story skeletons.</div>
+      <div><span class="skill-tag">insight-distiller</span></div>
+      <div class="agent-sections">
+        <span class="section-tag">§1 Insights</span>
+        <span class="section-tag">§2b Stories</span>
+      </div>
+    </div>
+    <div class="agent-card">
+      <div class="accent" style="background:var(--research)"></div>
+      <div class="agent-top">
+        <div class="agent-avatar" style="background:var(--research)">J</div>
+        <div>
+          <div class="agent-name">Jordan</div>
+          <div class="agent-title" style="color:var(--research)">JTBD Analyst</div>
+        </div>
+      </div>
+      <div class="agent-desc">Maps jobs-to-be-done, switching forces, and buying triggers. Builds job stories for MWD buyers.</div>
+      <div><span class="skill-tag">jtbd</span></div>
+      <div class="agent-sections">
+        <span class="section-tag">§1 JTBD</span>
+      </div>
+    </div>
+    <div class="agent-card">
+      <div class="accent" style="background:var(--research)"></div>
+      <div class="agent-top">
+        <div class="agent-avatar" style="background:var(--research)">R</div>
+        <div>
+          <div class="agent-name">Riya</div>
+          <div class="agent-title" style="color:var(--research)">ICP Mapper</div>
+        </div>
+      </div>
+      <div class="agent-desc">Defines ideal customer profiles and builds persona cards — role, daily reality, pains, goals, buying behavior.</div>
+      <div><span class="skill-tag">icp-persona-mapper</span></div>
+      <div class="agent-sections">
+        <span class="section-tag">§1 ICP & Personas</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Messaging Squad -->
+<div class="squad">
+  <div class="squad-header">
+    <div class="squad-dot" style="background:var(--messaging)"></div>
+    <h3>Messaging Squad</h3>
+    <span>— Narrative. How we talk about Method for MWD.</span>
+  </div>
+  <div class="agents-grid">
+    <div class="agent-card">
+      <div class="accent" style="background:var(--messaging)"></div>
+      <div class="agent-top">
+        <div class="agent-avatar" style="background:var(--messaging)">Mr</div>
+        <div>
+          <div class="agent-name">Marcus</div>
+          <div class="agent-title" style="color:var(--messaging)">Message Architect</div>
+        </div>
+        <div class="agent-lead" style="color:var(--messaging); background:var(--messaging-bg)">Lead</div>
+      </div>
+      <div class="agent-desc">Builds message houses, positioning narratives, per-persona value props. Ladders everything up to Method's master positioning.</div>
+      <div><span class="skill-tag">message-house</span></div>
+      <div class="agent-sections">
+        <span class="section-tag">§2 Message House</span>
+        <span class="section-tag">§2 Positioning</span>
+        <span class="section-tag">§2 Inventory Msg</span>
+      </div>
+    </div>
+    <div class="agent-card">
+      <div class="accent" style="background:var(--messaging)"></div>
+      <div class="agent-top">
+        <div class="agent-avatar" style="background:var(--messaging)">L</div>
+        <div>
+          <div class="agent-name">Leah</div>
+          <div class="agent-title" style="color:var(--messaging)">Asset Localizer</div>
+        </div>
+      </div>
+      <div class="agent-desc">Adapts horizontal Method copy into MWD-specific language, examples, and industry terminology.</div>
+      <div><span class="skill-tag">asset-localizer</span></div>
+      <div class="agent-sections">
+        <span class="section-tag">§2 Industry Copy</span>
+        <span class="section-tag">§5 Localized Assets</span>
+      </div>
+    </div>
+    <div class="agent-card">
+      <div class="accent" style="background:var(--messaging)"></div>
+      <div class="agent-top">
+        <div class="agent-avatar" style="background:var(--messaging)">K</div>
+        <div>
+          <div class="agent-name">Kai</div>
+          <div class="agent-title" style="color:var(--messaging)">Positioning Lead</div>
+        </div>
+      </div>
+      <div class="agent-desc">Guards Method's core positioning. Reviews for drift, advises competitive angles, ensures vertical ≠ contradict horizontal.</div>
+      <div><span class="skill-tag">method-positioning</span></div>
+      <div class="agent-sections">
+        <span class="section-tag">§2 Consistency</span>
+        <span class="section-tag">§3 Competitive</span>
+      </div>
+    </div>
+    <div class="agent-card">
+      <div class="accent" style="background:var(--messaging)"></div>
+      <div class="agent-top">
+        <div class="agent-avatar" style="background:var(--messaging)">V</div>
+        <div>
+          <div class="agent-name">Vera</div>
+          <div class="agent-title" style="color:var(--messaging)">Voice Editor</div>
+        </div>
+      </div>
+      <div class="agent-desc">Enforces tone — direct, conversational, grade 8 vocabulary. Kills buzzwords on sight.</div>
+      <div><span class="skill-tag">tone-of-voice</span></div>
+      <div class="agent-sections">
+        <span class="section-tag">All sections</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Execution Squad -->
+<div class="squad">
+  <div class="squad-header">
+    <div class="squad-dot" style="background:var(--execution)"></div>
+    <h3>Execution Squad</h3>
+    <span>— Delivery. What reps use, how launches ship.</span>
+  </div>
+  <div class="agents-grid">
+    <div class="agent-card">
+      <div class="accent" style="background:var(--execution)"></div>
+      <div class="agent-top">
+        <div class="agent-avatar" style="background:var(--execution)">D</div>
+        <div>
+          <div class="agent-name">Dex</div>
+          <div class="agent-title" style="color:var(--execution)">Battlecard Builder</div>
+        </div>
+      </div>
+      <div class="agent-desc">Competitive intel, battlecards, trap questions, honest gaps. Where we win, where they win.</div>
+      <div><span class="skill-tag">battlecard-builder</span></div>
+      <div class="agent-sections">
+        <span class="section-tag">§3 Battlecards</span>
+        <span class="section-tag">§3 Gaps Brief</span>
+      </div>
+    </div>
+    <div class="agent-card">
+      <div class="accent" style="background:var(--execution)"></div>
+      <div class="agent-top">
+        <div class="agent-avatar" style="background:var(--execution)">S</div>
+        <div>
+          <div class="agent-name">Sam</div>
+          <div class="agent-title" style="color:var(--execution)">Sales Enablement</div>
+        </div>
+        <div class="agent-lead" style="color:var(--execution); background:var(--execution-bg)">Lead</div>
+      </div>
+      <div class="agent-desc">Discovery guides, outbound emails, objection handling, one-pagers, talk tracks. What reps actually use.</div>
+      <div><span class="skill-tag">sales-enablement</span></div>
+      <div class="agent-sections">
+        <span class="section-tag">§4 Discovery</span>
+        <span class="section-tag">§4 Emails</span>
+        <span class="section-tag">§4 Objections</span>
+      </div>
+    </div>
+    <div class="agent-card">
+      <div class="accent" style="background:var(--execution)"></div>
+      <div class="agent-top">
+        <div class="agent-avatar" style="background:var(--execution)">Le</div>
+        <div>
+          <div class="agent-name">Leo</div>
+          <div class="agent-title" style="color:var(--execution)">Launch Planner</div>
+        </div>
+      </div>
+      <div class="agent-desc">Tiers launches by impact, builds mini plans with timelines, channels, and dependencies.</div>
+      <div><span class="skill-tag">launch-planner</span></div>
+      <div class="agent-sections">
+        <span class="section-tag">§5 Tier Matrix</span>
+        <span class="section-tag">§5 Mini Plans</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Step Map -->
+<div class="step-map">
+  <h3>Playbook Step → Agent Map</h3>
+  <table class="step-table">
+    <thead>
+      <tr>
+        <th>Section</th>
+        <th>Deliverable</th>
+        <th>Primary</th>
+        <th>Supporting</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="section-num s1">§1</span></td>
+        <td>Market Landscape</td>
+        <td><span class="agent-pill pill-research">Maya</span></td>
+        <td><span class="agent-pill pill-research supporting">Riya</span><span class="agent-pill pill-research supporting">Jordan</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s1">§1</span></td>
+        <td>Customer Insights</td>
+        <td><span class="agent-pill pill-research">Maya</span></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><span class="section-num s1">§1</span></td>
+        <td>JTBD Analysis</td>
+        <td><span class="agent-pill pill-research">Jordan</span></td>
+        <td><span class="agent-pill pill-research supporting">Maya</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s1">§1</span></td>
+        <td>ICP & Personas</td>
+        <td><span class="agent-pill pill-research">Riya</span></td>
+        <td><span class="agent-pill pill-research supporting">Maya</span><span class="agent-pill pill-research supporting">Jordan</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s2">§2</span></td>
+        <td>Positioning Narrative</td>
+        <td><span class="agent-pill pill-messaging">Marcus</span></td>
+        <td><span class="agent-pill pill-messaging supporting">Kai</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s2">§2</span></td>
+        <td>Message House</td>
+        <td><span class="agent-pill pill-messaging">Marcus</span></td>
+        <td><span class="agent-pill pill-messaging supporting">Kai</span><span class="agent-pill pill-messaging supporting">Vera</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s2">§2</span></td>
+        <td>Inventory Messaging</td>
+        <td><span class="agent-pill pill-messaging">Marcus</span><span class="agent-pill pill-messaging">Leah</span></td>
+        <td><span class="agent-pill pill-messaging supporting">Kai</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s2">§2</span></td>
+        <td>Industry Page Copy</td>
+        <td><span class="agent-pill pill-messaging">Leah</span></td>
+        <td><span class="agent-pill pill-messaging supporting">Marcus</span><span class="agent-pill pill-messaging supporting">Vera</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s2">§2</span></td>
+        <td>Customer Stories</td>
+        <td><span class="agent-pill pill-research">Maya</span></td>
+        <td><span class="agent-pill pill-messaging supporting">Marcus</span><span class="agent-pill pill-messaging supporting">Vera</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s3">§3</span></td>
+        <td>Competitive Landscape</td>
+        <td><span class="agent-pill pill-execution">Dex</span></td>
+        <td><span class="agent-pill pill-messaging supporting">Kai</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s3">§3</span></td>
+        <td>Battlecards</td>
+        <td><span class="agent-pill pill-execution">Dex</span></td>
+        <td><span class="agent-pill pill-execution supporting">Sam</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s3">§3</span></td>
+        <td>Honest Gaps Brief</td>
+        <td><span class="agent-pill pill-execution">Dex</span></td>
+        <td><span class="agent-pill pill-messaging supporting">Kai</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s4">§4</span></td>
+        <td>Discovery Guide</td>
+        <td><span class="agent-pill pill-execution">Sam</span></td>
+        <td><span class="agent-pill pill-research supporting">Riya</span><span class="agent-pill pill-research supporting">Jordan</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s4">§4</span></td>
+        <td>Email Sequences</td>
+        <td><span class="agent-pill pill-execution">Sam</span></td>
+        <td><span class="agent-pill pill-messaging supporting">Leah</span><span class="agent-pill pill-messaging supporting">Vera</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s4">§4</span></td>
+        <td>Objection Handling</td>
+        <td><span class="agent-pill pill-execution">Sam</span></td>
+        <td><span class="agent-pill pill-execution supporting">Dex</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s4">§4</span></td>
+        <td>One-Pager / Talk Track</td>
+        <td><span class="agent-pill pill-execution">Sam</span></td>
+        <td><span class="agent-pill pill-messaging supporting">Marcus</span><span class="agent-pill pill-messaging supporting">Vera</span></td>
+      </tr>
+      <tr>
+        <td><span class="section-num s5">§5</span></td>
+        <td>Launch Tier Matrix</td>
+        <td><span class="agent-pill pill-execution">Leo</span></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><span class="section-num s5">§5</span></td>
+        <td>Per-Launch Mini Plans</td>
+        <td><span class="agent-pill pill-execution">Leo</span></td>
+        <td><span class="agent-pill pill-execution supporting">Sam</span><span class="agent-pill pill-messaging supporting">Marcus</span><span class="agent-pill pill-messaging supporting">Leah</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p style="text-align:center; margin-top:32px; font-size:12px; color:var(--text-secondary);">
+  All deliverables reviewed by <strong style="color:var(--mia)">Mia</strong> before shipping · Method MWD Vertical Playbook
+</p>
+
+</body>
+</html>

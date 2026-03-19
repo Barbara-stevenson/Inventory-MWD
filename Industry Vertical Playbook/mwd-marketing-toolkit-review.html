@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MWD Marketing Toolkit — Review</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  :root {
+    --bg-primary: #f3f0ea;
+    --bg-white: #ffffff;
+    --accent: #97764e;
+    --accent-light: rgba(151, 118, 78, 0.1);
+    --text-primary: #4a4843;
+    --text-secondary: #7a756e;
+    --border: #e0ddd7;
+    --sidebar-width: 260px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  .layout { display: flex; min-height: 100vh; }
+
+  /* Sidebar */
+  .sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-white);
+    border-right: 1px solid var(--border);
+    padding: 24px 16px;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 10;
+  }
+  .sidebar h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .nav-group { margin-bottom: 20px; }
+  .nav-group-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    padding-left: 8px;
+  }
+  .nav-link {
+    display: block;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .nav-link:hover { background: var(--accent-light); }
+  .nav-link.active { background: var(--accent); color: #fff; }
+
+  /* Main content */
+  .main {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    padding: 32px 40px;
+    max-width: 900px;
+  }
+  .page-header {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .page-header h1 { font-size: 28px; color: var(--text-primary); }
+  .page-header p { color: var(--text-secondary); font-size: 14px; margin-top: 4px; }
+
+  /* Card sections */
+  .card-section {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-white);
+    transition: background 0.15s;
+  }
+  .card-header:hover { background: var(--accent-light); }
+  .card-header h3 { font-size: 16px; color: var(--text-primary); }
+  .card-toggle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    transition: transform 0.2s;
+  }
+  .card-toggle.open { transform: rotate(180deg); }
+  .card-body {
+    padding: 0 24px 24px;
+    display: none;
+    border-top: 1px solid var(--border);
+  }
+  .card-body.visible { display: block; padding-top: 20px; }
+
+  /* Markdown rendered content */
+  .card-body h1 { font-size: 22px; margin: 20px 0 12px; color: var(--text-primary); }
+  .card-body h2 { font-size: 18px; margin: 24px 0 10px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .card-body h3 { font-size: 15px; margin: 18px 0 8px; color: var(--text-primary); }
+  .card-body h4 { font-size: 14px; margin: 14px 0 6px; color: var(--text-secondary); }
+  .card-body p { margin: 8px 0; font-size: 14px; }
+  .card-body ul, .card-body ol { margin: 8px 0 8px 20px; font-size: 14px; }
+  .card-body li { margin: 4px 0; }
+  .card-body strong { color: var(--text-primary); }
+  .card-body table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  .card-body th { background: var(--accent-light); padding: 8px 12px; text-align: left; border: 1px solid var(--border); font-weight: 600; }
+  .card-body td { padding: 8px 12px; border: 1px solid var(--border); }
+  .card-body tr:nth-child(even) { background: #faf9f7; }
+  .card-body hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  .card-body blockquote { border-left: 3px solid var(--accent); padding-left: 16px; color: var(--text-secondary); margin: 12px 0; font-style: italic; }
+  .card-body code { background: var(--accent-light); padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+  .card-body a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="sidebar">
+    <h2>MWD Marketing Toolkit</h2>
+    <div class="nav-group">
+      <div class="nav-group-title">Overview</div>
+      <a class="nav-link active" onclick="showSection('hub')">Toolkit Hub</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">Cards</div>
+      <a class="nav-link" onclick="showSection('m1')">M1: Core Messaging & Value Props</a>
+      <a class="nav-link" onclick="showSection('m2')">M2: Audience & Personas</a>
+      <a class="nav-link" onclick="showSection('m3')">M3: Customer Proof Library</a>
+      <a class="nav-link" onclick="showSection('m4')">M4: Competitive Angles</a>
+      <a class="nav-link" onclick="showSection('m5')">M5: Content Playbook</a>
+      <a class="nav-link" onclick="showSection('m6')">M6: Sales Quick-Reference</a>
+    </div>
+  </nav>
+  <main class="main">
+    <div class="page-header">
+      <h1>MWD Marketing Toolkit</h1>
+      <p>Manufacturing, Warehousing &amp; Distribution — Review Draft</p>
+    </div>
+    <div id="section-hub">
+      <div class="card-section"><div class="card-body visible" id="content-hub"></div></div>
+    </div>
+    <div id="section-m1" style="display:none;">
+      <div class="card-section">
+        <div class="card-body visible" id="content-m1"></div>
+      </div>
+    </div>
+    <div id="section-m2" style="display:none;">
+      <div class="card-section">
+        <div class="card-body visible" id="content-m2"></div>
+      </div>
+    </div>
+    <div id="section-m3" style="display:none;">
+      <div class="card-section">
+        <div class="card-body visible" id="content-m3"></div>
+      </div>
+    </div>
+    <div id="section-m4" style="display:none;">
+      <div class="card-section">
+        <div class="card-body visible" id="content-m4"></div>
+      </div>
+    </div>
+    <div id="section-m5" style="display:none;">
+      <div class="card-section">
+        <div class="card-body visible" id="content-m5"></div>
+      </div>
+    </div>
+    <div id="section-m6" style="display:none;">
+      <div class="card-section">
+        <div class="card-body visible" id="content-m6"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const markdownContent = {
+  hub: `# MWD Marketing Toolkit
+### Manufacturing, Warehousing & Distribution — Everything Marketing Needs
+
+**What this is:** The grab-and-go resource for anyone creating Method content for MWD — ads, landing pages, blog posts, emails, social, comparison pages, partner briefs. Open it, find the angle, grab the proof, start writing.
+
+**What this is NOT:** A 50-page strategy document. If you need deep research, the full playbook exists. This is the distilled version for people making things.
+
+**Last updated:** March 2026
+
+---
+
+## How to Use This
+
+| You're doing... | Go to... |
+|---|---|
+| Writing ad copy or a landing page | **M1: Core Messaging** — value props, headlines, and copy-ready lines |
+| Targeting ads or building a content calendar | **M2: Audience & Personas** — who we're talking to, what they search for |
+| Need a customer quote, stat, or story | **M3: Proof Library** — organized by use case, ready to drop in |
+| Writing a comparison page or competitive content | **M4: Competitive Angles** — positioning vs. each competitor, SEO angles |
+| Planning a campaign or content series | **M5: Content Playbook** — topics, angles, email sequences, social hooks |
+| Briefing sales or need quick product reference | **M6: Sales Quick-Reference** — pricing, product lines, qualifying questions |
+
+---
+
+## The MWD Positioning in One Paragraph
+
+Method is a Customizable CRM built for manufacturers and distributors who run on QuickBooks. These businesses have outgrown spreadsheets but aren't ready for enterprise ERP. Method gives them operational control — quoting, order management, inventory visibility, mobile field access — without ripping out the accounting system they depend on. Native two-way QuickBooks sync. Real customization, not just custom fields. Expert support that treats them like a partner, not a ticket number. Starting at $27/user/month.
+
+---
+
+## Five Things to Always Get Right
+
+1. **It's "Customizable CRM" — not "custom CRM" or "customized CRM."** Customizable means it adapts. That's the category.
+2. **QuickBooks sync is native and two-way.** This is Method's biggest differentiator. Every competitor either can't sync with QB or needs a third-party connector.
+3. **Inventory is real but honest.** Method launched native multi-warehouse inventory (Jan 2026, QBO only). Great for distribution and light manufacturing. Not as deep as Fishbowl or Cin7 for heavy manufacturing (BOM, kitting, lot tracking, shop floor). Say what it does, not what it doesn't.
+4. **The campaign line is "Yes, There's a Method for That."** The four Yes pillars: Yes to real-world business, Yes to quote-to-cash, Yes to QuickBooks, Yes to expert support.
+5. **The real competitor is inertia.** Most MWD businesses aren't comparing CRMs. They're deciding whether to change at all. "QuickBooks + spreadsheets" is the status quo we're up against.
+
+---
+
+## Card Index
+
+| Card | Title | What's In It |
+|---|---|---|
+| M1 | Core Messaging & Value Props | Headlines, taglines, copy-ready lines organized by pillar |
+| M2 | Audience & Personas | Who we're targeting, what they care about, how to reach them |
+| M3 | Customer Proof Library | Quotes, stats, stories organized by use case |
+| M4 | Competitive Angles for Content | Positioning vs. each competitor for comparison pages and SEO |
+| M5 | Content Playbook | Blog topics, email angles, social hooks, campaign ideas |
+| M6 | Sales Quick-Reference | Pricing, product overview, qualification — the lite sales card |
+`,
+  m1: `# Core Messaging & Value Props
+### Card M1 | MWD Marketing Toolkit
+
+**Use for:** Ad copy, landing pages, headlines, email subject lines, social posts, one-pagers
+**Grab what you need and go.**
+
+---
+
+## The One-Liner
+
+**Method is Customizable CRM that adapts to your business, not the other way around.**
+
+For MWD specifically: **The CRM that manufacturers and distributors build around the way they actually work — without leaving QuickBooks.**
+
+---
+
+## Headlines by Pillar
+
+### Yes to Real-World Business
+Use when the angle is customization, flexibility, or "it works the way we work."
+
+- Your business isn't off-the-shelf. Your CRM shouldn't be either.
+- 177 custom screens. One CRM. Zero compromises.
+- Stop changing how you work to fit your software.
+- Built for how manufacturers actually operate — not how software companies think they should.
+- The CRM that learns your business. Not the other way around.
+
+### Yes to Quote-to-Cash
+Use when the angle is operational workflow — quoting, invoicing, order management, fulfillment.
+
+- From quote to cash without the spreadsheet in between.
+- One flow: estimate, invoice, payment, work order. No re-entering. No lost data.
+- Stop entering the same order three times.
+- The quote-to-cash workflow that actually connects to your books.
+
+### Yes to QuickBooks
+Use when the angle is QuickBooks integration, data sync, or keeping their accounting system.
+
+- Keep QuickBooks. Get everything else.
+- Native two-way QuickBooks sync. Not a connector. Not a workaround. Built in.
+- Your QuickBooks data, everywhere it needs to be — automatically.
+- The CRM that was built for QuickBooks, not bolted on after.
+- Two-way sync means changes in Method show in QB. Changes in QB show in Method. Automatically.
+
+### Yes to Expert Support
+Use when the angle is partnership, onboarding, or the DEP program.
+
+- Real experts. Real conversations. Not chatbots.
+- A dedicated customization expert for $325/month. Not $300/hour consulting fees.
+- We don't just sell you software. We help you build something that fits.
+- Your dedicated expert knows your business, your workflows, your QuickBooks setup.
+
+---
+
+## Copy-Ready Descriptions (by length)
+
+**10 words:** Customizable CRM for manufacturers and distributors on QuickBooks.
+
+**25 words:** Method is the Customizable CRM for manufacturers and distributors who need operational control without leaving QuickBooks. Native sync. Real customization. Expert support.
+
+**50 words:** Manufacturers and distributors run on QuickBooks — but QuickBooks alone can't handle quoting, order management, inventory tracking, or field operations. Method adds the operational layer without replacing your accounting system. Native two-way QB sync, deep customization, and dedicated expert support. Starting at $27/user/month.
+
+**100 words:** Method is a Customizable CRM built for manufacturers and distributors who've outgrown spreadsheets but aren't ready for enterprise ERP. It connects your entire operation — quoting, invoicing, order management, inventory visibility, field crew access — with native two-way QuickBooks sync that eliminates double entry and keeps your books accurate. Unlike rigid off-the-shelf tools, Method adapts to your terminology, your workflows, and your rules. Businesses with 10-50 employees and $2M-$250M in revenue use Method to get operational control without the $20K/month price tag of enterprise systems. Three plans from $27-$73/user/month. Free 14-day trial.
+
+---
+
+## Proof Points to Pair With Messaging
+
+| Claim | Proof |
+|---|---|
+| Deep customization | Brown Safe: 177 custom screens. Mobility City: 159 custom screens. |
+| QuickBooks sync works | Every MWD customer chose Method partly for QB sync. Zero plan to leave QB. |
+| Affordable vs. enterprise | $600-$1,200/mo for typical MWD team vs. $5K-$20K for NetSuite |
+| Multi-location ready | Mobility City: 54 franchise locations. Vintage Makers: 6 states. Europena: 2 mirrored companies. |
+| Expert support matters | Duraline: "Alex is constantly customizing to our needs." Europena: "The greatest thing is we are able to customize." |
+| Inventory visibility | Native multi-warehouse inventory (Jan 2026, QBO). Multi-location stock, committed vs. available, source/destination warehouse. |
+
+---
+
+## Lines to Avoid
+
+- "Streamline your operations" — banned word
+- "Seamless integration" — banned word
+- "Drive efficiency" — banned word
+- "All-in-one solution" — Method isn't all-in-one for heavy manufacturing
+- "Replace your ERP" — Method extends QuickBooks, not replaces ERP
+- Anything that claims native inventory matches Fishbowl/Cin7/Katana depth — it doesn't
+- Puns
+
+---
+
+**Related cards:** [M3 Proof Library](m3-proof-library.md) · [M4 Competitive Angles](m4-competitive-angles.md) · [M5 Content Playbook](m5-content-playbook.md)
+`,
+  m2: `# Audience & Personas
+### Card M2 | MWD Marketing Toolkit
+
+**Use for:** Ad targeting, content calendar planning, persona-based messaging, channel selection
+**Who are we talking to, what do they care about, how do we reach them.**
+
+---
+
+## Target Audience Summary
+
+| Dimension | Target |
+|---|---|
+| Industry | Manufacturing, Wholesale & Distribution (hybrid models common) |
+| Accounting system | QuickBooks Desktop or Online (primary), Xero (secondary) |
+| Employee count | 10-50 (sweet spot), acceptable 5-100 |
+| Revenue | $2M-$50M (sweet spot), acceptable $1M-$250M |
+| Geography | US and Canada (primary) |
+| B2B vs. B2C | 83% B2B |
+| Current tech | QuickBooks + spreadsheets + 1-2 point solutions |
+| NOT our target | Under 5 employees, over $250M, pure retail, SaaS companies, already on Salesforce/NetSuite |
+
+**In plain English:** Small-to-mid manufacturers and distributors in North America who use QuickBooks for accounting and spreadsheets for everything else. They've outgrown the spreadsheets but aren't ready to spend $20K/month on enterprise software.
+
+---
+
+## Three Personas Marketing Should Know
+
+### The Owner / GM (Decision Maker)
+**Who:** Built the business. Signs checks. Knows every customer and vendor. Age 40-65.
+**What they care about:** Visibility into business performance. Protecting their QuickBooks investment. Not overpaying for software they don't need. Proof it works for businesses like theirs.
+**How they talk:** "I don't need all the bells and whistles. I need it to work with QuickBooks and show me what's happening across my locations."
+**Content that works for them:** Customer stories from similar businesses. Price comparisons vs. enterprise. ROI framing ("cost of one admin doing manual entry vs. Method subscription"). Short-form — they won't read a whitepaper.
+**Where to reach them:** LinkedIn (company page follows), Google search ("QuickBooks CRM"), Intuit App Marketplace, industry trade shows, peer referrals.
+
+### The Operations Manager (Validator)
+**Who:** Runs day-to-day operations across locations. Manages teams, schedules, fulfillment. Age 35-55.
+**What they care about:** Seeing across locations without phone calls. Eliminating manual handoffs. Mobile access for field teams. Customization that matches their actual workflow.
+**How they talk:** "I'm the system. Everything runs through me. I need one place to see what's happening."
+**Content that works for them:** Workflow demonstrations. Before/after comparisons. Feature-specific content (quote-to-cash flow, multi-location dashboards, mobile app). Medium-form — they'll read it if it's relevant to their exact problem.
+**Where to reach them:** Google search (operational queries), LinkedIn, industry forums, YouTube tutorials.
+
+### The Office Manager (Power User)
+**Who:** Enters data into QB, chases invoices, coordinates between departments. Age 30-55.
+**What they care about:** Not entering data twice. Reliable QB sync. Not looking bad in front of the boss if the new system breaks. Keeping things running.
+**How they talk:** "If it doesn't sync with QuickBooks reliably, I'm keeping my spreadsheets."
+**Content that works for them:** How-to content. QB sync demonstrations. Testimonials from other office managers who survived the switch. Very practical, very specific.
+**Where to reach them:** Google search (QuickBooks-specific queries), Facebook groups, QuickBooks community forums.
+
+---
+
+## What They Search For (Keyword Themes)
+
+### High-Intent Keywords (ready to buy or evaluate)
+- "CRM for manufacturing"
+- "CRM for distributors"
+- "QuickBooks CRM integration"
+- "CRM that syncs with QuickBooks"
+- "best CRM for small manufacturers"
+- "QuickBooks CRM alternative"
+- "CRM for wholesale distribution"
+
+### Problem-Aware Keywords (know the pain, exploring solutions)
+- "how to manage quotes in QuickBooks"
+- "inventory tracking with QuickBooks"
+- "multi-location inventory management small business"
+- "QuickBooks order management"
+- "work order management for manufacturing"
+- "field service management QuickBooks"
+
+### Comparison Keywords (evaluating options)
+- "Method CRM vs NetSuite"
+- "Method CRM vs Salesforce"
+- "Method CRM vs HubSpot"
+- "Method CRM vs Zoho"
+- "Method CRM vs Odoo"
+- "best CRM for QuickBooks users"
+- "NetSuite alternative for small manufacturer"
+- "Salesforce alternative QuickBooks"
+
+### Content-Opportunity Keywords (build authority)
+- "how to choose a CRM for manufacturing"
+- "QuickBooks Desktop sunset timeline"
+- "CRM implementation for small business"
+- "manufacturing digital transformation small business"
+- "how to move from spreadsheets to CRM"
+
+---
+
+## Psychographic Notes for Content Creators
+
+These aren't SaaS buyers browsing G2. They're old-school entrepreneurs who:
+
+- Built their businesses from nothing and know every workflow personally
+- Are heavy Excel users who've made spreadsheets do things spreadsheets shouldn't do
+- Are risk-averse and skeptical of sales pitches — they need to see it work
+- Are loyal to QuickBooks and get defensive if you suggest replacing it
+- Expect 2-4 month evaluation cycles — don't write content that assumes impulse buying
+- Trust peer recommendations over marketing claims
+- Prefer "show me" over "tell me"
+
+**Tone implication:** Don't write like a SaaS marketing team. Write like someone who understands their business. Be direct. Use their language. No jargon, no buzzwords, no hype.
+
+---
+
+**Related cards:** [M1 Core Messaging](m1-core-messaging.md) · [M3 Proof Library](m3-proof-library.md) · [M5 Content Playbook](m5-content-playbook.md)
+`,
+  m3: `# Customer Proof Library
+### Card M3 | MWD Marketing Toolkit
+
+**Use for:** Social proof in ads, landing pages, case study briefs, email content, sales decks
+**Organized by use case so you can grab the right proof for the right story.**
+
+---
+
+## Quick-Reference: Which Customer for Which Story
+
+| Story you're telling | Best customer proof |
+|---|---|
+| Deep customization | Brown Safe (177 screens), Mobility City (159 screens) |
+| Multi-location / franchise | Mobility City (54 locations), Vintage Makers (6 states), Europena (2 companies) |
+| QuickBooks loyalty | All six — every customer chose Method for QB sync |
+| Manufacturing workflow | Brown Safe (12-week production cycle), Duraline (manufacturing + distribution + service) |
+| Distribution / wholesale | Europena ($25M food distribution), Vintage Makers (3,400 cigar SKUs) |
+| Mobile / field access | Vintage Makers (field reps on tablets), Europena (iPad store audits) |
+| DEP value | Duraline (ongoing customization), Mobility City (dedicated consulting since 2022) |
+| Inventory integration | SLE Technologies (Method → SOS Inventory → QBO), Euroboor (full custom in-Method inventory) |
+| Enterprise alternative | Vintage Makers (rejected NetSuite on cost), Brown Safe (rejected Salesforce on cost) |
+
+---
+
+## Quotable Lines (Ready to Use)
+
+| Quote | Customer | Use for |
+|---|---|---|
+| "I have yet to find anything that I can't get customized." | Vintage Makers | Customization messaging |
+| "The greatest thing is… we are able to customize." | Europena | Customization messaging |
+| "It's a game changer. I tell everybody it's awesome." | Vintage Makers | General testimonial |
+| "Driving down the road and all the information was on Method." | Vintage Makers | Mobile access |
+| "Alex is constantly customizing to our needs." | Duraline | DEP / expert support |
+| "NetSuite was great but the cost was ridiculous." | Vintage Makers | Enterprise alternative |
+
+---
+
+## Customer Snapshots (Case Study Briefs)
+
+### Brown Safe Manufacturing
+**What they are:** Luxury safe manufacturer. 40-year-old company. 12-week production cycles.
+**Why Method:** Needed custom production tracking that matched their actual workflow. Salesforce was too expensive. QuickBooks Desktop is their accounting backbone.
+**Method footprint:** 177 custom screens. Custom Production app tracking the full manufacturing cycle. QB + Avalara + Zapier integration.
+**Key stat:** 177 custom screens — one of Method's most customized accounts.
+**Best for:** Customization depth stories, manufacturing workflow, enterprise alternative.
+
+### Mobility City
+**What they are:** Mobility equipment franchise. 54 locations (scaling to 150-200). Sales, repairs, rentals.
+**Why Method:** Needed to standardize operations across franchises. Each location was doing their own thing.
+**Method footprint:** 159 custom screens. Compliance tracking, standardized POS, rental management. 16 users Boca Raton, 10 Springfield, 7 Milpitas.
+**Key stat:** 54 franchise locations managed from one CRM.
+**Best for:** Multi-location stories, franchise standardization, scaling.
+
+### Vintage Makers
+**What they are:** Custom wine cellars + wholesale cigar distribution. 3,400 SKUs across 6 states. Founded 1994.
+**Why Method:** Field reps needed mobile access to customer history and pricing. NetSuite was too heavy and expensive.
+**Method footprint:** Field reps on tablets. Full sales workflow. QB Desktop Enterprise for inventory.
+**Key stat:** 6 states, 3,400 SKUs, field reps closing on the road.
+**Best for:** Mobile access, distribution, enterprise alternative, field operations.
+
+### Europena
+**What they are:** $25M food distribution company, transitioning into food manufacturing. Two mirrored entities.
+**Why Method:** Needed CRM + reporting + audits + customization that worked with QuickBooks Desktop.
+**Method footprint:** CRM, reporting, store-level iPad audits, rolling data apps, Web to Lead at trade shows. Considered switching — customization investment kept them.
+**Key stat:** $25M revenue, two mirrored companies managed in Method.
+**Best for:** Distribution, multi-entity, iPad/mobile workflows, customization retention.
+
+### Duraline Systems
+**What they are:** Medical equipment — manufacturing, distribution, and service. Multi-location.
+**Why Method:** Needed system of record connecting sales, shipping, customer care, AP, AR.
+**Method footprint:** 15 active users across all departments. Custom apps for Equipment, Commission, Purchase History, Email Status. Active DEP.
+**Key stat:** Cross-department adoption — every function in the company uses Method.
+**Best for:** DEP stories, cross-department adoption, manufacturing + service hybrid.
+
+### Inventory Integration Examples (from real implementations)
+
+**SLE Technologies:** Method → SOS Inventory → QBO circular sync. API app routines, view-by-warehouse button, 3x daily sync. Shows Method working alongside dedicated inventory tools via API.
+
+**Euroboor:** Full custom in-Method inventory with serial numbers, bin locations, multi-warehouse, back order management. Shows what's possible with Method's customization for companies that need inventory inside the CRM.
+
+**Cypress Engine:** Method for CRM pipeline + SOS Inventory for all sales orders/inventory. 2-hour scheduled sync, manual "Update from SOS" button. Shows clean separation — CRM in Method, inventory in a dedicated tool.
+
+---
+
+## Stats to Use in Content
+
+| Stat | Source |
+|---|---|
+| 177 custom screens (Brown Safe) | Customer account data |
+| 159 custom screens (Mobility City) | Customer account data |
+| 54 franchise locations (Mobility City) | Customer interview |
+| 6 states of distribution (Vintage Makers) | Customer interview |
+| $25M revenue managed (Europena) | Customer interview |
+| 3,400 cigar SKUs (Vintage Makers) | Customer interview |
+| 15 active users across all departments (Duraline) | Customer account data |
+| 83% of Method MWD accounts are B2B | Internal analysis of 1,019 MWD accounts |
+| 101 manufacturing + 71 distribution in top 200 | Internal analysis of top 200 MWD accounts |
+| QuickBooks: 62-84% US small business market share | Industry data |
+
+---
+
+**Related cards:** [M1 Core Messaging](m1-core-messaging.md) · [M4 Competitive Angles](m4-competitive-angles.md) · [M5 Content Playbook](m5-content-playbook.md)
+`,
+  m4: `# Competitive Angles for Content
+### Card M4 | MWD Marketing Toolkit
+
+**Use for:** Comparison landing pages, SEO content, paid search ads, competitive blog posts
+**Each competitor gets: the angle, the headline, the key stat, and the content approach.**
+
+---
+
+## The Big Picture: Method's Position
+
+Method sits in a gap nobody else fills — operational CRM for QuickBooks-based manufacturers and distributors. Enterprise tools (NetSuite, Salesforce) serve this market but at 5-10x the cost. Horizontal CRMs (HubSpot, Zoho) serve SMBs but can't do MWD operations. Open-source (Odoo) can do everything but wants you off QuickBooks.
+
+**The positioning statement for all competitive content:**
+"For manufacturers and distributors who run on QuickBooks, Method is the only CRM with native two-way QB sync and the customization depth to match how your business actually works — without the enterprise price tag."
+
+---
+
+## vs. NetSuite
+
+**The angle:** Method is the NetSuite alternative for companies that aren't ready to leave QuickBooks or spend enterprise money.
+
+**Headlines:**
+- "NetSuite quoted you $30K? Here's what $600/month gets you."
+- "Keep QuickBooks. Get the operational CRM you actually need."
+- "The manufacturer's alternative to NetSuite — without the 6-month implementation."
+
+**Key stat:** Typical year 1 cost: Method ~$2,700-$4,380 vs. NetSuite $30,940-$80,940+.
+
+**Content approach:** Frame as "right-sized" not "cheaper." NetSuite is a great platform for companies that need full ERP and are ready to leave QB. Method is for the much larger group that needs operational control but wants to keep QuickBooks. Lead with the QB sync story and the cost math.
+
+**Customer proof:** Vintage Makers rejected NetSuite as "too heavy and expensive."
+
+---
+
+## vs. Salesforce
+
+**The angle:** Method delivers MWD operational workflows that Salesforce doesn't have — at a fraction of the cost.
+
+**Headlines:**
+- "Salesforce is a great CRM. It's just not built for manufacturing."
+- "What happens to your Salesforce deal after it closes? Exactly."
+- "$45,600/year for Manufacturing Cloud. Or $7,000/year for Method. Your call."
+
+**Key stat:** Salesforce Manufacturing Cloud: $475/user/month. Method CRM Enterprise: $73/user/month.
+
+**Content approach:** Salesforce wins at sales pipeline. But manufacturers need what happens *after* the sale — quoting, production, fulfillment, invoicing, QB sync. Sales Cloud doesn't do that. Manufacturing Cloud does some of it at $475/user. And none of it syncs natively with QuickBooks. Method handles the full quote-to-cash flow with QB sync built in.
+
+**Customer proof:** Brown Safe chose Method over Salesforce on cost and customization depth.
+
+---
+
+## vs. HubSpot
+
+**The angle:** HubSpot is marketing-first. Method is operations-first. Different tools for different problems.
+
+**Headlines:**
+- "Great marketing CRM. But what happens after a deal closes?"
+- "HubSpot can't invoice. It can't track production. It can't sync with QuickBooks natively."
+- "Marketing automation won't help you ship orders faster."
+
+**Key stat:** HubSpot's QB sync requires a third-party connector. Method's is native two-way.
+
+**Content approach:** Don't trash HubSpot's marketing tools — they're genuinely good. The angle is that MWD businesses need operational workflows, not marketing automation. HubSpot stops at the sale. Method carries through to production, fulfillment, and payment. If a prospect's #1 need is marketing automation, HubSpot wins. If they need operational CRM with QB sync, Method wins.
+
+---
+
+## vs. Zoho
+
+**The angle:** Zoho looks cheap until you stack the apps you actually need for MWD.
+
+**Headlines:**
+- "Zoho CRM starts at $14/user. Then you add inventory. Then accounting sync. Then..."
+- "The real cost of Zoho for manufacturing: ~$168/user when you add what you need."
+- "Zero QuickBooks Desktop sync. That's what Zoho offers QBDT users."
+
+**Key stat:** Zoho has zero QBDT integration. QBO sync is third-party only ($50-$120/month extra). Full MWD stack (CRM + Inventory + Books + Projects) runs ~$168/user vs. Method at $27-$73/user with QB sync included.
+
+**Content approach:** Zoho's headline price is attractive. The content angle is total cost of ownership when you actually build out what MWD businesses need. CRM alone isn't enough — you need inventory, QB sync, project management, customer portal. Stack those Zoho products and the price math changes fast. And if they're on QuickBooks Desktop, Zoho doesn't sync at all.
+
+---
+
+## vs. Odoo
+
+**The angle:** Odoo can do everything. But keeping QuickBooks requires a third-party connector — and Odoo really wants you on their accounting instead.
+
+**Headlines:**
+- "Odoo wants you off QuickBooks. Method was built for it."
+- "Open source doesn't mean free when you need QB integration."
+- "Odoo's MRP is stronger. Method's QuickBooks sync is native. Pick your priority."
+
+**Key stat:** Odoo's QB connector is third-party ($49-$200/month) with sync limitations. Method's is native two-way.
+
+**Content approach:** Give Odoo credit — their manufacturing and inventory modules are strong. The angle isn't "Method is better at everything." It's "if QuickBooks is your accounting system and you plan to keep it, Method is built for that relationship and Odoo isn't." For prospects who are willing to leave QB, Odoo is a real competitor. For QB loyalists, Method wins.
+
+**Be honest about:** Odoo's manufacturing capabilities (MRP, BOM, shop floor) are deeper than Method's. If heavy manufacturing is the primary need and QB isn't sacred, acknowledge that.
+
+---
+
+## vs. "QuickBooks + Spreadsheets" (The Real Competitor)
+
+**The angle:** The status quo is the biggest competitor. Most MWD businesses aren't evaluating CRMs — they're deciding whether to change at all.
+
+**Headlines:**
+- "Your spreadsheets are getting too complex for anyone else to use. (We hear that a lot.)"
+- "QuickBooks handles accounting. Who handles everything else?"
+- "What happens when the person who built your spreadsheets leaves?"
+
+**Key stat:** MWD businesses typically run 6-10 point solutions. 70% of SMBs cite lack of funds as the barrier to fixing system fragmentation.
+
+**Content approach:** This is the most important competitive angle because it's the most common scenario. Don't frame it as "spreadsheets are bad." Frame it as "you've outgrown them and you know it." Trigger words: key person leaves, added a location, quoting errors, can't see what's happening. Content should validate the pain first, then show what's possible.
+
+---
+
+## SEO Page Structure Recommendation
+
+For each competitor comparison page, use this structure:
+1. One-paragraph summary of both platforms
+2. Side-by-side pricing table
+3. Feature comparison table (5-7 dimensions that matter for MWD)
+4. "When to choose [Competitor]" — be honest
+5. "When to choose Method" — lead with QB sync and operational workflows
+6. Customer proof point
+7. CTA: Free 14-day trial
+
+---
+
+**Related cards:** [M1 Core Messaging](m1-core-messaging.md) · [M3 Proof Library](m3-proof-library.md) · [M5 Content Playbook](m5-content-playbook.md)
+`,
+  m5: `# Content Playbook
+### Card M5 | MWD Marketing Toolkit
+
+**Use for:** Editorial calendar planning, campaign ideation, email sequences, social content, blog strategy
+**Topics, angles, and hooks organized by channel and goal.**
+
+---
+
+## Blog / Long-Form Content Topics
+
+### Comparison & SEO (High intent — these attract evaluators)
+
+| Topic | Target keyword | Angle |
+|---|---|---|
+| Method vs. NetSuite for manufacturers | "NetSuite alternative manufacturing" | Right-sized CRM vs. enterprise ERP — cost and QB sync story |
+| Method vs. Salesforce for MWD | "Salesforce alternative QuickBooks" | What happens after the deal closes? |
+| Best CRM for QuickBooks users (2026) | "best CRM QuickBooks" | Roundup format — Method, HubSpot, Zoho, Salesforce compared on QB sync |
+| Method vs. Zoho: real cost for MWD | "Zoho CRM total cost" | App stacking math — $14/user becomes $168/user |
+| CRM for small manufacturers guide | "CRM for small manufacturers" | Buyer's guide format — what to look for, common pitfalls |
+
+### Problem-Aware (Attracts people who know the pain but haven't started evaluating)
+
+| Topic | Target keyword | Angle |
+|---|---|---|
+| How to manage quotes in QuickBooks | "QuickBooks quote management" | Pain validation → show the quote-to-cash workflow in Method |
+| Moving from spreadsheets to CRM | "spreadsheet to CRM migration" | Empathy piece — validate the fear, show the transition path |
+| Multi-location inventory tracking for SMBs | "multi-location inventory management" | The visibility problem → Method's native inventory + QB sync |
+| What to do when your key person leaves | "business process documentation" | Tribal knowledge risk → systematize with CRM |
+| QuickBooks Desktop sunset: what to plan for | "QuickBooks Desktop sunset" | Timeline uncertainty → Method as transition bridge |
+
+### Thought Leadership (Builds authority — lower intent but wider reach)
+
+| Topic | Angle |
+|---|---|
+| Why manufacturers resist CRM (and what changes their mind) | Based on real customer interview themes — inertia is the real competitor |
+| The $20K question: when do you actually need enterprise ERP? | Honest framing — some businesses need NetSuite, most don't |
+| What 177 custom screens tells you about CRM adoption | Customization depth as retention — the Brown Safe story |
+| The franchise standardization playbook | Mobility City's journey from "each location doing their own thing" to 54 locations on one system |
+
+---
+
+## Email Sequence Angles
+
+### Nurture Sequence (New leads from content / trial signups)
+
+| Email | Subject line angle | Content |
+|---|---|---|
+| 1 — Welcome | "Your business isn't off-the-shelf" | The customization story in 3 sentences. Link to relevant customer snapshot. |
+| 2 — Pain validation | "Still entering orders twice?" | QuickBooks sync value prop. How two-way sync eliminates double entry. |
+| 3 — Social proof | "How a $25M distributor runs on Method" | Europena snapshot — distribution, multi-entity, customization. |
+| 4 — Objection handling | "The honest answer about inventory" | What Method's inventory does, what it doesn't. Transparency builds trust. |
+| 5 — CTA | "14 days free. No credit card." | Trial push with pricing context ($27-$73/user). |
+
+### Re-Engagement Sequence (Trial expired, didn't convert)
+
+| Email | Subject line angle | Content |
+|---|---|---|
+| 1 | "What got in the way?" | Acknowledge evaluation takes time for MWD businesses. Offer help. |
+| 2 | "Brown Safe built 177 custom screens" | Customer proof — show what's possible when you invest in customization. |
+| 3 | "$325/month for a dedicated expert" | DEP pitch — the reason customization actually gets done. |
+
+---
+
+## Social Media Content Hooks
+
+### LinkedIn (Primary channel for MWD decision makers)
+
+**Customer proof posts:**
+- "177 custom screens. One CRM. That's what happens when the software adapts to the business instead of the other way around." [Brown Safe]
+- "54 franchise locations. One system. Zero spreadsheet chaos." [Mobility City]
+- "'I have yet to find anything I can't get customized.' — Vintage Makers, Method customer since [year]"
+
+**Pain-point posts:**
+- "How many times does your team enter the same order? Once in the quote. Again in the invoice. Again in QuickBooks. There's a better way."
+- "The #1 competitor for every CRM in manufacturing isn't Salesforce. It's 'we've always done it this way.'"
+- "Your spreadsheets work great. Until the person who built them leaves."
+
+**Positioning posts:**
+- "NetSuite: $30K+ year one. Salesforce Manufacturing Cloud: $475/user/month. Method: $27-$73/user/month with native QuickBooks sync. Different tools for different stages."
+- "We don't say Method replaces ERP. We say most manufacturers don't need ERP yet."
+
+### Paid Search Ad Copy (Google Ads)
+
+**High-intent headlines:**
+- CRM for Manufacturers | QuickBooks Sync Built In
+- QuickBooks CRM | $27/User/Month | 14-Day Free Trial
+- Manufacturing CRM | Quote to Cash in One System
+- Distributor CRM | Multi-Location Inventory + QB Sync
+- NetSuite Too Expensive? | Try Method CRM
+
+**Descriptions:**
+- Native two-way QuickBooks sync. Custom workflows for manufacturing. Starting at $27/user/month. Free 14-day trial, no credit card.
+- 177 custom screens. 54 franchise locations. Real manufacturers use Method to run operations without leaving QuickBooks.
+- Stop entering orders twice. Method syncs with QuickBooks automatically — estimates, invoices, payments. Try free for 14 days.
+
+---
+
+## Campaign Ideas
+
+### "Yes, There's a Method for That" — MWD Edition
+Run the campaign line across channels with MWD-specific use cases:
+- "Need to track 3,400 SKUs across 6 states? Yes, there's a Method for that."
+- "Need one system for quoting, invoicing, and production tracking? Yes, there's a Method for that."
+- "Need your field reps to see customer history on the road? Yes, there's a Method for that."
+- "Need inventory visibility across 3 warehouses without leaving QuickBooks? Yes, there's a Method for that."
+
+### "Keep QuickBooks. Get Everything Else." Campaign
+Position Method as the operational extension of QuickBooks:
+- Landing page: "What QuickBooks Can't Do for Manufacturers (and What Method Can)"
+- Blog series: 5 posts, each covering one operational gap QB has and how Method fills it
+- Email sequence: One gap per email, customer proof for each
+
+### Customer Spotlight Series
+One customer story per month. Structure: their business, their problem, what they built in Method, the result. Keep it short (500 words max per post). Video versions if customers agree.
+
+---
+
+**Related cards:** [M1 Core Messaging](m1-core-messaging.md) · [M2 Audience & Personas](m2-audience-personas.md) · [M3 Proof Library](m3-proof-library.md) · [M4 Competitive Angles](m4-competitive-angles.md)
+`,
+  m6: `# Sales Quick-Reference
+### Card M6 | MWD Marketing Toolkit
+
+**Use for:** Marketing-sales alignment, pricing pages, feature comparison content, qualification context
+**The basics your marketing team needs to know about how Method is sold.**
+
+---
+
+## Product Overview (What Marketing Needs to Know)
+
+**Method CRM** is a Customizable CRM for QuickBooks-based SMBs. It's sold as packs and apps — packs group related functionality, apps are the customizable interfaces inside each pack.
+
+**Every user gets:**
+- Contact Management Pack (required)
+- Accounting Lists Pack with QuickBooks sync (free with every account)
+
+**Other product lines to be aware of:**
+- **Method Field Services** — work orders, dispatching, mobile field work, invoicing, QB sync
+- **Method Proposals** — proposal creation, approvals, e-signatures, automated invoicing, recurring billing
+- **Method Donor** — donor/donation tracking, donation pages, recurring donations, tax receipts, QB sync
+
+For MWD marketing, focus on **Method CRM** as the core product. Field Services is relevant for MWD companies with service teams, but it has its own marketing motion.
+
+---
+
+## Pricing
+
+| Plan | Per User / Month | Best For |
+|---|---|---|
+| Contact Management | $27 | Teams that need CRM + QB sync without sales transactions |
+| CRM Pro | $45 | Teams that need quoting, invoicing, and pipeline management |
+| CRM Enterprise | $73 | Teams that need advanced workflow automation and priority support |
+
+**Key pricing facts for content:**
+- Free 14-day trial, no credit card required
+- Mix and match — different users can be on different plans
+- DEP (Dedicated Enhancement Plan): $325/month for 3 hours of ongoing customization and support
+- Multi-Entity Admin: $40/month per sub-entity
+
+**Pricing comparison stats for competitive content:**
+- Typical MWD team (5-10 users): ~$225-$730/month on Method
+- NetSuite year 1: $30,940-$80,940+
+- Salesforce Manufacturing Cloud: $475/user/month
+- Zoho full MWD stack: ~$168/user when you add what you need
+
+---
+
+## What CRM Pro Adds Over Contact Management
+
+| Feature | Contact Management | CRM Pro |
+|---|---|---|
+| Two-way QB sync | Yes | Yes |
+| Contact & lead management | Yes | Yes |
+| Custom reports & dashboards | Yes | Yes |
+| Email integration (Gmail, Outlook) | Yes | Yes |
+| QB sales transactions (estimates, invoices, payments) | No | Yes |
+| Online payment portals | No | Yes |
+| Sales pipeline management | No | Yes |
+| Web-to-lead forms | No | Yes |
+
+**What CRM Enterprise adds over CRM Pro:** Advanced workflow automation, priority support, advanced customization capabilities.
+
+---
+
+## The DEP Story (Important for Content)
+
+DEP stands for Dedicated Enhancement Plan. It's Method's ongoing customization and support program — $325/month for 3 hours with a dedicated expert who knows your business.
+
+**Why this matters for marketing:** DEP is the reason customization actually gets done. Most CRMs sell you software and wave goodbye. Method pairs you with an expert who builds and maintains your custom workflows over time.
+
+**Customer proof:** Duraline — "Alex is constantly customizing to our needs." Mobility City — dedicated consulting relationship since 2022.
+
+**Content angle:** Position DEP as "your dedicated expert for $325/month" vs. "$300/hour consulting fees from the typical CRM vendor."
+
+---
+
+## Qualification Context (So Marketing Knows Who We're Targeting)
+
+### Good-fit signals for MWD
+- Uses QuickBooks (Desktop or Online) for accounting
+- 10-50 employees (sweet spot), 5-100 acceptable
+- $2M-$50M revenue (sweet spot), $1M-$250M acceptable
+- Manufacturing, wholesale, or distribution (hybrids common)
+- Currently using spreadsheets alongside QB for operations
+- Frustrated with manual data entry between systems
+- Needs to track quotes, orders, inventory, or field operations
+
+### Not our target
+- Under 5 employees (too small for CRM investment)
+- Over $250M revenue (likely needs enterprise ERP)
+- Pure retail or SaaS companies
+- Already invested in Salesforce or NetSuite (switching cost too high)
+- Needs deep manufacturing capabilities: BOM, kitting, lot tracking, shop floor control
+
+### Typical buying triggers
+- Added a new location or warehouse
+- Key person left and took process knowledge with them
+- Quoting errors costing real money
+- Owner can't see what's happening across the business
+- QB Desktop sunset concerns
+
+---
+
+## Inventory — What to Claim and What Not To
+
+**What you CAN say (launched January 2026, QBO only):**
+- Method has native multi-warehouse inventory management
+- Track stock across multiple locations
+- See committed vs. available inventory on sales orders
+- Select source and destination warehouses
+- Operational inventory is decoupled from QBO accounting entries
+
+**What you should NOT claim:**
+- That Method replaces dedicated inventory tools like Fishbowl, Cin7, or Katana
+- That Method handles BOM (bill of materials), kitting, lot tracking, or shop floor control
+- That inventory works on QuickBooks Desktop (it's QBO only)
+
+**The honest framing:** Method's inventory is a strength for distribution and light manufacturing. Companies with heavy manufacturing needs may still need a dedicated inventory integration — and Method works alongside those tools via API.
+
+---
+
+## Quick Links for Marketing Reference
+
+| Resource | URL |
+|---|---|
+| Pricing page | https://www.method.me/crm-quickbooks/pricing/ |
+| Full feature comparison | https://www.method.me/crm-quickbooks/pricing/full-feature/ |
+| Help Center | https://help.method.me/en/ |
+
+---
+
+**Related cards:** [M1 Core Messaging](m1-core-messaging.md) · [M2 Audience & Personas](m2-audience-personas.md) · [M3 Proof Library](m3-proof-library.md)
+`,
+};
+
+
+function renderMarkdown() {
+  for (const [key, md] of Object.entries(markdownContent)) {
+    const el = document.getElementById('content-' + key);
+    if (el) { el.innerHTML = marked.parse(md); }
+  }
+}
+
+function showSection(id) {
+  const allSections = document.querySelectorAll('[id^="section-"]');
+  allSections.forEach(s => s.style.display = 'none');
+  const target = document.getElementById('section-' + id);
+  if (target) target.style.display = 'block';
+
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+document.addEventListener('DOMContentLoaded', renderMarkdown);
+</script>
+</body>
+</html>
