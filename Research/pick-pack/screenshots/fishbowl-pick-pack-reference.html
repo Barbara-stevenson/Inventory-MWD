@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Fishbowl Inventory - Pick/Pack Visual Reference</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;max-width:1200px;margin:0 auto;padding:40px;background:#fafafa;color:#1a1a1a}
+h1{font-size:28px;border-bottom:3px solid #2563eb;padding-bottom:12px}
+.step{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:24px;margin:20px 0;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+.step-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.step-num{background:#2563eb;color:#fff;padding:4px 12px;border-radius:20px;font-weight:600;font-size:14px}
+.observations{background:#eff6ff;padding:16px;border-radius:6px;margin-top:16px;font-size:14px;line-height:1.6}
+img{max-width:100%;border:1px solid #e5e7eb;border-radius:4px;margin:12px 0}
+.source{font-size:12px;color:#6b7280;margin-top:8px}
+.obs-list{font-size:14px;line-height:1.8;color:#374151}
+</style>
+</head>
+<body>
+<h1>Fishbowl Inventory — Pick/Pack Visual Reference</h1>
+<p style="color:#6b7280">Source: <a href="https://help.fishbowlinventory.com/advanced/s/article/Picking">Fishbowl Advanced - Picking</a> | <a href="https://help.fishbowlinventory.com/advanced/s/article/Shipping">Fishbowl Advanced - Shipping</a></p>
+
+<div class="step">
+<div class="step-header"><span class="step-num">1. Pick Search Pane</span></div>
+<p><strong>Color-coded pick queue with status indicators and priority levels</strong></p>
+<img src="fishbowl-01-pick-search-pane.png" alt="Fishbowl picking search pane">
+<div class="observations">
+<strong>Key UI observations:</strong>
+<ul class="obs-list">
+<li>Color-coded status dots: green (ready), yellow (partial), red (short), checkmark (finished)</li>
+<li>Columns: Finish, Pick #, Status (Entered/Finished/Committed), Priority (3-Normal, 5-Lowest)</li>
+<li>Search filters: Number, Order (All), Status (All Open), Advanced Search</li>
+<li>Double-click a pick to view Pick Details</li>
+</ul>
+</div>
+</div>
+
+<div class="step">
+<div class="step-header"><span class="step-num">2. Pick Details</span></div>
+<p><strong>Pick item table with tabs, status per item, and action buttons</strong></p>
+<img src="fishbowl-02-pick-details.png" alt="Fishbowl pick details screen">
+<div class="observations">
+<strong>Key UI observations:</strong>
+<ul class="obs-list">
+<li>Tabs: General, Details, Memo, Custom</li>
+<li>Header fields: Priority (dropdown), Scheduled date, Status (Committed), Type (Pick), Location Group</li>
+<li>Order reference: SO10089 : Allan's Raceway</li>
+<li>Item table columns: Status icon, Number, Description, Qty, UOM, Location, Type</li>
+<li>Action buttons: Combine (merge picks), Hold (pause item), Start (begin picking)</li>
+<li>Status icons per item: Started, Short, Entered, Hold, Committed, Finished</li>
+</ul>
+</div>
+</div>
+
+<div class="step">
+<div class="step-header"><span class="step-num">3. Pick Location</span></div>
+<p><strong>Location group and pick location dropdowns for reassigning where to pick from</strong></p>
+<img src="fishbowl-03-pick-location.png" alt="Fishbowl pick location selection">
+<div class="observations">
+<strong>Key UI observations:</strong>
+<ul class="obs-list">
+<li>Location Group dropdown: SLC, Consignment UT, LA</li>
+<li>Pick Location dropdown: SLC-Stock 100, SLC-Stock 200, SLC-Stock 300</li>
+<li>Destination field: separate from pick location</li>
+<li>Tracking field: for serial/lot tracking during pick</li>
+</ul>
+</div>
+</div>
+
+<div class="step">
+<div class="step-header"><span class="step-num">4. Put Item on Hold</span></div>
+<p><strong>Hold functionality for pausing individual pick items</strong></p>
+<img src="fishbowl-04-pick-hold.png" alt="Fishbowl pick item hold">
+<div class="observations">
+<strong>Key UI observations:</strong>
+<ul class="obs-list">
+<li>Items table with Status, Number, Description, Qty, Location columns</li>
+<li>Combine button and Hold button on component toolbar</li>
+<li>Hold items are excluded from Start/Commit/Finish operations</li>
+</ul>
+</div>
+</div>
+
+<div class="step">
+<div class="step-header"><span class="step-num">5. Group Picks</span></div>
+<p><strong>Batch/wave picking — group multiple orders together for efficient picking</strong></p>
+<img src="fishbowl-05-group-picks.png" alt="Fishbowl group picks">
+<div class="observations">
+<strong>Key UI observations:</strong>
+<ul class="obs-list">
+<li>Group Picks window controls which orders are grouped</li>
+<li>Grouping options: by scheduled date, by number of items</li>
+<li>Controls how many orders per group pick</li>
+</ul>
+</div>
+</div>
+
+<div class="step">
+<div class="step-header"><span class="step-num">6. Tracking / Serial Selection</span></div>
+<p><strong>Part tracking for serialized and lot-tracked items during picking</strong></p>
+<img src="fishbowl-06-pick-tracking.png" alt="Fishbowl pick tracking">
+<div class="observations">
+<strong>Key UI observations:</strong>
+<ul class="obs-list">
+<li>Serial number and lot number selection during pick</li>
+<li>FIFO/FEFO enforcement for expiration-tracked items</li>
+<li>Tracking section appears below line items</li>
+</ul>
+</div>
+</div>
+
+<div class="observations" style="margin-top:40px">
+<h3>Fishbowl Operational Model Summary</h3>
+<ul class="obs-list">
+<li><strong>Assumes:</strong> Dedicated warehouse staff, organized storage locations with bin assignments</li>
+<li><strong>Optimized for:</strong> 50+ orders/day with dedicated picking staff</li>
+<li><strong>Maturity required:</strong> High — needs defined locations, bin structure, formalized receiving</li>
+<li><strong>Simple vs Rigid:</strong> Rigid — must follow Pick → Pack → Ship sequence, no skipping</li>
+<li><strong>Powerful vs Burdensome:</strong> Powerful batch/wave picking; burdensome setup and location requirements</li>
+<li><strong>Breaks under:</strong> Dirty inventory data, mid-flow order changes, partial returns on partial shipments</li>
+</ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick/Pack Flow Options — Method CRM</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafb;
+            color: #0f1b31;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 100%);
+            color: white;
+            padding: 2rem 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: #8ba3c0;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.08);
+            color: #7cc4fa;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(13,113,200,0.3);
+            border-color: #0d71c8;
+            color: white;
+        }
+
+        nav a.recommended {
+            background: rgba(46,125,50,0.3);
+            border-color: #4caf50;
+            color: #81c784;
+        }
+
+        main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 120px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #e0e8ee;
+        }
+
+        .section-title h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f1b31;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-recommended { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        .badge-score { background: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
+        .badge-alternative { background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; }
+
+        .desc {
+            background: white;
+            border: 1px solid #e0e8ee;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: #2a394a;
+        }
+
+        .desc strong { color: #0f1b31; }
+
+        .diagram-container {
+            background: white;
+            border: 1px solid #e0e8ee;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .diagram-container h3 {
+            font-size: 1rem;
+            color: #2a394a;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eef3f6;
+        }
+
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pros, .cons {
+            background: white;
+            border-radius: 10px;
+            padding: 1.25rem;
+            border: 1px solid #e0e8ee;
+        }
+
+        .pros { border-left: 4px solid #4caf50; }
+        .cons { border-left: 4px solid #ef5350; }
+
+        .pros h4 { color: #2e7d32; margin-bottom: 0.75rem; font-size: 0.9rem; }
+        .cons h4 { color: #c62828; margin-bottom: 0.75rem; font-size: 0.9rem; }
+
+        .pros li, .cons li {
+            font-size: 0.88rem;
+            color: #2a394a;
+            margin-bottom: 0.4rem;
+            margin-left: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #e0e8ee;
+            margin-bottom: 1.5rem;
+        }
+
+        thead { background: #f0f5f8; }
+
+        th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.82rem;
+            color: #2a394a;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            border-bottom: 2px solid #e0e8ee;
+        }
+
+        td {
+            padding: 0.65rem 1rem;
+            font-size: 0.88rem;
+            border-bottom: 1px solid #eef3f6;
+            color: #2a394a;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        .score-cell { text-align: center; font-weight: 700; }
+        .score-5 { color: #2e7d32; }
+        .score-4 { color: #558b2f; }
+        .score-3 { color: #f57f17; }
+        .score-2 { color: #e65100; }
+
+        .total-row { background: #f0f5f8; font-weight: 700; }
+        .total-row td { border-top: 2px solid #bacad0; }
+
+        .highlight-row { background: #e8f5e9; }
+
+        .wireframe {
+            background: #fafcfd;
+            border: 2px dashed #bacad0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .wireframe h3 {
+            font-size: 0.9rem;
+            color: #2a394a;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .wire-modal {
+            background: white;
+            border: 1px solid #bacad0;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .wire-modal-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #e0e8ee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .wire-modal-header h4 { font-size: 0.95rem; color: #0f1b31; }
+
+        .wire-steps {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .wire-step {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .wire-step.active { background: #0d71c8; color: white; }
+        .wire-step.done { background: #4caf50; color: white; }
+        .wire-step.pending { background: #e0e8ee; color: #8898a8; }
+
+        .wire-step-line {
+            width: 24px;
+            height: 2px;
+            background: #e0e8ee;
+        }
+
+        .wire-step-line.done { background: #4caf50; }
+
+        .wire-modal-body { padding: 1.25rem; }
+
+        .wire-banner {
+            background: #fef9e7;
+            border: 1px solid #fdcb2d;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.8rem;
+            color: #7a6200;
+            margin-bottom: 1rem;
+        }
+
+        .wire-table {
+            width: 100%;
+            border: 1px solid #e0e8ee;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .wire-table-row {
+            display: grid;
+            grid-template-columns: 30px 1fr 100px 80px 80px 60px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.78rem;
+            border-bottom: 1px solid #eef3f6;
+            align-items: center;
+        }
+
+        .wire-table-header {
+            background: #f0f5f8;
+            font-weight: 600;
+            color: #2a394a;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.3px;
+        }
+
+        .wire-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #bacad0;
+            border-radius: 3px;
+        }
+
+        .wire-checkbox.checked {
+            background: #0d71c8;
+            border-color: #0d71c8;
+            position: relative;
+        }
+
+        .wire-checkbox.checked::after {
+            content: "✓";
+            color: white;
+            font-size: 11px;
+            position: absolute;
+            top: -1px;
+            left: 2px;
+        }
+
+        .wire-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .wire-dot.green { background: #4caf50; }
+        .wire-dot.yellow { background: #ffc107; }
+        .wire-dot.red { background: #ef5350; }
+
+        .wire-modal-footer {
+            padding: 1rem 1.25rem;
+            border-top: 1px solid #e0e8ee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .wire-btn {
+            padding: 0.45rem 1rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+        }
+
+        .wire-btn-secondary { background: #f0f5f8; color: #2a394a; border: 1px solid #bacad0; }
+        .wire-btn-primary { background: #0d71c8; color: white; }
+        .wire-btn-disabled { background: #e0e8ee; color: #8898a8; }
+
+        .phase-timeline {
+            background: white;
+            border: 1px solid #e0e8ee;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-timeline h3 {
+            font-size: 1rem;
+            color: #2a394a;
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            display: flex;
+            gap: 0;
+            align-items: stretch;
+        }
+
+        .timeline-phase {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .timeline-phase h4 {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-phase ul {
+            font-size: 0.8rem;
+            padding-left: 1rem;
+            color: #2a394a;
+        }
+
+        .timeline-phase li { margin-bottom: 0.25rem; }
+
+        .timeline-arrow {
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem;
+            font-size: 1.5rem;
+            color: #bacad0;
+        }
+
+        .phase-mvp { background: #e8f5e9; border: 1px solid #a5d6a7; }
+        .phase-mvp h4 { color: #2e7d32; }
+        .phase-2 { background: #e3f2fd; border: 1px solid #90caf9; }
+        .phase-2 h4 { color: #1565c0; }
+        .phase-future { background: #f3e5f5; border: 1px solid #ce93d8; }
+        .phase-future h4 { color: #7b1fa2; }
+
+        @media (max-width: 768px) {
+            .pros-cons { grid-template-columns: 1fr; }
+            .timeline { flex-direction: column; }
+            .timeline-arrow { transform: rotate(90deg); justify-content: center; }
+            header { padding: 1.5rem; }
+            main { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pick/Pack Flow Options — Method CRM</h1>
+        <p>Mode 2 Flow Analysis &bull; March 23, 2026 &bull; 3 Options with UX Heuristic Scoring</p>
+        <nav>
+            <a href="#overview">Overview</a>
+            <a href="#option1" class="badge-alternative">Option 1: Sidebar</a>
+            <a href="#option2">Option 2: Staged</a>
+            <a href="#option3" class="recommended">Option 3: Smart Ship ✓</a>
+            <a href="#scoring">UX Scoring</a>
+            <a href="#operational">Operational Reality</a>
+            <a href="#recommendation">Recommendation</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- OVERVIEW -->
+        <div class="section" id="overview">
+            <div class="section-title">
+                <h2>How the Three Options Compare</h2>
+            </div>
+
+            <div class="diagram-container">
+                <h3>Side-by-Side Flow Comparison</h3>
+                <div class="mermaid">
+flowchart LR
+    subgraph OPT1["OPTION 1 — Fulfillment Sidebar"]
+        direction TB
+        A1["Open SO"] --> A2["Click Fulfill"]
+        A2 --> A3["Sidebar slides in\nwith Pick List"]
+        A3 --> A4["Check items\nas picked ☑"]
+        A4 --> A5["Generate\nPacking Slip"]
+        A5 --> A6["Confirm\nPack & Ship"]
+        A6 --> A7["✅ ShippedItems\ncreated"]
+    end
+
+    subgraph OPT2["OPTION 2 — Staged Fulfillment"]
+        direction TB
+        B1["Open SO"] --> B2["Create Pick List\nmodal"]
+        B2 --> B3["Pick List section\non SO screen"]
+        B3 --> B4["Update Qty Picked\ninline editing"]
+        B4 --> B5["Pack button →\nPack modal"]
+        B5 --> B6["Ship button →\nShip flow"]
+        B6 --> B7["✅ ShippedItems\ncreated"]
+    end
+
+    subgraph OPT3["OPTION 3 — Smart Ship Wizard  ✓ Recommended"]
+        direction TB
+        C1["Open SO"] --> C2["Click\nFulfill Items"]
+        C2 --> C3["Step 1: PICK\nSelect items + qty"]
+        C3 --> C4["Step 2: PACK\nPacking slip options"]
+        C4 --> C5["Step 3: SHIP\nConfirm shipment"]
+        C5 --> C6["✅ ShippedItems\ncreated"]
+    end
+
+    style OPT1 fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style OPT2 fill:#e8eaf6,stroke:#283593,stroke-width:2px
+    style OPT3 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+                </div>
+            </div>
+        </div>
+
+        <!-- OPTION 1 -->
+        <div class="section" id="option1">
+            <div class="section-title">
+                <h2>Option 1: Fulfillment Sidebar</h2>
+                <span class="badge badge-alternative">Alternative</span>
+                <span class="badge badge-score">Score: 24/35</span>
+            </div>
+
+            <div class="desc">
+                <strong>Philosophy:</strong> Pick and pack are contextual actions on a sales order, not separate workflows. A collapsible sidebar panel provides picking instructions, pack confirmation, and packing slip generation — all without leaving the SO screen. Inspired by <strong>inFlow's tab approach</strong> and <strong>SOS Inventory's</strong> model where the shipment record IS the packing slip.
+            </div>
+
+            <div class="diagram-container">
+                <h3>User Flow</h3>
+                <div class="mermaid">
+flowchart TD
+    SO["📋 Sales Order Screen\nStatus: Open"] --> BTN{"User clicks\n'Fulfill' dropdown"}
+
+    BTN -->|"Pick & Pack"| SIDEBAR["📐 Sidebar slides in from right\n~400px wide"]
+    BTN -->|"Ship All"| EXISTING["Existing Ship All flow\n(unchanged)"]
+
+    SIDEBAR --> PICK["PICK LIST SECTION\n━━━━━━━━━━━━━━━━━\n☑ Item A — Warehouse A — 10 avail\n☑ Item B — Warehouse B — 5 avail\n☐ Item C — Warehouse A — 0 avail 🔴\n━━━━━━━━━━━━━━━━━\n🖨️ Print Pick List"]
+
+    PICK --> CHECK["User checks items\nas physically picked\nAdjusts qty if partial"]
+
+    CHECK --> PACK["PACK SECTION appears\n━━━━━━━━━━━━━━━━━\n📄 Generate Packing Slip\n☐ Show prices on slip\n📝 Packing notes\n━━━━━━━━━━━━━━━━━"]
+
+    PACK --> CONFIRM["Confirm Pack & Ship"]
+
+    CONFIRM --> DONE["✅ ShippedItems created\nOrder status updated\nPacking slip PDF generated"]
+
+    EXISTING --> DONE
+
+    style SIDEBAR fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style PICK fill:#e8f5e9,stroke:#2e7d32
+    style PACK fill:#fff8e1,stroke:#f57f17
+    style CONFIRM fill:#e3f2fd,stroke:#1565c0
+    style DONE fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+                </div>
+            </div>
+
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>✅ Pros</h4>
+                    <ul>
+                        <li>Zero navigation — everything on the SO screen</li>
+                        <li>Reuses existing shipping infrastructure</li>
+                        <li>Optional picking — skip to Ship All for simple orders</li>
+                        <li>Lowest implementation complexity</li>
+                        <li>Pick list + packing slip are views of SO data (no new entities)</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h4>❌ Cons</h4>
+                    <ul>
+                        <li>Sidebar is a new UI pattern (prototype uses modals)</li>
+                        <li>No batch picking across multiple orders</li>
+                        <li>No independent pick/pack status tracking</li>
+                        <li>May feel cramped on smaller screens</li>
+                        <li>Doesn't support role separation (picker ≠ shipper)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPTION 2 -->
+        <div class="section" id="option2">
+            <div class="section-title">
+                <h2>Option 2: Staged Fulfillment</h2>
+                <span class="badge badge-alternative">Highest Score</span>
+                <span class="badge badge-score">Score: 28/35</span>
+            </div>
+
+            <div class="desc">
+                <strong>Philosophy:</strong> Picking, packing, and shipping are operationally distinct activities that may be done by different people at different times. Each stage is tracked independently so the team always knows where every order stands. Inspired by <strong>Cin7's 3-stage model</strong> and <strong>Fishbowl's status progression</strong> with color-coded availability.
+            </div>
+
+            <div class="diagram-container">
+                <h3>User Flow</h3>
+                <div class="mermaid">
+flowchart TD
+    SO["📋 Sales Order Screen\nStatus: Open\nFulfillment: Not Started"] --> CREATE["Click 'Create Pick List'\nOpens 870px modal"]
+
+    CREATE --> MODAL1["SELECT ITEMS MODAL\n━━━━━━━━━━━━━━━━━━━━\n🟢 Item A — Loc A — 10/10 avail\n🟡 Item B — Loc B — 3/5 avail\n🔴 Item C — Loc A — 0/8 avail\n━━━━━━━━━━━━━━━━━━━━\n[ Cancel ]  [ Create Pick List ]"]
+
+    MODAL1 --> PICKLIST["📋 PICK LIST SECTION\nappears on SO screen\n━━━━━━━━━━━━━━━━━━━━\nItem | Loc | To Pick | Picked | Status\nA    | WH-A | 10     | ___   | Pending\nB    | WH-B | 3      | ___   | Pending\n━━━━━━━━━━━━━━━━━━━━\n🖨️ Print Pick List\nFulfillment: Pick in Progress"]
+
+    PICKLIST --> UPDATE["Warehouse staff updates\nQty Picked inline\nas items are pulled"]
+
+    UPDATE --> PICKED["All items picked ✅\nFulfillment: Picked"]
+
+    PICKED --> PACKBTN["Click 'Pack' button\nOpens Pack modal"]
+
+    PACKBTN --> MODAL2["PACK CONFIRMATION MODAL\n━━━━━━━━━━━━━━━━━━━━\n📦 Items to pack: 2\n📝 Packing notes: ___\n☐ Generate packing slip\n☐ Show prices\n━━━━━━━━━━━━━━━━━━━━\n[ Cancel ]  [ Confirm Pack ]"]
+
+    MODAL2 --> PACKED["Fulfillment: Packed\nPacking slip generated"]
+
+    PACKED --> SHIP["Click 'Ship' button\nExisting ship flow runs"]
+
+    SHIP --> DONE["✅ ShippedItems created\nOrder Status: Shipped\nFulfillment: Complete"]
+
+    style MODAL1 fill:#e3f2fd,stroke:#1565c0
+    style PICKLIST fill:#e8f5e9,stroke:#2e7d32
+    style MODAL2 fill:#fff8e1,stroke:#f57f17
+    style DONE fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                <h3>Fulfillment Status Progression</h3>
+                <div class="mermaid">
+stateDiagram-v2
+    [*] --> NotStarted
+
+    NotStarted --> PickInProgress: Create Pick List
+    PickInProgress --> Picked: All items picked
+    Picked --> PackInProgress: Start packing
+    PackInProgress --> Packed: Confirm pack
+    Packed --> Shipped: Ship items
+
+    PickInProgress --> PickInProgress: Update qty picked
+
+    state "Not Started" as NotStarted
+    state "Pick in Progress" as PickInProgress
+    state "Picked" as Picked
+    state "Pack in Progress" as PackInProgress
+    state "Packed" as Packed
+    state "Shipped ✅" as Shipped
+                </div>
+            </div>
+
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>✅ Pros</h4>
+                    <ul>
+                        <li>Full visibility — FulfillmentStatus on list screen</li>
+                        <li>Supports role separation (office → picker → packer → shipper)</li>
+                        <li>Pick list is a referenceable, auditable document</li>
+                        <li>Availability indicators (🟢🟡🔴) prevent wasted picks</li>
+                        <li>Stage gates prevent shipping un-picked items</li>
+                        <li>Consistent with existing modal patterns</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h4>❌ Cons</h4>
+                    <ul>
+                        <li>Most clicks to complete (4 distinct interactions)</li>
+                        <li>New FulfillmentStatus adds data model complexity</li>
+                        <li>New PickList entity requires CRUD + state management</li>
+                        <li>Higher implementation scope for MVP</li>
+                        <li>Power users (50+ orders/day) may find it ceremonial</li>
+                        <li>Risk of over-engineering per research warning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPTION 3 -->
+        <div class="section" id="option3">
+            <div class="section-title">
+                <h2>Option 3: Smart Ship Wizard</h2>
+                <span class="badge badge-recommended">✓ Recommended for MVP</span>
+                <span class="badge badge-score">Score: 26/35</span>
+            </div>
+
+            <div class="desc">
+                <strong>Philosophy:</strong> Don't add new stages — enhance the existing shipping flow to include picking confirmation and packing slip generation as optional enrichments within a single continuous flow. A 3-step wizard inside the existing ship modal handles pick → pack → ship in one sitting. Inspired by <strong>Katana's streamlined approach</strong> and <strong>inFlow's all-in-one model</strong>.
+            </div>
+
+            <div class="diagram-container">
+                <h3>User Flow — The Full Picture</h3>
+                <div class="mermaid">
+flowchart TD
+    SO["📋 Sales Order Screen\nStatus: Open"] --> FD{"User clicks\n'Fulfill' dropdown"}
+
+    FD -->|"Fulfill Items..."| WIZARD["Open Fulfillment Wizard\n870px modal, 3 steps"]
+    FD -->|"Quick Ship All"| QS["Existing Ship All\n(unchanged, fast path)"]
+
+    WIZARD --> S1["🟢 STEP 1 — PICK\n━━━━━━━━━━━━━━━━━━━━━━━\n☑ Select items to fulfill\n✏️ Adjust quantities\n🟢🟡🔴 Availability indicators\n🖨️ Print Pick List button\n━━━━━━━━━━━━━━━━━━━━━━━\nStep: ● ○ ○"]
+
+    S1 -->|"Next →"| S2["📦 STEP 2 — PACK\n━━━━━━━━━━━━━━━━━━━━━━━\n📋 Review items summary\n☑ Generate packing slip\n☐ Show prices on slip\n📝 Packing notes\n━━━━━━━━━━━━━━━━━━━━━━━\nStep: ● ● ○"]
+
+    S2 -->|"← Back"| S1
+    S2 -->|"Next →"| S3["🚚 STEP 3 — SHIP\n━━━━━━━━━━━━━━━━━━━━━━━\n✅ Confirm shipment to Customer\n📅 Ship date: Today\n🚛 Carrier: ___\n📦 Tracking #: ___\n━━━━━━━━━━━━━━━━━━━━━━━\nStep: ● ● ●"]
+
+    S3 -->|"← Back"| S2
+    S3 -->|"Confirm Shipment"| PROCESS["⚙️ Process Shipment\n• Create ShippedItem records\n• Update OrderStatus\n• Generate packing slip PDF\n• Remove/reduce line items"]
+
+    QS --> PROCESS
+
+    PROCESS --> SUCCESS["✅ Success Modal\n'Shipment created successfully'\n\n[ View Packing Slip ]  [ OK ]"]
+
+    SUCCESS --> UPDATED["📋 SO Screen Updated\n• Items Shipped table shows new items\n• Status: Partially/Fully Shipped\n• Packing slip in Print menu"]
+
+    style S1 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style S2 fill:#fff8e1,stroke:#f57f17,stroke-width:2px
+    style S3 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style PROCESS fill:#f3e5f5,stroke:#7b1fa2
+    style SUCCESS fill:#e0f7fa,stroke:#00838f,stroke-width:2px
+    style QS fill:#f5f5f5,stroke:#9e9e9e
+                </div>
+            </div>
+
+            <!-- WIREFRAME -->
+            <div class="wireframe">
+                <h3>UI Wireframe — Step 1: Pick</h3>
+                <div class="wire-modal">
+                    <div class="wire-modal-header">
+                        <h4>Fulfill Items — Sales Order #SO-1042</h4>
+                        <div class="wire-steps">
+                            <div class="wire-step active">1</div>
+                            <div class="wire-step-line"></div>
+                            <div class="wire-step pending">2</div>
+                            <div class="wire-step-line"></div>
+                            <div class="wire-step pending">3</div>
+                        </div>
+                    </div>
+                    <div class="wire-modal-body">
+                        <div class="wire-banner">
+                            Select items to fulfill and adjust quantities. Print a pick list to take to the warehouse.
+                        </div>
+                        <div class="wire-table">
+                            <div class="wire-table-row wire-table-header">
+                                <div></div>
+                                <div>Item</div>
+                                <div>Location</div>
+                                <div>Available</div>
+                                <div>Qty to Fulfill</div>
+                                <div>Status</div>
+                            </div>
+                            <div class="wire-table-row">
+                                <div><div class="wire-checkbox checked"></div></div>
+                                <div>Widget Pro 3000</div>
+                                <div>Warehouse A</div>
+                                <div>25</div>
+                                <div><strong>10</strong></div>
+                                <div><span class="wire-dot green"></span></div>
+                            </div>
+                            <div class="wire-table-row">
+                                <div><div class="wire-checkbox checked"></div></div>
+                                <div>Mounting Bracket XL</div>
+                                <div>Warehouse B</div>
+                                <div>3</div>
+                                <div><strong>3</strong></div>
+                                <div><span class="wire-dot yellow"></span></div>
+                            </div>
+                            <div class="wire-table-row">
+                                <div><div class="wire-checkbox"></div></div>
+                                <div>Power Adapter USB-C</div>
+                                <div>Warehouse A</div>
+                                <div>0</div>
+                                <div style="color:#999">5</div>
+                                <div><span class="wire-dot red"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wire-modal-footer">
+                        <button class="wire-btn wire-btn-secondary">🖨️ Print Pick List</button>
+                        <div style="flex:1"></div>
+                        <button class="wire-btn wire-btn-secondary">Cancel</button>
+                        <button class="wire-btn wire-btn-primary">Next →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wireframe">
+                <h3>UI Wireframe — Step 2: Pack</h3>
+                <div class="wire-modal">
+                    <div class="wire-modal-header">
+                        <h4>Fulfill Items — Sales Order #SO-1042</h4>
+                        <div class="wire-steps">
+                            <div class="wire-step done">✓</div>
+                            <div class="wire-step-line done"></div>
+                            <div class="wire-step active">2</div>
+                            <div class="wire-step-line"></div>
+                            <div class="wire-step pending">3</div>
+                        </div>
+                    </div>
+                    <div class="wire-modal-body">
+                        <div style="margin-bottom:1rem">
+                            <div style="font-size:0.82rem;color:#2a394a;font-weight:600;margin-bottom:0.5rem">ITEMS TO PACK (2 items, 13 units)</div>
+                            <div class="wire-table">
+                                <div class="wire-table-row wire-table-header">
+                                    <div></div>
+                                    <div>Item</div>
+                                    <div>Location</div>
+                                    <div>Qty</div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div class="wire-table-row">
+                                    <div>📦</div>
+                                    <div>Widget Pro 3000</div>
+                                    <div>Warehouse A</div>
+                                    <div>10</div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div class="wire-table-row">
+                                    <div>📦</div>
+                                    <div>Mounting Bracket XL</div>
+                                    <div>Warehouse B</div>
+                                    <div>3</div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.85rem">
+                            <label style="display:flex;align-items:center;gap:0.5rem">
+                                <div class="wire-checkbox checked"></div>
+                                Generate packing slip
+                            </label>
+                            <label style="display:flex;align-items:center;gap:0.5rem">
+                                <div class="wire-checkbox"></div>
+                                Show prices on packing slip
+                            </label>
+                            <div style="margin-top:0.5rem">
+                                <div style="font-size:0.78rem;color:#8898a8;margin-bottom:0.25rem">Packing notes (optional)</div>
+                                <div style="border:1px solid #bacad0;border-radius:4px;padding:0.4rem 0.6rem;color:#999;font-size:0.8rem">Handle with care — glass components</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wire-modal-footer">
+                        <button class="wire-btn wire-btn-secondary">← Back</button>
+                        <div style="flex:1"></div>
+                        <button class="wire-btn wire-btn-secondary">Cancel</button>
+                        <button class="wire-btn wire-btn-primary">Next →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wireframe">
+                <h3>UI Wireframe — Step 3: Ship</h3>
+                <div class="wire-modal">
+                    <div class="wire-modal-header">
+                        <h4>Fulfill Items — Sales Order #SO-1042</h4>
+                        <div class="wire-steps">
+                            <div class="wire-step done">✓</div>
+                            <div class="wire-step-line done"></div>
+                            <div class="wire-step done">✓</div>
+                            <div class="wire-step-line done"></div>
+                            <div class="wire-step active">3</div>
+                        </div>
+                    </div>
+                    <div class="wire-modal-body">
+                        <div class="wire-banner" style="background:#e8f5e9;border-color:#4caf50;color:#1b5e20">
+                            ✅ You are about to ship <strong>2 items (13 units)</strong> to <strong>Acme Manufacturing Co.</strong>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:0.85rem">
+                            <div>
+                                <div style="font-size:0.78rem;color:#8898a8;margin-bottom:0.25rem">Ship Date</div>
+                                <div style="border:1px solid #bacad0;border-radius:4px;padding:0.4rem 0.6rem">March 23, 2026</div>
+                            </div>
+                            <div>
+                                <div style="font-size:0.78rem;color:#8898a8;margin-bottom:0.25rem">Carrier (optional)</div>
+                                <div style="border:1px solid #bacad0;border-radius:4px;padding:0.4rem 0.6rem;color:#999">Select carrier...</div>
+                            </div>
+                            <div style="grid-column:1/-1">
+                                <div style="font-size:0.78rem;color:#8898a8;margin-bottom:0.25rem">Tracking Number (optional)</div>
+                                <div style="border:1px solid #bacad0;border-radius:4px;padding:0.4rem 0.6rem;color:#999">Enter tracking number...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wire-modal-footer">
+                        <button class="wire-btn wire-btn-secondary">← Back</button>
+                        <div style="flex:1"></div>
+                        <button class="wire-btn wire-btn-secondary">Cancel</button>
+                        <button class="wire-btn wire-btn-primary">✅ Confirm Shipment</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                <h3>Status Transitions (unchanged from current prototype)</h3>
+                <div class="mermaid">
+stateDiagram-v2
+    [*] --> Open: SO Created
+
+    Open --> PartiallyShipped: Fulfill Items (partial)
+    Open --> FullyShipped: Quick Ship All / Fulfill All
+
+    PartiallyShipped --> PartiallyShipped: Fulfill more items
+    PartiallyShipped --> FullyShipped: All items shipped
+
+    state "Open" as Open
+    state "Partially Shipped" as PartiallyShipped
+    state "Fully Shipped" as FullyShipped
+
+    note right of Open
+        No new fulfillment states in MVP.
+        Pick/pack happen inside the wizard
+        but don't change order status
+        until shipment is confirmed.
+    end note
+                </div>
+            </div>
+
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>✅ Pros</h4>
+                    <ul>
+                        <li>Fewest changes to existing architecture</li>
+                        <li>Familiar modal pattern (users know SelectShippedItemsModal)</li>
+                        <li>Step indicator provides structure without rigidity</li>
+                        <li>"Quick Ship All" preserves fast path</li>
+                        <li>Carrier + tracking fields added naturally</li>
+                        <li>Passes the 2-minute fulfillment test</li>
+                        <li>Minimal data model impact — no new types</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h4>❌ Cons</h4>
+                    <ul>
+                        <li>No persistent pick list record (can't audit later)</li>
+                        <li>No fulfillment status on list screen</li>
+                        <li>Wizard is a new pattern (existing modals are single-step)</li>
+                        <li>Doesn't support role separation well</li>
+                        <li>Modal state lost if closed accidentally</li>
+                        <li>Packing slip only generated at ship time</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- UX SCORING -->
+        <div class="section" id="scoring">
+            <div class="section-title">
+                <h2>UX Heuristic Scoring</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Heuristic</th>
+                        <th style="text-align:center">Option 1<br/>Sidebar</th>
+                        <th style="text-align:center">Option 2<br/>Staged</th>
+                        <th style="text-align:center">Option 3<br/>Smart Ship ✓</th>
+                        <th>Why</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Efficiency</strong></td>
+                        <td class="score-cell score-4">4</td>
+                        <td class="score-cell score-2">2</td>
+                        <td class="score-cell score-5">5</td>
+                        <td>Option 3: one continuous flow, fewest clicks. Option 2: 4 separate interactions.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Learnability</strong></td>
+                        <td class="score-cell score-3">3</td>
+                        <td class="score-cell score-4">4</td>
+                        <td class="score-cell score-4">4</td>
+                        <td>Option 2's explicit stages are most self-documenting. Option 3's wizard is nearly as clear.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Error Prevention</strong></td>
+                        <td class="score-cell score-3">3</td>
+                        <td class="score-cell score-5">5</td>
+                        <td class="score-cell score-4">4</td>
+                        <td>Option 2's stage gates prevent shipping un-picked items. Option 3's wizard enforces sequence.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Consistency</strong></td>
+                        <td class="score-cell score-3">3</td>
+                        <td class="score-cell score-5">5</td>
+                        <td class="score-cell score-4">4</td>
+                        <td>Option 2 uses existing modal patterns. Option 1 introduces new sidebar pattern.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Visibility of Status</strong></td>
+                        <td class="score-cell score-3">3</td>
+                        <td class="score-cell score-5">5</td>
+                        <td class="score-cell score-2">2</td>
+                        <td>Option 2's FulfillmentStatus on list screen = team-wide visibility. Option 3 has no persistent status.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flexibility</strong></td>
+                        <td class="score-cell score-4">4</td>
+                        <td class="score-cell score-3">3</td>
+                        <td class="score-cell score-4">4</td>
+                        <td>Options 1 & 3 allow skipping pick for simple orders. Option 2's gates feel mandatory.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recovery</strong></td>
+                        <td class="score-cell score-4">4</td>
+                        <td class="score-cell score-4">4</td>
+                        <td class="score-cell score-3">3</td>
+                        <td>Options 1 & 2 persist state across sessions. Option 3's modal loses state if closed.</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>TOTAL</strong></td>
+                        <td class="score-cell">24</td>
+                        <td class="score-cell">28</td>
+                        <td class="score-cell" style="color:#2e7d32">26</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- OPERATIONAL REALITY -->
+        <div class="section" id="operational">
+            <div class="section-title">
+                <h2>Operational Reality Assessment</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dimension</th>
+                        <th>Option 1: Sidebar</th>
+                        <th>Option 2: Staged</th>
+                        <th>Option 3: Smart Ship ✓</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Team reality</strong></td>
+                        <td>Assumes one person does everything</td>
+                        <td style="background:#e8f5e9"><strong>Supports role separation</strong> — office → picker → packer → shipper</td>
+                        <td>Assumes one person in one session</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interruption tolerance</strong></td>
+                        <td>High — sidebar persists</td>
+                        <td style="background:#e8f5e9"><strong>Highest</strong> — pick list is a saved record</td>
+                        <td>Low — modal state may be lost</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exception handling</strong></td>
+                        <td>Partial via qty adjustment</td>
+                        <td style="background:#e8f5e9"><strong>First-class partials</strong> with per-line status</td>
+                        <td>Partial via qty adjustment (ephemeral)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partial state clarity</strong></td>
+                        <td>Only visible when SO is open</td>
+                        <td style="background:#e8f5e9"><strong>Best</strong> — list screen + SO detail</td>
+                        <td>No partial state — modal or done</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Light user (3x/week)</strong></td>
+                        <td>Sidebar discovery issue</td>
+                        <td>Clear labels, self-documenting</td>
+                        <td style="background:#e8f5e9"><strong>Wizard guides through steps</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Power user (50x/day)</strong></td>
+                        <td>Fast once learned</td>
+                        <td>Too ceremonial — 4 interactions</td>
+                        <td style="background:#e8f5e9"><strong>Fast in modal + Quick Ship bypass</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operational assumptions</strong></td>
+                        <td>Small team, low volume</td>
+                        <td>Team may have roles, process-oriented</td>
+                        <td>One person handles everything in one sitting</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RECOMMENDATION -->
+        <div class="section" id="recommendation">
+            <div class="section-title">
+                <h2>Recommendation</h2>
+            </div>
+
+            <div class="desc" style="border-left:4px solid #4caf50;background:#f1f8f1">
+                <strong>Option 3 (Smart Ship Wizard) for MVP</strong> — lowest implementation risk, extends existing ship modal, passes the 2-minute fulfillment test, matches Method's current 3–15 person customer base. Then layer in <strong>Option 2's FulfillmentStatus tracking</strong> in Phase 2 based on real user feedback.
+            </div>
+
+            <div class="phase-timeline">
+                <h3>Phased Rollout</h3>
+                <div class="timeline">
+                    <div class="timeline-phase phase-mvp">
+                        <h4>MVP (Now) — Option 3</h4>
+                        <ul>
+                            <li>3-step wizard modal (Pick → Pack → Ship)</li>
+                            <li>Print pick list from Step 1</li>
+                            <li>Packing slip with price toggle</li>
+                            <li>Carrier + tracking fields</li>
+                            <li>"Quick Ship All" fast path</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-phase phase-2">
+                        <h4>Phase 2 — Add Option 2 Elements</h4>
+                        <ul>
+                            <li>FulfillmentStatus on list screen</li>
+                            <li>Persistent PickList records</li>
+                            <li>Pick list section on SO screen</li>
+                            <li>Role-based fulfillment handoff</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-phase phase-future">
+                        <h4>Future — Advanced</h4>
+                        <ul>
+                            <li>Batch picking across orders</li>
+                            <li>Barcode scanning support</li>
+                            <li>Backorder management</li>
+                            <li>Fulfillment analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                <h3>Decision Summary</h3>
+                <div class="mermaid">
+flowchart LR
+    Q1{"How should pick/pack\nintegrate?"} -->|"Extend existing\nship modal"| A1["Smart Ship Wizard\n3-step flow"]
+
+    Q2{"New status\nstates?"} -->|"Not for MVP"| A2["Keep existing\nOrderStatus"]
+
+    Q3{"Packing slip\nwhen?"} -->|"At ship time\nin wizard"| A3["Step 2: Pack\nwith price toggle"]
+
+    Q4{"Pick list\npersistence?"} -->|"Ephemeral for MVP"| A4["Print from Step 1\nNo saved entity"]
+
+    Q5{"Fast path for\nsimple orders?"} -->|"Yes"| A5["Quick Ship All\nbypass preserved"]
+
+    style A1 fill:#e8f5e9,stroke:#2e7d32
+    style A2 fill:#e8f5e9,stroke:#2e7d32
+    style A3 fill:#e8f5e9,stroke:#2e7d32
+    style A4 fill:#e8f5e9,stroke:#2e7d32
+    style A5 fill:#e8f5e9,stroke:#2e7d32
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'neutral',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 15,
+                nodeSpacing: 30,
+                rankSpacing: 40
+            },
+            themeVariables: {
+                primaryColor: '#e3f2fd',
+                primaryTextColor: '#0f1b31',
+                primaryBorderColor: '#1565c0',
+                lineColor: '#5c7a99',
+                secondaryColor: '#fff8e1',
+                tertiaryColor: '#e8f5e9',
+                fontSize: '13px'
+            }
+        });
+    </script>
+</body>
+</html>
