@@ -19,23 +19,12 @@ The Method prototype at localhost:5200 already has:
 - **Undo Shipping (FR-308)** — undo button on shipped items table, moves qty back to line items
 - **Invoice Creation Flow (FR-400–402)** — Create Invoice button + modal + navigation to dedicated InvoiceScreen, auto-updating invoice status (Not Invoiced → Partially Invoiced → Fully Invoiced)
 
-**Existing UI patterns to match:**
-- Modals: 870px width, info banner, checkbox table (SelectShippedItemsModal pattern)
-- Tables: editable cells, column alignment (ItemsTable pattern)
-- Forms: 3-column grid layout (SalesOrderScreen)
-- Status flows: OrderStatus / InvoiceStatus enums with badge indicators
-- State management: lifted to App.tsx, handlers passed as props
-- Colors: Primary text #0f1b31, borders #bacad0, alert yellow #fef9e7/#fdcb2d, button blue #0d71c8
+
 
 **Key architectural fact:** Shipping already exists as a first-class flow. Pick/Pack must integrate *before* shipping in the fulfillment sequence without breaking the existing Ship → Invoice chain.
 
 ### What the Core User Job Is
 
-From 465 customer transcripts:
-- **Order & Fulfillment Tracking** is a top JTBD (83 companies, 17.8%)
-- **Order Management** is the #1 pain point (244 companies, 53.5%)
-- **Shipping/Logistics** pain (57 companies, 12.9%)
-- Phil Helms (Bluewatercas): *"We need, like, a delivery ticket... if we could toggle on and off the price list"* — the pick list / packing slip must be flexible documents
 
 **The job:** "When I have a sales order ready to fulfill, I need to tell my warehouse team what to pull from the shelves, confirm it's been pulled, pack it, and generate a document that goes in the box — without switching tools or re-entering data."
 
