@@ -31,11 +31,6 @@ The Method prototype at localhost:5200 already has:
 
 ### What the Core User Job Is
 
-From 465 customer transcripts:
-- **Order & Fulfillment Tracking** is a top JTBD (83 companies, 17.8%)
-- **Order Management** is the #1 pain point (244 companies, 53.5%)
-- **Shipping/Logistics** pain (57 companies, 12.9%)
-- Phil Helms (Bluewatercas): *"We need, like, a delivery ticket... if we could toggle on and off the price list"* — the pick list / packing slip must be flexible documents
 
 **The job:** "When I have a sales order ready to fulfill, I need to tell my warehouse team what to pull from the shelves, confirm it's been pulled, pack it, and generate a document that goes in the box — without switching tools or re-entering data."
 
