@@ -196,25 +196,22 @@ Fishbowl's color-coded availability (red/yellow/green) is highly valued by users
 ### Cons
 
 - More clicks to complete fulfillment (Create Pick List → update picks → Pack → Ship = 4 distinct actions)
-- ulfill' dropdown"}
- FD -->|"Fulfill Items..."| WIZARD["Open Fulfillment Wizard\n870px modal, 3 steps"]
- FD -->|"Quick Ship All"| QS["Existing Ship All\n(unchanged, fast path)"]
- WIZARD --> S1[" STEP 1 — PICK\n\n Select items to fulfill\n Adjust quantities\n Availability indicators\n Print Pick List button\n\nStep: "]
- S1 -->|"Next →"| S2[" STEP 2 — PACK\n\n Review items summary\n Generate packing slip\n Show prices on slip\n Packing notes\n\nStep: "]
- S2 -->|"← Back"| S1
- S2 -->|"Next →"| S3[" STEP 3 — SHIP\n\n Confirm shipment to Customer\n Ship date: Today\n Carrier: ___\n Tracking #: ___\n\nStep: "]
- S3 -->|"← Back"| S2
- S3 -->|"Confirm Shipment"| PROCESS[" Process Shipment\n• Create ShippedItem records\n• Update OrderStatus\n• Generate packing slip PDF\n• Remove/reduce line items"]
- QS --> PROCESS
- PROCESS --> SUCCESS[" Success Modal\n'Shipment created successfully'\n\n View Packing Slip | OK"]
- SUCCESS --> UPDATED[" SO Screen Updated\n• Items Shipped table shows new items\n• Status: Partially/Fully Shipped\n• Packing slip in Print menu"]
- style S1 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
- style S2 fill:#fff8e1,stroke:#f57f17,stroke-width:2px
- style S3 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
- style PROCESS fill:#f3e5f5,stroke:#7b1fa2
- style SUCCESS fill:#e0f7fa,stroke:#00838f,stroke-width:2px
- style QS fill:#f5f5f5,stroke:#9e9e9e
-```ethod's UI?" A multi-step wizard within a single modal achieves this by keeping the user in one focused flow.
+- New FulfillmentStatus adds complexity — more states to manage, more things that can go wrong
+- Pick list as a first-class entity means more data to maintain
+- Overkill for small teams where one person does everything
+- Stage gates can feel bureaucratic for simple 2-3 item orders
+
+### Best For
+
+The 20–50 person warehouse with dedicated pickers and packers who need handoff points and visibility. This is the "larger Method customer" persona — growing operations that need process discipline.
+
+---
+
+## Option 3: "Smart Ship Wizard" — Pick → Pack → Ship in a Single Modal Flow
+
+### Philosophy
+
+Pick/pack should feel like a natural extension of shipping, not a separate process. A 3-step wizard within the existing modal pattern guides the user through pick → pack → ship in one continuous flow. The question is: "How do we add pick/pack structure without adding complexity to Method's UI?" A multi-step wizard within a single modal achieves this by keeping the user in one focused flow.
 
 This approach explicitly avoids the trap of building separate pick and pack infrastructure when the existing Ship flow handles the hardest part (inventory deduction, status transitions, ShippedItem creation) already.
 
@@ -326,30 +323,8 @@ The 3-10 person operation where one or two people handle everything from SO crea
 |-----------|------|------|------|
 | **Team reality** | Assumes one person does everything on one screen. Works for the solo operator but breaks down when roles are separated. | Explicitly supports role separation. Office creates SO + pick list, warehouse picks, someone else packs and ships. Each stage has a clear handoff. | Assumes one person does everything in one sitting. The wizard is a single session — doesn't support handing off mid-flow. |
 | **Interruption tolerance** | **High.** Sidebar stays open; SO screen persists. User can walk away, come back, resume where they left off. | **High.** Pick list persists as a record. User can close the SO, reopen it later, and see the pick list with current progress. Best interruption tolerance. | **Low.** Modal state may be lost if closed. If user prints pick list, walks to warehouse for 30 min, and the session times out, they restart. |
-| **Exception handling** | Partial picks handled via qty adjustment. No formal short-pick fl>|"Yes"| A5["Quick Ship All\nbypass preserved"]
- style A1 fill:#e8f5e9,stroke:#2e7d32
- style A2 fill:#e8f5e9,stroke:#2e7d32
- style A3 fill:#e8f5e9,stroke:#2e7d32
- style A4 fill:#e8f5e9,stroke:#2e7d32
- style A5 fill:#e8f5e9,stroke:#2e7d32
-```]
- B2 --> B3["Pick List section<br/>appears on SO"]
- B3 --> B4["Update Qty Picked<br/>inline"]
- B4 --> B5["'Pack' button →<br/>Pack modal"]
- B5 --> B6["'Ship' button →<br/>Ship flow"]
- B6 --> B7["ShippedItems<br/>created"]
- end
- subgraph OPT3["OPTION 3: Smart Ship Wizard "]
- C1["Open SO"] --> C2["'Fulfill Items...'"]
- C2 --> C3["Step 1: Pick<br/>(select + qty)"]
- C3 --> C4["Step 2: Pack<br/>(slip + options)"]
- C4 --> C5["Step 3: Ship<br/>(confirm)"]
- C5 --> C6["ShippedItems<br/>created"]
- end
- style OPT1 fill:#fff3e0,stroke:#e65100
- style OPT2 fill:#e8eaf6,stroke:#283593
- style OPT3 fill:#e8f5e9,stroke:#1b5e20
-```st once learned — sidebar is always there, no modals to open/close. Good for high-volume single-operator flows. | Slow — 4 separate interactions per order. Power users will hate the ceremony. No batch picking means every order is individual. | Fast in the modal, but opening a wizard for every single order gets repetitive. "Quick Ship All" helps but then they skip pick/pack entirely. |
+| **Exception handling** | Partial picks handled via qty adjustment. No formal short-pick flow. | Availability indicators (green/yellow/red) warn before picking. Short picks tracked via Qty Picked vs. Qty to Pick. Most structured exception handling. | Partial quantities adjustable in Step 1. No persistent record of short picks. |
+| **Speed** | Fast once learned — sidebar is always there, no modals to open/close. Good for high-volume single-operator flows. | Slow — 4 separate interactions per order. Power users will hate the ceremony. No batch picking means every order is individual. | Fast in the modal, but opening a wizard for every single order gets repetitive. "Quick Ship All" helps but then they skip pick/pack entirely. |
 | **Operational assumptions** | Assumes: same person creates SO and fulfills it. Small team, low volume, no role separation needed. | Assumes: team may have role separation. Fulfillment is a process, not a one-time action. Pick lists may be printed and given to different people. | Assumes: one person handles everything in one session. Picking is a quick check, not a delegated task. |
 
 ### Operational Reality Summary
