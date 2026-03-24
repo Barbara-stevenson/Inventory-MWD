@@ -6,6 +6,8 @@
 **Target Audience:** Method CRM product & design leadership
 **Scope:** Fishbowl, Katana MRP, DEAR/Cin7, SOS Inventory, Zoho Inventory, inFlow, Amazon MCF/FBA
 
+**Competitor screenshot gallery:** [View Screenshots](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/screenshots/screenshot-gallery.html)
+
 ---
 
 ## Executive Summary

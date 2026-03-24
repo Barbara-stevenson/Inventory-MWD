@@ -4,7 +4,7 @@
 ## Feature: Pick List Generation + Packing Slip + Pack Confirmation
 ## Author: Barbara + Inventory Research Agent
 
-**Interactive visual version with rendered diagrams + wireframes:** [flow-diagrams.html](flow-diagrams.html)
+**Interactive visual version with rendered diagrams + wireframes:** [View Flow Diagrams](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html)
 
 ---
 
