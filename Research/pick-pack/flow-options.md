@@ -114,23 +114,7 @@ The existing prototype already has the SO detail screen as the hub for shipping 
 
 ### Flow Diagram
 
-```mermaid
-flowchart TD
- SO[" Sales Order Screen\nStatus: Open"] --> BTN{"User clicks\n'Fulfill' dropdown"}
- BTN -->|"Pick & Pack"| SIDEBAR[" Sidebar slides in from right\n~400px wide"]
- BTN -->|"Ship All"| EXISTING["Existing Ship All flow\n(unchanged)"]
- SIDEBAR --> PICK["PICK LIST SECTION\n\n Item A — Warehouse A — 10 avail\n Item B — Warehouse B — 5 avail\n Item C — Warehouse A — 0 avail \n\n Print Pick List"]
- PICK --> CHECK["User checks items\nas physically picked\nAdjusts qty if partial"]
- CHECK --> PACK["PACK SECTION appears\n\n Generate Packing Slip\n Show prices on slip\n Packing notes\n"]
- PACK --> CONFIRM["Confirm Pack & Ship"]
- CONFIRM --> DONE[" ShippedItems created\nOrder status updated\nPacking slip PDF generated"]
- EXISTING --> DONE
- style SIDEBAR fill:#fff3e0,stroke:#e65100,stroke-width:2px
- style PICK fill:#e8f5e9,stroke:#2e7d32
- style PACK fill:#fff8e1,stroke:#f57f17
- style CONFIRM fill:#e3f2fd,stroke:#1565c0
- style DONE fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
-```
+*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
 
 ### Key UX Decisions
 
@@ -196,45 +180,11 @@ Fishbowl's color-coded availability (red/yellow/green) is highly valued by users
 
 ### Flow Diagram
 
-```mermaid
-flowchart TD
-    SO["Sales Order Screen\nStatus: Open\nFulfillment: Not Started"] --> CREATE["Click 'Create Pick List'\nOpens 870px modal"]
-    CREATE --> MODAL1["SELECT ITEMS MODAL\nItem A - Loc A - 10/10 avail\nItem B - Loc B - 3/5 avail\nItem C - Loc A - 0/8 avail\nCancel | Create Pick List"]
-    MODAL1 --> PICKLIST["PICK LIST SECTION\nappears on SO screen\nItem | Loc | To Pick | Picked | Status\nA | WH-A | 10 | ___ | Pending\nB | WH-B | 3 | ___ | Pending\nPrint Pick List\nFulfillment: Pick in Progress"]
-    PICKLIST --> UPDATE["Warehouse staff updates\nQty Picked inline\nas items are pulled"]
-    UPDATE --> PICKED["All items picked\nFulfillment: Picked"]
-    PICKED --> PACKBTN["Click 'Pack' button\nOpens Pack modal"]
-    PACKBTN --> MODAL2["PACK CONFIRMATION MODAL\nItems to pack: 2\nPacking notes: ___\nGenerate packing slip\nShow prices\nCancel | Confirm Pack"]
-    MODAL2 --> PACKED["Fulfillment: Packed\nPacking slip generated"]
-    PACKED --> SHIP["Click 'Ship' button\nExisting ship flow runs"]
-    SHIP --> DONE["ShippedItems created\nOrder Status: Shipped\nFulfillment: Complete"]
-    style MODAL1 fill:#e3f2fd,stroke:#1565c0
-    style PICKLIST fill:#e8f5e9,stroke:#2e7d32
-    style MODAL2 fill:#fff8e1,stroke:#f57f17
-    style DONE fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
-```
+*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
 
 ### Fulfillment Status State Machine
 
-```mermaid
-stateDiagram-v2
-    [*] --> NotStarted
-
-    NotStarted --> PickInProgress: Create Pick List
-    PickInProgress --> Picked: All items picked
-    Picked --> PackInProgress: Start packing
-    PackInProgress --> Packed: Confirm pack
-    Packed --> Shipped: Ship items
-
-    PickInProgress --> PickInProgress: Update qty picked
-
-    state "Not Started" as NotStarted
-    state "Pick in Progress" as PickInProgress
-    state "Picked" as Picked
-    state "Pack in Progress" as PackInProgress
-    state "Packed" as Packed
-    state "Shipped ✅" as Shipped
-```
+*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
 
 ### Key UX Decisions
 
@@ -316,53 +266,11 @@ This approach explicitly avoids the trap of building separate pick and pack infr
 
 ### Flow Diagram
 
-```mermaid
-flowchart TD
-    SO["📋 Sales Order Screen\nStatus: Open"] --> FD{"User clicks\n'Fulfill' dropdown"}
-
-    FD -->|"Fulfill Items..."| WIZARD["Open Fulfillment Wizard\n870px modal, 3 steps"]
-    FD -->|"Quick Ship All"| QS["Existing Ship All\n(unchanged, fast path)"]
-
-    WIZARD --> S1["🟢 STEP 1 — PICK\n━━━━━━━━━━━━━━━━━━━━━━━\n☑ Select items to fulfill\n✏️ Adjust quantities\n🟢🟡🔴 Availability indicators\n🖨️ Print Pick List button\n━━━━━━━━━━━━━━━━━━━━━━━\nStep: ● ○ ○"]
-
-    S1 -->|"Next →"| S2["📦 STEP 2 — PACK\n━━━━━━━━━━━━━━━━━━━━━━━\n📋 Review items summary\n☑ Generate packing slip\n☐ Show prices on slip\n📝 Packing notes\n━━━━━━━━━━━━━━━━━━━━━━━\nStep: ● ● ○"]
-
-    S2 -->|"← Back"| S1
-    S2 -->|"Next →"| S3["🚚 STEP 3 — SHIP\n━━━━━━━━━━━━━━━━━━━━━━━\n✅ Confirm shipment to Customer\n📅 Ship date: Today\n🚛 Carrier: ___\n📦 Tracking #: ___\n━━━━━━━━━━━━━━━━━━━━━━━\nStep: ● ● ●"]
-
-    S3 -->|"← Back"| S2
-    S3 -->|"Confirm Shipment"| PROCESS["⚙️ Process Shipment\n• Create ShippedItem records\n• Update OrderStatus\n• Generate packing slip PDF\n• Remove/reduce line items"]
-
-    QS --> PROCESS
-
-    PROCESS --> SUCCESS["✅ Success Modal\n'Shipment created successfully'\n\n View Packing Slip | OK"]
-
-    SUCCESS --> UPDATED["📋 SO Screen Updated\n• Items Shipped table shows new items\n• Status: Partially/Fully Shipped\n• Packing slip in Print menu"]
-
-    style S1 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-    style S2 fill:#fff8e1,stroke:#f57f17,stroke-width:2px
-    style S3 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
-    style PROCESS fill:#f3e5f5,stroke:#7b1fa2
-    style SUCCESS fill:#e0f7fa,stroke:#00838f,stroke-width:2px
-    style QS fill:#f5f5f5,stroke:#9e9e9e
-```
+*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
 
 ### Status Transitions (unchanged from current prototype)
 
-```mermaid
-stateDiagram-v2
-    [*] --> Open: SO Created
-
-    Open --> PartiallyShipped: Fulfill Items (partial)
-    Open --> FullyShipped: Quick Ship All / Fulfill All
-
-    PartiallyShipped --> PartiallyShipped: Fulfill more items
-    PartiallyShipped --> FullyShipped: All items shipped
-
-    state "Open" as Open
-    state "Partially Shipped" as PartiallyShipped
-    state "Fully Shipped" as FullyShipped
-```
+*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
 
 ### Key UX Decisions
 
@@ -525,70 +433,15 @@ This phased approach gives Method a working pick/pack flow *now* (Option 3) and 
 
 ### Side-by-Side Comparison: All Three Options
 
-```mermaid
-flowchart LR
-    subgraph OPT1["OPTION 1: Fulfillment Sidebar"]
-        A1["Open SO"] --> A2["Click 'Fulfill'"]
-        A2 --> A3["Sidebar slides in:<br/>Pick List + Checkboxes"]
-        A3 --> A4["Check items<br/>as picked"]
-        A4 --> A5["'Generate<br/>Packing Slip'"]
-        A5 --> A6["'Confirm Pack<br/>& Ship'"]
-        A6 --> A7["ShippedItems<br/>created"]
-    end
-
-    subgraph OPT2["OPTION 2: Staged Fulfillment"]
-        B1["Open SO"] --> B2["'Create Pick List'<br/>modal"]
-        B2 --> B3["Pick List section<br/>appears on SO"]
-        B3 --> B4["Update Qty Picked<br/>inline"]
-        B4 --> B5["'Pack' button →<br/>Pack modal"]
-        B5 --> B6["'Ship' button →<br/>Ship flow"]
-        B6 --> B7["ShippedItems<br/>created"]
-    end
-
-    subgraph OPT3["OPTION 3: Smart Ship Wizard ✓"]
-        C1["Open SO"] --> C2["'Fulfill Items...'"]
-        C2 --> C3["Step 1: Pick<br/>(select + qty)"]
-        C3 --> C4["Step 2: Pack<br/>(slip + options)"]
-        C4 --> C5["Step 3: Ship<br/>(confirm)"]
-        C5 --> C6["ShippedItems<br/>created"]
-    end
-
-    style OPT1 fill:#fff3e0,stroke:#e65100
-    style OPT2 fill:#e8eaf6,stroke:#283593
-    style OPT3 fill:#e8f5e9,stroke:#1b5e20
-```
+*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
 
 ### Decision Summary
 
-```mermaid
-flowchart LR
-    Q1{"How should pick/pack\nintegrate?"} -->|"Extend existing\nship modal"| A1["Smart Ship Wizard\n3-step flow"]
-
-    Q2{"New status\nstates?"} -->|"Not for MVP"| A2["Keep existing\nOrderStatus"]
-
-    Q3{"Packing slip\nwhen?"} -->|"At ship time\nin wizard"| A3["Step 2: Pack\nwith price toggle"]
-
-    Q4{"Pick list\npersistence?"} -->|"Ephemeral for MVP"| A4["Print from Step 1\nNo saved entity"]
-
-    Q5{"Fast path for\nsimple orders?"} -->|"Yes"| A5["Quick Ship All\nbypass preserved"]
-
-    style A1 fill:#e8f5e9,stroke:#2e7d32
-    style A2 fill:#e8f5e9,stroke:#2e7d32
-    style A3 fill:#e8f5e9,stroke:#2e7d32
-    style A4 fill:#e8f5e9,stroke:#2e7d32
-    style A5 fill:#e8f5e9,stroke:#2e7d32
-```
+*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
 
 ### Phased Rollout
 
-```mermaid
-flowchart LR
-    MVP["🟢 MVP (Now)\nOption 3: Smart Ship Wizard\n━━━━━━━━━━━━━━━━━\n• 3-step wizard modal\n• Print pick list\n• Packing slip + price toggle\n• Carrier + tracking fields\n• Quick Ship All fast path"] --> P2["🔵 Phase 2\nAdd Option 2 Elements\n━━━━━━━━━━━━━━━━━\n• FulfillmentStatus on list\n• Persistent PickList records\n• Pick list section on SO\n• Role-based handoff"] --> FUT["🟣 Future\nAdvanced Features\n━━━━━━━━━━━━━━━━━\n• Batch picking\n• Barcode scanning\n• Backorder management\n• Fulfillment analytics"]
-
-    style MVP fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-    style P2 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
-    style FUT fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-```
+*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
 
 ---
 
