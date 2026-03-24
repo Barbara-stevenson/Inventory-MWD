@@ -1,0 +1,28 @@
+Category,Question Theme,Customer Answer (Organized),Method Value Realized
+Industry,How do you describe your business?,"Field service. Lawn fertilizing, weed control, pest control. Not landscaping or mowing. Comparable to Weedman or TruGreen.",Field service operator with material heavy workflow that does not fit generic landscaping tools.
+Business Complexity,Why do standard lawn software tools not work?,Most tools are labor focused. His business is material driven. Needs profit margin visibility per job.,Method supports material based quoting logic beyond time tracking models.
+Why Method,Why Method over competitors?,Customization. Other software forces you into their workflow. He always returns to Method.,Platform adapts to business. Business does not adapt to platform.
+Customization Level,How customized is the account?,Built multiple apps. Rebuilt proposal app. 59 custom screens. Rebuilt field service app.,True no code operational system built by owner.
+Quoting Engine,How are quotes generated?,"Website form via WordPress → Zapier → Opportunity. Custom app calculates materials, labor time, transit time, margin. Sends automated quote.",End to end automated quoting engine built inside Method.
+Profit Visibility,How do you manage margins?,System calculates material usage and profit margin in real time. Can adjust discounts and immediately see margin impact.,Real time margin intelligence during quoting.
+Work Order Automation,What happens after customer signs?,Customer selects services → signs → pays → system creates work orders → schedules visits → auto tracks season.,Automated quote to cash to work order pipeline.
+Portal Customization,What did you modify in portal?,Added work order visibility. Customers can see completed and upcoming visits.,Reduced inbound calls. Increased self service transparency.
+Vehicle Compliance,Built anything outside CRM?,Built daily vehicle inspection app required by Ontario law. Passed government inspection.,Platform used for regulatory compliance workflow.
+Field Service App,Using stock app?,No. Rebuilt it. Uses core tables but customized screens and time tracking.,Framework flexibility allows full rebuild without losing structure.
+Growth Strategy,Preparing for scale?,Built better tracking for usage and waste to support expansion next year.,System designed to grow with business.
+Tech Stack,What else is used?,QuickBooks. WordPress. Zapier. No heavy stack.,Lightweight tech stack with Method as operational core.
+Forms Feedback,Thoughts on Method forms?,Did not blend with WordPress site. Looked external. Prefers Zapier bridge. Suggests WordPress plugin.,Opportunity for native CMS integration strategy.
+UI Feedback,Biggest requested improvement?,Wants multiple dashboard tabs. Screen clutter due to many apps.,Power user UX improvement opportunity.
+Loyalty,Do you trial competitors?,Yes every winter. Always returns to Method.,Customization drives long term retention.
+,,,
+Research Backed Insight,Customer Evidence,What This Means,Marketing Verbiage
+Method functions as a custom profit engine,“It calculates all materials and shows my profit margin.”,He does not price blindly. Pricing decisions are data backed in real time.,Know your margin before you send the quote.
+Complete automation from website to field,"“Customer can sign up, pay online, creates work orders.”",Owner can forget about jobs until execution. System runs pipeline automatically.,From click to completed job without manual handoffs.
+Field service workflows are highly variable,“Each work order can use one to seven products.”,Product complexity drives need for customization.,Built for material intensive field service.
+Portal reduces operational friction,“Anything to prevent people from calling me is good.”,Transparency directly reduces support load.,Self service portals that reduce phone calls.
+Compliance workflows built in platform,“Built vehicle inspection app… meets Ministry requirements.”,Platform used beyond CRM into legal compliance.,Build operational apps beyond CRM.
+Customization requires effort but pays off,“First time I spent 80 hours.”,Advanced users invest time upfront for long term efficiency.,Invest once. Save time every season.
+Owner built scalable system intentionally,“Trying to do it in a way that it will grow with me.”,Proactive operator planning for growth.,Scale without replacing your system.
+WordPress integration opportunity,“If you built a WordPress plugin that would be awesome.”,Native CMS integration could remove Zapier dependency.,Meet small business where they already build online.
+UI organization pain for power users,“My screen is pretty cluttered.”,"As customization depth increases, navigation needs improve.",Power users need power navigation.
+Retention driven by workflow control,“Other software makes you change your workflow.”,Core retention anchor is autonomy.,Your workflow. Your rules.

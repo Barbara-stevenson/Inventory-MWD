@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Method MWD Playbook — Knowledge Graph</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f7f8fc; color: #1a1d23; overflow: hidden; }
+
+  /* Layout */
+  .app { display: flex; height: 100vh; }
+  .sidebar { width: 380px; min-width: 380px; background: #ffffff; border-right: 1px solid #e2e6ef; display: flex; flex-direction: column; overflow: hidden; z-index: 10; }
+  .main { flex: 1; position: relative; }
+
+  /* Sidebar Header */
+  .sidebar-header { padding: 20px; border-bottom: 1px solid #e2e6ef; }
+  .sidebar-header h1 { font-size: 16px; font-weight: 700; color: #1a1d23; margin-bottom: 2px; }
+  .sidebar-header p { font-size: 11px; color: #5f6b7a; }
+
+  /* Stats Bar */
+  .stats-bar { display: flex; gap: 0; border-bottom: 1px solid #e2e6ef; }
+  .stat { flex: 1; padding: 12px 10px; text-align: center; border-right: 1px solid #e2e6ef; }
+  .stat:last-child { border-right: none; }
+  .stat-value { font-size: 20px; font-weight: 700; color: #1a1d23; }
+  .stat-label { font-size: 9px; color: #5f6b7a; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+  /* Tabs */
+  .tabs { display: flex; border-bottom: 1px solid #e2e6ef; }
+  .tab { flex: 1; padding: 10px 8px; text-align: center; font-size: 11px; font-weight: 600; color: #5f6b7a; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
+  .tab:hover { color: #5f6b7a; }
+  .tab.active { color: #1a56db; border-bottom-color: #1a56db; }
+
+  /* Tab Content */
+  .tab-content { display: none; flex: 1; overflow-y: auto; }
+  .tab-content.active { display: block; }
+  .tab-content::-webkit-scrollbar { width: 6px; }
+  .tab-content::-webkit-scrollbar-thumb { background: #c7d6f5; border-radius: 3px; }
+
+  /* Section Group */
+  .section-group { padding: 12px 16px; border-bottom: 1px solid #e2e6ef0a; }
+  .section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-bottom: 8px; }
+
+  /* Items */
+  .item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border-radius: 8px; margin-bottom: 4px; cursor: pointer; transition: background 0.15s; }
+  .item:hover { background: #e8eefb; }
+  .item.selected { background: #e8eefb; outline: 1px solid #1a56db40; }
+  .item-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .item-content { flex: 1; min-width: 0; }
+  .item-name { font-size: 12px; font-weight: 600; color: #1a1d23; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .item-meta { font-size: 10px; color: #5f6b7a; margin-top: 2px; }
+  .item-tag { display: inline-block; font-size: 9px; padding: 1px 6px; border-radius: 3px; font-weight: 600; margin-right: 4px; }
+
+  /* Status Colors */
+  .dot-doc { background: #2563eb; }
+  .dot-skill { background: #7c3aed; }
+  .dot-research { background: #0f766e; }
+  .dot-section { background: #1a56db; }
+  .dot-deliverable { background: #dc2626; }
+  .dot-web { background: #0891b2; }
+  .tag-complete { background: #0f766e18; color: #0f766e; }
+  .tag-progress { background: #1a56db18; color: #1a56db; }
+  .tag-pending { background: #e8eefb; color: #5f6b7a; }
+  .tag-doc { background: #2563eb18; color: #2563eb; }
+  .tag-skill { background: #7c3aed18; color: #7c3aed; }
+
+  /* Canvas */
+  #graphCanvas { width: 100%; height: 100%; }
+
+  /* Legend */
+  .legend { position: absolute; bottom: 20px; left: 20px; background: #ffffffee; border: 1px solid #e2e6ef; border-radius: 10px; padding: 14px 18px; z-index: 5; }
+  .legend-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-bottom: 8px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .legend-label { font-size: 11px; color: #5f6b7a; }
+
+  /* Tooltip */
+  .tooltip { position: absolute; background: #ffffffee; border: 1px solid #e2e6ef; border-radius: 8px; padding: 12px 16px; max-width: 320px; z-index: 20; pointer-events: none; display: none; backdrop-filter: blur(8px); }
+  .tooltip-title { font-size: 13px; font-weight: 700; color: #1a1d23; margin-bottom: 4px; }
+  .tooltip-body { font-size: 11px; color: #5f6b7a; line-height: 1.5; }
+
+  /* Progress Bar */
+  .progress-container { padding: 16px 20px; border-bottom: 1px solid #e2e6ef; }
+  .progress-label { font-size: 10px; font-weight: 600; color: #5f6b7a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .progress-bar { height: 6px; background: #e8eefb; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #1a56db, #3b82f6); border-radius: 3px; transition: width 0.5s ease; }
+
+  /* Timeline */
+  .timeline-item { display: flex; gap: 12px; padding: 6px 0; }
+  .timeline-time { font-size: 10px; color: #94a3b8; width: 60px; flex-shrink: 0; text-align: right; padding-top: 1px; }
+  .timeline-dot-wrap { display: flex; flex-direction: column; align-items: center; }
+  .timeline-connector { width: 1px; flex: 1; background: #e8eefb; }
+  .timeline-text { font-size: 11px; color: #5f6b7a; padding-bottom: 8px; }
+
+  /* Filter pills */
+  .filter-bar { display: flex; gap: 6px; padding: 10px 16px; border-bottom: 1px solid #e2e6ef; flex-wrap: wrap; }
+  .pill { font-size: 10px; padding: 4px 10px; border-radius: 12px; border: 1px solid #e2e6ef; color: #5f6b7a; cursor: pointer; transition: all 0.15s; }
+  .pill:hover { border-color: #94a3b8; color: #1a1d23; }
+  .pill.active { background: #1a56db20; border-color: #1a56db; color: #1a56db; }
+
+  /* Detail Panel */
+  .detail-panel { position: absolute; top: 20px; right: 20px; width: 340px; background: #ffffffee; border: 1px solid #e2e6ef; border-radius: 12px; padding: 20px; z-index: 15; display: none; backdrop-filter: blur(12px); max-height: 80vh; overflow-y: auto; }
+  .detail-panel h3 { font-size: 15px; font-weight: 700; color: #1a1d23; margin-bottom: 4px; }
+  .detail-panel .detail-type { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .detail-panel .detail-section { margin-bottom: 14px; }
+  .detail-panel .detail-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #94a3b8; margin-bottom: 4px; }
+  .detail-panel .detail-text { font-size: 12px; color: #5f6b7a; line-height: 1.6; }
+  .detail-close { position: absolute; top: 12px; right: 14px; font-size: 18px; color: #94a3b8; cursor: pointer; }
+  .detail-close:hover { color: #1a1d23; }
+  .connections-list { list-style: none; }
+  .connections-list li { font-size: 11px; color: #5f6b7a; padding: 3px 0; display: flex; align-items: center; gap: 6px; }
+  .connections-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Updated timestamp */
+  .updated-stamp { padding: 10px 20px; border-top: 1px solid #e2e6ef; font-size: 10px; color: #94a3b8; text-align: center; }
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header" style="display:flex;flex-direction:column;gap:10px;">
+      <div>
+        <h1>Method MWD Playbook</h1>
+        <p>Knowledge Graph & Project Tracker</p>
+      </div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;">
+        <a href="deliverables/mwd-marketing-toolkit/mwd-marketing-toolkit-review.html" style="display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:8px;background:#1a56db14;border:1px solid #1a56db40;color:#1a56db;font-size:10px;font-weight:600;text-decoration:none;transition:all 0.2s;white-space:nowrap;" onmouseover="this.style.background='#1a56db28'" onmouseout="this.style.background='#1a56db14'" title="MWD Marketing Toolkit">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Toolkit
+        </a>
+        <a href="agent-map.html" style="display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:8px;background:#0891b214;border:1px solid #0891b240;color:#0891b2;font-size:10px;font-weight:600;text-decoration:none;transition:all 0.2s;white-space:nowrap;" onmouseover="this.style.background='#0891b228'" onmouseout="this.style.background='#0891b214'" title="Agent Map">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Agents
+        </a>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat"><div class="stat-value" id="statDocs">42</div><div class="stat-label">Documents</div></div>
+      <div class="stat"><div class="stat-value" id="statResearch">30</div><div class="stat-label">Web Sources</div></div>
+      <div class="stat"><div class="stat-value" id="statSkills">10</div><div class="stat-label">Skills</div></div>
+      <div class="stat"><div class="stat-value" id="statDeliverables">5/5</div><div class="stat-label">Sections</div></div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-label"><span>Overall Progress</span><span id="progressPct">100%</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 100%"></div></div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="overview">Overview</div>
+      <div class="tab" data-tab="documents">Docs</div>
+      <div class="tab" data-tab="research">Research</div>
+      <div class="tab" data-tab="sources">Sources</div>
+      <div class="tab" data-tab="timeline">Timeline</div>
+    </div>
+
+    <!-- Overview Tab -->
+    <div class="tab-content active" id="tab-overview">
+      <div class="section-group">
+        <div class="section-title">Playbook Sections</div>
+
+        <div class="item" data-node="section1">
+          <div class="item-dot dot-section"></div>
+          <div class="item-content">
+            <div class="item-name">Section 1: Market & Customer Foundation</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Market Landscape, ICP profiles, JTBD analysis, customer interviews</div>
+          </div>
+        </div>
+
+        <div class="item" data-node="section2">
+          <div class="item-dot dot-section"></div>
+          <div class="item-content">
+            <div class="item-name">Section 2: Positioning & Messaging</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Message house, persona messaging, inventory messaging, industry page</div>
+          </div>
+        </div>
+
+        <div class="item" data-node="section2b">
+          <div class="item-dot dot-section"></div>
+          <div class="item-content">
+            <div class="item-name">Section 2b: Customer Proof</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Success story templates and written customer stories</div>
+          </div>
+        </div>
+
+        <div class="item" data-node="section3">
+          <div class="item-dot dot-section"></div>
+          <div class="item-content">
+            <div class="item-name">Section 3: Competitive Intelligence</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Competitive landscape, battlecards (4), honest gaps brief</div>
+          </div>
+        </div>
+
+        <div class="item" data-node="section4">
+          <div class="item-dot dot-section"></div>
+          <div class="item-content">
+            <div class="item-name">Section 4: Sales Enablement</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Discovery guide, email sequences, objection handling, talk track</div>
+          </div>
+        </div>
+
+        <div class="item" data-node="section5">
+          <div class="item-dot dot-section"></div>
+          <div class="item-content">
+            <div class="item-name">Section 5: Launch Plans</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Launch tier matrix, per-launch mini plans, MWD-localized assets</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">MWD Marketing Toolkit (10 Cards)</div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">M1: Core Messaging & Value Props</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Headlines by pillar, taglines, elevator pitches, proof points</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">M2: Audience & Personas</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> ICP profiles, buyer personas, decision-maker mapping</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">M3: Customer Proof Library</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Success stories, quotes, ROI proof from real customers</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">M4: Competitive Angles for Content</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Positioning vs. enterprise, mid-market, and status quo</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">M5: Content Playbook</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Channel strategy, content calendar, distribution framework</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">M6: Sales Quick-Reference</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> One-pager cheat sheets for sales conversations</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">M7: Jobs to Be Done</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> JTBD framework with functional, emotional, and social jobs</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">M8: Top 200 Snapshot</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Analysis of Method's top 200 MWD customers</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">M9: Prospect Voice Library</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Prospect call insights, pain frequencies, feature demands</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">M10: Customization Showcase</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Custom screens, workflow examples, no-code depth</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">Strategic Views</div>
+
+        <div class="item">
+          <div class="item-dot dot-research"></div>
+          <div class="item-content">
+            <div class="item-name">Strategy Dashboard</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Four pillars, vertical composition, revenue, customization depth</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-research"></div>
+          <div class="item-content">
+            <div class="item-name">Blue Ocean Canvas</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Competitive factor analysis and white-space mapping</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-research"></div>
+          <div class="item-content">
+            <div class="item-name">Competitive Positioning Map</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Feature-by-feature competitive landscape</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-research"></div>
+          <div class="item-content">
+            <div class="item-name">Customer Journey Map</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Awareness through advocacy, touchpoints and content mapping</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-research"></div>
+          <div class="item-content">
+            <div class="item-name">Market Segmentation</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> MWD sub-segment sizing, prioritization, and targeting</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">Sales Enablement Battlecards (4)</div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">S1: MWD Master Battlecard</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Comprehensive competitive overview across all competitors</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">S2: vs. Enterprise (Salesforce/NetSuite)</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Positioning against enterprise solutions</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">S3: vs. Mid-Market (Zoho/Odoo/Thryv)</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Positioning against mid-market alternatives</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-deliverable"></div>
+          <div class="item-content">
+            <div class="item-name">S4: vs. Status Quo (Spreadsheets/QB Only)</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Positioning against doing nothing / manual processes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">Foundation Work</div>
+
+        <div class="item" data-node="research-synthesis">
+          <div class="item-dot dot-research"></div>
+          <div class="item-content">
+            <div class="item-name">Research Synthesis</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> 603 lines — all 24+ docs analyzed</div>
+          </div>
+        </div>
+
+        <div class="item" data-node="competitive-research">
+          <div class="item-dot dot-research"></div>
+          <div class="item-content">
+            <div class="item-name">Competitive Web Research</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> 10 competitors analyzed, QB ecosystem mapped, TAM/SAM/SOM sized</div>
+          </div>
+        </div>
+
+        <div class="item" data-node="playbook-plan">
+          <div class="item-dot dot-doc"></div>
+          <div class="item-content">
+            <div class="item-name">Playbook Plan</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> 5 sections, 24 deliverables — all executed</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-doc"></div>
+          <div class="item-content">
+            <div class="item-name">Prospect Call Analysis</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> MWD sales call transcripts analyzed for pain points and feature demand</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-dot dot-doc"></div>
+          <div class="item-content">
+            <div class="item-name">Top 200 Customer Enrichment</div>
+            <div class="item-meta"><span class="item-tag tag-complete">Complete</span> Firmographic enrichment of Method's top 200 MWD accounts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documents Tab -->
+    <div class="tab-content" id="tab-documents">
+      <div class="filter-bar">
+        <div class="pill active" data-filter="all">All (32)</div>
+        <div class="pill" data-filter="product">Product (5)</div>
+        <div class="pill" data-filter="competitive">Competitive (5)</div>
+        <div class="pill" data-filter="interview">Interviews (13)</div>
+        <div class="pill" data-filter="launch">Launches (5)</div>
+        <div class="pill" data-filter="other">Other (4)</div>
+      </div>
+
+      <div class="section-group" data-category="product">
+        <div class="section-title">Product</div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/product/Method-Product-Deck.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Method Product Deck</a></div><div class="item-meta">55 pages — full app/pack catalog, pricing, architecture</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/product/App-Onboarding-Value-Propositions.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">App Onboarding Value Propositions</a></div><div class="item-meta">Copy for all app onboarding screens</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/product/Project-Sync-First.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Project Sync-First</a></div><div class="item-meta">Internal walkthrough of sync-first architecture</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/product/DEP-Sales-Sheet.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">DEP Sales Sheet</a></div><div class="item-meta">Dedicated Enhancement Plan — $325/mo, 3hrs ongoing</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/product/QB-Editions-Overview.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">QB Editions Overview</a></div><div class="item-meta">Method CRM across QBO, QBDT, IES editions</div></div></div>
+      </div>
+
+      <div class="section-group" data-category="competitive">
+        <div class="section-title">Competitive</div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/competitive/Method-vs-Thryv-Battlecard.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Battlecard: Method vs Thryv</a></div><div class="item-meta">Internal battlecard with win/loss analysis</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/competitive/Method-vs-Zoho-Battlecard.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Battlecard: Method vs Zoho</a></div><div class="item-meta">Internal battlecard with win/loss analysis</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/competitive/Method-vs-Odoo-Battlecard.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Battlecard: Method vs Odoo</a></div><div class="item-meta">Internal battlecard with win/loss analysis</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/competitive/Method-vs-NetSuite-Battlecard.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Battlecard: Method vs NetSuite</a></div><div class="item-meta">INTERNAL — $25k+ setup, no QB sync, $99/user vs Method $25</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">QB Versions Feature Comparison</div><div class="item-meta">Third-party QuickBooks edition comparison</div></div></div>
+      </div>
+
+      <div class="section-group" data-category="interview">
+        <div class="section-title">Customer Interviews (13)</div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: Brown Safe — Answers</div><div class="item-meta">PDF — luxury safes, 177 custom screens, 12-week production, QBDT loyal</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: Vintage Makers — Answers</div><div class="item-meta">CSV — custom wine cellars + cigar distribution, 3,400 SKUs, 6 states</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: Mobility City — Q&A</div><div class="item-meta">CSV — 54 franchises scaling to 150-200, 159 custom screens, compliance</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: Mobility City — Quotes</div><div class="item-meta">CSV — key quotes on sales visibility, technology + process alignment</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: Mobility City — Industry Learnings</div><div class="item-meta">CSV — hybrid sales, standardization, fragmented inventory, POS limits</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: Mobility City — Terminology</div><div class="item-meta">CSV — franchise compliance, multi-entity reporting, item standardization</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: Duraline Systems — Answers</div><div class="item-meta">CSV — medical equipment mfg/dist/service, cross-department Method usage</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: Duraline Systems — Raw</div><div class="item-meta">CSV — original interview data</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: Europena Food Distribution</div><div class="item-meta">PDF — $25M food distribution, field sales, iPad audits, QBDT</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: GroGreen Lawn Care</div><div class="item-meta">CSV — field service, WordPress + Zapier integration</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Customer Interview Data: GroGreen Lawn Care</div><div class="item-meta">CSV — full interview dataset; field services focus (future Jobs app reference)</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview: Mobility City — Profile</div><div class="item-meta">CSV — franchise model profile data</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview Questions — Brown Safe</div><div class="item-meta">CSV — interview template</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Interview Questions — Vintage Makers</div><div class="item-meta">CSV — interview template</div></div></div>
+      </div>
+
+      <div class="section-group" data-category="launch">
+        <div class="section-title">Launch Briefs</div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/launch-briefs/Launch-Brief-Inventory-Management.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Launch Brief: Inventory Management</a></div><div class="item-meta">Jan 2026 launch — stock, reorder, BOMs, lot tracking</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/launch-briefs/Launch-Brief-Method-Pay.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Launch Brief: Method Pay</a></div><div class="item-meta">Apr 2026 launch — integrated payment processing</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/launch-briefs/Launch-Brief-Multi-Entity-Admin.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Launch Brief: Multi-Entity Admin</a></div><div class="item-meta">Tier 2 — "Manage 10+ companies as one", Super Admin, $40/mo per entity</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/launch-briefs/Launch-Brief-Growth-Dashboard.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Launch Brief: Growth Dashboard</a></div><div class="item-meta">Tier 3 — new home screen with Insights, To-Dos, Quick Actions, Learn</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name"><a href="reference/launch-briefs/Launch-Brief-Multi-Currency.pdf" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #2563eb;">Launch Brief: Multi-Currency</a></div><div class="item-meta">Feb 2026 launch — currency support for global ops</div></div></div>
+      </div>
+
+      <div class="section-group" data-category="other">
+        <div class="section-title">Messaging, Research & Metrics</div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Multi-Currency Messaging & Positioning</div><div class="item-meta">Existing messaging framework for multi-currency</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Research Directory</div><div class="item-meta">Directory of research sources and links</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Sales Demo Analysis</div><div class="item-meta">Patterns and themes from sales demo recordings</div></div></div>
+        <div class="item"><div class="item-dot dot-doc"></div><div class="item-content"><div class="item-name">Growth Dashboard</div><div class="item-meta">Method growth metrics and KPIs</div></div></div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">Skills (10)</div>
+        <div class="item"><div class="item-dot dot-skill"></div><div class="item-content"><div class="item-name">tone-of-voice</div><div class="item-meta">Writing rules, banned words, grade 8 vocab, examples</div></div></div>
+        <div class="item"><div class="item-dot dot-skill"></div><div class="item-content"><div class="item-name">method-positioning</div><div class="item-meta">4 pillars, ICP, competitive, packs/apps model</div></div></div>
+        <div class="item"><div class="item-dot dot-skill"></div><div class="item-content"><div class="item-name">jtbd</div><div class="item-meta">Jobs-to-be-done analysis framework</div></div></div>
+        <div class="item"><div class="item-dot dot-skill"></div><div class="item-content"><div class="item-name">icp-persona-mapper</div><div class="item-meta">ICP and persona profiling</div></div></div>
+        <div class="item"><div class="item-dot dot-skill"></div><div class="item-content"><div class="item-name">message-house</div><div class="item-meta">Message house building framework</div></div></div>
+        <div class="item"><div class="item-dot dot-skill"></div><div class="item-content"><div class="item-name">battlecard-builder</div><div class="item-meta">Competitive battlecard generator</div></div></div>
+        <div class="item"><div class="item-dot dot-skill"></div><div class="item-content"><div class="item-name">sales-enablement</div><div class="item-meta">Discovery guides, email sequences, objections</div></div></div>
+        <div class="item"><div class="item-dot dot-skill"></div><div class="item-content"><div class="item-name">launch-planner</div><div class="item-meta">Product launch planning framework</div></div></div>
+        <div class="item"><div class="item-dot dot-skill"></div><div class="item-content"><div class="item-name">insight-distiller</div><div class="item-meta">Interview and research synthesis</div></div></div>
+        <div class="item"><div class="item-dot dot-skill"></div><div class="item-content"><div class="item-name">asset-localizer</div><div class="item-meta">Horizontal-to-vertical content adaptation</div></div></div>
+      </div>
+    </div>
+
+    <!-- Research Tab -->
+    <div class="tab-content" id="tab-research">
+      <div class="section-group">
+        <div class="section-title">Web Research Conducted</div>
+
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.fishbowlinventory.com/manufacturing" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Fishbowl Inventory (MWD)</a></div><div class="item-meta">fishbowlinventory.com — QB-native inventory for manufacturers</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://katanamrp.com/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Katana MRP</a></div><div class="item-meta">katanamrp.com — cloud MRP for SMB manufacturers</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://getjobber.com/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Jobber (Field Services)</a></div><div class="item-meta">getjobber.com — field service CRM positioning</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.salesforce.com/solutions/industries/manufacturing/overview/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Salesforce Manufacturing Cloud</a></div><div class="item-meta">salesforce.com — enterprise MWD positioning</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.hubspot.com/industry/manufacturing" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">HubSpot for Manufacturing</a></div><div class="item-meta">hubspot.com — content strategy for MWD vertical</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://monday.com/blog/project-management/manufacturing-project-management/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Monday.com Manufacturing</a></div><div class="item-meta">monday.com — work management MWD play</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.thryv.com/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Thryv for SMBs</a></div><div class="item-meta">thryv.com — all-in-one SMB platform positioning</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.zoho.com/crm/industries/manufacturing/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Zoho CRM Manufacturing</a></div><div class="item-meta">zoho.com — vertical CRM approach and modules</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.odoo.com/app/manufacturing" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Odoo Manufacturing</a></div><div class="item-meta">odoo.com — open-source ERP MWD modules</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.netsuite.com/portal/industries/manufacturing.shtml" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">NetSuite for Manufacturing</a></div><div class="item-meta">netsuite.com — cloud ERP MWD suite</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://tidemarkcap.com/vertical-saas-knowledge-project/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Tidemark Vertical SaaS Knowledge Project</a></div><div class="item-meta">tidemarkcap.com — playbook methodology research</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://velocitypartners.com/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Velocity Partners B2B Playbooks</a></div><div class="item-meta">velocitypartners.com — "perceived specialness" framework</div></div></div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">QuickBooks Ecosystem Research</div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.method.me/blog/quickbooks-for-manufacturing-and-wholesale/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">QB Manufacturing Limitations</a></div><div class="item-meta">method.me — QB lacks BOM, traceability, product configurator, audit trails</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://quickbooks.intuit.com/desktop/enterprise/advanced-inventory/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">QB Enterprise Advanced Inventory</a></div><div class="item-meta">intuit.com — BOM cost tracking, advanced inventory, barcode scanning, $2140+/yr</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.webgility.com/blog/quickbooks-online-vs-desktop" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">QBO vs Desktop for MWD</a></div><div class="item-meta">webgility.com — Desktop wins for inventory-heavy businesses, assemblies, sales orders</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://fitsmallbusiness.com/best-inventory-management-software-integrates-with-quickbooks/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Best QB Inventory Integrations</a></div><div class="item-meta">fitsmallbusiness.com — Fishbowl, Cin7, SOS Inventory, Katana, Method integrations</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.method.me/quickbooks-crm/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Method Patented Two-Way Sync</a></div><div class="item-meta">method.me — real-time sync with QBO & Desktop, deepest QB CRM integration in market</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.certumsolutions.com/library/intuit-enterprise-suite-vs-quickbooks-enterprise" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Intuit Enterprise Suite (IES)</a></div><div class="item-meta">certumsolutions.com — IES replacing Desktop, NOT ready for manufacturers, no inventory management</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.nutshell.com/blog/best-crms-that-integrate-with-quickbooks" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">QB CRM Sync Landscape</a></div><div class="item-meta">nutshell.com — comparing QB CRM integrations: HubSpot, Nutshell, Capsule, Zoho vs Method</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.netsuite.com/portal/resource/articles/erp/outgrowing-quickbooks.shtml" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Outgrowing QuickBooks</a></div><div class="item-meta">netsuite.com — $5M-$20M revenue tipping point for manufacturers leaving QB</div></div></div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">TAM/SAM/SOM & Market Sizing (Session 4)</div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://advocacy.sba.gov/2024/07/23/frequently-asked-questions-about-small-business-2024/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">SBA Small Business FAQs 2024</a></div><div class="item-meta">advocacy.sba.gov — 34.7M US small businesses, 6.27M employer firms, 45.9% of workers</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.census.gov/data/datasets/2023/econ/cbp/2023-cbp.html" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Census Bureau CBP 2023</a></div><div class="item-meta">census.gov — County Business Patterns: ~240K-260K employer manufacturing firms</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://nam.org/mfgdata/facts-about-manufacturing-expanded/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">NAM Facts About Manufacturing</a></div><div class="item-meta">nam.org — 239K+ manufacturers, 13M employees, $2.95T value-added, 89% digital transformation</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://6sense.com/tech/small-business-accounting/quickbooks-market-share" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">6sense — QB SMB Market Share</a></div><div class="item-meta">6sense.com — QB 82.99% of SMB accounting market, 142K+ companies tracked</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://electroiq.com/stats/quickbooks-statistics/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">ElectroIQ — QuickBooks Statistics</a></div><div class="item-meta">electroiq.com — 62.23% market share, ~29M US businesses, 62% small companies</div></div></div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">QB Third-Party Connector Research (Session 4)</div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.celigo.com/integrations/quickbooks-online-netsuite/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Celigo NetSuite–QB Connector</a></div><div class="item-meta">celigo.com — iPaaS template syncing invoices, customers, vendors. NetSuite-recommended.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://ventor.tech/solutions/odoo-quickbooks/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">VentorTech Odoo–QB Connector</a></div><div class="item-meta">ventor.tech — Bi-directional sync, invoices/bills/payments, Odoo Apps Store</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://store.webkul.com/odoo-quickbooks-online-connector.html" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Webkul Odoo–QB Connector</a></div><div class="item-meta">webkul.com — Online + Desktop versions, cron-based scheduled import/export</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://techspawn.com/quickbooks-odoo-connector/" target="_blank" style="color:#5a5853;text-decoration:none;border-bottom:1px dotted #0891b2;">Techspawn Odoo–QB Connector</a></div><div class="item-meta">techspawn.com — Full automation, Community + Enterprise, 90-day support</div></div></div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">Key Competitive Insight</div>
+        <div class="item" style="cursor:default; background:#0f766e18; border-radius:8px;">
+          <div class="item-content" style="padding:6px;">
+            <div class="item-name" style="color:#0f766e; white-space:normal;">No competitor effectively bridges CRM + Operations + QuickBooks for SMBs</div>
+            <div class="item-meta" style="white-space:normal; margin-top:6px;">Salesforce & HubSpot are too enterprise. Katana & Fishbowl lack CRM. Thryv, Zoho, Odoo lack deep QB sync. Method owns the intersection.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sources Tab -->
+    <div class="tab-content" id="tab-sources">
+      <div class="section-group">
+        <div class="section-title">Competitor Websites Researched</div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.fishbowlinventory.com/manufacturing" target="_blank" style="color:#0891b2;">fishbowlinventory.com/manufacturing</a></div><div class="item-meta">Fishbowl — QB-native inventory/manufacturing. Pricing, features, QB integration approach.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://katanamrp.com/" target="_blank" style="color:#0891b2;">katanamrp.com</a></div><div class="item-meta">Katana — Cloud MRP for SMB manufacturers. Live inventory, BOMs, shop floor control.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://getjobber.com/" target="_blank" style="color:#0891b2;">getjobber.com</a></div><div class="item-meta">Jobber — Field service management. Scheduling, quoting, invoicing for trades.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.salesforce.com/solutions/industries/manufacturing/overview/" target="_blank" style="color:#0891b2;">salesforce.com/manufacturing</a></div><div class="item-meta">Salesforce Manufacturing Cloud — Enterprise CRM+ERP positioning, account-based forecasting.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.hubspot.com/industry/manufacturing" target="_blank" style="color:#0891b2;">hubspot.com/industry/manufacturing</a></div><div class="item-meta">HubSpot — Manufacturing vertical page, content marketing approach, inbound for MWD.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://monday.com/blog/project-management/manufacturing-project-management/" target="_blank" style="color:#0891b2;">monday.com/manufacturing</a></div><div class="item-meta">Monday.com — Work management angle into manufacturing project management.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.thryv.com/" target="_blank" style="color:#0891b2;">thryv.com</a></div><div class="item-meta">Thryv — All-in-one SMB platform. CRM, marketing, payments. Direct Method competitor.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.zoho.com/crm/industries/manufacturing/" target="_blank" style="color:#0891b2;">zoho.com/crm/manufacturing</a></div><div class="item-meta">Zoho CRM — Manufacturing vertical modules, inventory, order management.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.odoo.com/app/manufacturing" target="_blank" style="color:#0891b2;">odoo.com/app/manufacturing</a></div><div class="item-meta">Odoo — Open-source ERP, MRP, PLM, quality, maintenance modules.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.netsuite.com/portal/industries/manufacturing.shtml" target="_blank" style="color:#0891b2;">netsuite.com/manufacturing</a></div><div class="item-meta">NetSuite — Cloud ERP for manufacturers. Pricing analysis, $25k+ setup costs documented.</div></div></div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">Methodology & Frameworks</div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://tidemarkcap.com/vertical-saas-knowledge-project/" target="_blank" style="color:#0891b2;">tidemarkcap.com/vertical-saas-knowledge-project</a></div><div class="item-meta">Tidemark Capital — Vertical SaaS playbook methodology, ICP frameworks, go-to-market patterns.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://velocitypartners.com/" target="_blank" style="color:#0891b2;">velocitypartners.com</a></div><div class="item-meta">Velocity Partners — B2B content strategy, "perceived specialness" framework for vertical positioning.</div></div></div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">QuickBooks Ecosystem (Session 3)</div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.method.me/blog/quickbooks-for-manufacturing-and-wholesale/" target="_blank" style="color:#0891b2;">method.me — QB Manufacturing & Wholesale Guide</a></div><div class="item-meta">Why QB falls short for manufacturers: no BOM support, no traceability, no product configurator, no audit trails.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://quickbooks.intuit.com/desktop/enterprise/advanced-inventory/" target="_blank" style="color:#0891b2;">intuit.com — QB Enterprise Advanced Inventory</a></div><div class="item-meta">QB Enterprise Platinum with Advanced Inventory. BOM cost tracking, barcode scanning, multi-warehouse. $2140+/yr.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.webgility.com/blog/quickbooks-online-vs-desktop" target="_blank" style="color:#0891b2;">webgility.com — QBO vs Desktop in 2026</a></div><div class="item-meta">Desktop wins for inventory-heavy MWD businesses. QBO lacks assemblies, sales orders, advanced inventory.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://fitsmallbusiness.com/best-inventory-management-software-integrates-with-quickbooks/" target="_blank" style="color:#0891b2;">fitsmallbusiness.com — Best QB Inventory Integrations</a></div><div class="item-meta">Popular QB integrations for MWD: Fishbowl (#1 inventory), Cin7 Core, SOS Inventory, Katana MRP, Method CRM.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.method.me/quickbooks-crm/" target="_blank" style="color:#0891b2;">method.me — QuickBooks CRM Sync</a></div><div class="item-meta">Method's patented two-way real-time sync. Works with QBO and Desktop. Deepest QB CRM integration available.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.certumsolutions.com/library/intuit-enterprise-suite-vs-quickbooks-enterprise" target="_blank" style="color:#0891b2;">certumsolutions.com — IES vs QB Enterprise</a></div><div class="item-meta">IES replacing QB Desktop. NOT ready for manufacturers — no inventory management, built for service businesses.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.nutshell.com/blog/best-crms-that-integrate-with-quickbooks" target="_blank" style="color:#0891b2;">nutshell.com — Best CRMs for QuickBooks</a></div><div class="item-meta">Comparing QB CRM integrations: HubSpot, Nutshell, Capsule, Zoho. None match Method's two-way sync depth.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.netsuite.com/portal/resource/articles/erp/outgrowing-quickbooks.shtml" target="_blank" style="color:#0891b2;">netsuite.com — Outgrowing QuickBooks</a></div><div class="item-meta">Signs manufacturers outgrow QB. $5M-$20M revenue tipping point. Method can extend QB's life vs forcing migration.</div></div></div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">TAM / SAM / SOM Research (Session 4)</div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://advocacy.sba.gov/2024/07/23/frequently-asked-questions-about-small-business-2024/" target="_blank" style="color:#0891b2;">SBA Office of Advocacy — Small Business FAQs 2024</a></div><div class="item-meta">34.7M US small businesses, 45.9% of workers, 43.5% of GDP. Employer firms: 6.27M.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.census.gov/data/datasets/2023/econ/cbp/2023-cbp.html" target="_blank" style="color:#0891b2;">US Census Bureau — County Business Patterns 2023</a></div><div class="item-meta">Subnational economic data by industry. ~240K-260K employer manufacturing firms (NAICS 31-33).</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://nam.org/mfgdata/facts-about-manufacturing-expanded/" target="_blank" style="color:#0891b2;">NAM — Facts About Manufacturing (Expanded)</a></div><div class="item-meta">239K+ manufacturers in US, 13M employees, $2.95T value-added output, $106K avg earnings.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://6sense.com/tech/small-business-accounting/quickbooks-market-share" target="_blank" style="color:#0891b2;">6sense — QuickBooks Small Business Accounting Market Share</a></div><div class="item-meta">QB holds 82.99% of SMB accounting market. 142K+ companies tracked. 84% US-based.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://6sense.com/tech/accounting/quickbooks-market-share" target="_blank" style="color:#0891b2;">6sense — QuickBooks Accounting Market Share (Broad)</a></div><div class="item-meta">QB 36.72% of broader accounting market. 126K+ companies. 100K+ in US (84.37%).</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://electroiq.com/stats/quickbooks-statistics/" target="_blank" style="color:#0891b2;">ElectroIQ — QuickBooks Statistics 2025</a></div><div class="item-meta">62.23% market share, ~29M US businesses, 80% US customers, 62% small (<50 employees).</div></div></div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title">QB Integration / Connector Research (Session 4)</div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://www.celigo.com/integrations/quickbooks-online-netsuite/" target="_blank" style="color:#0891b2;">Celigo — QuickBooks–NetSuite Integration Template</a></div><div class="item-meta">iPaaS connector syncing invoices, customers, vendors, payments. NetSuite-recommended partner.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://ventor.tech/solutions/odoo-quickbooks/" target="_blank" style="color:#0891b2;">VentorTech — Odoo QuickBooks Online Connector</a></div><div class="item-meta">Bi-directional sync: invoices, bills, payments, customers, vendors, products. Odoo Apps Store.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://store.webkul.com/odoo-quickbooks-online-connector.html" target="_blank" style="color:#0891b2;">Webkul — Odoo QuickBooks Connector (Online + Desktop)</a></div><div class="item-meta">Import/export vendors, products, invoices, payments. Cron-based scheduled sync. Desktop version available.</div></div></div>
+        <div class="item"><div class="item-dot dot-web"></div><div class="item-content"><div class="item-name"><a href="https://techspawn.com/quickbooks-odoo-connector/" target="_blank" style="color:#0891b2;">Techspawn — QuickBooks Odoo Connector</a></div><div class="item-meta">Full automation from sales orders to invoicing. Community + Enterprise editions. 90-day free support.</div></div></div>
+      </div>
+
+      <div class="section-group">
+        <div class="section-title" style="color:#a09a90;font-style:italic;">This list updates as new web research is conducted each session. All URLs are live — click to open in a new tab.</div>
+      </div>
+    </div>
+
+    <!-- Timeline Tab -->
+    <div class="tab-content" id="tab-timeline">
+      <div class="section-group">
+        <div class="section-title">Project Timeline</div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 1</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-skill" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Created 8 GTM skills (JTBD, ICP, Message House, Battlecard, Sales Enablement, Launch Planner, Insight Distiller, Asset Localizer)</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 1</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-doc" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Initialized GitHub repo, committed skill files</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 2</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-doc" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Researched vertical playbook best practices, built playbook plan (5 sections, 24 deliverables)</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 2</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-skill" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Created tone-of-voice skill from brand guide PDF</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 2</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-skill" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Created method-positioning skill from 11-page positioning doc</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 2</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-doc" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Organized 21 reference documents into categorized library (product, competitive, interviews, launches, messaging, research, metrics)</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 2</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-research" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Deep research: read all 21 docs, produced 603-line synthesis. Surfed 12 web sources for competitive intelligence.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 3</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-doc" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Thorough Product Deck review (55 pages) — full apps/packs architecture mapped</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 3</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-doc" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Ingested 3 new docs: NetSuite Battlecard, Multi-Entity Admin Launch Brief, Growth Dashboard Launch Brief</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 3</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-research" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Built knowledge graph tracker with clickable sources, doc links, and Sources tab</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 3</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-web" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Deep QB ecosystem research: 8 new web sources covering manufacturing limits, QBO vs Desktop, Enterprise edition, IES transition, CRM sync landscape, outgrowing QB, app marketplace, Method sync depth</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 4</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-doc" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Ingested 8 new interview files: Brown Safe (PDF), Vintage Makers (CSV), Mobility City (4 files: Q&A, Quotes, Industry Learnings, Terminology), Europena (PDF), Duraline answers</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 4</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-deliverable" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">Completed Deliverable 1: MWD Market Landscape (V3+) — balanced evidence from 6 customers, accurate QB integration data, TAM/SAM/SOM, competitive analysis, pricing tables</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 4</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-web" style="margin:0"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-text">TAM/SAM/SOM research: 6 web sources — SBA (34.7M small biz), Census CBP (240K+ mfg firms), NAM (239K+ manufacturers), 6sense (QB 83% SMB share), ElectroIQ (29M US QB users)</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">Session 4</div>
+          <div class="timeline-dot-wrap"><div class="item-dot dot-web" style="margin:0"></div></div>
+          <div class="timeline-text">QB connector research: 4 sources — Celigo (NetSuite iPaaS), VentorTech/Webkul/Techspawn (Odoo QB modules). Confirmed third-party integration costs for competitive analysis.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="updated-stamp">Last updated: Mar 18, 2026 — Toolkit Complete</div>
+  </div>
+
+  <!-- Main Graph Area -->
+  <div class="main">
+    <canvas id="graphCanvas"></canvas>
+
+    <div class="legend">
+      <div class="legend-title">Node Types</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div><div class="legend-label">Documents (32+)</div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#7c3aed"></div><div class="legend-label">Skills (10)</div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#0f766e"></div><div class="legend-label">Research / Synthesis</div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#1a56db"></div><div class="legend-label">Playbook Sections</div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#0891b2"></div><div class="legend-label">Web Sources</div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#dc2626"></div><div class="legend-label">Deliverables</div></div>
+    </div>
+
+    <div class="detail-panel" id="detailPanel">
+      <div class="detail-close" id="detailClose">&times;</div>
+      <h3 id="detailTitle"></h3>
+      <div class="detail-type" id="detailType"></div>
+      <div class="detail-section"><div class="detail-section-title">Description</div><div class="detail-text" id="detailDesc"></div></div>
+      <div class="detail-section"><div class="detail-section-title">Connections</div><ul class="connections-list" id="detailConnections"></ul></div>
+    </div>
+
+    <div class="tooltip" id="tooltip">
+      <div class="tooltip-title" id="tooltipTitle"></div>
+      <div class="tooltip-body" id="tooltipBody"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA MODEL — This is what gets updated as the project evolves
+// ============================================================
+const DATA = {
+  lastUpdated: "Mar 12, 2026 — Session 7",
+  stats: { docs: 42, webSources: 30, skills: 10, deliverables: "5/5", progressPct: 100 },
+
+  nodes: [
+    // Playbook Sections (gold)
+    { id: "s1", label: "Market &\nCustomer", type: "section", color: "#1a56db", r: 38, desc: "Section 1: ICP profiles, JTBD analysis, customer interviews, market landscape", status: "complete" },
+    { id: "s2", label: "Positioning &\nMessaging", type: "section", color: "#1a56db", r: 38, desc: "Section 2: Message house, persona messaging, inventory messaging, industry page", status: "complete" },
+    { id: "s2b", label: "Customer\nProof", type: "section", color: "#1a56db", r: 32, desc: "Section 2b: Success story templates and written stories", status: "complete" },
+    { id: "s3", label: "Competitive\nIntel", type: "section", color: "#1a56db", r: 38, desc: "Section 3: Competitive landscape, battlecards, honest gaps brief", status: "complete" },
+    { id: "s4", label: "Sales\nEnablement", type: "section", color: "#1a56db", r: 38, desc: "Section 4: Discovery guide, email sequences, objection handling, talk track", status: "pending" },
+    { id: "s5", label: "Launch\nPlans", type: "section", color: "#1a56db", r: 38, desc: "Section 5: Launch tier matrix, per-launch mini plans, MWD-localized assets", status: "pending" },
+
+    // Skills (purple)
+    { id: "sk-tone", label: "Tone of\nVoice", type: "skill", color: "#7c3aed", r: 26, desc: "Writing rules: direct, bold, grade 8 vocab. Banned words list, examples." },
+    { id: "sk-pos", label: "Method\nPositioning", type: "skill", color: "#7c3aed", r: 26, desc: "4 pillars, ICP, competitive positioning, packs/apps model, MWD pains" },
+    { id: "sk-jtbd", label: "JTBD", type: "skill", color: "#7c3aed", r: 22, desc: "Jobs-to-be-done analysis framework" },
+    { id: "sk-icp", label: "ICP/Persona\nMapper", type: "skill", color: "#7c3aed", r: 22, desc: "ICP and persona profiling skill" },
+    { id: "sk-msg", label: "Message\nHouse", type: "skill", color: "#7c3aed", r: 22, desc: "Message house building framework" },
+    { id: "sk-bc", label: "Battlecard\nBuilder", type: "skill", color: "#7c3aed", r: 22, desc: "Competitive battlecard generator" },
+    { id: "sk-se", label: "Sales\nEnablement", type: "skill", color: "#7c3aed", r: 22, desc: "Discovery guides, email sequences, objection handling" },
+    { id: "sk-lp", label: "Launch\nPlanner", type: "skill", color: "#7c3aed", r: 22, desc: "Product launch planning framework" },
+    { id: "sk-id", label: "Insight\nDistiller", type: "skill", color: "#7c3aed", r: 22, desc: "Interview and research synthesis" },
+    { id: "sk-al", label: "Asset\nLocalizer", type: "skill", color: "#7c3aed", r: 22, desc: "Horizontal-to-vertical content adaptation" },
+
+    // Documents (blue)
+    { id: "d-deck", label: "Product\nDeck", type: "doc", color: "#2563eb", r: 26, desc: "55-page product overview: all 11 packs, every app, pricing tiers, architecture" },
+    { id: "d-onboard", label: "App\nOnboarding", type: "doc", color: "#2563eb", r: 20, desc: "Value proposition copy for every Method app" },
+    { id: "d-sync", label: "Sync-First", type: "doc", color: "#2563eb", r: 20, desc: "Internal doc on sync-first architecture" },
+    { id: "d-dep", label: "DEP Sheet", type: "doc", color: "#2563eb", r: 20, desc: "Dedicated Enhancement Plan — $325/mo, 3hrs ongoing customization" },
+    { id: "d-qb", label: "QB Editions", type: "doc", color: "#2563eb", r: 20, desc: "Method CRM across QBO, QBDT, IES editions" },
+    { id: "d-thryv", label: "BC:\nThryv", type: "doc", color: "#2563eb", r: 21, desc: "Battlecard: Method vs Thryv" },
+    { id: "d-zoho", label: "BC:\nZoho", type: "doc", color: "#2563eb", r: 21, desc: "Battlecard: Method vs Zoho" },
+    { id: "d-odoo", label: "BC:\nOdoo", type: "doc", color: "#2563eb", r: 21, desc: "Battlecard: Method vs Odoo" },
+    { id: "d-qbcomp", label: "QB Feature\nComparison", type: "doc", color: "#2563eb", r: 20, desc: "Third-party QuickBooks feature comparison" },
+    { id: "d-inv1", label: "Interview:\nDuraline", type: "doc", color: "#2563eb", r: 20, desc: "Customer interview — Duraline Systems (MWD)" },
+    { id: "d-inv2", label: "Interview:\nGroGreen", type: "doc", color: "#2563eb", r: 20, desc: "Customer interview — GroGreen Lawn Care" },
+    { id: "d-inv2b", label: "Data:\nGroGreen", type: "doc", color: "#2563eb", r: 19, desc: "Full interview dataset — GroGreen Lawn Care (field services; future Jobs app ref)" },
+    { id: "d-inv3", label: "Interview:\nMC Profile", type: "doc", color: "#2563eb", r: 20, desc: "Customer profile — MC" },
+    { id: "d-lb-inv", label: "Launch Brief:\nInventory", type: "doc", color: "#2563eb", r: 22, desc: "Inventory Management app — Jan 2026 launch" },
+    { id: "d-lb-pay", label: "Launch Brief:\nMethod Pay", type: "doc", color: "#2563eb", r: 22, desc: "Method Pay — Apr 2026 launch" },
+    { id: "d-lb-mc", label: "Launch Brief:\nMulti-Currency", type: "doc", color: "#2563eb", r: 22, desc: "Multi-Currency support — Feb 2026 launch" },
+    { id: "d-multicur", label: "Multi-Currency\nMessaging", type: "doc", color: "#2563eb", r: 20, desc: "Existing messaging/positioning for multi-currency" },
+    { id: "d-demo", label: "Sales Demo\nAnalysis", type: "doc", color: "#2563eb", r: 20, desc: "Patterns and themes from sales demos" },
+    { id: "d-growth", label: "Growth\nDashboard", type: "doc", color: "#2563eb", r: 20, desc: "Method growth metrics and KPIs" },
+    { id: "d-netsuite", label: "BC:\nNetSuite", type: "doc", color: "#2563eb", r: 22, desc: "Battlecard: Method vs NetSuite — $25k+ setup, no QB sync, $99/user" },
+    { id: "d-lb-me", label: "Launch Brief:\nMulti-Entity", type: "doc", color: "#2563eb", r: 22, desc: "Multi-Entity Admin — Super Admin, bulk actions, $40/mo per entity" },
+    { id: "d-lb-gd", label: "Launch Brief:\nGrowth Dash", type: "doc", color: "#2563eb", r: 22, desc: "Growth Dashboard — Insights, To-Dos, Quick Actions, Learn tabs" },
+
+    // Research (green)
+    { id: "r-synth", label: "Research\nSynthesis", type: "research", color: "#0f766e", r: 32, desc: "603-line synthesis of all 21 docs: product, customers, competitive, messaging, growth" },
+    { id: "r-comp", label: "Competitive\nResearch", type: "research", color: "#0f766e", r: 30, desc: "Web research on 9+ competitors in MWD space" },
+    { id: "r-plan", label: "Playbook\nPlan", type: "research", color: "#0f766e", r: 28, desc: "Master plan: 5 sections, 24 deliverables, build order, manager requirements mapped" },
+
+    // Web Sources (cyan)
+    { id: "w-fish", label: "Fishbowl", type: "web", color: "#0891b2", r: 18, desc: "QB-native inventory for manufacturers" },
+    { id: "w-kata", label: "Katana", type: "web", color: "#0891b2", r: 18, desc: "Cloud MRP for SMB manufacturers" },
+    { id: "w-jobb", label: "Jobber", type: "web", color: "#0891b2", r: 18, desc: "Field service CRM" },
+    { id: "w-sf", label: "Salesforce", type: "web", color: "#0891b2", r: 18, desc: "Manufacturing Cloud — enterprise MWD" },
+    { id: "w-hub", label: "HubSpot", type: "web", color: "#0891b2", r: 18, desc: "Manufacturing content strategy" },
+    { id: "w-mon", label: "Monday", type: "web", color: "#0891b2", r: 18, desc: "Work management MWD play" },
+    { id: "w-thr", label: "Thryv", type: "web", color: "#0891b2", r: 18, desc: "All-in-one SMB platform" },
+    { id: "w-zoh", label: "Zoho", type: "web", color: "#0891b2", r: 18, desc: "Vertical CRM modules" },
+    { id: "w-odo", label: "Odoo", type: "web", color: "#0891b2", r: 18, desc: "Open-source ERP MWD" },
+    { id: "w-net", label: "NetSuite", type: "web", color: "#0891b2", r: 18, desc: "Cloud ERP MWD suite" },
+    { id: "w-tide", label: "Tidemark\nVSKP", type: "web", color: "#0891b2", r: 18, desc: "Vertical playbook methodology" },
+    { id: "w-velo", label: "Velocity\nPartners", type: "web", color: "#0891b2", r: 18, desc: "Perceived specialness framework" },
+
+    // Session 3 — QuickBooks ecosystem deep research
+    { id: "w-qbmfg", label: "QB Mfg\nLimits", type: "web", color: "#0891b2", r: 18, desc: "QB limitations for manufacturing — no BOM, no traceability, scalability walls" },
+    { id: "w-qbovd", label: "QBO vs\nDesktop", type: "web", color: "#0891b2", r: 18, desc: "QB Online vs Desktop for MWD — Desktop wins for inventory-heavy businesses" },
+    { id: "w-qbcrm", label: "QB CRM\nSync", type: "web", color: "#0891b2", r: 18, desc: "CRM integrations with QB — Method #1 for two-way sync depth" },
+    { id: "w-qbent", label: "QB Enterprise\nMfg", type: "web", color: "#0891b2", r: 18, desc: "QB Enterprise manufacturing edition — BOM, advanced inventory, $2140+/yr" },
+    { id: "w-ies", label: "Intuit\nIES", type: "web", color: "#0891b2", r: 18, desc: "IES replacing Desktop — NOT ready for manufacturers, no inventory mgmt" },
+    { id: "w-outgrow", label: "Outgrowing\nQB", type: "web", color: "#0891b2", r: 18, desc: "Signs mfg businesses outgrow QB — $5M-$20M revenue tipping point" },
+    { id: "w-qbapps", label: "QB App\nMarketplace", type: "web", color: "#0891b2", r: 18, desc: "Popular QB integrations — Fishbowl, Cin7, SOS, Katana, Method" },
+    { id: "w-msync", label: "Method\nSync Deep", type: "web", color: "#0891b2", r: 18, desc: "Method patented two-way sync — real-time, both QBO & Desktop, deepest in market" },
+
+    // Session 4 — TAM/SAM/SOM research
+    { id: "w-sba", label: "SBA Small\nBiz FAQs", type: "web", color: "#0891b2", r: 18, desc: "34.7M US small businesses, 6.27M employer firms, 45.9% of workers" },
+    { id: "w-cbp", label: "Census\nCBP 2023", type: "web", color: "#0891b2", r: 18, desc: "County Business Patterns — ~240K-260K employer manufacturing firms" },
+    { id: "w-nam", label: "NAM Mfg\nFacts", type: "web", color: "#0891b2", r: 18, desc: "239K+ manufacturers, 13M employees, $2.95T value-added output" },
+    { id: "w-6sense", label: "6sense QB\nShare", type: "web", color: "#0891b2", r: 18, desc: "QB 82.99% SMB accounting market, 84% US-based" },
+    { id: "w-6senseb", label: "6sense QB\nBroad", type: "web", color: "#0891b2", r: 18, desc: "QB 36.72% broader accounting market, 126K+ companies tracked" },
+    { id: "w-electro", label: "ElectroIQ\nQB Stats", type: "web", color: "#0891b2", r: 18, desc: "62.23% market share, ~29M US businesses, 62% small companies" },
+
+    // Session 4 — QB connector research
+    { id: "w-celigo", label: "Celigo\niPaaS", type: "web", color: "#0891b2", r: 18, desc: "NetSuite-QB iPaaS connector — invoices, customers, vendors, payments" },
+    { id: "w-ventor", label: "VentorTech\nOdoo-QB", type: "web", color: "#0891b2", r: 18, desc: "Odoo QB Online connector — bi-directional sync on Odoo Apps Store" },
+    { id: "w-webkul", label: "Webkul\nOdoo-QB", type: "web", color: "#0891b2", r: 18, desc: "Odoo QB connector — Online + Desktop versions, cron-based sync" },
+    { id: "w-techsp", label: "Techspawn\nOdoo-QB", type: "web", color: "#0891b2", r: 18, desc: "QB Odoo connector — full automation, Community + Enterprise" },
+
+    // Session 4 — New interview documents
+    { id: "d-bs", label: "Interview:\nBrown Safe", type: "doc", color: "#2563eb", r: 21, desc: "Luxury safes, 177 custom screens, 12-week production, QBDT loyal" },
+    { id: "d-vm", label: "Interview:\nVintage Makers", type: "doc", color: "#2563eb", r: 21, desc: "Custom wine cellars + cigar distribution, 3,400 SKUs, 6 states" },
+    { id: "d-mcqa", label: "Interview:\nMC Q&A", type: "doc", color: "#2563eb", r: 21, desc: "54 franchises scaling 150-200, 159 custom screens, compliance" },
+    { id: "d-mcq", label: "Interview:\nMC Quotes", type: "doc", color: "#2563eb", r: 20, desc: "Key quotes on sales visibility, technology + process alignment" },
+    { id: "d-mcil", label: "Interview:\nMC Learnings", type: "doc", color: "#2563eb", r: 20, desc: "Hybrid sales, standardization issues, fragmented inventory, POS" },
+    { id: "d-mct", label: "Interview:\nMC Terms", type: "doc", color: "#2563eb", r: 20, desc: "Franchise compliance, multi-entity reporting, item standardization" },
+    { id: "d-euro", label: "Interview:\nEuropena", type: "doc", color: "#2563eb", r: 21, desc: "$25M food distribution, field sales, iPad audits, QBDT, customization" },
+
+    // Deliverable node
+    { id: "del-landscape", label: "Market\nLandscape", type: "deliverable", color: "#dc2626", r: 28, desc: "Section 1, Deliverable 1 — COMPLETE. V3+ with TAM/SAM/SOM, competitive analysis, pricing, buying signals." },
+  ],
+
+  edges: [
+    // Docs → Research Synthesis
+    { from: "d-deck", to: "r-synth" }, { from: "d-onboard", to: "r-synth" }, { from: "d-sync", to: "r-synth" },
+    { from: "d-dep", to: "r-synth" }, { from: "d-qb", to: "r-synth" },
+    { from: "d-thryv", to: "r-synth" }, { from: "d-zoho", to: "r-synth" }, { from: "d-odoo", to: "r-synth" },
+    { from: "d-inv1", to: "r-synth" }, { from: "d-inv2", to: "r-synth" }, { from: "d-inv3", to: "r-synth" },
+    { from: "d-lb-inv", to: "r-synth" }, { from: "d-lb-pay", to: "r-synth" }, { from: "d-lb-mc", to: "r-synth" },
+    { from: "d-multicur", to: "r-synth" }, { from: "d-demo", to: "r-synth" }, { from: "d-growth", to: "r-synth" },
+    { from: "d-netsuite", to: "r-synth" }, { from: "d-lb-me", to: "r-synth" }, { from: "d-lb-gd", to: "r-synth" },
+
+    // Web → Competitive Research
+    { from: "w-fish", to: "r-comp" }, { from: "w-kata", to: "r-comp" }, { from: "w-jobb", to: "r-comp" },
+    { from: "w-sf", to: "r-comp" }, { from: "w-hub", to: "r-comp" }, { from: "w-mon", to: "r-comp" },
+    { from: "w-thr", to: "r-comp" }, { from: "w-zoh", to: "r-comp" }, { from: "w-odo", to: "r-comp" },
+    { from: "w-net", to: "r-comp" }, { from: "w-tide", to: "r-plan" }, { from: "w-velo", to: "r-plan" },
+    // QB ecosystem research → competitive research + sections
+    { from: "w-qbmfg", to: "r-comp" }, { from: "w-qbovd", to: "r-comp" }, { from: "w-qbcrm", to: "r-comp" },
+    { from: "w-qbent", to: "r-comp" }, { from: "w-ies", to: "r-comp" }, { from: "w-outgrow", to: "r-comp" },
+    { from: "w-qbapps", to: "r-comp" }, { from: "w-msync", to: "r-comp" },
+    { from: "w-qbmfg", to: "s1" }, { from: "w-outgrow", to: "s1" },
+    { from: "w-qbcrm", to: "s3" }, { from: "w-msync", to: "s3" },
+    { from: "w-ies", to: "s5" },
+
+    // Research → Sections
+    { from: "r-synth", to: "s1" }, { from: "r-synth", to: "s2" }, { from: "r-synth", to: "s2b" },
+    { from: "r-comp", to: "s3" }, { from: "r-plan", to: "s1" }, { from: "r-plan", to: "s5" },
+
+    // Skills → Sections
+    { from: "sk-jtbd", to: "s1" }, { from: "sk-icp", to: "s1" }, { from: "sk-id", to: "s1" },
+    { from: "sk-msg", to: "s2" }, { from: "sk-al", to: "s2" }, { from: "sk-tone", to: "s2" }, { from: "sk-pos", to: "s2" },
+    { from: "sk-id", to: "s2b" }, { from: "sk-msg", to: "s2b" },
+    { from: "sk-bc", to: "s3" },
+    { from: "sk-se", to: "s4" }, { from: "sk-tone", to: "s4" },
+    { from: "sk-lp", to: "s5" }, { from: "sk-al", to: "s5" },
+
+    // Docs → specific sections
+    { from: "d-inv1", to: "s1" }, { from: "d-inv2", to: "s1" }, { from: "d-inv2b", to: "s1" }, { from: "d-inv3", to: "s1" },
+    { from: "d-thryv", to: "s3" }, { from: "d-zoho", to: "s3" }, { from: "d-odoo", to: "s3" }, { from: "d-netsuite", to: "s3" },
+    { from: "d-lb-inv", to: "s5" }, { from: "d-lb-pay", to: "s5" }, { from: "d-lb-mc", to: "s5" }, { from: "d-lb-me", to: "s5" }, { from: "d-lb-gd", to: "s5" },
+    { from: "d-multicur", to: "s2" }, { from: "d-demo", to: "s4" },
+    { from: "d-deck", to: "sk-pos" },
+
+    // Session 4 — TAM/SAM/SOM web sources → Market Landscape deliverable + Section 1
+    { from: "w-sba", to: "del-landscape" }, { from: "w-cbp", to: "del-landscape" }, { from: "w-nam", to: "del-landscape" },
+    { from: "w-6sense", to: "del-landscape" }, { from: "w-6senseb", to: "del-landscape" }, { from: "w-electro", to: "del-landscape" },
+    { from: "w-sba", to: "s1" }, { from: "w-cbp", to: "s1" }, { from: "w-nam", to: "s1" },
+
+    // Session 4 — QB connector research → competitive research + Section 3
+    { from: "w-celigo", to: "r-comp" }, { from: "w-ventor", to: "r-comp" }, { from: "w-webkul", to: "r-comp" }, { from: "w-techsp", to: "r-comp" },
+    { from: "w-celigo", to: "del-landscape" }, { from: "w-ventor", to: "del-landscape" },
+
+    // Session 4 — New interview docs → Section 1 + deliverable
+    { from: "d-bs", to: "s1" }, { from: "d-vm", to: "s1" }, { from: "d-mcqa", to: "s1" },
+    { from: "d-mcq", to: "s1" }, { from: "d-mcil", to: "s1" }, { from: "d-mct", to: "s1" }, { from: "d-euro", to: "s1" },
+    { from: "d-bs", to: "del-landscape" }, { from: "d-vm", to: "del-landscape" }, { from: "d-mcqa", to: "del-landscape" }, { from: "d-euro", to: "del-landscape" },
+    { from: "d-bs", to: "r-synth" }, { from: "d-vm", to: "r-synth" }, { from: "d-mcqa", to: "r-synth" }, { from: "d-euro", to: "r-synth" },
+
+    // Deliverable → Section
+    { from: "del-landscape", to: "s1" },
+
+    // Cross-section flows
+    { from: "s1", to: "s2" }, { from: "s2", to: "s2b" }, { from: "s2", to: "s3" },
+    { from: "s3", to: "s4" }, { from: "s4", to: "s5" },
+  ]
+};
+
+// ============================================================
+// GRAPH RENDERER — Force-directed layout on Canvas
+// ============================================================
+const canvas = document.getElementById('graphCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, dpr;
+let nodes = [], edges = [];
+let hoveredNode = null, selectedNode = null, dragNode = null;
+let offsetX = 0, offsetY = 0, isDragging = false;
+let mouseX = 0, mouseY = 0;
+
+function resize() {
+  dpr = window.devicePixelRatio || 1;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  W = rect.width; H = rect.height;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+window.addEventListener('resize', resize);
+
+function initGraph() {
+  resize();
+  const cx = W / 2, cy = H / 2;
+
+  // Position nodes in clusters
+  const typePositions = {
+    section: { cx: cx, cy: cy, spread: 140 },
+    skill: { cx: cx - 250, cy: cy + 100, spread: 160 },
+    doc: { cx: cx + 220, cy: cy - 20, spread: 200 },
+    research: { cx: cx - 30, cy: cy - 60, spread: 80 },
+    web: { cx: cx + 100, cy: cy + 200, spread: 180 },
+  };
+
+  nodes = DATA.nodes.map((n, i) => {
+    const tp = typePositions[n.type] || { cx, cy, spread: 200 };
+    const angle = (i / DATA.nodes.length) * Math.PI * 2 + Math.random() * 0.5;
+    const dist = tp.spread * (0.5 + Math.random() * 0.5);
+    return {
+      ...n,
+      x: tp.cx + Math.cos(angle) * dist,
+      y: tp.cy + Math.sin(angle) * dist,
+      vx: 0, vy: 0,
+    };
+  });
+
+  edges = DATA.edges.map(e => ({
+    source: nodes.find(n => n.id === e.from),
+    target: nodes.find(n => n.id === e.to),
+  })).filter(e => e.source && e.target);
+}
+
+// Force simulation
+function simulate() {
+  const alpha = 0.3;
+  // Repulsion
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      let dx = nodes[j].x - nodes[i].x;
+      let dy = nodes[j].y - nodes[i].y;
+      let d = Math.sqrt(dx * dx + dy * dy) || 1;
+      let minDist = nodes[i].r + nodes[j].r + 10;
+      let force = (d < minDist ? 2400 : 1200) / (d * d);
+      let fx = dx / d * force;
+      let fy = dy / d * force;
+      nodes[i].vx -= fx; nodes[i].vy -= fy;
+      nodes[j].vx += fx; nodes[j].vy += fy;
+    }
+  }
+  // Spring attraction on edges
+  edges.forEach(e => {
+    let dx = e.target.x - e.source.x;
+    let dy = e.target.y - e.source.y;
+    let d = Math.sqrt(dx * dx + dy * dy) || 1;
+    let ideal = 140;
+    let force = (d - ideal) * 0.005;
+    let fx = dx / d * force;
+    let fy = dy / d * force;
+    e.source.vx += fx; e.source.vy += fy;
+    e.target.vx -= fx; e.target.vy -= fy;
+  });
+  // Center gravity
+  nodes.forEach(n => {
+    n.vx += (W / 2 - n.x) * 0.001;
+    n.vy += (H / 2 - n.y) * 0.001;
+    if (n !== dragNode) {
+      n.x += n.vx * alpha;
+      n.y += n.vy * alpha;
+    }
+    n.vx *= 0.85;
+    n.vy *= 0.85;
+    // Bounds
+    n.x = Math.max(n.r + 10, Math.min(W - n.r - 10, n.x));
+    n.y = Math.max(n.r + 10, Math.min(H - n.r - 10, n.y));
+  });
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw edges
+  edges.forEach(e => {
+    const isHighlighted = hoveredNode && (e.source === hoveredNode || e.target === hoveredNode);
+    ctx.beginPath();
+    ctx.moveTo(e.source.x, e.source.y);
+    ctx.lineTo(e.target.x, e.target.y);
+    ctx.strokeStyle = isHighlighted ? '#94a3b8' : '#c7d6f580';
+    ctx.lineWidth = isHighlighted ? 1.5 : 0.5;
+    ctx.stroke();
+  });
+
+  // Draw nodes
+  nodes.forEach(n => {
+    const isHovered = n === hoveredNode;
+    const isConnected = hoveredNode && edges.some(e => (e.source === hoveredNode && e.target === n) || (e.target === hoveredNode && e.source === n));
+    const dim = hoveredNode && !isHovered && !isConnected;
+
+    // Glow
+    if (isHovered) {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r + 8, 0, Math.PI * 2);
+      const grad = ctx.createRadialGradient(n.x, n.y, n.r, n.x, n.y, n.r + 8);
+      grad.addColorStop(0, n.color + '40');
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    // Node circle
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+    ctx.fillStyle = dim ? n.color + '30' : n.color + (isHovered ? 'ff' : 'cc');
+    ctx.fill();
+    ctx.strokeStyle = dim ? n.color + '25' : n.color;
+    ctx.lineWidth = isHovered ? 2 : 1;
+    ctx.stroke();
+
+    // Status ring for sections
+    if (n.type === 'section' && n.status) {
+      const ringColor = n.status === 'in-progress' ? '#3b82f6' : n.status === 'complete' ? '#0f766e' : '#94a3b8';
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r + 3, 0, Math.PI * 2);
+      ctx.strokeStyle = ringColor + '80';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4, 4]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // Label
+    const lines = n.label.split('\n');
+    const fontSize = n.r < 24 ? 11 : n.r < 34 ? 13 : 15;
+    ctx.font = `${isHovered ? '700' : '600'} ${fontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const lineH = fontSize + 3;
+    lines.forEach((line, i) => {
+      const yOff = (i - (lines.length - 1) / 2) * lineH;
+      // White outline for contrast against node fill
+      ctx.strokeStyle = dim ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.92)';
+      ctx.lineWidth = 2;
+      ctx.lineJoin = 'round';
+      ctx.strokeText(line, n.x, n.y + yOff);
+      ctx.fillStyle = dim ? '#1a1d2320' : '#1a1d23';
+      ctx.fillText(line, n.x, n.y + yOff);
+    });
+  });
+
+  simulate();
+  requestAnimationFrame(draw);
+}
+
+// ============================================================
+// INTERACTION
+// ============================================================
+function getNodeAt(x, y) {
+  for (let i = nodes.length - 1; i >= 0; i--) {
+    const n = nodes[i];
+    const dx = x - n.x, dy = y - n.y;
+    if (dx * dx + dy * dy < n.r * n.r) return n;
+  }
+  return null;
+}
+
+canvas.addEventListener('mousemove', e => {
+  const rect = canvas.getBoundingClientRect();
+  mouseX = e.clientX - rect.left;
+  mouseY = e.clientY - rect.top;
+
+  if (dragNode) {
+    dragNode.x = mouseX; dragNode.y = mouseY;
+    return;
+  }
+
+  const node = getNodeAt(mouseX, mouseY);
+  hoveredNode = node;
+  canvas.style.cursor = node ? 'pointer' : 'default';
+
+  const tooltip = document.getElementById('tooltip');
+  if (node) {
+    document.getElementById('tooltipTitle').textContent = node.label.replace('\n', ' ');
+    document.getElementById('tooltipBody').textContent = node.desc;
+    tooltip.style.display = 'block';
+    tooltip.style.left = (e.clientX - 360) + 'px';
+    tooltip.style.top = (e.clientY + 15) + 'px';
+  } else {
+    tooltip.style.display = 'none';
+  }
+});
+
+canvas.addEventListener('mousedown', e => {
+  const rect = canvas.getBoundingClientRect();
+  const node = getNodeAt(e.clientX - rect.left, e.clientY - rect.top);
+  if (node) { dragNode = node; canvas.style.cursor = 'grabbing'; }
+});
+
+canvas.addEventListener('mouseup', () => {
+  if (dragNode) { canvas.style.cursor = 'pointer'; dragNode = null; }
+});
+
+canvas.addEventListener('click', e => {
+  const rect = canvas.getBoundingClientRect();
+  const node = getNodeAt(e.clientX - rect.left, e.clientY - rect.top);
+  if (node) showDetail(node);
+});
+
+function showDetail(node) {
+  const panel = document.getElementById('detailPanel');
+  document.getElementById('detailTitle').textContent = node.label.replace('\n', ' ');
+  document.getElementById('detailType').textContent = node.type.toUpperCase();
+  document.getElementById('detailType').style.color = node.color;
+  document.getElementById('detailDesc').textContent = node.desc;
+
+  const connList = document.getElementById('detailConnections');
+  connList.innerHTML = '';
+  const connected = edges.filter(e => e.source === node || e.target === node)
+    .map(e => e.source === node ? e.target : e.source);
+  connected.forEach(c => {
+    const li = document.createElement('li');
+    li.style.cssText = `--dot-color: ${c.color}`;
+    li.innerHTML = `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${c.color}"></span> ${c.label.replace('\n', ' ')}`;
+    connList.appendChild(li);
+  });
+
+  panel.style.display = 'block';
+}
+
+document.getElementById('detailClose').addEventListener('click', () => {
+  document.getElementById('detailPanel').style.display = 'none';
+});
+
+// ============================================================
+// SIDEBAR TABS
+// ============================================================
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Filter pills
+document.querySelectorAll('.pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    const filter = pill.dataset.filter;
+    document.querySelectorAll('[data-category]').forEach(group => {
+      group.style.display = (filter === 'all' || group.dataset.category === filter) ? 'block' : 'none';
+    });
+  });
+});
+
+// ============================================================
+// INIT
+// ============================================================
+initGraph();
+draw();
+</script>
+</body>
+</html>

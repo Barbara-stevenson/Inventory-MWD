@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 3: Competitive Intelligence Review</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #f3f0ea;
+            --bg-secondary: #faf9f6;
+            --text-primary: #4a4843;
+            --accent: #97764e;
+            --border: #d6d3c8;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            padding: 20px;
+            z-index: 100;
+        }
+
+        .sidebar h3 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 20px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar h3:first-child {
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 8px 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: var(--border);
+            color: var(--accent);
+        }
+
+        .sidebar a.active {
+            background-color: var(--accent);
+            color: white;
+            font-weight: 600;
+        }
+
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+        }
+
+        .header {
+            background-color: white;
+            border-bottom: 2px solid var(--border);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            opacity: 0.9;
+            transform: translateX(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .hub-section {
+            background-color: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .card-section {
+            background-color: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: var(--bg-secondary);
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .card-header:hover {
+            background-color: #f5f3eb;
+        }
+
+        .card-header-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .card-header-subtitle {
+            font-size: 13px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .card-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: transparent;
+            border: none;
+            color: var(--accent);
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .card-toggle.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        .card-content {
+            padding: 24px;
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .card-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .card-content h1, .hub-section h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 24px 0 12px;
+        }
+
+        .card-content h1:first-child, .hub-section h1:first-child {
+            margin-top: 0;
+        }
+
+        .card-content h2, .hub-section h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 20px 0 12px;
+        }
+
+        .card-content h3, .hub-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 16px 0 8px;
+        }
+
+        .card-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 12px 0 6px;
+        }
+
+        .card-content p, .hub-section p {
+            margin: 12px 0;
+            line-height: 1.8;
+        }
+
+        .card-content ul, .card-content ol,
+        .hub-section ul, .hub-section ol {
+            margin: 12px 0 12px 24px;
+        }
+
+        .card-content li, .hub-section li {
+            margin: 6px 0;
+            line-height: 1.7;
+        }
+
+        .card-content blockquote, .hub-section blockquote {
+            border-left: 4px solid var(--accent);
+            margin: 16px 0;
+            padding: 12px 16px;
+            background-color: var(--bg-secondary);
+            font-style: italic;
+            color: #666;
+            border-radius: 2px;
+        }
+
+        .card-content code {
+            background-color: var(--bg-secondary);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Monaco", "Courier New", monospace;
+            font-size: 13px;
+            color: #d73a49;
+        }
+
+        .card-content pre {
+            background-color: var(--bg-secondary);
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        .card-content pre code {
+            background-color: transparent;
+            padding: 0;
+            color: inherit;
+            font-size: 12px;
+        }
+
+        .card-content table, .hub-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            border: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        .card-content table th, .hub-section table th {
+            background-color: var(--bg-secondary);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            color: var(--accent);
+        }
+
+        .card-content table td, .hub-section table td {
+            padding: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .card-content table tr:nth-child(even), .hub-section table tr:nth-child(even) {
+            background-color: var(--bg-secondary);
+        }
+
+        .card-content a, .hub-section a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .card-content a:hover, .hub-section a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        .card-content hr, .hub-section hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 24px 0;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { width: 240px; }
+            .main-content { margin-left: 240px; }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { width: 200px; }
+            .main-content { margin-left: 200px; }
+            .content { padding: 24px; }
+            .header { padding: 16px 24px; flex-direction: column; gap: 12px; align-items: flex-start; }
+            .back-button { align-self: flex-end; }
+        }
+
+        @media (max-width: 640px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; }
+            .content { padding: 16px; }
+            .hub-section { padding: 16px; }
+            .card-section { margin-bottom: 12px; }
+            .header { padding: 12px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Overview</h3>
+            <ul>
+                <li><a href="#hub" class="nav-link" data-target="hub">Hub Page</a></li>
+            </ul>
+
+            <h3>Competitive Landscape</h3>
+            <ul>
+                <li><a href="#09" class="nav-link" data-target="09">Competitive Landscape</a></li>
+            </ul>
+
+            <h3>Battlecards</h3>
+            <ul>
+                <li><a href="#10a" class="nav-link" data-target="10a">vs. NetSuite</a></li>
+                <li><a href="#10b" class="nav-link" data-target="10b">vs. Odoo</a></li>
+                <li><a href="#10c" class="nav-link" data-target="10c">vs. Zoho</a></li>
+                <li><a href="#10d" class="nav-link" data-target="10d">vs. Salesforce</a></li>
+                <li><a href="#10e" class="nav-link" data-target="10e">vs. HubSpot</a></li>
+            </ul>
+
+            <h3>Honest Assessment</h3>
+            <ul>
+                <li><a href="#11" class="nav-link" data-target="11">Honest Gaps Brief</a></li>
+            </ul>
+
+        </aside>
+
+        <main class="main-content">
+            <div class="header">
+                <div>
+                    <div class="header-title">Section 3: Competitive Intelligence</div>
+                    <div class="header-subtitle">MWD Vertical Playbook</div>
+                </div>
+                <a href="knowledge-graph.html" class="back-button">← Back to Knowledge Graph</a>
+            </div>
+
+            <div class="content">
+                <div id="hub" class="hub-section">
+                    <div id="hub-content"></div>
+                </div>
+
+                <div id="09" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">09: MWD Competitive Landscape</div>
+                            <div class="card-header-subtitle">Full competitive map and partner ecosystem</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="09-content"></div></div>
+                </div>
+
+                <div id="10a" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">10a: Method vs. NetSuite</div>
+                            <div class="card-header-subtitle">Enterprise ERP battlecard</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="10a-content"></div></div>
+                </div>
+
+                <div id="10b" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">10b: Method vs. Odoo</div>
+                            <div class="card-header-subtitle">Open-source ERP battlecard</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="10b-content"></div></div>
+                </div>
+
+                <div id="10c" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">10c: Method vs. Zoho</div>
+                            <div class="card-header-subtitle">All-in-one suite battlecard</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="10c-content"></div></div>
+                </div>
+
+                <div id="10d" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">10d: Method vs. Salesforce</div>
+                            <div class="card-header-subtitle">Enterprise CRM battlecard</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="10d-content"></div></div>
+                </div>
+
+                <div id="10e" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">10e: Method vs. HubSpot</div>
+                            <div class="card-header-subtitle">Marketing-first CRM battlecard</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="10e-content"></div></div>
+                </div>
+
+                <div id="11" class="card-section">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <div class="card-header-title">11: Honest Gaps Brief</div>
+                            <div class="card-header-subtitle">Internal only — known limitations and handling</div>
+                        </div>
+                        <button class="card-toggle">▼</button>
+                    </div>
+                    <div class="card-content"><div id="11-content"></div></div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const markdownContent = {
+            hub: `# Section 3: Competitive Intelligence
+### MWD Industry Vertical Playbook
+
+**Squad Lead:** Dex — Battlecard Builder | Execution Squad
+**Supporting:** Kai — Positioning Lead, Sam — Sales Enablement Lead
+
+---
+
+## What This Section Covers
+
+Competitive intelligence for winning MWD deals. Every card is built from real competitive data, actual customer feedback, and honest assessment of where Method wins and where it doesn't.
+
+**Three rules for competitive conversations:**
+
+1. **Lead with Method's value, not competitor weaknesses.** Tear-down selling doesn't work with risk-averse MWD buyers.
+2. **Be honest about gaps.** These buyers have done their homework. Getting caught overpromising costs more than the deal.
+3. **Match the competitor to the conversation.** Different competitors show up at different deal stages and company sizes.
+
+---
+
+## Cards in This Section
+
+### Competitive Landscape
+**[Card 09: MWD Competitive Landscape](cards/09-competitive-landscape.md)**
+The full map. Three competitive categories plus the partner ecosystem. Start here if you're not sure which competitor you're facing.
+
+### Competitor Battlecards
+**[Card 10a: Method vs. NetSuite](cards/10a-vs-netsuite.md)**
+Enterprise ERP. $99/user + $25K mandatory setup vs. Method's SMB pricing.
+
+**[Card 10b: Method vs. Odoo](cards/10b-vs-odoo.md)**
+Open-source ERP with strong manufacturing modules. No QuickBooks integration at all.
+
+**[Card 10c: Method vs. Zoho](cards/10c-vs-zoho.md)**
+All-in-one suite. No native QBDT integration. ~$168/user for the full MWD stack.
+
+**[Card 10d: Method vs. Salesforce](cards/10d-vs-salesforce.md)**
+The CRM giant. Manufacturing Cloud at $475/user/month. No QuickBooks sync.
+
+**[Card 10e: Method vs. HubSpot](cards/10e-vs-hubspot.md)**
+Marketing-first CRM. Strong inbound tools, zero manufacturing or operational capability.
+
+### Honest Gaps
+**[Card 11: Honest Gaps Brief](cards/11-honest-gaps-brief.md)**
+Internal only. What Method genuinely can't do for MWD buyers — and how to handle each gap in conversation.
+
+---
+
+## How These Cards Connect
+
+\`\`\`
+Card 09 (Landscape)
+  ├── Identifies which competitor you're facing
+  ├── Points to the right battlecard (10a-10e)
+  ├── Covers partner ecosystem (Fishbowl, SOS Inventory, etc.)
+  └── Links to honest gaps for every conversation
+
+Cards 10a-10e (Battlecards)
+  ├── One per competitor
+  ├── Numbers table, win/lose, one key question in core
+  ├── Talk tracks + objection handling in appendix
+  └── Connected to persona messaging (Card 06) and customer stories (Card 08)
+
+Card 11 (Honest Gaps)
+  ├── Internal reference — don't share externally
+  ├── 10 known limitations with one-line handling + honesty framework
+  └── Detailed guidance per gap in appendix
+\`\`\`
+
+---
+
+## Quick Reference: When You'll Face Each Competitor
+
+| Deal Stage | Likely Competitor | Card |
+|---|---|---|
+| Early research — prospect googling "CRM for manufacturers" | HubSpot, Zoho | 10e, 10c |
+| Shortlist — comparing 2-3 options | Odoo, Zoho, Salesforce | 10b, 10c, 10d |
+| Enterprise evaluation — prospect has budget | NetSuite, Dynamics, Salesforce | 10a, 10d |
+| Inventory-first search — "we need inventory management" | Partner ecosystem tools | Card 09 (Partner Ecosystem section) |
+| Replacing failed implementation | NetSuite, Odoo, Salesforce | 10a, 10b, 10d |
+| Already using QuickBooks, wants to keep it | All — this is Method's strongest position | 09 |
+
+---
+
+**Related sections:** [Section 1: Market & Customer Foundation](../section-1/section-1-hub.md) · [Section 2: Positioning & Messaging](../section-2/section-2-hub.md)
+`,
+            "09": `# MWD Competitive Landscape
+### Card 09 | Section 3: Competitive Intelligence
+
+**Audience:** Sales reps, presales, leadership, BDRs
+**When to use:** Entering an MWD deal and need to understand who else is in the conversation
+
+**Agent:** Dex — Battlecard Builder | Execution Squad
+
+---
+
+## Method's Position
+
+**The only CRM with deep two-way QuickBooks sync that also handles operational workflows for MWD businesses at SMB pricing.** Every customer confirmed it — QB sync + customization are why they chose Method and why they stay.
+
+---
+
+## The Three Competitive Categories + Partner Ecosystem
+
+| Category | Who | Their strength | Method's edge | When we lose | Battlecard |
+|---|---|---|---|---|---|
+| **Enterprise ERP** | NetSuite, Dynamics, SAP | Full ERP + CRM + manufacturing | They want you off QB. 6-12 mo implementations. $5K-$20K/mo. | Prospect has budget and genuinely needs full MRP | [10a](10a-vs-netsuite.md) |
+| **Traditional CRM** | Salesforce, HubSpot, Zoho | Strong sales/marketing CRM | No inventory, no production, no work orders, no QB sync | Buyer is sales-heavy with minimal ops needs | [10c](10c-vs-zoho.md) [10d](10d-vs-salesforce.md) [10e](10e-vs-hubspot.md) |
+| **Open-Source ERP** | Odoo, Creatio | Flexible with MRP modules | NO QB integration. Developer-dependent. | Buyer has tech resources and will leave QB | [10b](10b-vs-odoo.md) |
+| **Partner Ecosystem** | Fishbowl, SOS Inventory, Katana, inFlow | Deep inventory / MRP | **Not competitors — complements.** See below. | N/A | — |
+
+---
+
+## Partner Ecosystem: Specialized Tools Work *With* Method
+
+Specialized inventory and manufacturing tools aren't competitors. Several Method customers run both:
+
+- **Europena** — Fishbowl for deep inventory management + Method for CRM, audits, field workflows
+- **SLE Technologies** — Method → SOS Inventory → QBO circular sync with API app routines and warehouse-level views
+- **Cypress Engine** — Method for CRM pipeline + SOS Inventory for sales orders/inventory, with scheduled sync
+- **Euroboor** — Full custom in-Method warehouse tracking: serial numbers, bin locations, multi-warehouse, back-order management
+- **Custom warehouse tracking** — Customers have built warehouse inventory screens inside Method with manual "update warehouse" buttons and multi-location tracking
+
+**The sales conversation:** "Need deep MRP with BOM, kitting, and lot tracking? Tools like Fishbowl or SOS Inventory handle that — and Method integrates with them. Need inventory visibility and warehouse tracking? We can build that inside Method."
+
+---
+
+## The Question That Determines Every Deal
+
+**"Are you keeping QuickBooks?"**
+
+| Their Answer | Your Position |
+|---|---|
+| "Yes, definitely" | **Strongest.** No competitor matches QB sync + ops workflows. Lead with it. |
+| "We're open to switching" | **Weaker.** Enterprise ERP and Odoo become viable. Lead with cost, speed, customization. |
+| "We've decided to move off QB" | **Weakest.** QB advantage gone. Compete on customization, pricing, DEP. |
+| "We don't use QuickBooks" | **Not our ICP.** Qualify out unless Xero. |
+
+---
+
+## Competitive Positioning by Prospect Size
+
+| Prospect Profile | Primary Competitors | Method's Best Angle |
+|---|---|---|
+| $2M-$5M, 10-20 employees | Zoho, HubSpot, spreadsheets | Affordable customization + QB sync |
+| $5M-$15M, 20-50 employees | Odoo, Zoho, entry-level NetSuite | Enterprise capability without enterprise price |
+| $15M-$30M, 50-100 employees | NetSuite, Salesforce, Dynamics | Cost + speed. Proof: Mobility City (54 locations), Europena ($25M) |
+| $30M+, 100+ employees | NetSuite, Dynamics, SAP | Harder sell. Works if keeping QB + need operational CRM |
+
+---
+
+## Three Rules for Competitive Conversations
+
+1. **Never trash-talk.** Acknowledge competitor strengths, then redirect to what matters for this buyer.
+2. **Lead with the prospect's problem, not the competitor's weakness.** "Tell me about your quoting process" beats "Did you know NetSuite costs $25K to set up?"
+3. **Know when to walk away.** If they need full MRP, are leaving QB, and have enterprise budget — be honest.
+
+---
+
+**Related cards:** [01d Competitive Positioning](../../section-1/cards/01d-competitive-positioning.md) · [05a Positioning Narrative](../../section-2/cards/05a-positioning-narrative.md) · [11 Honest Gaps Brief](11-honest-gaps-brief.md)
+
+---
+
+## Appendix: When You'll Face Each Competitor
+
+| Deal Stage | Likely Competitor | Card |
+|---|---|---|
+| Early research — prospect googling "CRM for manufacturers" | HubSpot, Zoho | 10e, 10c |
+| Shortlist — comparing 2-3 options | Odoo, Zoho, Salesforce | 10b, 10c, 10d |
+| Enterprise evaluation — prospect has budget | NetSuite, Dynamics, Salesforce | 10a, 10d |
+| Inventory-first search — "we need inventory management" | Partner ecosystem tools | Partner Ecosystem section above |
+| Replacing failed implementation | NetSuite, Odoo, Salesforce | 10a, 10b, 10d |
+| Already on QuickBooks, wants to keep it | All — this is Method's strongest position | This card |
+`,
+            "10a": `# Method vs. NetSuite — MWD Battlecard
+### Card 10a | Section 3: Competitive Intelligence
+
+**Audience:** Sales reps, presales
+**When to use:** Prospect mentions NetSuite, has been quoted by NetSuite, or says "we're looking at ERP"
+
+**Agent:** Dex — Battlecard Builder | Execution Squad
+
+---
+
+## The Numbers
+
+| Dimension | Method | NetSuite |
+|---|---|---|
+| Per-user pricing | $27-$73/user/month | $99/user/month (base) |
+| Platform/setup fee | None | $25K-$75K mandatory |
+| Total year 1 (5 users) | ~$2,700-$4,380 | $30,940-$80,940+ |
+| Implementation | 1-2 months | 6-12 months |
+| QB sync | Native two-way | Third-party only ($25K-$150K setup) |
+| Customization | DIY + DEP ($325/mo) | Developer-heavy ($150-$300/hr) |
+| Contract | Month-to-month | Annual (typically multi-year) |
+
+---
+
+## When Method Wins / Loses
+
+**Wins:** Prospect keeping QB. Prospect got quoted and walked away on price. Need operational CRM, not full ERP. Value speed (1-2 mo vs. 6-12). Want a partner, not a project.
+
+**Loses:** Prospect needs full MRP (BOM, kitting, lot tracking, shop floor). Has decided to leave QB. Has enterprise budget and enterprise needs ($30M+, 100+ users). Needs native e-commerce.
+
+---
+
+## The One Question
+
+**"Are you planning to stay on QuickBooks for accounting?"** If yes — NetSuite wants them off QB. That changes everything.
+
+---
+
+**Related cards:** [09 Competitive Landscape](09-competitive-landscape.md) · [11 Honest Gaps Brief](11-honest-gaps-brief.md)
+
+---
+
+## Appendix: Talk Track & Objection Handling
+
+### Talk Track
+
+**Opening:** "NetSuite is a serious platform. The real question is whether you need everything it does, or the parts that matter at a price that makes sense."
+
+**If keeping QB:** "NetSuite wants you off QuickBooks — their whole model is replacing your accounting. Method extends QB, not replaces it."
+
+**Cost:** "A typical Method team of 5-8 users runs $2,700-$7,000/year. Add DEP and you're under $11K. NetSuite's first year is typically $30K-$80K before customization."
+
+**Speed:** "NetSuite: 6-12 months. Method: 1-2 months."
+
+**Customer proof:** Vintage Makers rejected NetSuite as "too heavy and expensive." Brown Safe has 177 custom screens at a fraction of enterprise cost. One customer spent nearly 10 years and over $100K with NetSuite before switching.
+
+### Objection Handling
+
+| They Say | You Say |
+|---|---|
+| "NetSuite does everything in one place" | "It does — that's why it costs $25K+ setup and takes 6-12 months. Do you need everything it does?" |
+| "Our consultant recommended NetSuite" | "Consultants earn implementation fees. What specific problems are you solving?" |
+| "We'll outgrow Method" | "Our customers at $25M with 54 locations haven't. 159-177 custom screens." |
+| "NetSuite has better reporting" | "For finance, yes. For operational KPIs, Method's custom dashboards are built around your metrics." |
+
+### Landmines
+- Don't say Method replaces NetSuite — different tools for different needs
+- Don't promise inventory management — follow inventory messaging exactly
+- Don't compare features alone — compare on fit
+`,
+            "10b": `# Method vs. Odoo — MWD Battlecard
+### Card 10b | Section 3: Competitive Intelligence
+
+**Audience:** Sales reps, presales, leadership
+**When to use:** Prospect mentions Odoo, is evaluating open-source ERP, or has technical staff exploring modular platforms
+
+**Agent:** Dex — Battlecard Builder | Execution Squad
+
+---
+
+## The Numbers
+
+| Dimension | Method | Odoo |
+|---|---|---|
+| Per-user pricing | $27-$73/user/month | ~$47/user/month (Enterprise, 5+ apps) |
+| Implementation cost | DEP: $325/month ongoing | $5K-$50K (partner-dependent) |
+| QB integration | Native two-way, real-time | **None.** Wants you on Odoo Accounting. |
+| Customization | DIY + DEP expert | Developer-dependent (Python/XML) |
+| Manufacturing | No native BOM/kitting/shop floor | Full MRP: BOM, routing, work orders, QC |
+| Contract | Month-to-month | Annual |
+
+---
+
+## When Method Wins / Loses
+
+**Wins:** Prospect keeping QuickBooks (Odoo has zero QB integration). No developers on staff. Wants fast time-to-value (1-2 mo vs. 2-6+ mo). Been burned by implementation projects. Needs CRM + operations, not full ERP.
+
+**Loses:** Needs full MRP (Odoo's is genuinely strong at this price). Willing to leave QuickBooks. Has in-house developers. Wants single platform for everything (80+ apps).
+
+---
+
+## The One Question
+
+**"Are you planning to keep QuickBooks?"** If yes — Odoo is off the table. No native QB integration, not limited, not basic — none. If they're open to switching, Odoo becomes viable. Lead with cost, speed, and DEP.
+
+---
+
+**Related cards:** [09 Competitive Landscape](09-competitive-landscape.md) · [05c Inventory Messaging](../../section-2/cards/05c-inventory-messaging.md) · [11 Honest Gaps Brief](11-honest-gaps-brief.md)
+
+---
+
+## Appendix: Talk Track & Objection Handling
+
+### Talk Track
+
+**Opening:** "Odoo has a strong manufacturing suite — especially for the price. The key question is what's happening with your QuickBooks. Are you planning to keep it?"
+
+**If keeping QB:** "Odoo has no QuickBooks integration. Not limited. None. Their model is to replace your accounting with Odoo Accounting. If QB is staying, you'd need a third-party connector that adds cost and never matches native sync."
+
+**If open to switching:** "If you're moving off QB, Odoo becomes more viable — especially for manufacturing. Method's edge is implementation speed, the DEP partnership model, and customization without developers."
+
+**Implementation:** "Who's going to implement Odoo? Their partner ecosystem varies wildly in quality. Method's DEP is a direct relationship — $325/month, no third-party partner lottery."
+
+### Objection Handling
+
+| They Say | You Say |
+|---|---|
+| "Odoo is open-source and free" | "Community edition is free — but excludes manufacturing, multi-company, and quality management. Enterprise starts at ~$47/user, implementation runs $5K-$50K. Method's total cost is often comparable or lower, with a dedicated expert included." |
+| "Odoo has manufacturing modules" | "True — Odoo's MRP is strong. The question is whether you need full MRP or CRM + operations connected to QuickBooks. If it's the latter, Method does that better and faster." |
+| "We have a developer who can customize Odoo" | "That's an advantage. The question is sustainability — what happens when that developer leaves? Method's DEP means your customization expert is always there." |
+| "Odoo does everything we need" | "It might. The gap is QuickBooks — Odoo doesn't connect to it. If you're moving off QB, Odoo covers a lot of ground. If QB is staying, you're looking at a third-party connector that limits what syncs." |
+
+### Landmines
+
+- Don't dismiss Odoo's manufacturing capabilities — they're real and strong.
+- Don't ignore the free edition — address it: "Free edition excludes manufacturing, multi-company, and quality management."
+- Don't claim Method is "easier to customize" — frame it as a fit question (accessible vs. deeper but technical).
+`,
+            "10c": `# Method vs. Zoho — MWD Battlecard
+### Card 10c | Section 3: Competitive Intelligence
+
+**Audience:** Sales reps, presales, leadership
+**When to use:** Prospect mentions Zoho, is comparing "all-in-one" platforms, or is attracted to breadth and pricing
+
+**Agent:** Dex — Battlecard Builder | Execution Squad
+
+---
+
+## The Numbers
+
+| Dimension | Method | Zoho (Full MWD Stack) |
+|---|---|---|
+| CRM per-user pricing | $27-$73/user/month | $14-$65/user/month (CRM only) |
+| Full MWD stack cost | CRM pricing + DEP optional | ~$168/user/month (CRM + Inventory + Books + Projects) |
+| QuickBooks Desktop sync | Native two-way, real-time | **No native QBDT integration.** |
+| QuickBooks Online sync | Native two-way, real-time | Limited via Zoho Books or third-party |
+| Customer portal | Included free | $125/month add-on |
+| Customization | DIY + DEP ($325/month) | Admin-configurable, Deluge scripting for advanced |
+| Contract | Month-to-month | Annual (discounted) or monthly |
+
+---
+
+## When Method Wins / Loses
+
+**Wins:** Prospect uses QuickBooks Desktop (Zoho has zero QBDT integration). Real cost adds up (~$168/user for full MWD stack vs. $73 Method). Needs deep operational customization (177 screens at Brown Safe). Needs customer portal (free vs. $125/mo). Wants one expert, not a suite to manage.
+
+**Loses:** Wants everything under one brand (45+ Zoho apps). Already on Zoho Books. Needs strong marketing automation (Method throttles at ~3K contacts). Prioritizes self-service setup.
+
+---
+
+## The One Question
+
+**"What's your total cost when you add up all the Zoho apps you'd actually need?"** CRM looks cheap at $14/user. Stack CRM + Inventory + Books + Projects for MWD and you're at ~$168/user — more than double Method's Enterprise tier.
+
+---
+
+**Related cards:** [09 Competitive Landscape](09-competitive-landscape.md) · [06 Per-Persona Messaging](../../section-2/cards/06-per-persona-messaging.md) · [11 Honest Gaps Brief](11-honest-gaps-brief.md)
+
+---
+
+## Appendix: Talk Track & Objection Handling
+
+### Talk Track
+
+**Opening:** "Zoho has a big ecosystem — lots of apps under one roof. Two things to figure out: What QuickBooks version are you on, and what does the total cost look like when you add up all the Zoho apps you'd actually need?"
+
+**QBDT question:** "If you're on QuickBooks Desktop, Zoho doesn't connect to it natively. You'd need a third-party tool that adds cost and never syncs as cleanly as native integration."
+
+**Real cost:** "Zoho CRM starts at $14/user — that's the number that catches your eye. But MWD needs CRM + inventory + accounting integration + project tracking. Stack those and you're at ~$168/user. Method's CRM Enterprise is $73/user with native QB sync included."
+
+**Portal:** "Need a customer portal for order status or online payments? Method includes it free. Zoho charges $125/month extra."
+
+### Objection Handling
+
+| They Say | You Say |
+|---|---|
+| "Zoho is cheaper" | "CRM alone is cheaper. For MWD, add CRM + Inventory + Books and you're at ~$168/user. Method is $27-$73/user with QB sync built in. The math changes fast." |
+| "Zoho has inventory management" | "Zoho Inventory is a separate app at separate cost — and it doesn't connect to QBDT. Method surfaces your QB inventory data inside CRM workflows natively." |
+| "We like one vendor for everything" | "The trade-off is managing multiple Zoho apps, each with its own interface. Method gives you one operational system with one expert who builds it for your business." |
+| "Zoho has better marketing tools" | "True — Zoho's marketing suite is more mature. Method's strength is operational workflow and QB sync. Some customers use Method for operations and layer in a dedicated marketing tool." |
+
+### Landmines
+
+- Don't compare on CRM-only pricing — you'll lose. Always compare the full stack cost.
+- Don't dismiss Zoho's ecosystem — it's genuinely broad. Redirect to depth, QB sync, and total cost.
+- Don't forget the QBO angle — Zoho's QBO integration exists but is limited. Be specific about limitations, don't claim "no QBO integration."
+`,
+            "10d": `# Method vs. Salesforce — MWD Battlecard
+### Card 10d | Section 3: Competitive Intelligence
+
+**Audience:** Sales reps, presales, leadership
+**When to use:** Prospect mentions Salesforce, has team members who've used it before, or is evaluating enterprise CRM
+
+**Agent:** Dex — Battlecard Builder | Execution Squad
+
+---
+
+## The Numbers
+
+| Dimension | Method | Salesforce |
+|---|---|---|
+| CRM per-user pricing | $27-$73/user/month | $25-$330/user/month (Sales Cloud) |
+| Manufacturing Cloud | N/A | $475/user/month |
+| QB sync | Native two-way, real-time | **None.** Requires third-party ($200-$500/mo + setup). |
+| Customization | DIY + DEP ($325/month) | Apex developers ($150-$250/hour) |
+| Implementation | 1-2 months | 1-3 months (CRM) / 6-12 months (Mfg Cloud) |
+| Contract | Month-to-month | Annual |
+| Ecosystem | Focused — QB sync + operational CRM | Massive — 4,000+ AppExchange apps |
+
+---
+
+## When Method Wins / Loses
+
+**Wins:** Prospect needs QuickBooks sync (Salesforce has none). Prospect is SMB (Manufacturing Cloud at $475/user prices them out). Needs operational workflows, not just sales pipeline. Doesn't have or want a Salesforce admin. Values simplicity over ecosystem.
+
+**Loses:** Already in Salesforce ecosystem. Needs advanced demand planning (Manufacturing Cloud is enterprise-grade). Team has Salesforce experience. Needs massive integration ecosystem (4,000+ apps).
+
+---
+
+## The One Question
+
+**"Which Salesforce product are you looking at?"** Sales Cloud is CRM — no production workflows. Manufacturing Cloud handles operations but costs $475/user/month. For a team of 8, that's $45,600/year before implementation.
+
+---
+
+**Related cards:** [09 Competitive Landscape](09-competitive-landscape.md) · [08 Customer Success Stories](../../section-2/cards/08-customer-success-stories.md) · [11 Honest Gaps Brief](11-honest-gaps-brief.md)
+
+---
+
+## Appendix: Talk Track & Objection Handling
+
+### Talk Track
+
+**Opening:** "Salesforce is the biggest CRM out there — hard to argue with the brand. The question for a manufacturer or distributor is whether you need the Salesforce ecosystem, or operational CRM connected to QuickBooks. Those are very different things."
+
+**MWD fit:** "Sales Cloud is CRM — great for pipelines, but no production workflows or inventory. Manufacturing Cloud does some of that, but at $475/user/month. For a team of 8, that's $45,600/year before implementation."
+
+**QB question:** "Salesforce doesn't connect to QuickBooks. You'd need a third-party integration tool — typically $200-$500/month plus setup. And those integrations are rarely two-way in real time."
+
+**Admin question:** "Who's going to manage Salesforce day-to-day? Complex orgs need a dedicated admin or consultant. Method's DEP gives you a dedicated expert at $325/month — no hiring required."
+
+### Objection Handling
+
+| They Say | You Say |
+|---|---|
+| "Everyone uses Salesforce" | "Enterprise companies do. For SMB manufacturers on QuickBooks, it's often overkill. Customers at $25M revenue with 54 locations chose Method over enterprise options because it fits how they actually work." |
+| "Manufacturing Cloud is built for manufacturers" | "For enterprise manufacturers doing demand planning at scale. At $475/user, it's built for a different size business. Method handles the operational CRM and quote-to-cash that SMBs need, at a fraction of the cost." |
+| "Salesforce has more integrations" | "AppExchange is massive. The trade-off is complexity — more integrations means more decisions and management. Method's focus is tighter: CRM, operations, QuickBooks. Everything connected without managing 15 apps." |
+| "Our sales team knows Salesforce" | "Less training is a real advantage. The question is whether you need a sales CRM or operational CRM connected to QuickBooks." |
+
+### Landmines
+
+- Don't position Method as a Salesforce replacement — different markets, different tools.
+- Don't dismiss the brand — prospects trust the name. Acknowledge, then redirect to fit and cost.
+- Don't compare Manufacturing Cloud features one-to-one — its demand planning is enterprise-grade. Don't pretend otherwise.
+`,
+            "10e": `# Method vs. HubSpot — MWD Battlecard
+### Card 10e | Section 3: Competitive Intelligence
+
+**Audience:** Sales reps, presales, BDRs
+**When to use:** Prospect mentions HubSpot, is comparing CRM options, or found HubSpot through search/content marketing
+
+**Agent:** Dex — Battlecard Builder | Execution Squad
+
+---
+
+## The Numbers
+
+| Dimension | Method | HubSpot |
+|---|---|---|
+| CRM per-user pricing | $27-$73/user/month | Free (basic) / $20-$150/user (Sales Hub) |
+| Marketing tools | Basic email (~3K contact throttle) | Strong — Marketing Hub $800-$3,600/month |
+| QB sync | Native two-way, real-time | **Third-party only.** Limited, often one-way. |
+| Operational workflows | Custom screens, quote-to-cash, production | Sales pipelines and deal management only |
+| Manufacturing capability | Custom builds via DEP, QB inventory sync | **None.** No production, no order fulfillment. |
+| Customization depth | 50-177 custom screens per customer | Custom properties and pipelines, limited beyond CRM |
+
+---
+
+## When Method Wins / Loses
+
+**Wins:** Prospect needs more than sales pipeline (quote-to-cash, production, operational screens). Needs QuickBooks sync (HubSpot has none natively). Needs operational customization (177 screens at Brown Safe vs. HubSpot's property/pipeline limits). Outgrown spreadsheets and needs workflows connected to accounting.
+
+**Loses:** Primary need is marketing (HubSpot's suite is world-class). Wants free to start (no permanent free tier at Method). Early-stage and sales-focused only. Values content/community ecosystem.
+
+---
+
+## The One Question
+
+**"What happens to a deal after it closes in your CRM?"** This immediately exposes the gap between what HubSpot does (everything before the sale) and what an MWD business needs (everything before AND after — connected to QuickBooks).
+
+---
+
+**Related cards:** [09 Competitive Landscape](09-competitive-landscape.md) · [05b Message House](../../section-2/cards/05b-message-house.md) · [11 Honest Gaps Brief](11-honest-gaps-brief.md)
+
+---
+
+## Appendix: Talk Track & Objection Handling
+
+### Talk Track
+
+**Opening:** "HubSpot is great for marketing and sales pipeline. The question for a manufacturer or distributor is what happens after the deal closes. How do you track the order? How does it get to QuickBooks? How do you manage production?"
+
+**After the sale:** "Walk me through what happens after a customer says yes. Does the quote become a sales order? Who enters it into QuickBooks? Who tracks fulfillment? HubSpot handles everything before the sale. Method handles before AND after — connected to QuickBooks."
+
+**QB question:** "HubSpot doesn't sync with QB natively. That means manual entry or a third-party connector that typically only pushes contacts — not estimates, invoices, or payments."
+
+**Depth question:** "If you need a standard sales pipeline with custom fields, HubSpot handles that. If you need custom screens for production tracking, equipment management, multi-location operations — Method's customization goes much deeper."
+
+### Objection Handling
+
+| They Say | You Say |
+|---|---|
+| "HubSpot is free" | "The basic CRM is free and good for contact management. For MWD with QB sync, operational workflows, and production tracking, you'd need paid tiers plus third-party integrations. That's when cost comparison changes." |
+| "HubSpot has great marketing tools" | "Agreed. Method focuses on operational CRM, quote-to-cash, and QB sync. Some businesses use one for marketing, another for operations. Which problem is bigger right now?" |
+| "Everyone recommends HubSpot" | "Great recommendation for sales and marketing CRM. For MWD businesses on QuickBooks needing operational workflows, it's less of a fit. What does your day-to-day need beyond sales pipeline?" |
+| "We just need a basic CRM" | "If that's genuinely the case, HubSpot might work. But most MWD businesses that say that actually need CRM + order management + QB sync + custom workflows. Walk me through your daily operation." |
+
+### Landmines
+
+- Don't compete on marketing — you'll lose. HubSpot's marketing suite is world-class.
+- Don't dismiss the free tier — it's genuinely useful. The counterpoint: free CRM doesn't solve MWD operational problems.
+- Don't overclaim on email marketing — Method throttles at ~3K contacts. Be honest.
+- HubSpot often shows up early (SEO dominance). The conversation shifts once you get into operational requirements. Don't fight the brand — redirect to operational fit.
+`,
+            "11": `# MWD Honest Gaps Brief
+### Card 11 | Section 3: Competitive Intelligence
+
+**Audience:** Sales reps, presales, leadership — **INTERNAL ONLY. Do not share externally.**
+**When to use:** Before your first MWD demo. Before any conversation where you might get asked about capabilities Method doesn't have.
+
+**Agent:** Dex — Battlecard Builder | Execution Squad
+
+---
+
+## Why This Card Exists
+
+MWD buyers are risk-averse. They've been burned by software that overpromised. Getting caught costs more than the deal — it costs trust, referrals, and reputation. If a prospect asks about something on this list, don't dodge it.
+
+---
+
+## Quick Reference: Every Gap + How to Handle It
+
+| # | Gap | One-Line Answer |
+|---|---|---|
+| 1 | **Inventory is QB sync, not native** | QB sync + two paths: third-party API integration or custom builds inside Method. See [Card 05c](../../section-2/cards/05c-inventory-messaging.md). |
+| 2 | **QBO users lose significant functionality** | QBDT has sales orders, assemblies, advanced inventory. QBO is simpler — set expectations early. |
+| 3 | **No native e-commerce integration** | No Shopify, WooCommerce, Amazon out of the box. Custom integration or Zapier needed. |
+| 4 | **Email marketing throttles** | ~3K contacts, ~800 per send. Layer in SendGrid/Mailchimp via Zapier for serious campaigns. |
+| 5 | **Reporting requires customization** | No "manufacturing dashboard" out of the box. DEP builds exactly what you need — trade-off is setup time. |
+| 6 | **Performance at scale** | Heavy customization = heavier system. DEP optimizes. Don't bring up proactively. |
+| 7 | **No EDI / large-scale order automation** | Needs dedicated EDI tool alongside Method. Matters for big-box retail distributors. |
+| 8 | **Mobile isn't warehouse-optimized** | Field sales/audits — yes. Warehouse scanning/pick-pack-ship — no. |
+| 9 | **QB sync occasionally needs manual intervention** | Rare manual re-runs in high-volume scenarios. Don't bring up unless asked. |
+| 10 | **No native multi-company accounting** | Multi-entity admin supported ($50/mo per sub-entity). Accounting consolidation is QB's job. |
+
+---
+
+## The Honesty Framework
+
+When a gap comes up, follow this pattern:
+
+1. **Acknowledge** — "You're right, Method doesn't do [X] natively."
+2. **Explain the alternative** — "What our customers do instead is [Y]."
+3. **Provide proof** — "For example, [customer] handles it by [Z]."
+4. **Redirect** — "The reason they chose Method despite that is [Method's unique value]."
+
+**Never:** Dodge the question. Overpromise a roadmap feature. Claim "we can customize anything" without qualifying complexity. Make the prospect feel dumb for asking.
+
+---
+
+**Related cards:** [01d Competitive Positioning](../../section-1/cards/01d-competitive-positioning.md) · [05c Inventory Messaging](../../section-2/cards/05c-inventory-messaging.md) · [09 Competitive Landscape](09-competitive-landscape.md)
+
+---
+
+## Appendix: Detailed Gap Guidance
+
+### Gap 1: Inventory Is QB Sync, Not Native
+
+**What we don't do:** No native BOM, no kitting/assembly, no lot tracking, no shop floor control, no pick/pack/ship out of the box.
+
+**How to handle:** Follow Card 05c exactly. Lead with honesty, offer both paths (third-party API or custom builds), match response to their actual need.
+
+**Customer proof:** Europena (Fishbowl integration), SLE Technologies (SOS Inventory API sync), Euroboor (full custom in-Method warehouse tracking with serial numbers, bin locations), Duraline (custom equipment tracking), Vintage Makers (3,400+ SKUs via QBDT Enterprise).
+
+### Gap 2: QBO vs. QBDT
+
+**What QBO doesn't have:** No sales orders, no assembly items, no advanced inventory (multi-location, serial/lot, FIFO, barcode), no price levels, no units of measure, limited custom fields.
+
+**Key line:** "The features Method can surface depend on your QuickBooks version. Desktop Enterprise gives you the most. QBO is simpler, so the data we work with is simpler too."
+
+### Gap 3: No Native E-Commerce
+
+**How to handle:** "Method doesn't have a native e-commerce integration today. If that's core, it would need custom integration or Zapier. For businesses where e-commerce is the primary channel, this may be a gap."
+
+**When it matters:** Distributors selling through online channels, manufacturers with D2C.
+
+### Gap 4: Email Marketing Throttles
+
+**How to handle:** "Method handles transactional email and basic campaigns. For large-scale marketing, you'd want a dedicated email tool connected via Zapier."
+
+**Customer proof:** Duraline experienced this with ~3,000 contacts.
+
+### Gap 5: Reporting Requires Customization
+
+**How to handle:** Frame as advantage: "Your dashboards show your KPIs — not someone else's template. DEP builds exactly what you need."
+
+**Honest caveat:** Some customers still run certain reports in QuickBooks because Method's reporting is less intuitive for specific use cases.
+
+### Gap 6: Performance at Scale
+
+**How to handle:** Don't bring up proactively. If asked: "Like any highly customized system, there are performance considerations as complexity grows. DEP optimizes workflows to keep things running smoothly."
+
+### Gap 7: EDI and Large-Scale Order Automation
+
+**How to handle:** "EDI is specialized. Method handles standard quoting and invoicing, but automated EDI-compliant processing would need a dedicated tool alongside Method."
+
+### Gap 8: Mobile Isn't Warehouse-Optimized
+
+**How to handle:** "Method's mobile works great for field sales, customer visits, and on-the-road access. For warehouse floor operations — scanning, picking, packing — you'd want a dedicated WMS or custom build."
+
+**Customer proof:** Vintage Makers uses mobile for field sales. Europena uses iPads for store-level audits. Neither is warehouse scanning.
+
+### Gap 9: QB Sync Hiccups
+
+**How to handle:** Don't bring up unless asked. "The sync is automatic and real-time in normal operation. In high-volume scenarios, you may occasionally need a manual re-sync. It's rare."
+
+### Gap 10: Multi-Company Accounting
+
+**How to handle:** "Method handles multi-company operations — Europena runs two mirrored entities. Accounting consolidation happens in QuickBooks."
+`
+        };
+
+        // Render markdown content
+        function renderMarkdown() {
+            Object.entries(markdownContent).forEach(([key, content]) => {
+                const element = document.getElementById(key + '-content');
+                if (element) {
+                    element.innerHTML = marked.parse(content);
+                }
+            });
+        }
+
+        // Toggle card content
+        function toggleCard(header) {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.card-toggle');
+            
+            content.classList.toggle('collapsed');
+            toggle.classList.toggle('collapsed');
+        }
+
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                const target = link.getAttribute('href').substring(1);
+                const element = document.getElementById(target);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Initialize
+        renderMarkdown();
+        document.querySelector('.nav-link').classList.add('active');
+    </script>
+</body>
+</html>
