@@ -228,7 +228,10 @@ This approach explicitly avoids the trap of building separate pick and pack infr
    - Availability indicators: green/yellow/red dots
    - "Print Pick List" button (generates PDF from current selection — user can print, walk to warehouse, come back)
    - Select All / Deselect All
-   - Next button (disabled until at least one item selected with qty > 0)
+   - Three exit paths:
+     - **"Save Pick List"** — saves PickList record, closes wizard, FulfillmentStatus → "Pick in Progress." Pick List section appears on the SO screen. User can resume later.
+     - **"Next →"** — continues to Step 2 (Pack) in the same session
+     - **"Cancel"** — discards, nothing saved
 
    **Step 2 — Pack (Review & Generate Packing Slip):**
    - Summary table of items being fulfilled (read-only): Item, Location, Qty
@@ -249,6 +252,36 @@ This approach explicitly avoids the trap of building separate pick and pack infr
 3. **Success modal** (matching existing pattern): "Shipment created successfully. [View Packing Slip] [OK]"
 
 4. **Packing slip accessible afterward** from the Items Shipped table via a document icon, or from a "Print" dropdown on the SO.
+
+### Save & Resume Flow (Pick now, Pack/Ship later)
+
+When the user isn't ready to pack and ship in the same session:
+
+1. **User opens wizard, completes Step 1 (Pick)** — selects items, adjusts quantities, prints pick list for the warehouse.
+
+2. **User clicks "Save Pick List"** instead of "Next →" — wizard closes. System saves a PickList record with the selected items and quantities. FulfillmentStatus → "Pick in Progress."
+
+3. **Pick List section appears on the SO screen** (between "Items not shipped" and "Items shipped"). Shows:
+   - Items on the pick list with Qty to Pick, Qty Picked (starts at 0), Status (Pending)
+   - Warehouse staff can update Qty Picked inline as items are pulled — no modal needed
+   - "Print Pick List" button for reprinting
+   - When all items are picked (Qty Picked = Qty to Pick), FulfillmentStatus → "Picked"
+
+4. **When ready to pack/ship** — user clicks **Fulfill ∨** → "Fulfill Items..." again. The wizard detects an existing pick list and **opens at Step 2 (Pack)**, pre-populated with the picked items. User continues through Pack → Ship as normal.
+
+5. **Quick path still works** — if the user wants to do everything in one session, they click "Next →" in Step 1 instead of "Save Pick List" and go straight through Pick → Pack → Ship without ever saving a pick list.
+
+```
+TWO PATHS THROUGH THE WIZARD:
+
+Path A — All-in-one (solo operator, simple order):
+  Fulfill → Step 1 (Pick) → Next → Step 2 (Pack) → Next → Step 3 (Ship) → Done
+
+Path B — Save & resume (team, complex order):
+  Fulfill → Step 1 (Pick) → Save Pick List → [wizard closes]
+  [time passes — warehouse picks items, updates Qty Picked on SO screen]
+  Fulfill → Step 2 (Pack) → Next → Step 3 (Ship) → Done
+```
 
 ### Wireframe: Step 1 — Pick (Wizard Modal UI)
 
@@ -275,8 +308,8 @@ This approach explicitly avoids the trap of building separate pick and pack infr
 │                                                                      │
 │  🟢 In stock   🟡 Partial (3 of 5 requested)   🔴 Out of stock      │
 │                                                                      │
-│                                              [ Cancel ]  [ Next → ]  │
-└──────────────────────────────────────────────────────────────────────┘
+│                              [ Cancel ]  [ Save Pick List ]  [ Next → ]  │
+└──────────────────────────────────────────────────────────────────────────┘
 ```
 
 **Key elements:** The modal reuses the 870px width and checkbox table from the existing SelectShippedItemsModal. Availability dots (green/yellow/red) give instant stock visibility per line. "Qty to Ship" is editable — user can adjust for partial fulfillment. "Print Pick List" generates a PDF of the current selection (see below) so the user can walk to the warehouse with a physical list.
@@ -313,6 +346,54 @@ This approach explicitly avoids the trap of building separate pick and pack infr
 
 **Key elements:** The printed pick list is a single-page PDF designed for the warehouse floor. It includes the ship-to address so the picker knows where items are going, checkbox columns for manual confirmation, and a signature line at the bottom. Items are grouped by location so the picker can walk the warehouse efficiently. Out-of-stock items (Gasket C) are excluded from the printed list since there's nothing to pick.
 
+### Wireframe: Packing Slip (PDF)
+
+Generated in Step 2 (Pack) when "Generate packing slip" is toggled on. This is the document that goes inside the box with the shipment.
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│                                                                      │
+│  ┌────────────────┐                                                  │
+│  │  METHOD CRM    │                           PACKING SLIP           │
+│  │  [Company Logo]│                                                  │
+│  └────────────────┘                                                  │
+│                                                                      │
+│  ─────────────────────────────────────────────────────────────────── │
+│                                                                      │
+│  FROM:                              SHIP TO:                         │
+│  Method CRM Client                  Tom Tesla                        │
+│  123 Business Ave                   925 Kingsway Drive               │
+│  Suite 200                          Burlington, ON L7T 3J1           │
+│  Toronto, ON M5V 2T6               Canada                           │
+│                                                                      │
+│  ─────────────────────────────────────────────────────────────────── │
+│                                                                      │
+│  Order #:  SO-1042                  Ship Date:   March 26, 2026      │
+│  Carrier:  UPS Ground               Tracking #:  1Z999AA10123456784  │
+│                                                                      │
+│  ─────────────────────────────────────────────────────────────────── │
+│                                                                      │
+│  #   Item               SKU        Qty Shipped   Price     Amount    │
+│  ─── ────────────────── ────────── ─────────── ────────── ────────── │
+│  1   Widget A           WDG-001        10        $11.37    $113.67   │
+│  2   Bracket B          BRK-042         3        $24.50     $73.50   │
+│                                                                      │
+│  ─────────────────────────────────────────────────────────────────── │
+│                                                    Subtotal: $187.17 │
+│                                                    Tax (5%):   $9.36 │
+│                                                    ───────────────── │
+│                                                    Total:    $196.53 │
+│                                                                      │
+│  ─────────────────────────────────────────────────────────────────── │
+│  Packing Notes: Handle with care — fragile components                │
+│                                                                      │
+│  Thank you for your order!                                           │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+**Key elements:** The packing slip includes ship-to/from addresses, carrier and tracking info (from Step 3), and the item list. The **price columns are togglable** — when "Show prices on packing slip" is off (default, per Phil Helms' request), the Price and Amount columns and the Subtotal/Tax/Total section are hidden. This lets the same document serve as a customer-facing packing slip (no prices) or a delivery ticket with pricing (prices shown). Packing notes from Step 2 appear at the bottom.
+
 ### Flow Diagram
 
 *See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
@@ -324,10 +405,10 @@ This approach explicitly avoids the trap of building separate pick and pack infr
 ### Key UX Decisions
 
 - **Wizard within a modal:** 3-step flow with back/next navigation and a step indicator. This is a new pattern for Method's prototype but is standard in B2B SaaS. The step indicator (● ● ○) gives visibility without adding screen real estate.
-- **Pick list is an action within the flow, not a saved entity:** The "Print Pick List" button in Step 1 generates a PDF from the current selection. No PickList record is persisted — the pick list is ephemeral. This keeps the data model simple.
+- **Pick list has two modes:** In the all-in-one path (Next →), picking is part of the wizard flow. In the save & resume path (Save Pick List), a persistent PickList record is created and the Pick List section appears on the SO screen. This gives solo operators speed while giving teams the ability to hand off and track.
 - **Packing slip is generated at ship time:** The packing slip is a document created when the shipment is confirmed, not during a separate "pack" step. This matches inFlow's pattern and the MVP constraint ("packing slip = print option at ship time").
 - **Unified flow, optional depth:** Users who don't need the full wizard can use "Quick Ship All" — same as today's Ship All. Users who want picking and packing go through the wizard. Both paths end with ShippedItem records and status updates.
-- **No new status states:** The existing OrderStatus (Open → Partially Shipped → Fully Shipped) is unchanged. No FulfillmentStatus, no PickList entity, no new sections on the SO screen. This is the lightest touch on the data model.
+- **FulfillmentStatus + PickList added to MVP:** The combined recommendation adds FulfillmentStatus on the list screen and persistent PickList records from Option 2, closing the visibility and interruption gaps that standalone Option 3 had.
 - **Carrier/tracking fields:** Step 3 adds optional carrier and tracking number fields that don't exist in the current ship flow. These are commonly requested (57 companies cite shipping/logistics needs) and fit naturally in the confirmation step.
 
 ### Pros
@@ -396,7 +477,7 @@ The 3-10 person operation where one or two people handle everything from SO crea
 
 **Option 2** is the only option that works across the full range of Method's customers — from 3-person shops to 50-person warehouses. The cost is ceremony (more clicks, more states).
 
-**Option 3** is the fastest for the solo operator but doesn't scale to team operations. The lack of persistent state is a real gap.
+**Option 3** is the fastest for the solo operator but doesn't scale to team operations. The lack of persistent state is a real gap — which is why the MVP combines Option 3's wizard with Option 2's persistent tracking. The "Save Pick List" exit path in Step 1 closes the interruption tolerance gap, and adding FulfillmentStatus to the list screen closes the visibility gap.
 
 ---
 
@@ -465,6 +546,19 @@ BEFORE:                         AFTER:
 
 - **New "Pick List" section** between "Items not shipped" and "Items shipped" — shows active pick list with pick status per item, print button, and pick dates
 - **New "Fulfillment Status" column** on the list screen — sits alongside Order Status and Invoice Status
+
+**Fulfillment Status on the Sales Order list screen:**
+
+```
+| SO #    | Customer      | Date     | Fulfillment      | Order Status       | Invoice Status   |
+|---------|--------------|----------|------------------|--------------------|------------------|
+| SO-1042 | Bluewatercas | Mar 26   | Pick in Progress | Partially Shipped  | Not Invoiced     |
+| SO-1043 | Tom Tesla    | Mar 25   | Packed           | Open               | Not Invoiced     |
+| SO-1044 | Acme Corp    | Mar 25   | Not Started      | Open               | Not Invoiced     |
+| SO-1045 | Widget Inc   | Mar 24   | Shipped          | Fully Shipped      | Fully Invoiced   |
+```
+
+Status values progress sequentially: **Not Started → Pick in Progress → Picked → Packed → Shipped.** Each status implies all previous steps are complete — "Packed" means picking is done too. The team can filter/sort by this column to answer "show me everything that needs picking" or "show me what's packed and ready to ship."
 
 **Why not Option 1 (Sidebar):**
 
