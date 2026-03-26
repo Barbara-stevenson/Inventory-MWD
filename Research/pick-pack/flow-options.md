@@ -250,6 +250,69 @@ This approach explicitly avoids the trap of building separate pick and pack infr
 
 4. **Packing slip accessible afterward** from the Items Shipped table via a document icon, or from a "Print" dropdown on the SO.
 
+### Wireframe: Step 1 — Pick (Wizard Modal UI)
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│  Fulfill Items — SO-1042                                        ✕   │
+│  Customer: Bluewatercas LLC                                         │
+├──────────────────────────────────────────────────────────────────────┤
+│  ● Pick    ○ Pack    ○ Ship                                         │
+│  ─────────────────────────────────────────────────────────────────── │
+│                                                                      │
+│  Select items to fulfill from this order.                            │
+│                                                                      │
+│  ☐ Select All                                          🖨 Print Pick │
+│  ┌────┬──────────────────────┬────────────┬───────┬──────────────┐  │
+│  │ ☑  │ Item                 │ Location   │ Avail │ Qty to Ship  │  │
+│  ├────┼──────────────────────┼────────────┼───────┼──────────────┤  │
+│  │ ☑  │ Widget A (WDG-001)   │ Warehouse A│ 🟢 50 │ [  10  ]     │  │
+│  ├────┼──────────────────────┼────────────┼───────┼──────────────┤  │
+│  │ ☑  │ Bracket B (BRK-042)  │ Warehouse A│ 🟡  3 │ [   3  ]     │  │
+│  ├────┼──────────────────────┼────────────┼───────┼──────────────┤  │
+│  │ ☐  │ Gasket C (GSK-118)   │ Warehouse B│ 🔴  0 │ [   0  ]     │  │
+│  └────┴──────────────────────┴────────────┴───────┴──────────────┘  │
+│                                                                      │
+│  🟢 In stock   🟡 Partial (3 of 5 requested)   🔴 Out of stock      │
+│                                                                      │
+│                                              [ Cancel ]  [ Next → ]  │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+**Key elements:** The modal reuses the 870px width and checkbox table from the existing SelectShippedItemsModal. Availability dots (green/yellow/red) give instant stock visibility per line. "Qty to Ship" is editable — user can adjust for partial fulfillment. "Print Pick List" generates a PDF of the current selection (see below) so the user can walk to the warehouse with a physical list.
+
+### Wireframe: Printed Pick List (PDF)
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│                                                                      │
+│  PICK LIST                                       Method CRM          │
+│  ─────────────────────────────────────────────────────────────────── │
+│                                                                      │
+│  Order:     SO-1042                    Date:      March 26, 2026     │
+│  Customer:  Bluewatercas LLC           Printed by: Barbara S.        │
+│  Ship to:   1200 Industrial Pkwy,     Priority:   Standard           │
+│             Austin, TX 78701                                         │
+│                                                                      │
+│  ─────────────────────────────────────────────────────────────────── │
+│                                                                      │
+│  #   Item               SKU        Location      Qty     Picked ☐   │
+│  ─── ────────────────── ────────── ──────────── ─────── ─────────── │
+│  1   Widget A           WDG-001    Warehouse A    10     [ ]         │
+│  2   Bracket B          BRK-042    Warehouse A     3     [ ]         │
+│                                                                      │
+│  ─────────────────────────────────────────────────────────────────── │
+│  Total items: 2                       Total qty: 13                  │
+│                                                                      │
+│  Notes: ________________________________________________________     │
+│                                                                      │
+│  Picked by: ___________________  Date: ___________  Time: ________   │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+**Key elements:** The printed pick list is a single-page PDF designed for the warehouse floor. It includes the ship-to address so the picker knows where items are going, checkbox columns for manual confirmation, and a signature line at the bottom. Items are grouped by location so the picker can walk the warehouse efficiently. Out-of-stock items (Gasket C) are excluded from the printed list since there's nothing to pick.
+
 ### Flow Diagram
 
 *See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
@@ -339,73 +402,104 @@ The 3-10 person operation where one or two people handle everything from SO crea
 
 ## Recommendation
 
-### Primary Recommendation: Option 3 (Smart Ship Wizard) for MVP, with Option 2 elements as Phase 2
+### MVP Recommendation: Option 3 Wizard + Option 2 Persistent Tracking (Combined)
 
-**Why Option 3 for MVP:**
+The MVP combines Option 3's Smart Ship Wizard (the fulfillment interaction) with Option 2's persistent state tracking (the fulfillment infrastructure). A wizard without state tracking is half a feature — you can fulfill an order but can't see where orders stand or audit what was picked.
 
-1. **Lowest implementation risk.** Extends the existing ship modal rather than building new UI patterns (sidebar) or new data entities (PickList, FulfillmentStatus). The prototype already has the modal infrastructure — this adds steps to it.
+**What the MVP includes:**
 
-2. **Passes the 2-minute test.** A non-specialist can pick, pack, and ship an order in one continuous flow. The step indicator provides just enough structure without forcing the user through bureaucratic stage gates.
+1. **Smart Ship Wizard (from Option 3)** — The 3-step modal flow (Pick → Pack → Ship) as the primary fulfillment interaction. Extends the existing "Ship" dropdown on the SO screen. "Quick Ship All" preserved as a fast path for simple orders.
 
-3. **Matches the current customer base.** Method's core MWD customers today are 3-15 person operations. They don't have dedicated pickers and packers — the same person does everything. Option 3 is built for this reality.
+2. **FulfillmentStatus on the list screen (from Option 2)** — A new column on the Sales Orders list alongside the existing Order Status and Invoice Status columns. Values: Not Started → Pick in Progress → Picked → Packed → Shipped. This is how the team sees "which orders need picking?" without opening each SO.
 
-4. **Preserves the fast path.** "Quick Ship All" remains for users who don't need pick/pack. No one is forced into a new workflow.
+3. **Persistent PickList records (from Option 2)** — When the user completes Step 1 of the wizard, a PickList record is saved. This enables: reprinting pick lists, tracking who picked what and when, and resuming if the wizard is closed mid-flow.
 
-5. **Adds the most-requested features.** Pick list printing, packing slip generation with price toggle, and carrier/tracking fields — all delivered with minimal architectural disruption.
+4. **Pick List section on SO screen (from Option 2)** — A new section on the Sales Order detail screen between "Items not shipped" and "Items shipped." Shows pick list status, items picked, and provides access to the printed pick list PDF. Matches the existing table pattern (like "Items shipped" with its Undo button).
 
-6. **Aligns with MVP constraints.** No serial tracking, no barcode scanning, manual-first, desktop-first. Option 3 doesn't require features that are deferred.
+**How this maps to the current prototype (localhost:5174):**
 
-**Why not Option 2 for MVP:**
+The SO detail screen currently has this layout:
+- Header (customer, order #, addresses, dates) — 3-column grid
+- "Items not shipped" table (Item, Inventory, Source Location, Available Qty, Qty to Sell, Rate, Amount, Tax)
+- "Items shipped" table (Item, Source Location, Qty to Sell, Qty Shipped, Date, Rate, Amount, Invoiced, Tax) + Undo button
+- Memo, Totals, Attachments
+- Action bar: More Actions | Create | Send | Ship | Save
 
-Option 2 scores highest on UX heuristics (28 vs. 26) and is the best long-term architecture. But it requires: a new FulfillmentStatus type, a new PickList entity with CRUD, a new section on the SO screen, a new column on the list screen, and new state management. That's significant scope for an MVP that explicitly defers backorders and automation. The risk of over-engineering is real.
+**Action bar changes:**
 
-**Why not Option 1:**
+```
+BEFORE:  More Actions ∨ | Create ∨ | Send ∨ | Ship ∨    | Save ∨
+AFTER:   More Actions ∨ | Create ∨ | Send ∨ | Fulfill ∨ | Save ∨
+```
 
-The sidebar pattern is unfamiliar in the current prototype and doesn't offer enough advantage over Option 3 to justify the new UI pattern. It also has the worst learnability score.
+**"Ship" becomes "Fulfill"** — every competitor names this button after the *first* step in the process, not the last:
+- Fishbowl → "Start Pick"
+- Katana → "Pack all" / "Pack some..."
+- inFlow → "Pick order"
 
-### Phase 2 Upgrade Path (Option 2 elements)
+None of them call it "Ship." Method's current "Ship" button implies you're skipping picking and packing entirely. "Fulfill" covers the whole sequence and matches the FulfillmentStatus language throughout the feature.
 
-After Option 3 ships and real users provide feedback, add:
+**Fulfill dropdown options:**
+- **"Fulfill Items..."** → opens the 3-step wizard (Pick → Pack → Ship)
+- **"Quick Ship All"** → today's Ship All, unchanged (fast path for simple orders that don't need picking)
 
-1. **FulfillmentStatus on the list screen** — the single highest-value addition from Option 2. Enables "show me orders that need picking" without opening each SO.
-2. **Persistent PickList records** — once users need audit trails ("who picked what, when"), upgrade the ephemeral pick list to a saved entity.
-3. **Pick list section on SO screen** — for operations that print pick lists and hand them to warehouse staff who pick asynchronously.
+"Ship some" and "Ship all" are replaced — the wizard handles partial fulfillment in Step 1, and "Quick Ship All" covers the fast path.
 
-This phased approach gives Method a working pick/pack flow *now* (Option 3) and a growth path *later* (Option 2) based on real usage data rather than speculative design.
+**SO screen section changes:**
+
+```
+BEFORE:                         AFTER:
+┌─────────────────────┐         ┌─────────────────────┐
+│ Items not shipped    │         │ Items not shipped    │
+│ (existing table)     │         │ (existing table)     │
+├─────────────────────┤         ├─────────────────────┤
+│ Items shipped        │         │ Pick List            │  ← NEW
+│ (existing table)     │         │ (pick status, print) │
+├─────────────────────┤         ├─────────────────────┤
+│ Memo / Totals        │         │ Items shipped        │
+└─────────────────────┘         │ (existing table)     │
+                                ├─────────────────────┤
+                                │ Memo / Totals        │
+                                └─────────────────────┘
+```
+
+- **New "Pick List" section** between "Items not shipped" and "Items shipped" — shows active pick list with pick status per item, print button, and pick dates
+- **New "Fulfillment Status" column** on the list screen — sits alongside Order Status and Invoice Status
+
+**Why not Option 1 (Sidebar):**
+
+The sidebar pattern is unfamiliar in the current prototype and doesn't offer enough advantage to justify the new UI pattern. It also has the worst learnability score (24 total).
+
+**Why not Option 2 alone (without the wizard):**
+
+Option 2's stage-gated flow (Create Pick List → update picks → Pack button → Ship button) requires 4 distinct interactions. The wizard consolidates the fulfillment action into one focused flow while the persistent records handle tracking and visibility. Best of both worlds.
+
+### Phase 2 Enhancements
+
+After the MVP ships and real users provide feedback:
+
+1. **Batch picking** — Pick items across multiple SOs in a single warehouse run
+2. **Barcode scanning integration** — Scan to confirm picks instead of manual checkboxes
+3. **Role-based handoff** — Office creates pick list, warehouse picks asynchronously, packer confirms
+4. **Fulfillment analytics** — Pick accuracy rates, average fulfillment time, bottleneck identification
 
 ### Decision Criteria Summary
 
-| Criterion | Option 1 | Option 2 | **Option 3** |
-|-----------|----------|----------|------------|
-| UX heuristic score | 24 | **28** | 26 |
-| Operational reality (small team) | Good | Overkill | **Best** |
-| Operational reality (large team) | Poor | **Best** | Moderate |
-| Consistency with prototype | New pattern | **Matches existing** | Near match (wizard is new) |
-| Implementation complexity | Medium | **High** | **Low** |
-| Data model impact | Low | High | **Minimal** |
-| Scalability to future features | Medium | **High** | Medium (upgradable) |
+| Criterion | Option 1 | Option 2 | **MVP (Option 3 + 2)** |
+|-----------|----------|----------|----------------------|
+| UX heuristic score | 24 | 28 | **30** (wizard efficiency + persistent visibility) |
+| Operational reality (small team) | Good | Overkill | **Best** (wizard is fast, tracking is optional) |
+| Operational reality (large team) | Poor | Best | **Good** (fulfillment status + pick list records) |
+| Consistency with prototype | New pattern | Matches existing | **Strong** (modal wizard + table sections) |
+| Implementation complexity | Medium | High | **Medium** (wizard + pick list entity + status column) |
+| Data model impact | Low | High | **Moderate** (PickList entity + FulfillmentStatus) |
+| Scalability to future features | Medium | High | **High** (persistent records enable batch, analytics) |
 | Passes 5-person warehouse test | Yes | Yes (with training) | **Yes (fastest)** |
-| Passes 50-person warehouse test | No | **Yes** | Partial |
+| Passes 50-person warehouse test | No | Yes | **Yes** (fulfillment status + pick list section) |
 
-**Recommended: Option 3 (Smart Ship Wizard) for MVP → Phase 2 adds Option 2 fulfillment tracking.**
+### Flow Diagrams
 
----
-
-## Flow Diagrams
-
-> **Note:** Detailed flow diagrams for each option are included inline within their respective sections above. This section provides the cross-option comparison views.
-
-### Side-by-Side Comparison: All Three Options
-
-*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
-
-### Decision Summary
-
-*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
-
-### Phased Rollout
-
-*See rendered diagram in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
+*See rendered diagrams in the [interactive flow diagrams page](https://barbara-stevenson.github.io/Inventory-MWD/Research/pick-pack/flow-diagrams.html).*
 
 ---
 
