@@ -145,43 +145,59 @@
                 <span class="badge badge-recommended">Combined Approach</span>
             </div>
             <div class="option-header mvp">
-                <h3>Option 3 Wizard + Option 2 Persistent Tracking</h3>
-                <p>The MVP combines Option 3's Smart Ship Wizard (fulfillment interaction) with Option 2's persistent state tracking (fulfillment infrastructure).</p>
+                <h3>Pick & Pack Wizard + Separate Ship Action + Option 2 Persistent Tracking</h3>
+                <p>The MVP is a 2-step Pick & Pack wizard (combined with a separate Ship dropdown) paired with Option 2's persistent state tracking (fulfillment infrastructure).</p>
             </div>
             <div class="desc" style="border-left: 4px solid #fdcb2d; background: #fffef5">
-                <strong>Why combine them?</strong> The wizard is the fastest fulfillment interaction. But without persistent tracking, the team can't see fulfillment progress, audit what was picked, or resume mid-flow. Option 2's infrastructure closes these gaps.
+                <strong>Why combine them?</strong> The wizard is the fastest fulfillment interaction. Separating Ship from Pick & Pack lets users choose when to ship after picking and packing. Without persistent tracking, the team can't see fulfillment progress, audit what was picked, or resume mid-flow. Option 2's infrastructure closes these gaps.
             </div>
             <div class="diagram-container">
                 <h3>MVP Architecture</h3>
                 <div class="mermaid">flowchart TD
-    A["MVP = Option 3 Wizard +<br/>Option 2 Infrastructure"] --> B["Smart Ship Wizard<br/>3-step modal flow"]
+    A["MVP = Pick & Pack Wizard +<br/>Option 2 Infrastructure"] --> B["Pick & Pack Wizard<br/>2-step modal flow"]
     A --> C["FulfillmentStatus<br/>on list screen"]
     A --> D["Persistent PickList<br/>records"]
     A --> E["Pick List section<br/>on SO screen"]
-    B --> F["Step 1: Pick"]
-    B --> G["Step 2: Pack"]
-    B --> H["Step 3: Ship"]
+    A --> F["Ship ∨ dropdown<br/>separate action"]
+    B --> G["Step 1: Pick"]
+    B --> H["Step 2: Pack"]
+    F --> I["Ship Some..."]
+    F --> J["Ship All"]
     style A fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
     style B fill:#e8f5e9,stroke:#4caf50
+    style F fill:#e8f5e9,stroke:#4caf50
     style C fill:#f3e5f5,stroke:#673ab7
     style D fill:#f3e5f5,stroke:#673ab7</div>
             </div>
             <h3 style="margin-top: 2rem; font-size: 1.1rem; color: #0f1b31">What the MVP Includes</h3>
             <div class="comparison-grid">
-                <div class="comparison-card"><h4>1. Smart Ship Wizard (from Option 3)</h4><p>The 3-step modal flow (Pick → Pack → Ship) as the primary fulfillment interaction. Extends the existing "Ship" dropdown. "Quick Ship All" preserved as fast path.</p></div>
+                <div class="comparison-card"><h4>1. Pick & Pack Wizard (2-Step Modal)</h4><p>The 2-step modal flow (Pick → Pack) as the primary fulfillment interaction. Ship is a separate action via the "Ship ∨" dropdown button. "Ship All" preserved as fast path.</p></div>
                 <div class="comparison-card"><h4>2. FulfillmentStatus on List (from Option 2)</h4><p>New column on Sales Orders list. Values: Not Started → Pick in Progress → Picked → Packed → Shipped. Answers "which orders need picking?"</p></div>
                 <div class="comparison-card"><h4>3. Persistent PickList Records (from Option 2)</h4><p>When user completes Step 1, a PickList record is saved. Enables: reprinting, auditing, resuming if wizard closed mid-flow.</p></div>
-                <div class="comparison-card"><h4>4. Pick List Section (from Option 2)</h4><p>New section on SO detail screen. Shows pick list status, items picked, print button. Matches existing table pattern.</p></div>
+                <div class="comparison-card"><h4>4. Pick List Section (from Option 2)</h4><p>New section on SO detail screen. Shows pick list status, items picked, print button. Includes Pack and Unpick actions. Matches existing table pattern.</p></div>
             </div>
+            <h3 style="margin-top: 2rem; font-size: 1.1rem; color: #0f1b31">Section-Level CTAs</h3>
+            <table>
+                <thead><tr><th>Section</th><th>Button</th><th>Action</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Items not shipped</strong></td><td><em>(no section button — use Pick & Pack in action bar)</em></td><td>—</td></tr>
+                    <tr><td><strong>Pick List (NEW)</strong></td><td>[Pack ▸]</td><td>Opens Pack modal for picked-but-not-packed items</td></tr>
+                    <tr><td><strong>Pick List (NEW)</strong></td><td>[Unpick ▸]</td><td>Opens Unpick modal to move items back to "Items not shipped"</td></tr>
+                    <tr><td><strong>Items shipped</strong></td><td>[Undo] (existing FR-308)</td><td>Moves shipped items back to "Items not shipped"</td></tr>
+                </tbody>
+            </table>
             <h3 style="margin-top: 2rem; font-size: 1.1rem; color: #0f1b31">Action Bar Changes</h3>
-            <div class="code-block">BEFORE:  More Actions ∨ | Create ∨ | Send ∨ | Ship ∨    | Save ∨
+            <div class="code-block">BEFORE:  More Actions ∨ | Create ∨ | Send ∨ | Ship ∨           | Save ∨
 
-AFTER:   More Actions ∨ | Create ∨ | Send ∨ | Fulfill ∨ | Save ∨</div>
-            <div class="desc"><strong>"Ship" becomes "Fulfill"</strong> — Every competitor names this button after the first step: Fishbowl → "Start Pick", Katana → "Pack all", inFlow → "Pick order". None call it "Ship". "Fulfill" covers the whole sequence.</div>
-            <h3 style="margin-top: 2rem; font-size: 1.1rem; color: #0f1b31">Fulfill Dropdown Options</h3>
-            <div class="code-block">Fulfill ∨
-├─ Fulfill Items...       → Opens 3-step wizard
-└─ Quick Ship All         → Today's Ship All (fast path)</div>
+AFTER:   More Actions ∨ | Create ∨ | Send ∨ | Pick & Pack | Ship ∨ | Save ∨</div>
+            <div class="desc"><strong>"Ship" becomes "Pick & Pack"</strong> — The action bar now shows "Pick & Pack" as the primary fulfillment action, with "Ship" as a separate dropdown. Every competitor names buttons after the first step: Fishbowl → "Start Pick", Katana → "Pack all", inFlow → "Pick order". "Pick & Pack" clearly describes what's happening.</div>
+            <h3 style="margin-top: 2rem; font-size: 1.1rem; color: #0f1b31">Pick & Pack Dropdown and Ship Actions</h3>
+            <div class="code-block">Pick & Pack (single button, no dropdown)
+├─ Opens 2-step wizard: Pick → Pack
+
+Ship ∨ (separate dropdown)
+├─ Ship Some...           → Select specific items to ship
+└─ Ship All               → Ship all picked/packed items (fast path)</div>
             <h3 style="margin-top: 2rem; font-size: 1.1rem; color: #0f1b31">Fulfillment Status on Sales Order List</h3>
             <table>
                 <thead><tr><th>SO #</th><th>Customer</th><th>Date</th><th>Fulfillment Status</th><th>Order Status</th><th>Invoice Status</th></tr></thead>
@@ -197,14 +213,15 @@ AFTER:   More Actions ∨ | Create ∨ | Send ∨ | Fulfill ∨ | Save ∨</div>
                 <div class="timeline-phase phase-mvp">
                     <h4>MVP (Now)</h4>
                     <ul>
-                        <li>3-step wizard modal (Pick → Pack → Ship)</li>
+                        <li>2-step wizard modal (Pick → Pack)</li>
+                        <li>Separate Ship ∨ dropdown ("Ship Some..." / "Ship All")</li>
                         <li>Print pick list from Step 1</li>
-                        <li>Packing slip with price toggle</li>
-                        <li>Carrier + tracking fields</li>
-                        <li>"Quick Ship All" fast path</li>
+                        <li>Packing slip with price toggle at Step 2</li>
+                        <li>Carrier + tracking fields in Ship action</li>
+                        <li>"Ship All" fast path via dropdown</li>
                         <li>FulfillmentStatus on list screen</li>
                         <li>Persistent PickList records</li>
-                        <li>Pick list section on SO screen</li>
+                        <li>Pick list section on SO screen with Pack / Unpick actions</li>
                     </ul>
                 </div>
                 <div class="timeline-arrow">→</div>
@@ -221,7 +238,7 @@ AFTER:   More Actions ∨ | Create ∨ | Send ∨ | Fulfill ∨ | Save ∨</div>
             </div>
             <h3 style="margin-top: 2rem; font-size: 1.1rem; color: #0f1b31">Decision Summary Table</h3>
             <table>
-                <thead><tr><th>Criterion</th><th>Option 1</th><th>Option 2</th><th>MVP (3 + 2)</th></tr></thead>
+                <thead><tr><th>Criterion</th><th>Option 1</th><th>Option 2</th><th>MVP (2-Step + Option 2)</th></tr></thead>
                 <tbody>
                     <tr><td><strong>UX heuristic score</strong></td><td>24</td><td>28</td><td style="background:#e8f5e9"><strong>30+</strong></td></tr>
                     <tr><td><strong>Small team (3–10 people)</strong></td><td>Good</td><td>Overkill</td><td style="background:#e8f5e9"><strong>Best</strong></td></tr>
@@ -234,9 +251,9 @@ AFTER:   More Actions ∨ | Create ∨ | Send ∨ | Fulfill ∨ | Save ∨</div>
             <div class="diagram-container" style="margin-top: 2rem">
                 <h3>Decision Criteria Summary</h3>
                 <div class="mermaid">flowchart LR
-    Q1{"How should<br/>pick/pack<br/>integrate?"} -->|"Extend existing<br/>ship modal"| A1["Smart Ship Wizard"]
+    Q1{"Should Ship be<br/>part of the<br/>wizard?"} -->|"No — separate<br/>dropdown"| A1["Pick & Pack Wizard<br/>2-step modal"]
     Q2{"New status<br/>states?"} -->|"Yes"| A2["FulfillmentStatus<br/>on list"]
-    Q3{"Packing slip<br/>when?"} -->|"At ship time"| A3["Step 2: Pack"]
+    Q3{"Packing slip<br/>when?"} -->|"At Step 2: Pack"| A3["Generate in wizard<br/>Step 2"]
     Q4{"Pick list<br/>persistence?"} -->|"Yes"| A4["PickList record"]
     style A1 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
     style A2 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
@@ -300,21 +317,20 @@ NO UNDO AFTER SHIP:
             <div class="diagram-container">
                 <h3>Flow Diagram</h3>
                 <div class="mermaid">flowchart TD
-    A["Sales Order<br/>Status: Open"] -->|"Click Fulfill"|B{"Dropdown"}
-    B -->|"Pick & Pack"| C["Sidebar slides in"]
-    B -->|"Ship All"| D["Skip picking<br/>existing flow"]
+    A["Sales Order<br/>Status: Open"] -->|"Click Pick & Pack"|C["Sidebar slides in"]
     C --> E["Pick List Section<br/>Items table + checkbox"]
     E --> F["User checks off<br/>items as picked"]
     F --> G{"All items<br/>picked?"}
     G -->|"No"| F
     G -->|"Yes"| H["Pack Section<br/>Generate Packing Slip"]
-    H --> I["Confirm Pack & Ship"]
-    I --> J["Creates ShippedItem<br/>Order → Partially/Fully Shipped"]
-    J --> K["Items in<br/>Items Shipped table"]
+    H --> I["Confirm Pack"]
+    I --> J["Ship ∨ dropdown"]
+    J -->|"Ship All or<br/>Ship Some"| K["Creates ShippedItem<br/>Order → Partially/Fully Shipped"]
+    K --> L["Items in<br/>Items Shipped table"]
     style A fill:#fff8f0,stroke:#ff9800
     style C fill:#fff8f0,stroke:#ff9800
     style E fill:#fff8f0,stroke:#ff9800
-    style J fill:#fff8f0,stroke:#ff9800</div>
+    style K fill:#fff8f0,stroke:#ff9800</div>
             </div>
             <div class="pros-cons">
                 <div class="pros">
@@ -434,48 +450,47 @@ NO UNDO AFTER SHIP:
 
         <div class="section" id="option3">
             <div class="section-title">
-                <h2>Option 3: Smart Ship Wizard</h2>
-                <span class="badge badge-option3">3-Step Modal Flow</span>
+                <h2>Option 3: Pick & Pack Wizard</h2>
+                <span class="badge badge-option3">2-Step Modal Flow</span>
             </div>
             <div class="option-header option3">
                 <h3>Philosophy</h3>
-                <p>Pick/pack should feel like a natural extension of shipping, not a separate process. A 3-step wizard within the existing modal pattern guides the user through pick → pack → ship in one continuous flow.</p>
+                <p>Pick and pack should feel like a natural, focused workflow. A 2-step wizard within the existing modal pattern guides the user through pick → pack. Ship is a separate action, available when ready.</p>
             </div>
             <div class="desc">
-                <strong>Why this approach:</strong> Avoids building separate pick and pack infrastructure when the existing Ship flow handles the hardest part. Multi-step wizard within a single modal keeps the user in one focused flow.
+                <strong>Why this approach:</strong> Separates picking/packing from shipping, giving the user more control over timing. A 2-step wizard within a single modal keeps the fulfillment process focused and fast, while the Ship dropdown remains available for later.
             </div>
             <div class="diagram-container">
                 <h3>Flow Diagram</h3>
                 <div class="mermaid">flowchart TD
-    A["Sales Order<br/>Status: Open"] -->|"Click Fulfill"|B{"Dropdown"}
-    B -->|"Fulfill Items..."| C["3-Step Wizard Modal"]
-    B -->|"Quick Ship All"| D["Skip to ship<br/>existing flow"]
+    A["Sales Order<br/>Status: Open"] -->|"Click Pick & Pack"|C["2-Step Wizard Modal"]
     C --> E["Step 1: Pick<br/>Select & Confirm Items"]
     E --> F{"Ready to<br/>continue?"}
-    F -->|"Save Pick List"| G["Save PickList<br/>Wizard closes<br/>Pick section on SO"]
+    F -->|"Save Pick"| G["Save PickList<br/>Wizard closes<br/>Pick section on SO"]
     F -->|"Next →"| H["Step 2: Pack<br/>Generate Packing Slip"]
-    G --> I["Later: Resume<br/>Click Fulfill again"]
+    G --> I["Later: Resume<br/>Click Pick & Pack again"]
     I --> H
-    H --> J["Step 3: Ship<br/>Confirm & Complete"]
-    J --> K["Creates ShippedItem<br/>Generates packing slip PDF<br/>Order status updated"]
+    H --> J["Confirm Pack"]
+    J --> K["Use Ship ∨ dropdown<br/>when ready to ship"]
+    K --> L["Creates ShippedItem<br/>Order status updated"]
     style E fill:#e8f5e9,stroke:#4caf50
     style H fill:#e8f5e9,stroke:#4caf50
-    style J fill:#e8f5e9,stroke:#4caf50</div>
+    style K fill:#e8f5e9,stroke:#4caf50</div>
             </div>
             <div class="wireframe">
                 <h4>Step 1 Wizard Modal — Pick (Select & Confirm Items)</h4>
                 <pre>┌──────────────────────────────────────────────────────────────┐
-│  Fulfill Items — SO-1042                                  ✕   │
+│  Pick & Pack — SO-1042                                    ✕   │
 │  Customer: Bluewatercas LLC                                   │
 ├──────────────────────────────────────────────────────────────┤
-│  ● Pick    ○ Pack    ○ Ship                                   │
+│  ● Pick    ○ Pack                                             │
 │  ─────────────────────────────────────────────────────────── │
 │                                                              │
-│  Select items to fulfill from this order.                    │
+│  Select items to pick from this order.                       │
 │                                                              │
 │  ☐ Select All                           🖨 Print Pick List   │
 │  ┌────┬──────────────────┬──────────┬───────┬──────────────┐ │
-│  │ ☑  │ Item             │ Location │ Avail │ Qty to Ship  │ │
+│  │ ☑  │ Item             │ Location │ Avail │ Qty to Pick  │ │
 │  ├────┼──────────────────┼──────────┼───────┼──────────────┤ │
 │  │ ☑  │ Widget A         │ Ware A   │ 🟢 50 │ [  10  ]     │ │
 │  ├────┼──────────────────┼──────────┼───────┼──────────────┤ │
@@ -488,7 +503,7 @@ NO UNDO AFTER SHIP:
 │                                                              │
 │                    [ Cancel ]  [ Save Pick ]  [ Next → ]    │
 └──────────────────────────────────────────────────────────────┘</pre>
-                <div class="wireframe-desc"><strong>Key elements:</strong> Reuses 870px width and checkbox table from SelectShippedItemsModal. Availability dots give instant stock visibility. Qty to Ship is editable.</div>
+                <div class="wireframe-desc"><strong>Key elements:</strong> Reuses 870px width and checkbox table from SelectShippedItemsModal. Availability dots give instant stock visibility. Qty to Pick is editable.</div>
             </div>
             <div class="wireframe">
                 <h4>Printed Pick List (PDF)</h4>
@@ -549,14 +564,15 @@ Picked by: _________________  Date: ________  Time: _____</pre>
                 <h3>Save & Resume Flow</h3>
                 <div class="mermaid">flowchart TD
     A["User opens wizard<br/>Step 1: Pick"] --> B{"Ready to<br/>pack now?"}
-    B -->|"Yes: Next →"| C["Path A: All-in-one<br/>Step 1→2→3 in one<br/>session"]
-    B -->|"No: Save Pick List"| D["Path B: Save & Resume<br/>Step 1 → Save<br/>Wizard closes"]
+    B -->|"Yes: Next →"| C["Path A: All-in-one<br/>Step 1→2 in one<br/>session"]
+    B -->|"No: Save Pick"| D["Path B: Save & Resume<br/>Step 1 → Save<br/>Wizard closes"]
     D --> E["Pick List on SO<br/>screen"]
     E --> F["[Later]<br/>Warehouse picks"]
-    F --> G["Fulfill again<br/>Opens at Step 2"]
-    G --> H["Step 2→3<br/>Resume"]
-    C --> I["Shipment created"]
-    H --> I
+    F --> G["Pick & Pack again<br/>Opens at Step 2"]
+    G --> H["Step 2: Pack<br/>Resume"]
+    H --> I["Use Ship ∨<br/>when ready"]
+    C --> J["Proceed to Step 2"]
+    J --> I
     style C fill:#e8f5e9,stroke:#4caf50
     style D fill:#e8f5e9,stroke:#4caf50
     style I fill:#e8f5e9,stroke:#4caf50</div>
@@ -565,12 +581,14 @@ Picked by: _________________  Date: ________  Time: _____</pre>
 TWO PATHS:
 
 Path A — All-in-one:
-  Fulfill → Step 1 (Pick) → Next → Step 2 (Pack) → Next → Step 3 (Ship) → Done
+  Pick & Pack → Step 1 (Pick) → Next → Step 2 (Pack) → Done
+  Then use Ship ∨ dropdown when ready
 
 Path B — Save & resume:
-  Fulfill → Step 1 (Pick) → Save Pick List → [wizard closes]
+  Pick & Pack → Step 1 (Pick) → Save Pick → [wizard closes]
   [time passes — warehouse picks items, updates Qty Picked]
-  Fulfill → Step 2 (Pack) → Next → Step 3 (Ship) → Done
+  Pick & Pack → Step 2 (Pack) → Done
+  Then use Ship ∨ dropdown when ready
             </div>
             <div class="pros-cons">
                 <div class="pros">
@@ -580,9 +598,9 @@ Path B — Save & resume:
                         <li>Familiar modal pattern (users know SelectShippedItemsModal)</li>
                         <li>Pick list and packing slip generated as part of flow</li>
                         <li>Step indicator provides structure without rigidity</li>
-                        <li>"Quick Ship All" preserves fast path</li>
-                        <li>Carrier/tracking fields added naturally</li>
-                        <li>Experienced user: pick → pack → ship in 2 minutes</li>
+                        <li>"Ship All" dropdown preserves fast path</li>
+                        <li>Carrier/tracking fields in Ship action</li>
+                        <li>Experienced user: pick → pack in 2 minutes, ship when ready</li>
                     </ul>
                 </div>
                 <div class="cons">
@@ -620,17 +638,17 @@ Path B — Save & resume:
     style Opt3 fill:#e8f5e9,stroke:#4caf50,stroke-width:2px</div>
             </div>
             <table>
-                <thead><tr><th>Dimension</th><th>Option 1</th><th>Option 2</th><th>Option 3</th></tr></thead>
+                <thead><tr><th>Dimension</th><th>Option 1</th><th>Option 2</th><th>Option 3 (Pick & Pack)</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>UI Pattern</strong></td><td>Right-side panel</td><td>Modals + List status</td><td>Multi-step wizard modal</td></tr>
-                    <tr><td><strong>Steps to complete</strong></td><td>3 (inline)</td><td>4+ (distinct actions)</td><td>3 (one modal)</td></tr>
-                    <tr><td><strong>Pick list record</strong></td><td>Ephemeral</td><td>Persistent entity</td><td>Ephemeral (optional save)</td></tr>
-                    <tr><td><strong>Status tracking</strong></td><td>None</td><td>Full FulfillmentStatus</td><td>None</td></tr>
-                    <tr><td><strong>Role separation</strong></td><td>Weak</td><td>Strong</td><td>Weak</td></tr>
-                    <tr><td><strong>Interruption tolerance</strong></td><td>High</td><td>Highest</td><td>Low</td></tr>
-                    <tr><td><strong>New UI pattern</strong></td><td>Yes</td><td>No</td><td>Mostly</td></tr>
-                    <tr><td><strong>Data model complexity</strong></td><td>Low</td><td>High</td><td>Low-Medium</td></tr>
-                    <tr><td><strong>Batch picking</strong></td><td>No</td><td>Yes</td><td>No</td></tr>
+                    <tr><td><strong>UI Pattern</strong></td><td>Right-side panel</td><td>Modals + List status</td><td>2-step wizard modal + Ship dropdown</td></tr>
+                    <tr><td><strong>Steps to complete</strong></td><td>3 (inline)</td><td>4+ (distinct actions)</td><td>2 (one modal) + separate ship</td></tr>
+                    <tr><td><strong>Pick list record</strong></td><td>Ephemeral</td><td>Persistent entity</td><td>Persistent (after Step 1)</td></tr>
+                    <tr><td><strong>Status tracking</strong></td><td>None</td><td>Full FulfillmentStatus</td><td>Full FulfillmentStatus (from Option 2)</td></tr>
+                    <tr><td><strong>Role separation</strong></td><td>Weak</td><td>Strong</td><td>Moderate (pick/pack → ship handoff)</td></tr>
+                    <tr><td><strong>Interruption tolerance</strong></td><td>High</td><td>Highest</td><td>High (pick list saved)</td></tr>
+                    <tr><td><strong>New UI pattern</strong></td><td>Yes</td><td>No</td><td>Mostly (2-step wizard)</td></tr>
+                    <tr><td><strong>Data model complexity</strong></td><td>Low</td><td>High</td><td>Medium (adds PickList from Option 2)</td></tr>
+                    <tr><td><strong>Batch picking</strong></td><td>No</td><td>Yes</td><td>No (future phase)</td></tr>
                 </tbody>
             </table>
         </div>

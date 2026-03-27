@@ -65,7 +65,7 @@ The MVP combines Option 3's Smart Ship Wizard (the fulfillment interaction) with
 
 **What the MVP includes:**
 
-1. **Smart Ship Wizard (from Option 3)** — The 3-step modal flow (Pick → Pack → Ship) as the primary fulfillment interaction. Extends the existing "Ship" dropdown on the SO screen. "Quick Ship All" preserved as a fast path for simple orders.
+1. **Pick & Pack Wizard (from Option 3)** — A 2-step modal flow (Pick → Pack) as the primary picking/packing interaction. New "Pick & Pack" button in the action bar. Shipping remains a separate action via Ship ∨ dropdown ("Ship Some..." / "Ship All") for packed items. This separation reflects how real warehouses work — you pick and pack, then ship when ready.
 
 2. **FulfillmentStatus on the list screen (from Option 2)** — A new column on the Sales Orders list alongside the existing Order Status and Invoice Status columns. Values: Not Started → Pick in Progress → Picked → Packed → Shipped. This is how the team sees "which orders need picking?" without opening each SO.
 
@@ -85,22 +85,34 @@ The SO detail screen currently has this layout:
 **Action bar changes:**
 
 ```
-BEFORE:  More Actions ∨ | Create ∨ | Send ∨ | Ship ∨    | Save ∨
-AFTER:   More Actions ∨ | Create ∨ | Send ∨ | Fulfill ∨ | Save ∨
+BEFORE:  More Actions ∨ | Create ∨ | Send ∨ | Ship ∨         | Save ∨
+AFTER:   More Actions ∨ | Create ∨ | Send ∨ | Pick & Pack | Ship ∨ | Save ∨
 ```
 
-**"Ship" becomes "Fulfill"** — every competitor names this button after the *first* step in the process, not the last:
+**"Ship ∨" stays as-is for shipping.** A new **"Pick & Pack"** button is added to the action bar. Every competitor names the picking/packing button after the *first* step in the process:
 - Fishbowl → "Start Pick"
 - Katana → "Pack all" / "Pack some..."
 - inFlow → "Pick order"
 
-None of them call it "Ship." Method's current "Ship" button implies you're skipping picking and packing entirely. "Fulfill" covers the whole sequence and matches the FulfillmentStatus language throughout the feature.
+None of them merge picking into the Ship button. Picking and packing are a separate action from shipping — the user picks and packs first, then ships when ready. Two distinct buttons reflect this.
 
-**Fulfill dropdown options:**
-- **"Fulfill Items..."** → opens the 3-step wizard (Pick → Pack → Ship)
-- **"Quick Ship All"** → today's Ship All, unchanged (fast path for simple orders that don't need picking)
+**Pick & Pack** button (no dropdown — single action):
+- Opens the Pick & Pack wizard modal (Pick → Pack steps)
+- User selects items, picks them, optionally packs and generates packing slip
+- Can "Save Pick List" to exit early and resume later
 
-"Ship some" and "Ship all" are replaced — the wizard handles partial fulfillment in Step 1, and "Quick Ship All" covers the fast path.
+**Ship ∨** dropdown (existing, unchanged):
+- **"Ship Some..."** → opens Ship modal showing only packed items ready to ship
+- **"Ship All"** → ships all packed items at once (fast path)
+
+**Section-level CTAs on the SO screen:**
+
+| Section | Button | Action |
+|---------|--------|--------|
+| Items not shipped | *(no section button — use Pick & Pack in action bar)* | — |
+| Pick List (NEW) | [Pack ▸] | Opens Pack modal for picked-but-not-packed items |
+| Pick List (NEW) | [Unpick ▸] | Opens Unpick modal to move items back to "Items not shipped" |
+| Items shipped | [Undo] (existing FR-308) | Moves shipped items back to "Items not shipped" |
 
 **SO screen section changes:**
 
@@ -191,7 +203,7 @@ The existing prototype already has the SO detail screen as the hub for shipping 
 
 1. **User opens a Sales Order** with status "Open" (has unfulfilled line items).
 
-2. **User clicks "Fulfill" dropdown** (replaces or extends existing "Ship" dropdown). Options:
+2. **User clicks "Pick & Pack" button** in the action bar. Options:
    - "Pick & Pack" — opens the fulfillment sidebar
    - "Ship All" (existing quick-ship, skips picking for simple orders)
    - "Ship Some" (existing partial ship)
@@ -329,14 +341,12 @@ This approach explicitly avoids the trap of building separate pick and pack infr
 
 ### Flow Steps
 
-1. **User opens SO and clicks "Fulfill" dropdown**. Options:
-   - "Fulfill Items..." — opens the enhanced fulfillment modal (pick + pack + ship)
-   - "Quick Ship All" — existing Ship All (bypass for simple orders)
+1. **User clicks "Pick & Pack" button** in the action bar. This opens the Pick & Pack wizard modal. (Shipping is a separate action via Ship ∨ dropdown.)
 
-2. **Fulfillment modal opens (870px, 3-step wizard):**
+2. **Pick & Pack modal opens (870px, 2-step wizard):**
 
    **Step 1 — Pick (Select & Confirm Items):**
-   - Table: Checkbox, Item, Location, Qty Available, Qty to Fulfill (editable)
+   - Table: Checkbox, Item, Location, Qty Available, Qty to Pick (editable)
    - Availability indicators: green/yellow/red dots
    - "Print Pick List" button (generates PDF from current selection — user can print, walk to warehouse, come back)
    - Select All / Deselect All
@@ -346,24 +356,18 @@ This approach explicitly avoids the trap of building separate pick and pack infr
      - **"Cancel"** — discards, nothing saved
 
    **Step 2 — Pack (Review & Generate Packing Slip):**
-   - Summary table of items being fulfilled (read-only): Item, Location, Qty
+   - Summary table of picked items (read-only): Item, Location, Qty
    - Packing slip options:
      - Toggle: "Generate packing slip" (on by default)
      - Toggle: "Show prices on packing slip" (off by default — Phil Helms' need)
      - Optional: packing notes field
-   - Back / Next buttons
-   - Step indicator: ● ○ ○ → ● ● ○ → ● ● ●
+   - Back / Confirm Pack buttons
+   - Step indicator: ● ○ → ● ●
+   - On confirm: marks items as packed, generates packing slip PDF if toggled on, FulfillmentStatus → "Packed"
 
-   **Step 3 — Ship (Confirm & Complete):**
-   - Final confirmation: "You are about to ship [N] items to [Customer Name]"
-   - Ship date (defaults to today)
-   - Optional: carrier, tracking number fields
-   - Back / Confirm Shipment buttons
-   - On confirm: creates ShippedItem records, updates order status, generates packing slip PDF if toggled on, shows success modal
+3. **Packing slip accessible afterward** from the Pick List section via a document icon, or from a "Print" dropdown on the SO.
 
-3. **Success modal** (matching existing pattern): "Shipment created successfully. [View Packing Slip] [OK]"
-
-4. **Packing slip accessible afterward** from the Items Shipped table via a document icon, or from a "Print" dropdown on the SO.
+4. **Shipping is a separate action.** When packed items are ready to ship, user clicks **Ship ∨** → "Ship Some..." or "Ship All" in the action bar. This opens the existing Ship modal showing only packed items. On confirm: items move from Pick List to "Items shipped," FulfillmentStatus → "Shipped."
 
 ### Save & Resume Flow (Pick now, Pack/Ship later)
 
@@ -379,20 +383,27 @@ When the user isn't ready to pack and ship in the same session:
    - "Print Pick List" button for reprinting
    - When all items are picked (Qty Picked = Qty to Pick), FulfillmentStatus → "Picked"
 
-4. **When ready to pack/ship** — user clicks **Fulfill ∨** → "Fulfill Items..." again. The wizard detects an existing pick list and **opens at Step 2 (Pack)**, pre-populated with the picked items. User continues through Pack → Ship as normal.
+4. **When ready to pack** — user clicks **[Pack ▸]** on the Pick List section header. This opens the Pack modal pre-populated with picked items. User confirms pack → packing slip generated.
 
-5. **Quick path still works** — if the user wants to do everything in one session, they click "Next →" in Step 1 instead of "Save Pick List" and go straight through Pick → Pack → Ship without ever saving a pick list.
+5. **When ready to ship** — user clicks **Ship ∨** → "Ship Some..." or "Ship All" in the action bar. Ship modal shows only packed items. On confirm: items move to "Items shipped."
+
+6. **Quick path still works** — if the user wants to pick and pack in one session, they click "Next →" in Step 1 instead of "Save Pick List" and go straight through Pick → Pack. Then Ship via Ship ∨ when ready.
 
 ```
-TWO PATHS THROUGH THE WIZARD:
+THREE PATHS THROUGH THE FLOW:
 
-Path A — All-in-one (solo operator, simple order):
-  Fulfill → Step 1 (Pick) → Next → Step 2 (Pack) → Next → Step 3 (Ship) → Done
+Path A — Pick & Pack in one go, Ship later:
+  Pick & Pack → Step 1 (Pick) → Next → Step 2 (Pack) → Done
+  [later] Ship ∨ → Ship Some/All → Done
 
-Path B — Save & resume (team, complex order):
-  Fulfill → Step 1 (Pick) → Save Pick List → [wizard closes]
+Path B — Pick now, Pack later, Ship later:
+  Pick & Pack → Step 1 (Pick) → Save Pick List → [wizard closes]
   [time passes — warehouse picks items, updates Qty Picked on SO screen]
-  Fulfill → Step 2 (Pack) → Next → Step 3 (Ship) → Done
+  [Pack ▸] on Pick List section → Pack modal → Done
+  [later] Ship ∨ → Ship Some/All → Done
+
+Path C — Skip pick/pack entirely (simple orders):
+  Ship ∨ → Ship All → Done (existing flow, unchanged)
 ```
 
 ### Undo / Reverse Flow (Unpick & Unpack)
@@ -444,17 +455,17 @@ NO UNDO AFTER SHIP:
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  Fulfill Items — SO-1042                                        ✕   │
+│  Pick & Pack — SO-1042                                          ✕   │
 │  Customer: Bluewatercas LLC                                         │
 ├──────────────────────────────────────────────────────────────────────┤
-│  ● Pick    ○ Pack    ○ Ship                                         │
+│  ● Pick    ○ Pack                                                   │
 │  ─────────────────────────────────────────────────────────────────── │
 │                                                                      │
-│  Select items to fulfill from this order.                            │
+│  Select items to pick from this order.                               │
 │                                                                      │
 │  ☐ Select All                                          🖨 Print Pick │
 │  ┌────┬──────────────────────┬────────────┬───────┬──────────────┐  │
-│  │ ☑  │ Item                 │ Location   │ Avail │ Qty to Ship  │  │
+│  │ ☑  │ Item                 │ Location   │ Avail │ Qty to Pick  │  │
 │  ├────┼──────────────────────┼────────────┼───────┼──────────────┤  │
 │  │ ☑  │ Widget A (WDG-001)   │ Warehouse A│ 🟢 50 │ [  10  ]     │  │
 │  ├────┼──────────────────────┼────────────┼───────┼──────────────┤  │
@@ -469,7 +480,7 @@ NO UNDO AFTER SHIP:
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Key elements:** The modal reuses the 870px width and checkbox table from the existing SelectShippedItemsModal. Availability dots (green/yellow/red) give instant stock visibility per line. "Qty to Ship" is editable — user can adjust for partial fulfillment. "Print Pick List" generates a PDF of the current selection (see below) so the user can walk to the warehouse with a physical list.
+**Key elements:** The modal reuses the 870px width and checkbox table from the existing SelectShippedItemsModal. Availability dots (green/yellow/red) give instant stock visibility per line. "Qty to Pick" is editable — user can adjust for partial picking. "Print Pick List" generates a PDF of the current selection (see below) so the user can walk to the warehouse with a physical list.
 
 ### Wireframe: Printed Pick List (PDF)
 
