@@ -120,7 +120,7 @@ BEFORE:                         AFTER:
                                 └─────────────────────┘
 ```
 
-- **New "Pick List" section** between "Items not shipped" and "Items shipped" — shows active pick list with pick status per item, print button, and pick dates
+- **New "Pick List" section** between "Items not shipped" and "Items shipped" — shows active pick list with pick status per item, print button, pick dates, and undo actions ([Unpick ▸] to move items back, [Pack ▸] to advance items, [Unpack] to reverse packing)
 - **New "Fulfillment Status" column** on the list screen — sits alongside Order Status and Invoice Status
 
 **Fulfillment Status on the Sales Order list screen:**
@@ -394,6 +394,51 @@ Path B — Save & resume (team, complex order):
   [time passes — warehouse picks items, updates Qty Picked on SO screen]
   Fulfill → Step 2 (Pack) → Next → Step 3 (Ship) → Done
 ```
+
+### Undo / Reverse Flow (Unpick & Unpack)
+
+Every major competitor supports undo at the pick/pack stage — inFlow has an explicit "Unfulfill" button + per-item "Unpick," Fishbowl supports voiding a pick via CTRL+D, Katana lets you revert SO rows to "Not delivered," and Cin7 can undo an entire sale back to Draft. Method should follow suit.
+
+**Undo is always available before shipping.** Once items are picked or packed but not yet shipped, the user can reverse the action. The inventory implications are straightforward — unpicking moves items back to "available."
+
+**How it works in the three-table design:**
+
+```
+UNPICK (Pick List → Items not shipped):
+  Pick List section → [Unpick ▸] button on section header
+  Opens Unpick modal (870px, same pattern):
+    - Table: Checkbox, Item, Location, Qty Picked
+    - Select items to return to "Items not shipped"
+    - Confirm → items move back UP from Pick List to Items not shipped
+    - FulfillmentStatus reverts: Picked → Pick in Progress → Not Started
+
+UNPACK (Pick List "packed" → Pick List "picked"):
+  Pick List section → [Pack ▸] button still available for re-packing
+  Items that were packed but not shipped can be "unpacked":
+    - Unpack option in the Pack modal or via a contextual action
+    - Packed items revert to "Picked" status in the Pick List
+    - FulfillmentStatus reverts: Packed → Picked
+
+NO UNDO AFTER SHIP:
+  Once items move to "Items shipped," undo is already handled by the
+  existing Undo button on the Items Shipped table (FR-308). This moves
+  items back to "Items not shipped" — the same pattern Method has today.
+```
+
+**CTA mapping for undo actions:**
+
+| Action | Location | Button | Result |
+|--------|----------|--------|--------|
+| Unpick items | Pick List section header | [Unpick ▸] | Opens modal to select items → moves back to "Items not shipped" |
+| Unpack items | Pick List section header | Context menu on [Pack ▸] or separate [Unpack] | Reverts packed items to picked status |
+| Undo shipment | Items Shipped table | [Undo] (existing FR-308) | Moves items back to "Items not shipped" |
+
+**Competitor evidence:**
+- **inFlow:** "Unfulfill" button + "Unpick all" on mobile — first-class undo, most explicit
+- **Fishbowl:** CTRL+D voids pick ticket, un-commits inventory
+- **Katana:** Revert to "Not delivered" clears pick/pack state
+- **Cin7:** Undo sale to Draft reverses entire fulfillment chain
+- **Zoho:** Weakest — handles undo at the package/shipment level only (delete package, cancel shipment), no clean "unpick" action
 
 ### Wireframe: Step 1 — Pick (Wizard Modal UI)
 

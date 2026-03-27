@@ -244,6 +244,47 @@ AFTER:   More Actions ∨ | Create ∨ | Send ∨ | Fulfill ∨ | Save ∨</div>
     style A4 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px</div>
             </div>
 
+
+            <h3 style="margin-top: 2rem; font-size: 1.1rem; color: #0f1b31">Undo / Reverse Flow (Unpick & Unpack)</h3>
+            <div class="desc" style="border-left: 4px solid #fdcb2d; background: #fffef5">
+                <strong>Competitor undo support:</strong> Every major competitor supports undo at pick/pack stage. inFlow has "Unfulfill" button + "Unpick all" on mobile (first-class undo). Fishbowl uses CTRL+D void. Katana allows reverting to "Not delivered" status. Cin7 supports undo sale to Draft, which reverses the entire fulfillment chain. <strong>Critical rule: undo is always available before shipping.</strong>
+            </div>
+            <div class="wireframe">
+                <h4>Undo Paths — Three Routes to Reverse Fulfillment</h4>
+                <pre>UNPICK (Pick List → Items not shipped):
+  Pick List section → [Unpick ▸] button on section header
+  Opens Unpick modal → select items → moves back UP to Items not shipped
+  FulfillmentStatus reverts: Picked → Pick in Progress → Not Started
+
+UNPACK (Pick List "packed" → Pick List "picked"):
+  Unpack option in Pack modal or contextual action
+  Packed items revert to "Picked" status
+  FulfillmentStatus reverts: Packed → Picked
+
+NO UNDO AFTER SHIP:
+  Existing Undo button on Items Shipped table (FR-308)
+  Moves items back to "Items not shipped"
+  Removes from ShippedItem table</pre>
+                <div class="wireframe-desc"><strong>Key points:</strong> Unpick works only before the pack stage. Unpack works only before ship. After shipment, the existing Undo button on the Items Shipped table handles reversals (different flow).</div>
+            </div>
+            <table>
+                <thead><tr><th>Action</th><th>Location</th><th>Button / Control</th><th>Result</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Unpick items</strong></td><td>Pick List section header</td><td>[Unpick ▸]</td><td>Opens modal → select items → moves back to "Items not shipped"</td></tr>
+                    <tr><td><strong>Unpack items</strong></td><td>Pack modal or Pick List</td><td>Context menu on [Pack ▸] or [Unpack]</td><td>Reverts packed items to "Picked" status</td></tr>
+                    <tr><td><strong>Undo shipment</strong></td><td>Items Shipped table</td><td>[Undo] (existing FR-308)</td><td>Moves back to "Items not shipped" table</td></tr>
+                </tbody>
+            </table>
+            <div class="comparison-grid" style="margin-top: 2rem">
+                <div class="comparison-card"><h4>inFlow</h4><p>"Unfulfill" button + "Unpick all" on mobile — first-class undo support with dedicated buttons.</p></div>
+                <div class="comparison-card"><h4>Fishbowl</h4><p>CTRL+D voids the entire pick ticket — keyboard-driven, powerful, but requires training.</p></div>
+                <div class="comparison-card"><h4>Katana</h4><p>Revert to "Not delivered" clears pick/pack state — integrated into status workflow.</p></div>
+                <div class="comparison-card"><h4>Cin7</h4><p>Undo sale to Draft reverses fulfillment chain — document-level reversal for full control.</p></div>
+                <div class="comparison-card"><h4>Zoho</h4><p>Weakest undo — only delete package or cancel shipment, doesn't support mid-fulfillment reversals.</p></div>
+            </div>
+
+
+
         <div class="section" id="option1">
             <div class="section-title">
                 <h2>Option 1: Fulfillment Sidebar</h2>

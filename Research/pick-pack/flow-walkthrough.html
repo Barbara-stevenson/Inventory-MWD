@@ -1593,9 +1593,261 @@
             </div>
         </div>
 
-        <!-- STEP 12: Competitor Comparison -->
+        <!-- STEP 12: Undo — Reversing Pick, Pack, and Ship Actions -->
         <div class="step-content" data-step="12">
-            <div class="step-title">Step 12: Competitor Comparison</div>
+            <div class="step-title">Step 12: Undo — Reversing Pick, Pack, and Ship Actions</div>
+
+            <div class="mockup-container">
+                <div class="order-status">Sales Order SO-1042 for Bluewatercas LLC</div>
+
+                <h3 style="margin: 24px 0 16px 0; font-size: 16px; font-weight: 600;">Unpick Flow</h3>
+
+                <p style="margin-bottom: 16px; font-size: 13px;">Items in the Pick List can be moved back to "Items not shipped" via an <strong>[Unpick ▸]</strong> button on the Pick List section header. A modal (870px, same pattern as other modals) allows the user to select which items to unpick. <strong>FulfillmentStatus reverts accordingly.</strong></p>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items not shipped</strong>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Inventory</th>
+                                <th>Source Location</th>
+                                <th>Available Qty</th>
+                                <th>Qty to Sell</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: #e8f5e9;">
+                                <td><strong>Gasket A (GSK-001)</strong></td>
+                                <td>Warehouse A</td>
+                                <td>Shelf A2</td>
+                                <td>12</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Gasket C (GSK-118)</td>
+                                <td>Warehouse B</td>
+                                <td>Shelf C3</td>
+                                <td>0</td>
+                                <td>8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">2 items</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Pick list</strong>
+                        </div>
+                        <div class="table-header-right">
+                            <button class="action-button secondary" style="font-size: 11px;">🖨 Print</button>
+                            <button class="action-button secondary" style="font-size: 11px;">[Pack ▸]</button>
+                            <button class="action-button secondary" style="font-size: 11px;">[Unpick ▸]</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;">☐</th>
+                                <th>Item</th>
+                                <th>Location</th>
+                                <th>Qty to Pick</th>
+                                <th>Qty Picked</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>☐</td>
+                                <td>Widget A (WDG-001)</td>
+                                <td>WH-A</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td><span class="badge picked">Picked</span></td>
+                            </tr>
+                            <tr>
+                                <td>☐</td>
+                                <td>Bracket B (BRK-042)</td>
+                                <td>WH-A</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td><span class="badge packed">Packed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">2 items</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items shipped</strong>
+                        </div>
+                    </div>
+                    <div class="empty-state">No items shipped yet.</div>
+                </div>
+
+                <p style="margin: 24px 0 16px 0; font-size: 13px;"><strong>The [Unpick ▸] button opens a modal where the user can select which items to move back to "Items not shipped."</strong> For example, if they unpick Gasket A (2 items), it moves from the Pick List back to the "Items not shipped" table. FulfillmentStatus reverts: if the item was "Picked," it's now "Pending" again. If it was "Packed," unpicking also reverts it to "Pending."</p>
+
+                <div style="padding: 24px; text-align: center; color: #999; margin-bottom: 24px;">
+                    [Sales Order screen with Unpick modal overlay]
+                </div>
+
+                <div class="modal" style="position: static; margin: 0 auto; max-width: 870px;">
+                    <div class="modal-header">Unpick Items — SO-1042</div>
+                    <div class="modal-body">
+                        <div class="info-banner yellow">
+                            ⓘ Select items to move back to "Items not shipped." Their status will revert to Pending.
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 30px;"></th>
+                                    <th>Item</th>
+                                    <th>Qty in Pick List</th>
+                                    <th>Current Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="checkbox-input"></td>
+                                    <td>Widget A (WDG-001)</td>
+                                    <td>10</td>
+                                    <td><span class="badge picked">Picked</span></td>
+                                </tr>
+                                <tr style="background: #fff3cd;">
+                                    <td><input type="checkbox" class="checkbox-input" checked></td>
+                                    <td>Bracket B (BRK-042)</td>
+                                    <td>3</td>
+                                    <td><span class="badge packed">Packed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="action-button secondary">Cancel</button>
+                        <button class="action-button primary">Confirm Unpick</button>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin: 32px 0 16px 0; font-size: 16px; font-weight: 600;">Unpack Flow</h3>
+
+            <div class="mockup-container">
+                <p style="margin-bottom: 16px; font-size: 13px;">Packed items in the Pick List can be reverted to "picked" status via an <strong>Unpack action</strong> (accessible through more options or a dedicated button). <strong>FulfillmentStatus changes: Packed → Picked.</strong> This is useful if packing was done incorrectly or items need to be repacked differently.</p>
+
+                <p style="margin: 16px 0; font-size: 13px; padding: 12px; background: #e3f2fd; border: 1px solid #1565c0; border-radius: 6px; color: #0d47a1;">
+                    <strong>Note:</strong> Unpacking doesn't move items back to "Items not shipped" — it just changes their status from Packed back to Picked. They remain in the Pick List for potential re-packing or shipping.
+                </p>
+            </div>
+
+            <h3 style="margin: 32px 0 16px 0; font-size: 16px; font-weight: 600;">Undo Ship (Existing Pattern — FR-308)</h3>
+
+            <div class="mockup-container">
+                <p style="margin-bottom: 16px; font-size: 13px;">Items in the "Items shipped" table can be moved back to "Items not shipped" via an <strong>Undo button</strong> on the Items Shipped table header. This is an existing pattern in Method that reverses a shipment action.</p>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items shipped</strong>
+                        </div>
+                        <div class="table-header-right">
+                            <span style="font-size: 12px; color: #999;">Search | Filter | ⋮ | Undo</span>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Qty Shipped</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Tax</th>
+                                <th>Carrier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Widget A (WDG-001)</td>
+                                <td>10</td>
+                                <td>Mar 26, 2026</td>
+                                <td>$113.67</td>
+                                <td>$113.67</td>
+                                <td>UPS Ground</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">1 item shipped</div>
+                </div>
+
+                <p style="margin: 24px 0 16px 0; font-size: 13px;"><strong>Clicking Undo moves Widget A back to the Pick List with status "Picked."</strong> This allows the user to re-pack, re-address, or change shipping carrier before re-shipping. The shipment is reversed, and FulfillmentStatus reverts from "Shipped" to "Picked."</p>
+            </div>
+
+            <div class="description-box">
+                <strong>The three undo/reverse actions work together to provide full flexibility.</strong> Unpick moves items back to the order queue, Unpack changes status without moving items, and Undo Ship brings shipped items back to the Pick List. This gives users complete control over the fulfillment process and allows them to correct mistakes or change fulfillment strategy mid-stream.
+            </div>
+
+            <h3 style="margin: 32px 24px 16px 24px; font-size: 16px; font-weight: 600;">Competitor Evidence</h3>
+
+            <div class="mockup-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Undo/Reverse Action</th>
+                            <th>Flexibility</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Method (Proposed)</strong></td>
+                            <td>Unpick, Unpack, Undo Ship — all reversible at each stage</td>
+                            <td><span class="checkmark">✓</span> Full control</td>
+                        </tr>
+                        <tr>
+                            <td><strong>inFlow</strong></td>
+                            <td>"Unfulfill" button + "Unpick all" on mobile</td>
+                            <td><span class="checkmark">✓</span> Good — whole-order or mobile unpick</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fishbowl</strong></td>
+                            <td>CTRL+D voids pick ticket</td>
+                            <td><span class="checkmark">✓</span> Good — pick-level control</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Katana</strong></td>
+                            <td>Revert to "Not delivered" status</td>
+                            <td><span class="checkmark">✓</span> Good — status-based revert</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cin7/DEAR</strong></td>
+                            <td>Undo sale to Draft, restart fulfillment</td>
+                            <td><span class="checkmark">✓</span> Possible — but requires resetting entire sale</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Zoho</strong></td>
+                            <td>Delete package / Cancel shipment only</td>
+                            <td>⚠️ Weak — no pick/pack reversal, only shipment deletion</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="method-advantage" style="margin-top: 16px;">
+                    <strong>Method's advantage:</strong> Method provides undo actions at each stage of the flow (unpick, unpack, undo ship), giving users granular control. Unlike Zoho (shipment-only), Method allows reverting any stage. Unlike Cin7 (order-level), Method's reversals are item-level and don't require resetting the entire sale.
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 13: Competitor Comparison -->
+        <div class="step-content" data-step="13">
+            <div class="step-title">Step 13: Competitor Comparison</div>
 
             <div class="mockup-container">
                 <h3 style="margin-bottom: 16px; font-size: 16px; font-weight: 600;">How Method's Flow Compares</h3>
@@ -1725,13 +1977,13 @@
 
         <div class="controls">
             <button class="btn-prev" onclick="previousStep()">← Previous</button>
-            <span class="step-counter"><span id="current-step">1</span> of <span id="total-steps">12</span></span>
+            <span class="step-counter"><span id="current-step">1</span> of <span id="total-steps">13</span></span>
             <button class="btn-next" onclick="nextStep()">Next →</button>
         </div>
     </div>
 
     <script>
-        const totalSteps = 12;
+        const totalSteps = 13;
         let currentStep = 1;
 
         function initStepper() {
