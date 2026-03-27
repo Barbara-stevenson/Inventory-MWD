@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Method CRM Pick/Pack/Ship Flow Walkthrough</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8fafb;
+            color: #0f1b31;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #0d1b2a;
+            color: white;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .stepper {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+        }
+
+        .step-indicator {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 24px;
+            border: 2px solid #bacad0;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator:hover {
+            border-color: #0d71c8;
+        }
+
+        .step-indicator.active {
+            background: #0d71c8;
+            color: white;
+            border-color: #0d71c8;
+        }
+
+        .step-indicator.completed {
+            background: #2e7d32;
+            color: white;
+            border-color: #2e7d32;
+        }
+
+        .step-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #0f1b31;
+        }
+
+        .mockup-container {
+            background: white;
+            border: 1px solid #bacad0;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .info-banner {
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .info-banner.yellow {
+            background: #fef9e7;
+            border: 1px solid #fdcb2d;
+            color: #7d6608;
+        }
+
+        .info-banner.blue {
+            background: #e3f2fd;
+            border: 1px solid #1565c0;
+            color: #0d47a1;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .badge.pending {
+            background: #e0e0e0;
+            color: #616161;
+        }
+
+        .badge.picking {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .badge.picked {
+            background: #e0f2f1;
+            color: #00897b;
+        }
+
+        .badge.packed {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge.partially-shipped {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .table-section {
+            margin-bottom: 24px;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f8fafb;
+            border-bottom: 1px solid #bacad0;
+            border-radius: 6px 6px 0 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .table-header-left {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .table-header-right {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .action-button {
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: none;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .action-button.primary {
+            background: #0d71c8;
+            color: white;
+        }
+
+        .action-button.primary:hover {
+            background: #0a5ba8;
+        }
+
+        .action-button.secondary {
+            background: white;
+            border: 1px solid #bacad0;
+            color: #0f1b31;
+        }
+
+        .action-button.secondary:hover {
+            background: #f8fafb;
+        }
+
+        .action-button.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        table thead {
+            background: #f8fafb;
+        }
+
+        table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #bacad0;
+            color: #0f1b31;
+        }
+
+        table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #bacad0;
+        }
+
+        table tbody tr:hover {
+            background: #f8fafb;
+        }
+
+        table tbody tr.disabled {
+            background: #f0f0f0;
+            opacity: 0.6;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .empty-state {
+            padding: 32px;
+            text-align: center;
+            color: #999;
+            font-style: italic;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 8px;
+            width: 870px;
+            max-width: 90%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #bacad0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding: 24px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid #bacad0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #bacad0;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .availability-circle {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .available-green {
+            background: #2e7d32;
+        }
+
+        .limited-yellow {
+            background: #fdcb2d;
+        }
+
+        .unavailable-red {
+            background: #d32f2f;
+        }
+
+        .action-bar {
+            background: white;
+            border-top: 1px solid #bacad0;
+            padding: 16px 24px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 24px;
+        }
+
+        .action-bar button {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .action-bar .btn-primary {
+            background: #0d71c8;
+            color: white;
+        }
+
+        .action-bar .btn-primary:hover {
+            background: #0a5ba8;
+        }
+
+        .action-bar .btn-secondary {
+            background: white;
+            border: 1px solid #bacad0;
+            color: #0f1b31;
+        }
+
+        .action-bar .btn-secondary:hover {
+            background: #f8fafb;
+        }
+
+        .description-box {
+            background: #f8fafb;
+            border: 1px solid #bacad0;
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 24px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #bacad0;
+        }
+
+        .controls button {
+            padding: 10px 24px;
+            border-radius: 4px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .controls .btn-prev {
+            background: white;
+            border: 1px solid #bacad0;
+            color: #0f1b31;
+        }
+
+        .controls .btn-prev:hover {
+            background: #f8fafb;
+        }
+
+        .controls .btn-next {
+            background: #0d71c8;
+            color: white;
+        }
+
+        .controls .btn-next:hover {
+            background: #0a5ba8;
+        }
+
+        .controls .step-counter {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 16px;
+        }
+
+        .comparison-table th {
+            background: #0d1b2a;
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 12px 16px;
+            border: 1px solid #bacad0;
+        }
+
+        .comparison-table tbody tr:nth-child(even) {
+            background: #f8fafb;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #eff2f5;
+        }
+
+        .comparison-table strong {
+            color: #0f1b31;
+        }
+
+        .checkmark {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .input-field {
+            padding: 6px 8px;
+            border: 1px solid #bacad0;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+
+        .packing-slip-link {
+            color: #0d71c8;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .packing-slip-link:hover {
+            text-decoration: underline;
+        }
+
+        .order-status {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .status-partially-shipped {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #fff3e0;
+            border: 1px solid #e65100;
+            color: #e65100;
+            border-radius: 6px;
+        }
+
+        .checkbox-input {
+            margin-right: 8px;
+        }
+
+        .item-count {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+        }
+
+        .step-summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+
+        .step-summary-table th {
+            background: #0d1b2a;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .step-summary-table td {
+            padding: 12px;
+            border: 1px solid #bacad0;
+        }
+
+        .step-summary-table tbody tr:nth-child(even) {
+            background: #f8fafb;
+        }
+
+        .method-advantage {
+            background: #e8f5e9;
+            border: 1px solid #2e7d32;
+            padding: 16px;
+            border-radius: 6px;
+            margin: 16px 0;
+        }
+
+        .method-advantage strong {
+            color: #2e7d32;
+        }
+
+        .borrows-box {
+            background: #e3f2fd;
+            border: 1px solid #1565c0;
+            padding: 16px;
+            border-radius: 6px;
+            margin: 16px 0;
+        }
+
+        .borrows-box strong {
+            color: #1565c0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            .modal {
+                width: 95%;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            table th,
+            table td {
+                padding: 8px 12px;
+            }
+
+            .step-title {
+                font-size: 20px;
+            }
+
+            .controls {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .controls button {
+                width: 100%;
+            }
+
+            .stepper {
+                gap: 8px;
+            }
+
+            .step-indicator {
+                width: 40px;
+                height: 40px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Method CRM Pick/Pack/Ship Flow Walkthrough</h1>
+        <p>Interactive step-by-step visual guide to the three-table fulfillment flow</p>
+    </div>
+
+    <div class="container">
+        <div class="stepper" id="stepper"></div>
+
+        <!-- STEP 1: Fresh Order -->
+        <div class="step-content active" data-step="1">
+            <div class="step-title">Step 1: Fresh Order — All Items Pending</div>
+
+            <div class="mockup-container">
+                <div class="order-status">Sales Order SO-1042 for Bluewatercas LLC</div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items not shipped</strong>
+                        </div>
+                        <div class="table-header-right">
+                            <span style="font-size: 12px; color: #999;">Search | Filter | ⋮ | + Add Lines</span>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Inventory</th>
+                                <th>Source Location</th>
+                                <th>Available Qty</th>
+                                <th>Qty to Sell</th>
+                                <th>Rate</th>
+                                <th>Amount</th>
+                                <th>Tax</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Widget A (WDG-001)</td>
+                                <td>Warehouse A</td>
+                                <td>Shelf A1</td>
+                                <td>50</td>
+                                <td>10</td>
+                                <td>$11.37</td>
+                                <td>$113.67</td>
+                                <td>GST (5%)</td>
+                            </tr>
+                            <tr>
+                                <td>Bracket B (BRK-042)</td>
+                                <td>Warehouse A</td>
+                                <td>Shelf B2</td>
+                                <td>3</td>
+                                <td>5</td>
+                                <td>$18.50</td>
+                                <td>$92.50</td>
+                                <td>GST (5%)</td>
+                            </tr>
+                            <tr>
+                                <td>Gasket C (GSK-118)</td>
+                                <td>Warehouse B</td>
+                                <td>Shelf C3</td>
+                                <td>0</td>
+                                <td>8</td>
+                                <td>$12.00</td>
+                                <td>$96.00</td>
+                                <td>GST (5%)</td>
+                            </tr>
+                            <tr>
+                                <td>Motor D (MTR-205)</td>
+                                <td>Warehouse A</td>
+                                <td>Shelf D4</td>
+                                <td>12</td>
+                                <td>2</td>
+                                <td>$45.75</td>
+                                <td>$91.50</td>
+                                <td>GST (5%)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">4 items</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Pick list</strong>
+                        </div>
+                        <div class="table-header-right">
+                            <button class="action-button secondary" style="font-size: 11px;">🖨 Print</button>
+                            <button class="action-button secondary disabled" style="font-size: 11px;">[Pack ▸]</button>
+                        </div>
+                    </div>
+                    <div class="empty-state">No items on pick list yet. Click Pick & Pack to start fulfilling this order.</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items shipped</strong>
+                        </div>
+                    </div>
+                    <div class="empty-state">No items shipped yet.</div>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn-secondary">More Actions ∨</button>
+                    <button class="btn-secondary">Create ∨</button>
+                    <button class="btn-secondary">Send ∨</button>
+                    <button class="btn-primary">Pick & Pack</button>
+                    <button class="btn-secondary">Ship ∨</button>
+                    <button class="btn-secondary">Save ∨</button>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>Fresh sales order with 4 items.</strong> Nothing has been fulfilled yet. The Pick List section is empty. The user clicks <strong>Pick & Pack</strong> to begin the fulfillment process.
+            </div>
+        </div>
+
+        <!-- STEP 2: Pick Modal Opens -->
+        <div class="step-content" data-step="2">
+            <div class="step-title">Step 2: Pick Modal Opens</div>
+
+            <div class="mockup-container">
+                <div style="padding: 24px; text-align: center; color: #999;">
+                    [Sales Order screen with Pick modal overlay]
+                </div>
+
+                <div class="modal" style="position: static; margin: 0 auto; max-width: 870px;">
+                    <div class="modal-header">Pick Items — SO-1042</div>
+                    <div class="modal-body">
+                        <div class="info-banner yellow">
+                            ⓘ Select items to pick for fulfillment. Items will move to the Pick List.
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 30px;"></th>
+                                    <th>Item</th>
+                                    <th>Location</th>
+                                    <th>Available</th>
+                                    <th>Ordered</th>
+                                    <th>Qty to Pick</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="checkbox-input" checked></td>
+                                    <td>Widget A (WDG-001)</td>
+                                    <td>WH-A</td>
+                                    <td><span class="availability-circle available-green"></span>50</td>
+                                    <td>10</td>
+                                    <td><input type="number" class="input-field" value="10" style="width: 60px;"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="checkbox-input" checked></td>
+                                    <td>Bracket B (BRK-042)</td>
+                                    <td>WH-A</td>
+                                    <td><span class="availability-circle limited-yellow"></span>3</td>
+                                    <td>5</td>
+                                    <td><input type="number" class="input-field" value="3" style="width: 60px;"> <span style="font-size: 11px; color: #f57c00;">⚠ Only 3 of 5 available</span></td>
+                                </tr>
+                                <tr class="disabled">
+                                    <td><input type="checkbox" class="checkbox-input" disabled></td>
+                                    <td>Gasket C (GSK-118)</td>
+                                    <td>WH-B</td>
+                                    <td><span class="availability-circle unavailable-red"></span>0</td>
+                                    <td>8</td>
+                                    <td><input type="number" class="input-field" value="0" disabled style="width: 60px;"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="checkbox-input" checked></td>
+                                    <td>Motor D (MTR-205)</td>
+                                    <td>WH-A</td>
+                                    <td><span class="availability-circle available-green"></span>12</td>
+                                    <td>2</td>
+                                    <td><input type="number" class="input-field" value="2" style="width: 60px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="action-button secondary">Cancel</button>
+                        <button class="action-button secondary">🖨 Print Pick List</button>
+                        <button class="action-button primary">Save Pick List</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>The Pick modal appears.</strong> The user selects Widget A (10), Bracket B (3 of 5 — limited by stock with yellow warning), and Motor D (2). Gasket C is grayed out and disabled because 0 are available. They print a pick list for the warehouse team and click <strong>Save Pick List</strong>.
+            </div>
+        </div>
+
+        <!-- STEP 3: Items Move to Pick List -->
+        <div class="step-content" data-step="3">
+            <div class="step-title">Step 3: After Saving — Items Move to Pick List</div>
+
+            <div class="mockup-container">
+                <div class="order-status">Sales Order SO-1042 for Bluewatercas LLC</div>
+
+                <div class="info-banner blue">
+                    ⓘ Pick list created. 3 items being picked. The warehouse team has the printed pick list.
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items not shipped</strong>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Inventory</th>
+                                <th>Source Location</th>
+                                <th>Available Qty</th>
+                                <th>Qty to Sell</th>
+                                <th>Rate</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gasket C (GSK-118)</td>
+                                <td>Warehouse B</td>
+                                <td>Shelf C3</td>
+                                <td>0</td>
+                                <td>8</td>
+                                <td>$12.00</td>
+                                <td>$96.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">1 item</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Pick list</strong>
+                        </div>
+                        <div class="table-header-right">
+                            <button class="action-button secondary" style="font-size: 11px;">🖨 Print</button>
+                            <button class="action-button secondary disabled" style="font-size: 11px;">[Pack ▸]</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;">☐</th>
+                                <th>Item</th>
+                                <th>Location</th>
+                                <th>Qty to Pick</th>
+                                <th>Qty Picked</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>☐</td>
+                                <td>Widget A (WDG-001)</td>
+                                <td>WH-A</td>
+                                <td>10</td>
+                                <td>0</td>
+                                <td><span class="badge picking">Picking</span></td>
+                            </tr>
+                            <tr>
+                                <td>☐</td>
+                                <td>Bracket B (BRK-042)</td>
+                                <td>WH-A</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td><span class="badge picking">Picking</span></td>
+                            </tr>
+                            <tr>
+                                <td>☐</td>
+                                <td>Motor D (MTR-205)</td>
+                                <td>WH-A</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td><span class="badge picking">Picking</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">3 items</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items shipped</strong>
+                        </div>
+                    </div>
+                    <div class="empty-state">No items shipped yet.</div>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn-secondary">More Actions ∨</button>
+                    <button class="btn-secondary">Create ∨</button>
+                    <button class="btn-secondary">Send ∨</button>
+                    <button class="btn-primary">Pick & Pack</button>
+                    <button class="btn-secondary">Ship ∨</button>
+                    <button class="btn-secondary">Save ∨</button>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>The 3 selected items have moved from "Items not shipped" to the "Pick list."</strong> Only Gasket C remains in "Items not shipped" (out of stock). All items in the Pick List are marked with <span class="badge picking">Picking</span> status (blue). The [Pack] button is grayed out because nothing has been picked yet.
+            </div>
+        </div>
+
+        <!-- STEP 4: Update Pick Progress -->
+        <div class="step-content" data-step="4">
+            <div class="step-title">Step 4: Warehouse Picks — User Updates Progress</div>
+
+            <div class="mockup-container">
+                <div style="padding: 24px; text-align: center; color: #999;">
+                    [Sales Order screen with Update Pick Progress modal overlay]
+                </div>
+
+                <div class="modal" style="position: static; margin: 0 auto; max-width: 870px;">
+                    <div class="modal-header">Update Pick Progress — SO-1042</div>
+                    <div class="modal-body">
+                        <div class="info-banner yellow">
+                            ⓘ Enter quantities picked for each item. Leave blank if not picked.
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Location</th>
+                                    <th>To Pick</th>
+                                    <th>Qty Picked</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Widget A (WDG-001)</td>
+                                    <td>WH-A</td>
+                                    <td>10</td>
+                                    <td><input type="number" class="input-field" value="10" style="width: 60px;"></td>
+                                    <td><span style="color: #2e7d32; font-weight: 600;">✓ Complete</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Bracket B (BRK-042)</td>
+                                    <td>WH-A</td>
+                                    <td>3</td>
+                                    <td><input type="number" class="input-field" value="3" style="width: 60px;"></td>
+                                    <td><span style="color: #2e7d32; font-weight: 600;">✓ Complete</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Motor D (MTR-205)</td>
+                                    <td>WH-A</td>
+                                    <td>2</td>
+                                    <td><input type="number" class="input-field" value="0" style="width: 60px;"></td>
+                                    <td><span style="color: #999;">Pending</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="action-button secondary">Cancel</button>
+                        <button class="action-button primary">Save Progress</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>The warehouse has picked Widget A and Bracket B</strong> (quantities updated to match their "to pick" amounts). Motor D is still pending (qty picked = 0). The user saves the progress. Notice: <strong>they don't have to wait for Motor D to finish</strong> before moving on to packing the completed items.
+            </div>
+        </div>
+
+        <!-- STEP 5: Mixed States in Pick List -->
+        <div class="step-content" data-step="5">
+            <div class="step-title">Step 5: After Updating — Mixed States in Pick List</div>
+
+            <div class="mockup-container">
+                <div class="order-status">Sales Order SO-1042 for Bluewatercas LLC</div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items not shipped</strong>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Inventory</th>
+                                <th>Source Location</th>
+                                <th>Available Qty</th>
+                                <th>Qty to Sell</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gasket C (GSK-118)</td>
+                                <td>Warehouse B</td>
+                                <td>Shelf C3</td>
+                                <td>0</td>
+                                <td>8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">1 item</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Pick list</strong>
+                        </div>
+                        <div class="table-header-right">
+                            <button class="action-button secondary" style="font-size: 11px;">🖨 Print</button>
+                            <button class="action-button primary" style="font-size: 11px;">[Pack ▸]</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;">☐</th>
+                                <th>Item</th>
+                                <th>Location</th>
+                                <th>Qty Picked</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>☐</td>
+                                <td>Widget A (WDG-001)</td>
+                                <td>WH-A</td>
+                                <td>10/10 ✓</td>
+                                <td><span class="badge picked">Picked</span></td>
+                            </tr>
+                            <tr>
+                                <td>☐</td>
+                                <td>Bracket B (BRK-042)</td>
+                                <td>WH-A</td>
+                                <td>3/3 ✓</td>
+                                <td><span class="badge picked">Picked</span></td>
+                            </tr>
+                            <tr>
+                                <td>☐</td>
+                                <td>Motor D (MTR-205)</td>
+                                <td>WH-A</td>
+                                <td>0/2</td>
+                                <td><span class="badge picking">Picking</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">3 items</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items shipped</strong>
+                        </div>
+                    </div>
+                    <div class="empty-state">No items shipped yet.</div>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>Widget A and Bracket B now show <span class="badge picked">Picked</span> status (teal)</strong> with checkmarks indicating they're fully picked. Motor D is still <span class="badge picking">Picking</span> (blue). The <strong>[Pack ▸] button is now enabled</strong> (blue) because there are picked items ready to pack. The user can proceed to pack Widget A and Bracket B <strong>without waiting for Motor D</strong>.
+            </div>
+        </div>
+
+        <!-- STEP 6: Pack Modal Opens -->
+        <div class="step-content" data-step="6">
+            <div class="step-title">Step 6: User Clicks [Pack ▸] — Pack Modal Opens</div>
+
+            <div class="mockup-container">
+                <div style="padding: 24px; text-align: center; color: #999;">
+                    [Sales Order screen with Pack modal overlay]
+                </div>
+
+                <div class="modal" style="position: static; margin: 0 auto; max-width: 870px;">
+                    <div class="modal-header">Pack Items — SO-1042</div>
+                    <div class="modal-body">
+                        <div class="info-banner yellow">
+                            ⓘ Select picked items to pack. A packing slip will be generated.
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 30px;"></th>
+                                    <th>Item</th>
+                                    <th>Qty Picked</th>
+                                    <th>Qty to Pack</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="checkbox-input" checked></td>
+                                    <td>Widget A (WDG-001)</td>
+                                    <td>10</td>
+                                    <td><input type="number" class="input-field" value="10" style="width: 60px;"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="checkbox-input"></td>
+                                    <td>Bracket B (BRK-042)</td>
+                                    <td>3</td>
+                                    <td><input type="number" class="input-field" value="3" style="width: 60px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="form-group" style="margin-top: 24px;">
+                            <label>
+                                <input type="checkbox" checked> Generate packing slip
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox"> Show prices on packing slip
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Packing notes:</label>
+                            <textarea placeholder="e.g., Fragile - handle with care"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="action-button secondary">Cancel</button>
+                        <button class="action-button primary">Confirm Pack</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>The Pack modal shows only picked items.</strong> Widget A is checked by default, Bracket B is unchecked. The user selects just Widget A to pack now. Motor D doesn't appear because it's not picked yet. They enable packing slip generation, uncheck "Show prices", add packing notes, and click <strong>Confirm Pack</strong>. Bracket B can be packed later.
+            </div>
+        </div>
+
+        <!-- STEP 7: After Packing Widget A -->
+        <div class="step-content" data-step="7">
+            <div class="step-title">Step 7: After Packing Widget A</div>
+
+            <div class="mockup-container">
+                <div class="order-status">Sales Order SO-1042 for Bluewatercas LLC</div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items not shipped</strong>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Inventory</th>
+                                <th>Available Qty</th>
+                                <th>Qty to Sell</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gasket C (GSK-118)</td>
+                                <td>Warehouse B</td>
+                                <td>0</td>
+                                <td>8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">1 item</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Pick list</strong>
+                        </div>
+                        <div class="table-header-right">
+                            <button class="action-button secondary" style="font-size: 11px;">🖨 Print</button>
+                            <button class="action-button primary" style="font-size: 11px;">[Pack ▸]</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;">☐</th>
+                                <th>Item</th>
+                                <th>Location</th>
+                                <th>Qty Picked</th>
+                                <th>Packing Status</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>☐</td>
+                                <td>Widget A (WDG-001)</td>
+                                <td>WH-A</td>
+                                <td>10/10 ✓</td>
+                                <td><span style="color: #0d71c8; text-decoration: underline; cursor: pointer;">📄 Packing Slip</span></td>
+                                <td><span class="badge packed">Packed</span></td>
+                            </tr>
+                            <tr>
+                                <td>☐</td>
+                                <td>Bracket B (BRK-042)</td>
+                                <td>WH-A</td>
+                                <td>3/3 ✓</td>
+                                <td>—</td>
+                                <td><span class="badge picked">Picked</span></td>
+                            </tr>
+                            <tr>
+                                <td>☐</td>
+                                <td>Motor D (MTR-205)</td>
+                                <td>WH-A</td>
+                                <td>0/2</td>
+                                <td>—</td>
+                                <td><span class="badge picking">Picking</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">3 items</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items shipped</strong>
+                        </div>
+                    </div>
+                    <div class="empty-state">No items shipped yet.</div>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>Widget A is now <span class="badge packed">Packed</span> (green)</strong> with a "Packing Slip" link available. Bracket B remains <span class="badge picked">Picked</span> (teal) and ready to pack whenever the user wants. Motor D is still <span class="badge picking">Picking</span>. The [Pack ▸] button stays active because there's still Bracket B to pack. The user can click it again to pack Bracket B, or ship Widget A now without waiting.
+            </div>
+        </div>
+
+        <!-- STEP 8: Ship Modal - Ship Some -->
+        <div class="step-content" data-step="8">
+            <div class="step-title">Step 8: User Ships Widget A — Clicks Ship ∨ → Ship Some</div>
+
+            <div class="mockup-container">
+                <div style="padding: 24px; text-align: center; color: #999;">
+                    [Sales Order screen with Ship modal overlay]
+                </div>
+
+                <div class="modal" style="position: static; margin: 0 auto; max-width: 870px;">
+                    <div class="modal-header">Ship Items — SO-1042</div>
+                    <div class="modal-body">
+                        <div class="info-banner yellow">
+                            ⓘ Select packed items to ship. Packed items only appear below.
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 30px;"></th>
+                                    <th>Item</th>
+                                    <th>Qty</th>
+                                    <th>Carrier</th>
+                                    <th>Tracking #</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="checkbox-input" checked></td>
+                                    <td>Widget A (WDG-001)</td>
+                                    <td>10</td>
+                                    <td>
+                                        <select class="input-field" style="width: 100%;">
+                                            <option>UPS Ground</option>
+                                            <option>FedEx</option>
+                                            <option>DHL</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" class="input-field" value="1Z999AA1..."></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="form-group" style="margin-top: 24px;">
+                            <label>Ship date:</label>
+                            <input type="date" class="input-field" value="2026-03-26">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="action-button secondary">Cancel</button>
+                        <button class="action-button primary">Confirm Shipment</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>The Ship Some modal shows only packed items.</strong> Widget A is the only packed item, so it's the only one available to ship. Bracket B (picked, not packed) and Motor D (still picking) don't appear in this modal. The user confirms the shipment with carrier and tracking information.
+            </div>
+        </div>
+
+        <!-- STEP 9: After Shipping Widget A -->
+        <div class="step-content" data-step="9">
+            <div class="step-title">Step 9: After Shipping Widget A — Order is Partially Shipped</div>
+
+            <div class="mockup-container">
+                <div class="order-status">
+                    Sales Order SO-1042 for Bluewatercas LLC
+                    <div style="margin-top: 8px;">
+                        <span class="status-partially-shipped">Partially Shipped</span>
+                    </div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items not shipped</strong>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Qty to Sell</th>
+                                <th>Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gasket C (GSK-118)</td>
+                                <td>8</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">1 item</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Pick list</strong>
+                        </div>
+                        <div class="table-header-right">
+                            <button class="action-button secondary" style="font-size: 11px;">🖨 Print</button>
+                            <button class="action-button primary" style="font-size: 11px;">[Pack ▸]</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;">☐</th>
+                                <th>Item</th>
+                                <th>Location</th>
+                                <th>Qty Picked</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>☐</td>
+                                <td>Bracket B (BRK-042)</td>
+                                <td>WH-A</td>
+                                <td>3/3 ✓</td>
+                                <td><span class="badge picked">Picked</span></td>
+                            </tr>
+                            <tr>
+                                <td>☐</td>
+                                <td>Motor D (MTR-205)</td>
+                                <td>WH-A</td>
+                                <td>0/2</td>
+                                <td><span class="badge picking">Picking</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">2 items</div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <div class="table-header-left">
+                            <strong>Items shipped</strong>
+                        </div>
+                        <div class="table-header-right">
+                            <span style="font-size: 12px; color: #999;">Search | Filter | ⋮ | Undo</span>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Qty Shipped</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Tax</th>
+                                <th>Carrier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Widget A (WDG-001)</td>
+                                <td>10</td>
+                                <td>Mar 26, 2026</td>
+                                <td>$113.67</td>
+                                <td>$113.67</td>
+                                <td>UPS Ground</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-count">1 item shipped</div>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>Widget A has moved from the Pick List to "Items shipped."</strong> The order is now marked as <span class="status-partially-shipped">Partially Shipped</span> (orange). Bracket B and Motor D remain on the Pick List at their current stages. The user can continue fulfilling the remaining items at their own pace. This demonstrates the key benefit: <strong>items move through the flow independently</strong> — no need to wait for the entire order before shipping what's ready.
+            </div>
+        </div>
+
+        <!-- STEP 10: Pack Bracket B Later -->
+        <div class="step-content" data-step="10">
+            <div class="step-title">Step 10: Coming Back Later — Pack Bracket B</div>
+
+            <div class="mockup-container">
+                <div style="padding: 24px; text-align: center; color: #999;">
+                    [Sales Order screen with Pack modal overlay — next day]
+                </div>
+
+                <div class="modal" style="position: static; margin: 0 auto; max-width: 870px;">
+                    <div class="modal-header">Pack Items — SO-1042</div>
+                    <div class="modal-body">
+                        <div class="info-banner yellow">
+                            ⓘ Select picked items to pack. A packing slip will be generated.
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 30px;"></th>
+                                    <th>Item</th>
+                                    <th>Qty Picked</th>
+                                    <th>Qty to Pack</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="checkbox-input" checked></td>
+                                    <td>Bracket B (BRK-042)</td>
+                                    <td>3</td>
+                                    <td><input type="number" class="input-field" value="3" style="width: 60px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="form-group" style="margin-top: 24px;">
+                            <label>
+                                <input type="checkbox" checked> Generate packing slip
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Packing notes:</label>
+                            <textarea placeholder="e.g., Fragile - handle with care"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="action-button secondary">Cancel</button>
+                        <button class="action-button primary">Confirm Pack</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>The user comes back the next day.</strong> They click [Pack ▸] and the modal shows only Bracket B — the only item that's picked but not yet packed. Motor D still doesn't appear because it hasn't been picked. This shows the flexibility of the system: items can be packed and shipped independently, in any order, at any time.
+            </div>
+        </div>
+
+        <!-- STEP 11: Summary -->
+        <div class="step-content" data-step="11">
+            <div class="step-title">Step 11: Summary — The Three-Table Flow</div>
+
+            <div class="mockup-container">
+                <h3 style="margin-bottom: 16px; font-size: 16px; font-weight: 600;">The Three Tables</h3>
+
+                <table class="step-summary-table">
+                    <thead>
+                        <tr>
+                            <th>Section</th>
+                            <th>What it shows</th>
+                            <th>Items move here when...</th>
+                            <th>Items leave when...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Items not shipped</strong></td>
+                            <td>Order line items not yet in fulfillment</td>
+                            <td>Order is created</td>
+                            <td>User picks them (via Pick & Pack modal)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pick list</strong></td>
+                            <td>Items being fulfilled (picking, picked, packed)</td>
+                            <td>User adds them via Pick & Pack modal</td>
+                            <td>User ships them (via Ship modal)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Items shipped</strong></td>
+                            <td>Completed shipments</td>
+                            <td>User ships packed items</td>
+                            <td>User clicks Undo (reversible)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="margin: 24px 0 16px 0; font-size: 16px; font-weight: 600;">The Three Modals</h3>
+
+                <table class="step-summary-table">
+                    <thead>
+                        <tr>
+                            <th>Modal</th>
+                            <th>Triggered by</th>
+                            <th>Shows</th>
+                            <th>Does</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Pick</strong></td>
+                            <td>"Pick & Pack" button</td>
+                            <td>Items from "Items not shipped"</td>
+                            <td>Moves items to Pick List, prints pick list</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pack</strong></td>
+                            <td>[Pack ▸] button</td>
+                            <td>Picked but not yet packed items</td>
+                            <td>Marks as packed, generates packing slip</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ship</strong></td>
+                            <td>"Ship ∨" button</td>
+                            <td>Packed items from Pick List</td>
+                            <td>Moves items to "Items shipped"</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="margin: 24px 0 16px 0; font-size: 16px; font-weight: 600;">Key Principle</h3>
+
+                <div class="info-banner blue" style="margin-bottom: 0;">
+                    <strong>Each modal only shows items in the right state.</strong> You can't pack what isn't picked. You can't ship what isn't packed. Items move through the tables as they progress.
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>This walkthrough demonstrates the non-linear, flexible nature of the Pick/Pack/Ship flow.</strong> Teams can work at their own pace, handling items independently. Widget A can ship while Bracket B is still being packed and Motor D is still being picked. The three tables keep everything organized, and the three modals handle all the transitions.
+            </div>
+        </div>
+
+        <!-- STEP 12: Competitor Comparison -->
+        <div class="step-content" data-step="12">
+            <div class="step-title">Step 12: Competitor Comparison</div>
+
+            <div class="mockup-container">
+                <h3 style="margin-bottom: 16px; font-size: 16px; font-weight: 600;">How Method's Flow Compares</h3>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Method (Proposed)</th>
+                            <th>Fishbowl</th>
+                            <th>Katana</th>
+                            <th>Cin7/DEAR</th>
+                            <th>inFlow</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Entry point</strong></td>
+                            <td>"Pick & Pack" button on SO</td>
+                            <td>"Start Pick" in Pick module</td>
+                            <td>"Pack all/some" on SO</td>
+                            <td>WMS module (separate)</td>
+                            <td>"Pick order" button on SO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pick interaction</strong></td>
+                            <td>Modal on SO screen</td>
+                            <td>Separate Pick module</td>
+                            <td>Mobile Warehouse App</td>
+                            <td>WMS web/mobile interface</td>
+                            <td>Pick tab on SO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pack interaction</strong></td>
+                            <td>[Pack] button on Pick List section → modal</td>
+                            <td>Shipping module</td>
+                            <td>Auto after pick complete</td>
+                            <td>Explicit Pack stage in WMS</td>
+                            <td>Ship tab on SO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ship interaction</strong></td>
+                            <td>"Ship ∨" button → modal (existing pattern)</td>
+                            <td>BOL/invoice generation</td>
+                            <td>"Deliver" action</td>
+                            <td>Ship stage in WMS</td>
+                            <td>Ship from Ship tab</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Partial pick</strong></td>
+                            <td>Pick some items, leave others for later</td>
+                            <td>Partial status, items marked "Short"</td>
+                            <td>"Pack some..." handles partials</td>
+                            <td>"Pick partially" action</td>
+                            <td>"Partial pick" action</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Partial pack</strong></td>
+                            <td>Pack some picked items, come back for rest</td>
+                            <td>Pack per carton</td>
+                            <td>Pack all at once</td>
+                            <td>Pack into multiple boxes</td>
+                            <td>Pack from Ship tab</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Partial ship</strong></td>
+                            <td>Ship packed items independently</td>
+                            <td>Ship available, backorder rest</td>
+                            <td>"Partially Delivered" status</td>
+                            <td>Multiple shipments per order</td>
+                            <td>Split by picked/unpicked</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Where does status live?</strong></td>
+                            <td>Pick List section on SO + badges</td>
+                            <td>Pick module status</td>
+                            <td>SO status + Warehouse App</td>
+                            <td>WMS status board</td>
+                            <td>SO tabs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Non-linear flow?</strong></td>
+                            <td><span class="checkmark">✓</span> Pick some, pack some, ship some independently</td>
+                            <td><span class="checkmark">✓</span> Partial picks → ship available</td>
+                            <td><span class="checkmark">✓</span> Pack some → deliver some</td>
+                            <td><span class="checkmark">✓</span> Per-line-item stages</td>
+                            <td><span class="checkmark">✓</span> Split orders</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Separate module needed?</strong></td>
+                            <td>No — all on the SO screen</td>
+                            <td>Yes — separate Pick/Ship modules</td>
+                            <td>Yes — separate Warehouse App</td>
+                            <td>Yes — separate WMS</td>
+                            <td>No — tabs on SO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Complexity</strong></td>
+                            <td>Low — 3 modals, familiar patterns</td>
+                            <td>High — multiple modules, desktop-first</td>
+                            <td>Medium — mobile app required</td>
+                            <td>High — full WMS</td>
+                            <td>Low-Medium — tab-based</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="method-advantage">
+                    <strong>Method's advantage:</strong> Everything stays on the Sales Order screen. No separate modules, no mobile app required, no WMS. Three modals handle the entire flow. The existing Ship pattern is preserved — Ship ∨ works the same way, it just now only shows packed items. This matches Method's target users: 3-50 person operations that need structure without a separate warehouse system.
+                </div>
+
+                <div class="borrows-box">
+                    <strong>What Method borrows from competitors:</strong>
+                    <ul style="margin: 12px 0 0 20px;">
+                        <li>From <strong>Fishbowl:</strong> Color-coded availability (🟢🟡🔴) in the Pick modal</li>
+                        <li>From <strong>Katana:</strong> "Pack some" as an explicit action (the [Pack ▸] button)</li>
+                        <li>From <strong>Cin7:</strong> Per-line-item status tracking through stages</li>
+                        <li>From <strong>inFlow:</strong> Everything on the order screen, no separate modules</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="description-box">
+                <strong>Method's three-table, three-modal approach is competitive and practical.</strong> It combines the best practices from Fishbowl, Katana, Cin7, and inFlow while staying true to Method's design philosophy: everything on the order screen, no separate systems, built for small-to-mid market teams.
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn-prev" onclick="previousStep()">← Previous</button>
+            <span class="step-counter"><span id="current-step">1</span> of <span id="total-steps">12</span></span>
+            <button class="btn-next" onclick="nextStep()">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        const totalSteps = 12;
+        let currentStep = 1;
+
+        function initStepper() {
+            const stepper = document.getElementById('stepper');
+            for (let i = 1; i <= totalSteps; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'step-indicator' + (i === 1 ? ' active' : '');
+                indicator.textContent = i;
+                indicator.onclick = () => goToStep(i);
+                stepper.appendChild(indicator);
+            }
+            updateStepDisplay();
+        }
+
+        function updateStepDisplay() {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Show current step
+            document.querySelectorAll('.step-content')[currentStep - 1].classList.add('active');
+
+            // Update stepper indicators
+            document.querySelectorAll('.step-indicator').forEach((el, index) => {
+                el.classList.remove('active', 'completed');
+                if (index + 1 === currentStep) {
+                    el.classList.add('active');
+                } else if (index + 1 < currentStep) {
+                    el.classList.add('completed');
+                }
+            });
+
+            // Update counter
+            document.getElementById('current-step').textContent = currentStep;
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function goToStep(step) {
+            if (step >= 1 && step <= totalSteps) {
+                currentStep = step;
+                updateStepDisplay();
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateStepDisplay();
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextStep();
+            if (e.key === 'ArrowLeft') previousStep();
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initStepper);
+    </script>
+</body>
+</html>
