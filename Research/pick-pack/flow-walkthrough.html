@@ -417,6 +417,201 @@
             line-height: 1.6;
         }
 
+        .pdf-preview {
+            margin-top: 24px;
+            border: 1px solid #bacad0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .pdf-preview-header {
+            background: #0d1b2a;
+            color: white;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .pdf-preview-header a {
+            color: #7dd3fc;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        .pdf-preview-header a:hover {
+            text-decoration: underline;
+        }
+
+        .pdf-preview-body {
+            padding: 32px;
+            background: #f1f5f9;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pdf-doc {
+            background: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+            padding: 40px;
+            max-width: 560px;
+            width: 100%;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            color: #1a202c;
+            line-height: 1.5;
+        }
+
+        .pdf-doc h2 {
+            font-size: 20px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .pdf-doc .pdf-subtitle {
+            font-size: 11px;
+            color: #718096;
+            text-align: right;
+        }
+
+        .pdf-doc .pdf-divider {
+            border: none;
+            border-top: 2px solid #2d3748;
+            margin: 10px 0 16px;
+        }
+
+        .pdf-doc .pdf-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 24px;
+            margin-bottom: 16px;
+            font-size: 11px;
+        }
+
+        .pdf-doc .pdf-meta dt {
+            font-weight: 700;
+            color: #4a5568;
+        }
+
+        .pdf-doc .pdf-meta dd {
+            margin: 0;
+            color: #1a202c;
+        }
+
+        .pdf-doc table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 11px;
+        }
+
+        .pdf-doc thead th {
+            background: #2d3748;
+            color: white;
+            padding: 6px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 10px;
+        }
+
+        .pdf-doc tbody td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .pdf-doc tbody tr:nth-child(odd) {
+            background: #f7fafc;
+        }
+
+        .pdf-doc .pdf-totals {
+            text-align: right;
+            margin: 8px 0 16px;
+            font-size: 11px;
+        }
+
+        .pdf-doc .pdf-totals .total-line {
+            border-top: 1px solid #cbd5e0;
+            padding-top: 4px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .pdf-doc .pdf-footer {
+            margin-top: 20px;
+            padding-top: 12px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 9px;
+            color: #a0aec0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pdf-doc .pdf-addresses {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 12px;
+            font-size: 11px;
+        }
+
+        .pdf-doc .pdf-addresses .label {
+            font-size: 9px;
+            font-weight: 700;
+            color: #718096;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .pdf-doc .pdf-info-bar {
+            background: #edf2f7;
+            padding: 6px 12px;
+            margin: 12px 0;
+            font-size: 10px;
+            display: flex;
+            gap: 24px;
+            border-radius: 3px;
+        }
+
+        .pdf-doc .pdf-info-bar strong {
+            color: #4a5568;
+        }
+
+        .pdf-doc .pdf-notes {
+            margin-top: 16px;
+            font-size: 11px;
+        }
+
+        .pdf-doc .pdf-notes strong {
+            color: #4a5568;
+        }
+
+        .pdf-doc .pdf-signature {
+            margin-top: 20px;
+            display: flex;
+            gap: 32px;
+            font-size: 11px;
+        }
+
+        .pdf-doc .pdf-signature .sig-line {
+            border-bottom: 1px solid #cbd5e0;
+            width: 120px;
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        .pdf-doc .checkbox-col {
+            width: 16px;
+            height: 16px;
+            border: 1.5px solid #718096;
+            display: inline-block;
+            border-radius: 2px;
+            vertical-align: middle;
+        }
+
         .controls {
             display: flex;
             justify-content: space-between;
@@ -942,6 +1137,76 @@
             <div class="description-box">
                 <strong>The 3 selected items have moved from "Items not shipped" to the "Pick list."</strong> Only Gasket C remains in "Items not shipped" (out of stock). All items in the Pick List are marked with <span class="badge picking">Picking</span> status (blue). The [Pack] button is grayed out because nothing has been picked yet.
             </div>
+
+            <div class="pdf-preview">
+                <div class="pdf-preview-header">
+                    <span>Pick Slip (PDF) — Printed for warehouse floor</span>
+                    <a href="pick-slip.pdf" target="_blank">Download PDF &darr;</a>
+                </div>
+                <div class="pdf-preview-body">
+                    <div class="pdf-doc">
+                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                            <h2>PICK LIST</h2>
+                            <span class="pdf-subtitle">Method CRM</span>
+                        </div>
+                        <hr class="pdf-divider">
+                        <div class="pdf-meta">
+                            <dt>Order:</dt><dd>SO-1042</dd>
+                            <dt>Date:</dt><dd>March 26, 2026</dd>
+                            <dt>Customer:</dt><dd>Tom Tesla</dd>
+                            <dt>Printed by:</dt><dd>Barbara S.</dd>
+                            <dt>Ship To:</dt><dd>925 Kingsway Drive, Burlington, ON</dd>
+                            <dt>Priority:</dt><dd>Standard</dd>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Item</th>
+                                    <th>SKU</th>
+                                    <th>Location</th>
+                                    <th style="text-align: center;">Qty</th>
+                                    <th style="text-align: center;">Picked</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Widget A</td>
+                                    <td>WDG-001</td>
+                                    <td>Warehouse A</td>
+                                    <td style="text-align: center;">10</td>
+                                    <td style="text-align: center;"><span class="checkbox-col"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Bracket B</td>
+                                    <td>BRK-042</td>
+                                    <td>Warehouse A</td>
+                                    <td style="text-align: center;">3</td>
+                                    <td style="text-align: center;"><span class="checkbox-col"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; margin: 8px 0 16px;">
+                            <span>Total items: 2</span>
+                            <span>Total qty: 13</span>
+                        </div>
+                        <div class="pdf-notes">
+                            <strong>Notes:</strong> <span class="sig-line" style="border-bottom: 1px solid #cbd5e0; display: inline-block; width: 80%;"></span>
+                        </div>
+                        <div class="pdf-signature">
+                            <span><strong>Picked by:</strong> <span class="sig-line"></span></span>
+                            <span><strong>Date:</strong> <span class="sig-line"></span></span>
+                            <span><strong>Time:</strong> <span class="sig-line"></span></span>
+                        </div>
+                        <div class="pdf-footer">
+                            <span>Generated by Method CRM | Pick List | SO-1042</span>
+                            <span>Page 1 of 1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- STEP 4: Update Pick Progress -->
@@ -1272,6 +1537,90 @@
 
             <div class="description-box">
                 <strong>Widget A is now <span class="badge packed">Packed</span> (green)</strong> with a "Packing Slip" link available. Bracket B remains <span class="badge picked">Picked</span> (teal) and ready to pack whenever the user wants. Motor D is still <span class="badge picking">Picking</span>. The [Pack ▸] button stays active because there's still Bracket B to pack. The user can click it again to pack Bracket B, or ship Widget A now without waiting.
+            </div>
+
+            <div class="pdf-preview">
+                <div class="pdf-preview-header">
+                    <span>Packing Slip (PDF) — Generated when items are packed</span>
+                    <a href="packing-slip.pdf" target="_blank">Download PDF &darr;</a>
+                </div>
+                <div class="pdf-preview-body">
+                    <div class="pdf-doc">
+                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                            <span style="font-weight: 700; font-size: 13px; color: #2d3748;">METHOD CRM</span>
+                            <h2>PACKING SLIP</h2>
+                        </div>
+                        <hr class="pdf-divider">
+                        <div class="pdf-addresses">
+                            <div>
+                                <div class="label">FROM:</div>
+                                <div>Method CRM Client</div>
+                                <div>123 Business Ave, Suite 200</div>
+                                <div>Toronto, ON M5V 2T6</div>
+                                <div>Canada</div>
+                            </div>
+                            <div>
+                                <div class="label">SHIP TO:</div>
+                                <div>Tom Tesla</div>
+                                <div>925 Kingsway Drive</div>
+                                <div>Burlington, ON L7T 3J1</div>
+                                <div>Canada</div>
+                            </div>
+                        </div>
+                        <div class="pdf-info-bar">
+                            <span><strong>Order #:</strong> SO-1042</span>
+                            <span><strong>Ship Date:</strong> March 26, 2026</span>
+                            <span><strong>Carrier:</strong> UPS Ground</span>
+                            <span><strong>Tracking #:</strong> 1Z999AA1012345</span>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Item</th>
+                                    <th>SKU</th>
+                                    <th style="text-align: right;">Qty Shipped</th>
+                                    <th style="text-align: right;">Price</th>
+                                    <th style="text-align: right;">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Widget A</td>
+                                    <td>WDG-001</td>
+                                    <td style="text-align: right;">10</td>
+                                    <td style="text-align: right;">$11.37</td>
+                                    <td style="text-align: right;">$113.70</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Bracket B</td>
+                                    <td>BRK-042</td>
+                                    <td style="text-align: right;">3</td>
+                                    <td style="text-align: right;">$24.50</td>
+                                    <td style="text-align: right;">$73.50</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="pdf-totals">
+                            <div>Subtotal: $187.20</div>
+                            <div>Tax (13% HST): $24.34</div>
+                            <div class="total-line">Total: $211.54</div>
+                        </div>
+                        <div class="pdf-notes">
+                            <strong>Packing Notes:</strong><br>
+                            Handle with care — fragile components
+                        </div>
+                        <div style="margin-top: 12px; font-style: italic; color: #718096; font-size: 11px;">
+                            Thank you for your order!
+                        </div>
+                        <div class="pdf-footer">
+                            <span>Generated by Method CRM | Packing Slip | SO-1042</span>
+                            <span>Page 1 of 1</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
