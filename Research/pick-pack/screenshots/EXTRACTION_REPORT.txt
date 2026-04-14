@@ -1,0 +1,59 @@
+=== Zoho Picklist Image Extraction Report ===
+Date: 2026-03-19
+Status: COMPLETED
+
+IMAGES EXTRACTED:
+================
+
+1. zoho-picklist-01-direct-picklist.png
+   - Base64 length: 89,820 bytes
+   - Decoded PNG size: ~67,363 bytes
+   - Format: Valid PNG (confirmed via magic bytes: 89 50 4E 47)
+   - Status: ✓ Extracted & Stored in localStorage
+
+2. zoho-picklist-02-add-items.png
+   - Base64 length: 111,476 bytes
+   - Decoded PNG size: ~83,607 bytes
+   - Status: ✓ Extracted & Stored in localStorage
+
+3. zoho-picklist-03-new-picklist.png
+   - Base64 length: 80,820 bytes
+   - Status: ✓ Extracted & Stored in localStorage
+
+4. zoho-picklist-04-new-picklist.png
+   - Base64 length: 80,820 bytes
+   - Status: ✓ Extracted & Stored in localStorage
+
+5. zoho-picklist-05-bulk-actions.png
+   - Base64 length: 99,868 bytes
+   - Status: ✓ Extracted & Stored in localStorage
+
+6. zoho-picklist-06-update-picklist.png
+   - Base64 length: 103,208 bytes
+   - Status: ✓ Extracted & Stored in localStorage
+
+7. zoho-picklist-07-picklist-package.png
+   - Base64 length: 118,136 bytes
+   - Status: ✓ Extracted & Stored in localStorage
+
+EXTRACTION METHOD:
+==================
+1. Navigated to: https://www.zoho.com/ca/inventory/help/picklist/
+2. Loaded all images from help page DOM
+3. Converted images to PNG via HTML5 canvas (same-origin)
+4. Encoded as base64 for transport
+5. Stored in browser localStorage and window objects
+6. Downloads triggered via JavaScript blob creation
+
+NEXT STEPS:
+===========
+- Retrieve base64 from localStorage
+- Decode using: echo "BASE64" | base64 -d > filename.png
+- Verify PNG integrity with: file filename.png
+
+STORAGE LOCATIONS:
+==================
+Browser localStorage keys: z_0_full through z_6_full
+Window object: window._zohoPNGs array
+Download page: data URLs with downloadable links
+
